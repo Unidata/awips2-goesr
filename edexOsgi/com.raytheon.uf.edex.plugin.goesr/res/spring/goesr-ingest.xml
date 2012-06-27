@@ -1,0 +1,51 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+  http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	<bean id="goesrPluginName" class="java.lang.String">
+		<constructor-arg type="java.lang.String" value="goesr" />
+	</bean>
+
+	<bean id="goesrDecoder" class="com.raytheon.uf.edex.plugin.goesr.GOESRDecoder">
+		<property name="tempPathName" value="${edex.tmp}/goesr" />
+	</bean>
+
+	<bean id="goesrDistRegistry" factory-bean="distributionSrv"
+		factory-method="register">
+		<constructor-arg ref="goesrPluginName" />
+		<constructor-arg
+			value="jms-dist:queue:Ingest.goesr?destinationResolver=#qpidDurableResolver" />
+	</bean>
+
+	<bean id="goesrCamelRegistered" factory-bean="contextManager"
+		factory-method="register" depends-on="persistCamelRegistered">
+		<constructor-arg ref="goesr-camel" />
+	</bean>
+
+	<camelContext id="goesr-camel" xmlns="http://camel.apache.org/schema/spring"
+		errorHandlerRef="errorHandler" autoStartup="false">
+
+		<!-- Begin goesr routes -->
+		<route id="goesrIngestRoute">
+			<from
+				uri="jms-generic:queue:Ingest.goesr?destinationResolver=#qpidDurableResolver" />
+			<setHeader headerName="pluginName">
+				<constant>goesr</constant>
+			</setHeader>
+			<doTry>
+				<pipeline>
+					<bean ref="stringToFile" />
+					<bean ref="goesrDecoder" method="decode" />
+					<to uri="directvm:persistIndexAlert" />
+				</pipeline>
+				<doCatch>
+					<exception>java.lang.Throwable</exception>
+					<to
+						uri="log:goesr?level=ERROR&amp;showBody=false&amp;showCaughtException=true&amp;showStackTrace=true" />
+				</doCatch>
+			</doTry>
+		</route>
+
+	</camelContext>
+</beans>

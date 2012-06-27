@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Mytest
+Bundle-SymbolicName: com.raytheon.uf.edex.plugin.goesr
+Bundle-Version: 1.0.0.qualifier
+Eclipse-RegisterBuddy: com.raytheon.edex.common, com.raytheon.uf.common.serialization
+Bundle-Vendor: RAYTHEON
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: com.raytheon.edex.common,
+ javax.measure,
+ javax.persistence,
+ org.geotools,
+ ucar.nc2;bundle-version="1.0.0",
+ com.raytheon.uf.common.status;bundle-version="1.12.1174",
+ org.apache.commons.logging;bundle-version="1.1.1",
+ com.raytheon.uf.edex.decodertools;bundle-version="1.12.1174",
+ com.raytheon.uf.common.dataplugin.satellite;bundle-version="1.0.0",
+ com.raytheon.edex.plugin.satellite;bundle-version="1.12.1174"
