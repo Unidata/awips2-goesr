@@ -20,7 +20,8 @@
 package com.raytheon.uf.edex.plugin.goesr.decoder;
 
 import java.text.SimpleDateFormat;
-import java.util.TimeZone;
+
+import com.raytheon.uf.common.time.util.TimeUtil;
 
 /**
  * Expose various constants used within the decoder.
@@ -31,7 +32,8 @@ import java.util.TimeZone;
  * 
  * Date         Ticket#    Engineer    Description
  * ------------ ---------- ----------- --------------------------
- * Jun 1, 2012        796 jkorman     Initial creation
+ * Jun 1, 2012        796  jkorman     Initial creation
+ * Jul  5, 2013       2123 mschenke    Gave attributes more descriptive names
  * 
  * </pre>
  * 
@@ -40,11 +42,6 @@ import java.util.TimeZone;
  */
 
 public class GOESRConstants {
-
-    /**
-     * UTC timezone constant.
-     */
-    public static final TimeZone UTC = TimeZone.getTimeZone("UTC");
 
     /**
      * Format for the reported data/time data - Timezone in UTC.</br>
@@ -81,8 +78,8 @@ public class GOESRConstants {
     public static final SimpleDateFormat GOESR_DATETIME = new SimpleDateFormat(
             "yyyy-MM-dd HH:mm:ss");
     static {
-        GOESR_DT.setTimeZone(UTC);
-        GOESR_DATETIME.setTimeZone(UTC);
+        GOESR_DT.setTimeZone(TimeUtil.GMT_TIME_ZONE);
+        GOESR_DATETIME.setTimeZone(TimeUtil.GMT_TIME_ZONE);
     }
 
     /**
@@ -113,20 +110,6 @@ public class GOESRConstants {
 
     public static final int MESO_SCENE_2 = 2;
 
-    /**
-     * Number of bytes to pre-read while attempting to discover the HDF
-     * signature.
-     */
-    public static final int PRE_READ_SIZE = 1024;
-
-    private static char[] C_HDF_SIG = new char[] { (char) 0x89, 'H', 'D', 'F',
-            (char) 0x0D, (char) 0x0A, (char) 0x1A, (char) 0x0A };
-
-    /**
-     * The HDF signature.
-     */
-    public static final String HDF_SIG = new String(C_HDF_SIG);
-
     /*
      * GOES-R variable and attribute names.
      */
@@ -134,274 +117,292 @@ public class GOESRConstants {
     /**
      * GOES-R Global conventions metadata attribute.
      */
-    public static final String CONVENTIONS = "Conventions";
+    public static final String GLOBAL_ATTR_CONVENTIONS_ID = "Conventions";
 
     /**
      * GOES-R Global ICD version metadata attribute.
      */
-    public static final String ICD_VERSION = "ICD_version";
+    public static final String GLOBAL_ATTR_ICD_VERSION_ID = "ICD_version";
 
     /**
      * GOES-R Globaltitle metadata attribute.
      */
-    public static final String TITLE = "title";
+    public static final String GLOBAL_ATTR_TITLE_ID = "title";
 
     /**
      * GOES-R Global product name metadata attribute.
      */
-    public static final String PRODUCT_NAME = "production_name";
+    public static final String GLOBAL_ATTR_PRODUCT_NAME_ID = "product_name";
 
     /**
      * GOES-R Global production location metadata attribute.
      */
-    public static final String PRODUCTION_LOCATION = "production_location";
+    public static final String GLOBAL_ATTR_PRODUCTION_LOCATION_ID = "production_location";
 
     /**
      * GOES-R Global start date time metadata attribute.
      */
-    public static final String START_DATETIME = "start_date_time";
+    public static final String GLOBAL_ATTR_START_DATETIME_ID = "start_date_time";
 
     /**
      * GOES-R Global satellite id metadata attribute.
      */
-    public static final String SATELLITE_ID = "satellite_id";
-
-    /**
-     * GOES-R Global satellite mode metadata attribute.
-     */
-    public static final String SATELLITE_MODE = "satellite_mode";
+    public static final String GLOBAL_ATTR_SATELLITE_ID_ID = "satellite_id";
 
     /**
      * GOES-R Global periodicity metadata attribute.
      */
-    public static final String PERIODICITY = "periodicity";
+    public static final String GLOBAL_ATTR_PERIODICITY_ID = "periodicity";
 
     /**
      * GOES-R Global bit depth metadata attribute.
      */
-    public static final String BIT_DEPTH = "bit_depth";
+    public static final String GLOBAL_ATTR_BIT_DEPTH_ID = "bit_depth";
 
     /**
      * GOES-R Global channel id metadata attribute.
      */
-    public static final String CHANNEL_ID = "channel_id";
+    public static final String GLOBAL_ATTR_CHANNEL_ID_ID = "channel_id";
 
     /**
      * GOES-R Global central wavelength metadata attribute.
      */
-    public static final String CENTRAL_WV_LEN = "central_wavelength";
+    public static final String GLOBAL_ATTR_CENTRAL_WV_LEN_ID = "central_wavelength";
 
     /**
      * GOES-R Global source scene metadata attribute.
      */
-    public static final String SOURCE_SCENE = "source_scene";
+    public static final String GLOBAL_ATTR_SOURCE_SCENE_ID = "source_scene";
 
     /**
      * GOES-R Global source spatial resolution metadata attribute.
      */
-    public static final String SRC_SPATIAL_RES = "source_spatial_resolution";
+    public static final String GLOBAL_ATTR_SRC_SPATIAL_RES_ID = "source_spatial_resolution";
 
     /**
      * GOES-R Global request spatial resolution metadata attribute.
      */
-    public static final String REQ_SPATIAL_RES = "request_spatial_resolution";
+    public static final String GLOBAL_ATTR_REQ_SPATIAL_RES_ID = "request_spatial_resolution";
 
     /**
      * GOES-R Global satellite latitude metadata attribute.
      */
-    public static final String SATELLITE_LATITUDE = "satellite_latitude";
+    public static final String GLOBAL_ATTR_SATELLITE_LATITUDE_ID = "satellite_latitude";
 
     /**
      * GOES-R Global satellite longitude metadata attribute.
      */
-    public static final String SATELLITE_LONGITUDE = "satellite_longitude";
+    public static final String GLOBAL_ATTR_SATELLITE_LONGITUDE_ID = "satellite_longitude";
 
     /**
      * GOES-R Global satellite altitude metadata attribute.
      */
-    public static final String SATELLITE_ALTITUDE = "satellite_altitude";
+    public static final String GLOBAL_ATTR_SATELLITE_ALTITUDE_ID = "satellite_altitude";
 
     /**
      * GOES-R Global projection metadata attribute.
      */
-    public static final String PROJECTION = "projection";
+    public static final String GLOBAL_ATTR_PROJECTION_ID = "projection";
 
     /**
      * GOES-R Global product center latitude metadata attribute.
      */
-    public static final String PRODUCT_CENTER_LAT = "product_center_latitude";
+    public static final String GLOBAL_ATTR_PRODUCT_CENTER_LAT_ID = "product_center_latitude";
 
     /**
      * GOES-R Global product center longitude metadata attribute.
      */
-    public static final String PRODUCT_CENTER_LON = "product_center_longitude";
+    public static final String GLOBAL_ATTR_PRODUCT_CENTER_LON_ID = "product_center_longitude";
 
     /**
      * GOES-R Global pixel x size metadata attribute.
      */
-    public static final String PIXEL_X_SIZE = "pixel_x_size";
+    public static final String GLOBAL_ATTR_PIXEL_X_SIZE_ID = "pixel_x_size";
 
     /**
      * GOES-R Global pixel y size metadata attribute.
      */
-    public static final String PIXEL_Y_SIZE = "pixel_y_size";
+    public static final String GLOBAL_ATTR_PIXEL_Y_SIZE_ID = "pixel_y_size";
 
     /**
      * GOES-R Global number of product rows metadata attribute.
      */
-    public static final String PRODUCT_ROWS = "product_rows";
+    public static final String GLOBAL_ATTR_PRODUCT_ROWS_ID = "product_rows";
 
     /**
      * GOES-R Global number of product columns metadata attribute.
      */
-    public static final String PRODUCT_COLS = "product_columns";
+    public static final String GLOBAL_ATTR_PRODUCT_COLS_ID = "product_columns";
 
     /**
      * GOES-R Global product tile width metadata attribute.
      */
-    public static final String PRODUCT_TILE_WIDTH = "product_tile_width";
+    public static final String GLOBAL_ATTR_PRODUCT_TILE_WIDTH_ID = "product_tile_width";
 
     /**
      * GOES-R Global product tile height metadata attribute.
      */
-    public static final String PRODUCT_TILE_HEIGHT = "product_tile_height";
-
-    /**
-     * GOES-R Global product tile size metadata attribute.
-     */
-    public static final String PRODUCT_TILE_SIZE = "product_tile_size";
+    public static final String GLOBAL_ATTR_PRODUCT_TILE_HEIGHT_ID = "product_tile_height";
 
     /**
      * GOES-R Global number of product tiles metadata attribute.
      */
-    public static final String NUM_PRODUCT_TILES = "number_product_tiles";
+    public static final String GLOBAL_ATTR_NUM_PRODUCT_TILES_ID = "number_product_tiles";
 
     /**
      * GOES-R Global tile row offset metadata attribute.
      */
-    public static final String TILE_ROW_OFFSET = "tile_row_offset";
+    public static final String GLOBAL_ATTR_TILE_ROW_OFFSET_ID = "tile_row_offset";
 
     /**
      * GOES-R Global tile column offset metadata attribute.
      */
-    public static final String TILE_COL_OFFSET = "tile_column_offset";
+    public static final String GLOBAL_ATTR_TILE_COL_OFFSET_ID = "tile_column_offset";
 
     /**
      * GOES-R Global tile center latitude metadata attribute.
      */
-    public static final String TILE_CENTER_LAT = "tile_center_latitude";
+    public static final String GLOBAL_ATTR_TILE_CENTER_LAT_ID = "tile_center_latitude";
 
     /**
      * GOES-R Global tile center longitude metadata attribute.
      */
-    public static final String TILE_CENTER_LON = "tile_center_longitude";
+    public static final String GLOBAL_ATTR_TILE_CENTER_LON_ID = "tile_center_longitude";
 
     /**
-     * GOES-R image grid data variable name.
+     * GOES-R image sectorized grid data variable name.
      */
-    public static final String GRIDDED_DATA = "sectorized_cmi";
+    public static final String VARIABLE_CMI_DATA_ID = "CMI";
+
+    /**
+     * GOES-R image sectorized grid data variable name.
+     */
+    public static final String VARIABLE_SECTORIZED_CMI_DATA_ID = "Sectorized_CMI";
 
     /**
      * GOES-R image grid data, data name metadata attribute.
      */
-    public static final String GD_STANDARD_NAME = "standard_name";
+    public static final String CMI_ATTR_STANDARD_NAME_ID = "standard_name";
 
     /**
      * GOES-R image grid data, data units metadata attribute.
      */
-    public static final String GD_UNITS = "units";
+    public static final String CMI_ATTR_UNITS_ID = "units";
 
     /**
      * GOES-R image grid data, grid mapping metadata attribute.
      */
-    public static final String GD_GRID_MAPPING = "grid_mapping";
+    public static final String CMI_ATTR_GRID_MAPPING_ID = "grid_mapping";
 
     /**
      * GOES-R image grid data, grid mapping metadata attribute.
      */
-    public static final String GD_ADD_OFFSET = "add_offset";
+    public static final String CMI_ATTR_ADD_OFFSET_ID = "add_offset";
 
     /**
      * GOES-R image grid data, grid mapping metadata attribute.
      */
-    public static final String GD_SCALE_FACTOR = "scale_factor";
+    public static final String CMI_ATTR_SCALE_FACTOR_ID = "scale_factor";
 
     /**
      * GOES-R image grid data, fill value metadata attribute.
      */
-    public static final String GD_FILL_VALUE = "_FillValue";
+    public static final String CMI_ATTR_FILL_VALUE_ID = "_FillValue";
 
     /**
      * GOES-R image grid data, minimum valid value metadata attribute.
      */
-    public static final String GD_VALID_MIN = "valid_min";
+    public static final String CMI_ATTR_VALID_MIN_ID = "valid_min";
 
     /**
      * GOES-R image grid data, maximum valid value metadata attribute.
      */
-    public static final String GD_VALID_MAX = "valid_max";
+    public static final String CMI_ATTR_VALID_MAX_ID = "valid_max";
 
     /**
      * GOES-R lambert conformal projection variable name.
      */
-    public static final String PROJ_LAMBERT = "lambert_projection";
+    public static final String PROJECTION_LAMBERT_ID = "lambert_projection";
 
     /**
      * GOES-R mercator projection variable name.
      */
-    public static final String PROJ_MERCATOR = "mercator_projection";
+    public static final String PROJECTION_MERCATOR_ID = "mercator_projection";
 
     /**
      * GOES-R polar projection variable name.
      */
-    public static final String PROJ_POLAR = "polar_projection";
+    public static final String PROJECTION_POLAR_ID = "polar_projection";
 
     /**
      * GOES-R fixed grid projection variable name.
      */
-    public static final String PROJ_FIXEDGRID = "fixedgrid_projection";
+    public static final String PROJECTION_FIXEDGRID_ID = "fixedgrid_projection";
 
     /**
-     * GOES-R common projection variable, grid mapping name metadata attribute.
+     * GOES-R projection variable, grid mapping name metadata attribute.
      */
-    public static final String PROJ_GRID_MAPPING_NAME = "grid_mapping_name";
+    public static final String PROJ_ATTR_GRID_MAPPING_NAME_ID = "grid_mapping_name";
 
     /**
-     * GOES-R common projection variable, false easting metadata attribute.
+     * GOES-R projection variable, false easting metadata attribute.
      */
-    public static final String PROJ_FALSE_EASTING = "false_easting";
+    public static final String PROJ_ATTR_FALSE_EASTING_ID = "false_easting";
 
     /**
-     * GOES-R common projection variable, false northing metadata attribute.
+     * GOES-R projection variable, false northing metadata attribute.
      */
-    public static final String PROJ_FALSE_NORTHING = "false_northing";
+    public static final String PROJ_ATTR_FALSE_NORTHING_ID = "false_northing";
 
     /**
-     * GOES-R common projection variable, semi minor axis metadata attribute.
+     * GOES-R projection variable, semi minor axis metadata attribute.
      */
-    public static final String PROJ_SEMI_MINOR = "semi_major";
+    public static final String PROJ_ATTR_SEMI_MINOR_ID = "semi_minor";
 
     /**
-     * GOES-R common projection variable, semi major axis metadata attribute.
+     * GOES-R projection variable, semi major axis metadata attribute.
      */
-    public static final String PROJ_SEMI_MAJOR = "semi_minor";
+    public static final String PROJ_ATTR_SEMI_MAJOR_ID = "semi_major";
 
     /**
-     * GOES-R lambert conformal variable, standard parallel metadata attribute.
+     * GOES-R projection variable, standard parallel metadata attribute.
      */
-    public static final String LAMBERT_STANDARD_PARALLEL = "standard_parallel";
+    public static final String PROJ_ATTR_STANDARD_PARALLEL_ID = "standard_parallel";
 
     /**
-     * GOES-R lambert conformal variable, longitude of projection origin
-     * metadata attribute.
-     */
-    public static final String LAMBERT_CENTRAL_MERIDIAN = "longitude_of_central_meridian";
-
-    /**
-     * GOES-R lambert conformal variable, latitude of projection origin metadata
+     * GOES-R projection variable, longitude of projection origin metadata
      * attribute.
      */
-    public static final String LAMBERT_PROJ_ORIGIN_LAT = "latitude_of_projection_origin";
+    public static final String PROJ_ATTR_CENTRAL_MERIDIAN_ID = "longitude_of_central_meridian";
+
+    /**
+     * GOES-R projection variable, latitude of projection origin metadata
+     * attribute.
+     */
+    public static final String PROJ_ATTR_ORIGIN_LAT_ID = "latitude_of_projection_origin";
+
+    /**
+     * GOES-R projection variable, longitude of projection origin metadata
+     * attribute.
+     */
+    public static final String PROJ_ATTR_ORIGIN_LON_ID = "longitude_of_projection_origin";
+
+    /**
+     * GOES-R polar projection variable, straight longitude line from pole
+     */
+    public static final String PROJ_POLAR_ATTR_LON_POLE_ID = "straight_vertical_longitude_from_pole";
+
+    /**
+     * GOES-R fixed grid projection variable, perspective point height metadata
+     * attribute.
+     */
+    public static final String PROJ_FIXEDGRID_ATTR_PERSPECTIVE_POINT_HEIGHT_ID = "perspective_point_height";
+
+    /**
+     * GOES-R fixed grid projection variable, sweep angle axis metadata
+     * attribute.
+     */
+    public static final String PROJ_FIXEDGRID_ATTR_SWEEP_ANGLE_AXIS_ID = "sweep_angle_axis";
 
     /**
      * Hide the default constructor

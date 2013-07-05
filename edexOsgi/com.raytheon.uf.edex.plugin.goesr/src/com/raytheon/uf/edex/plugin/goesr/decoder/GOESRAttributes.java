@@ -19,15 +19,15 @@
  **/
 package com.raytheon.uf.edex.plugin.goesr.decoder;
 
-import java.util.Date;
-
-import ucar.nc2.Attribute;
-import ucar.nc2.NetcdfFile;
-
 import static com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil.getAttributeDate;
 import static com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil.getAttributeDouble;
 import static com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil.getAttributeInteger;
 import static com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil.getAttributeString;
+
+import java.util.Date;
+
+import ucar.nc2.Attribute;
+import ucar.nc2.NetcdfFile;
 
 /**
  * Extract and make available the GOES-R global attributes from a given
@@ -51,7 +51,8 @@ import static com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil.getAttributeSt
  *  Date         Ticket#    Engineer    Description
  *  ------------ ---------- ----------- --------------------------
  *  Jun 19, 2012        796 jkorman     Initial creation
- * 
+ *  Jul  5, 2013       2123 mschenke    Added attributes, updated attributes that changed
+ *  
  * </pre>
  * 
  * @author jkorman
@@ -90,8 +91,6 @@ public class GOESRAttributes {
 
     private Integer product_tile_width;
 
-    private Integer product_tile_size;
-
     private String production_location;
 
     private String product_name;
@@ -107,8 +106,6 @@ public class GOESRAttributes {
     private Float satellite_latitude;
 
     private Float satellite_longitude;
-
-    private Integer satellite_mode;
 
     private String source_scene;
 
@@ -261,7 +258,7 @@ public class GOESRAttributes {
      * @return The product tile height.
      */
     public Integer getProduct_tile_height() {
-        return product_tile_height;
+        return Math.min(product_tile_height, product_rows - tile_row_offset);
     }
 
     /**
@@ -270,7 +267,8 @@ public class GOESRAttributes {
      * @return The product tile width.
      */
     public Integer getProduct_tile_width() {
-        return product_tile_width;
+        return Math.min(product_tile_width, product_columns
+                - tile_column_offset);
     }
 
     /**
@@ -352,15 +350,6 @@ public class GOESRAttributes {
      */
     public Float getSatellite_longitude() {
         return satellite_longitude;
-    }
-
-    /**
-     * Get the satellite mode.
-     * 
-     * @return The satellite mode.
-     */
-    public Integer getSatellite_mode() {
-        return satellite_mode;
     }
 
     /**
@@ -448,109 +437,125 @@ public class GOESRAttributes {
         String nullString = null;
 
         Attribute attr = cdfFile
-                .findGlobalAttribute(GOESRConstants.CONVENTIONS);
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_CONVENTIONS_ID);
         conventions = getAttributeString(attr, nullString);
         // string(CONVENTIONS)
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.ICD_VERSION);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_ICD_VERSION_ID);
         ICD_version = getAttributeString(attr, nullString);
         // string(ICD_VERSION)
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.TITLE);
+        attr = cdfFile.findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_TITLE_ID);
         title = getAttributeString(attr, nullString);
         // string(TITLE)
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.PRODUCT_NAME);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_PRODUCT_NAME_ID);
         product_name = getAttributeString(attr, nullString);
         // string(PRODUCT_NAME)
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.PRODUCTION_LOCATION);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_PRODUCTION_LOCATION_ID);
         production_location = getAttributeString(attr, nullString);
         // string(PRODUCTION_LOCATION, WCDAS, RBU)
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.START_DATETIME);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_START_DATETIME_ID);
         start_date_time = getAttributeDate(attr, new Date(0));
         // integer(START_DATETIME)
 
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.SATELLITE_ID);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_SATELLITE_ID_ID);
         satellite_id = getAttributeString(attr, "");
         // string(SATELLITE_ID. GOES-16, GOES-17)
 
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.SATELLITE_MODE);
-        satellite_mode = getAttributeInteger(attr, -1);
-        // integer(SATELLITE_MODE, 3, 4)
-
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.PERIODICITY);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_PERIODICITY_ID);
         periodicity = getAttributeInteger(attr, -1);
         // integer(PERIODICITY)
 
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.BIT_DEPTH);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_BIT_DEPTH_ID);
         bit_depth = getAttributeInteger(attr, -1);
         // integer(BIT_DEPTH, 8..14)
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.CHANNEL_ID);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_CHANNEL_ID_ID);
         channel_id = getAttributeInteger(attr, -1);
         // integer(CHANNEL_ID, 1..16)
 
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.CENTRAL_WV_LEN);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_CENTRAL_WV_LEN_ID);
         central_wavelength = (float) getAttributeDouble(attr, -1);
         // double(CENTRAL_WV_LEN,,,,,)
 
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.SOURCE_SCENE);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_SOURCE_SCENE_ID);
         source_scene = getAttributeString(attr, nullString);
         // String(SOURCE_SCENE, Full Disk, CONUS, Mesoscale-1, Mesoscale-2)
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.SRC_SPATIAL_RES);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_SRC_SPATIAL_RES_ID);
         source_spatial_resolution = (float) getAttributeDouble(attr, -1);
         // double(SRC_SPATIAL_RES, 0.5, 1.0, 2.0)
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.REQ_SPATIAL_RES);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_REQ_SPATIAL_RES_ID);
         request_spatial_resolution = (float) getAttributeDouble(attr, -1);
         // double(REQ_SPATIAL_RES, 0.5..28)
 
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.SATELLITE_LATITUDE);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_SATELLITE_LATITUDE_ID);
         satellite_latitude = (float) getAttributeDouble(attr, -1);
         // double(SATELLITE_LATITUDE, 0)
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.SATELLITE_LONGITUDE);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_SATELLITE_LONGITUDE_ID);
         satellite_longitude = (float) getAttributeDouble(attr, -1);
         // double(SATELLITE_LONGITUDE, -180..180)
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.SATELLITE_ALTITUDE);
-        // TODO : Adjust to meters per ICD.
-        satellite_altitude = (float) getAttributeDouble(attr, -1) * 1000;
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_SATELLITE_ALTITUDE_ID);
+        satellite_altitude = (float) getAttributeDouble(attr, -1);
         // double(SATELLITE_ALTITUDE, 35786023)
 
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.PROJECTION);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_PROJECTION_ID);
         projection = getAttributeString(attr, nullString);
         // string(PROJECTION, Mercator, Lambert Conformal, Polar Stereographic,
         // Fixed_Grid)
 
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.PRODUCT_CENTER_LAT);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_PRODUCT_CENTER_LAT_ID);
         product_center_latitude = (float) getAttributeDouble(attr, -1);
         // double(PRODUCT_CENTER_LAT, -90..90)
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.PRODUCT_CENTER_LON);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_PRODUCT_CENTER_LON_ID);
         product_center_longitude = (float) getAttributeDouble(attr, -1);
         // double(PRODUCT_CENTER_LON, -180..180)
 
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.PIXEL_X_SIZE);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_PIXEL_X_SIZE_ID);
         pixel_x_size = (float) getAttributeDouble(attr, -1);
         // double(PIXEL_X_SIZE, 0.5..28)
 
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.PIXEL_Y_SIZE);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_PIXEL_Y_SIZE_ID);
         pixel_y_size = (float) getAttributeDouble(attr, -1);
         // double(PIXEL_Y_SIZE, 0.5..28)
 
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.PRODUCT_ROWS);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_PRODUCT_ROWS_ID);
         product_rows = getAttributeInteger(attr, -1);
         // integer(PRODUCT_ROWS, 1..32000)
 
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.PRODUCT_COLS);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_PRODUCT_COLS_ID);
         product_columns = getAttributeInteger(attr, -1);
         // integer(PRODUCT_COLS, 1..32000)
 
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.PRODUCT_TILE_WIDTH);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_PRODUCT_TILE_WIDTH_ID);
         product_tile_width = getAttributeInteger(attr, -1);
         // integer(PRODUCT_TILE_WIDTH, 256..2048)
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.PRODUCT_TILE_HEIGHT);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_PRODUCT_TILE_HEIGHT_ID);
         product_tile_height = getAttributeInteger(attr, -1);
         // integer(PRODUCT_TILE_HEIGHT, 256..2048)
 
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.PRODUCT_TILE_SIZE);
-        product_tile_size = getAttributeInteger(attr, -1);
-        // integer(PRODUCT_TILE_SIZE, 256..2048)
-
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.NUM_PRODUCT_TILES);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_NUM_PRODUCT_TILES_ID);
         number_product_tiles = getAttributeInteger(attr, -1);
         // integer(NUM_PRODUCT_TILES, 0..999)
 
@@ -558,19 +563,23 @@ public class GOESRAttributes {
         // * Note that the following two attribute values are transposed in
         // * the data files. These need to be changed back once corrected.
         // ********************************
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.TILE_ROW_OFFSET);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_TILE_COL_OFFSET_ID);
         tile_column_offset = getAttributeInteger(attr, -1);
         // integer(TILE_ROW_OFFSET, 0..(product_rows - 1))
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.TILE_COL_OFFSET);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_TILE_ROW_OFFSET_ID);
         tile_row_offset = getAttributeInteger(attr, -1);
         // integer(TILE_COL_OFFSET, 0..(product_columns - 1))
         // *
         // ********************************
 
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.TILE_CENTER_LAT);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_TILE_CENTER_LAT_ID);
         tile_center_latitude = (float) getAttributeDouble(attr, -1);
         // double(TILE_CENTER_LAT,-90..90)
-        attr = cdfFile.findGlobalAttribute(GOESRConstants.TILE_CENTER_LON);
+        attr = cdfFile
+                .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_TILE_CENTER_LON_ID);
         tile_center_longitude = (float) getAttributeDouble(attr, -1);
         // double(TILE_CENTER_LON, -180..180)
     }
@@ -613,8 +622,6 @@ public class GOESRAttributes {
         sb.append(product_tile_height);
         sb.append("\nproduct_tile_width : ");
         sb.append(product_tile_width);
-        sb.append("\nproduct_tile_size : ");
-        sb.append(product_tile_size);
         sb.append("\nproduction_location : ");
         sb.append(production_location);
         sb.append("\nproduct_name : ");
@@ -631,14 +638,12 @@ public class GOESRAttributes {
         sb.append(satellite_latitude);
         sb.append(" deg\nsatellite_longitude : ");
         sb.append(satellite_longitude);
-        sb.append(" deg\nsatellite_mode : ");
-        sb.append(satellite_mode);
         sb.append("\nsource_scene : ");
         sb.append(source_scene);
         sb.append("\nsource_spatial_resolution : ");
         sb.append(source_spatial_resolution);
         sb.append(" km\nstart_date_time : ");
-        synchronized(GOESRConstants.GOESR_DATETIME) {
+        synchronized (GOESRConstants.GOESR_DATETIME) {
             sb.append(GOESRConstants.GOESR_DATETIME.format(start_date_time));
         }
         sb.append(" UTC\ntile_center_latitude : ");

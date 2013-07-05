@@ -19,47 +19,40 @@
  **/
 package com.raytheon.uf.edex.plugin.goesr.decoder;
 
-import java.io.File;
-
 import com.raytheon.uf.common.dataplugin.satellite.SatelliteRecord;
 
 /**
- * Expose decoder behavior for GOES-R data. The interface exposes
- * a decode file. The interface does not suppose the format of the
- * data other than it may be presented in a temporary file.
+ * Expose decoder behavior for GOES-R data. The interface exposes a decode file.
+ * The interface does not suppose the format of the data other than it may be
+ * presented in a temporary file.
  * 
  * <pre>
- *
+ * 
  * SOFTWARE HISTORY
- *
+ * 
  * Date         Ticket#    Engineer    Description
  * ------------ ---------- ----------- --------------------------
  * Jun 6, 2012        796 jkorman     Initial creation
- *
+ * 
  * </pre>
- *
+ * 
  * @author jkorman
- * @version 1.0 
+ * @version 1.0
  */
 public interface GOESRDataDecoder {
-    
+
     /**
-     * Decode the GOES-R data and return the data in a SatelliteRecord. If an error
-     * occurs or the decoder is unable to decode the data, a null reference may be
-     * returned.
+     * Decode the GOES-R data and return the data in a SatelliteRecord. If an
+     * error occurs or the decoder is unable to decode the data, a null
+     * reference may be returned.
+     * 
      * @return The decoded GOES-R satellite data.
      */
     public SatelliteRecord decodeFile();
-    
+
     /**
      * Ensure that any decoder resources are cleaned up.
      */
     public void closeDecoder();
 
-    /**
-     * Get the file reference of the temporary GOES-R data file being decoded.
-     * @return The file reference.
-     */
-    public File getGOESRFile();
-    
 }

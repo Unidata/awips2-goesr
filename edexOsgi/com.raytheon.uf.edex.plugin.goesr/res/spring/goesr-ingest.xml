@@ -7,45 +7,70 @@
 		<constructor-arg type="java.lang.String" value="goesr" />
 	</bean>
 
-	<bean id="goesrDecoder" class="com.raytheon.uf.edex.plugin.goesr.GOESRDecoder">
-		<property name="tempPathName" value="${edex.tmp}/goesr" />
-	</bean>
+	<bean id="goesrThreadPool"
+        class="com.raytheon.uf.edex.esb.camel.spring.JmsThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="1" />
+		<property name="maxPoolSize" value="1" />
+    </bean>
+    
+    <bean id="jmsIngestGOESRConfig" class="org.apache.camel.component.jms.JmsConfiguration"
+		  factory-bean="jmsConfig" factory-method="copy" />
+    
+	<bean id="jms-goesr" class="org.apache.camel.component.jms.JmsComponent">
+		<constructor-arg ref="jmsIngestGOESRConfig" />
+		<property name="taskExecutor" ref="goesrThreadPool" />
+     </bean>
+    
 
 	<bean id="goesrDistRegistry" factory-bean="distributionSrv"
 		factory-method="register">
 		<constructor-arg ref="goesrPluginName" />
-		<constructor-arg
-			value="jms-dist:queue:Ingest.goesr?destinationResolver=#qpidDurableResolver" />
+		<constructor-arg value="jms-dist:queue:Ingest.GOESR" />
 	</bean>
 
-	<bean id="goesrCamelRegistered" factory-bean="contextManager"
-		factory-method="register" depends-on="persistCamelRegistered">
-		<constructor-arg ref="goesr-camel" />
-	</bean>
+	<bean id="goesrDecoder" class="com.raytheon.uf.edex.plugin.goesr.GOESRDecoder" />
 
 	<camelContext id="goesr-camel" xmlns="http://camel.apache.org/schema/spring"
 		errorHandlerRef="errorHandler" autoStartup="false">
 
+		<endpoint id="goesrFileEndpoint" uri="file:${edex.home}/data/GOESR?delete=true"/>
+		
+		<route id="goesrJMSIngestRoute">
+			<from uri="jms-goesr:queue:Ingest.GOESR?destinationResolver=#qpidDurableResolver" />
+			<to uri="direct-vm:goesrIngestRoute"/>
+		</route>
+		
+		<route id="goesrFileIngestRoute">
+			<from uri="goesrFileEndpoint" />
+			<to uri="direct-vm:goesrIngestRoute"/>
+		</route>
+
 		<!-- Begin goesr routes -->
 		<route id="goesrIngestRoute">
-			<from
-				uri="jms-generic:queue:Ingest.goesr?destinationResolver=#qpidDurableResolver" />
+			<from uri="direct-vm:goesrIngestRoute"/>
 			<setHeader headerName="pluginName">
-				<constant>goesr</constant>
+				<constant>satellite</constant>
 			</setHeader>
+			<setHeader headerName="dataType">
+            	<constant>goes-r</constant>
+            </setHeader>
 			<doTry>
 				<pipeline>
-					<bean ref="stringToFile" />
+					<bean ref="extractWMOHeader" method="remove"/>
 					<bean ref="goesrDecoder" method="decode" />
-					<to uri="directvm:persistIndexAlert" />
+					<to uri="direct-vm:persistIndexAlert" />
 				</pipeline>
 				<doCatch>
 					<exception>java.lang.Throwable</exception>
 					<to
-						uri="log:goesr?level=ERROR&amp;showBody=false&amp;showCaughtException=true&amp;showStackTrace=true" />
+						uri="log:goesr?level=ERROR" />
 				</doCatch>
 			</doTry>
 		</route>
-
 	</camelContext>
+	
+	<bean id="goesrCamelRegistered" factory-bean="contextManager"
+		factory-method="register" depends-on="persistCamelRegistered">
+		<constructor-arg ref="goesr-camel" />
+	</bean>
 </beans>

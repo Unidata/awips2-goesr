@@ -20,17 +20,13 @@
 package com.raytheon.uf.edex.plugin.goesr.decoder.geo;
 
 import org.opengis.referencing.FactoryException;
-import org.opengis.referencing.crs.ProjectedCRS;
+import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.opengis.referencing.operation.MathTransform;
 import org.opengis.referencing.operation.TransformException;
-
-import ucar.nc2.Variable;
 
 import com.raytheon.uf.common.dataplugin.satellite.SatMapCoverage;
 import com.raytheon.uf.common.geospatial.MapUtil;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRAttributes;
-import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRConstants;
-import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil;
 
 /**
  * Base class for GOES-R map projections.
@@ -41,7 +37,8 @@ import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil;
  * 
  * Date         Ticket#    Engineer    Description
  * ------------ ---------- ----------- --------------------------
- * Jun 1, 2012        796 jkorman     Initial creation
+ * Jun 1, 2012         796 jkorman     Initial creation
+ * Jul 5, 2013        2123 mschenke    Refactored to create GOES-R Projection given a CRS
  * 
  * </pre>
  * 
@@ -49,46 +46,32 @@ import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil;
  * @version 1.0
  */
 
-public abstract class GOESRProjection {
+public class GOESRProjection {
 
-    // Name of the projection.
-    private String name;
+    /** Name of the projection. */
+    private final String name;
 
-    private Double standardLat1;
+    /** Global attributes from the GOES-R data. */
+    private final GOESRAttributes attributes;
 
-    private Double standardLat2;
+    /** Calculated Coordinate Reference System */
+    private final CoordinateReferenceSystem crs;
 
-    private Double centralMeridianLongitude;
+    /** Hold on to the transform for this projection. */
+    private final MathTransform latLonToCRS;
 
-    private Double projOriginLatitude;
-
-    private Double semiMajor;
-
-    private Double semiMinor;
-
-    private Double falseEasting;
-
-    private Double falseNorthing;
-
-    // Global attributes from the GOES-R data.
-    private GOESRAttributes attributes;
-
-    // Calculated Coordinate Reference System
-    private ProjectedCRS crs;
-
-    // Hold on to the transform for this projection.
-    private MathTransform toLatLon = null;
-
-    public GOESRProjection(Variable projData, GOESRAttributes attributes) {
-        this.name = GOESRUtil.getAttributeString(
-                projData.findAttribute(GOESRConstants.PROJ_GRID_MAPPING_NAME),
-                "ERROR");
-
-        falseEasting = GOESRUtil.getAttributeDouble(
-                projData.findAttribute(GOESRConstants.PROJ_FALSE_EASTING), 0d);
-        falseNorthing = GOESRUtil.getAttributeDouble(
-                projData.findAttribute(GOESRConstants.PROJ_FALSE_NORTHING), 0d);
+    public GOESRProjection(GOESRAttributes attributes, String name,
+            CoordinateReferenceSystem crs) throws GOESRProjectionException {
         this.attributes = attributes;
+        this.name = name;
+        this.crs = crs;
+        try {
+            this.latLonToCRS = MapUtil.getTransformFromLatLon(crs);
+        } catch (FactoryException e) {
+            throw new GOESRProjectionException(
+                    "Unable to get tranform from lat/lon to projection crs with name: "
+                            + name);
+        }
     }
 
     /**
@@ -101,203 +84,37 @@ public abstract class GOESRProjection {
     }
 
     /**
-     * Set the projection name.
-     * 
-     * @param name
-     *            The projection name.
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Get the first standard latitude.
-     * 
-     * @return The first standard latitude.
-     */
-    public Double getStandardLat1() {
-        return standardLat1;
-    }
-
-    /**
-     * Set the first standard latitude.
-     * 
-     * @param standardLat
-     *            The first standard latitude.
-     */
-    public void setStandardLat1(Double standardLat) {
-        standardLat1 = standardLat;
-    }
-
-    /**
-     * Get the second standard latitude.
-     * 
-     * @return The second standard latitude.
-     */
-    public Double getStandardLat2() {
-        return standardLat2;
-    }
-
-    /**
-     * Set the second standard latitude.
-     * 
-     * @param standardLat
-     *            The second standard latitude.
-     */
-    public void setStandardLat2(Double standardLat) {
-        this.standardLat2 = standardLat;
-    }
-
-    /**
-     * Get the longitude of the central meridian.
-     * 
-     * @return The longitude of the central meridian.
-     */
-    public Double getCentralMeridianLongitude() {
-        return centralMeridianLongitude;
-    }
-
-    /**
-     * Get the longitude of the central meridian.
-     * 
-     * @param centralMeridianLongitude
-     *            The longitude of the central meridian.
-     */
-    public void setCentralMeridianLongitude(Double centralMeridianLongitude) {
-        this.centralMeridianLongitude = centralMeridianLongitude;
-    }
-
-    /**
-     * Set the latitude of the projection origin.
-     * 
-     * @return The latitude of the projection origin.
-     */
-    public Double getProjOriginLatitude() {
-        return projOriginLatitude;
-    }
-
-    /**
-     * Get the latitude of the projection origin.
-     * 
-     * @param The
-     *            latitude of the projection origin.
-     */
-    public void setProjOriginLatitude(Double projOriginLatitude) {
-        this.projOriginLatitude = projOriginLatitude;
-    }
-
-    /**
-     * Get the semimajor axis in meters.
-     * 
-     * @return The semimajor axis in meters.
-     */
-    public Double getSemiMajor() {
-        return semiMajor;
-    }
-
-    /**
-     * Set the semimajor axis in meters.
-     * 
-     * @param semiMajor
-     *            The semimajor axis in meters.
-     */
-    public void setSemiMajor(Double semiMajor) {
-        this.semiMajor = semiMajor;
-    }
-
-    /**
-     * Get the semiminor axis in meters.
-     * 
-     * @return The semiminor axis in meters.
-     */
-    public Double getSemiMinor() {
-        return semiMinor;
-    }
-
-    /**
-     * Set the semiminor axis in meters.
-     * 
-     * @param semiMajor
-     *            The semiminor axis in meters.
-     */
-    public void setSemiMinor(Double semiMinor) {
-        this.semiMinor = semiMinor;
-    }
-
-    /**
-     * Get the false Easting in meters.
-     * 
-     * @return The false Easting in meters.
-     */
-    public Double getFalseEasting() {
-        return falseEasting;
-    }
-
-    /**
-     * Set the false Easting in meters.
-     * 
-     * @param falseEasting
-     *            The false Easting in meters.
-     */
-    public void setFalseEasting(Double falseEasting) {
-        this.falseEasting = falseEasting;
-    }
-
-    /**
-     * Get the false Northing in meters.
-     * 
-     * @return The false Northing in meters.
-     */
-    public Double getFalseNorthing() {
-        return falseNorthing;
-    }
-
-    /**
-     * Set the false Northing in meters.
-     * 
-     * @param falseNorthing
-     *            The false Northing in meters.
-     */
-    public void setFalseNorthing(Double falseNorthing) {
-        this.falseNorthing = falseNorthing;
-    }
-
-    /**
-     * Get the netCDF global attributes associated with this projection.
-     * 
-     * @return The netCDF global attributes.
-     */
-    public GOESRAttributes getAttributes() {
-        return attributes;
-    }
-
-    /**
-     * Get the Coordinate Reference System for this projection.
-     * 
-     * @return The Coordinate Reference System for this projection.
-     */
-    public ProjectedCRS getCrs() {
-        return crs;
-    }
-
-    /**
-     * Set the Coordinate Reference System (CRS) for this projection.
-     * 
-     * @param crs
-     *            The crs to set
-     */
-    protected void setCrs(ProjectedCRS crs) {
-        this.crs = crs;
-    }
-
-    /**
      * Get the coverage object for the projection information.
      * 
      * @return The coverage object for the projection information.
      * @throws GOESRProjectionException
      *             An error occurred attempting to create the coverage.
      */
-    protected abstract SatMapCoverage getCoverage() throws GOESRProjectionException;
+    protected SatMapCoverage getCoverage() throws GOESRProjectionException {
+        GeoRectangle bounds = calcCornerPoints();
+        double minX = bounds.getLL_X();
+        double minY = bounds.getLL_Y();
+        return new SatMapCoverage(minX, minY, getNx(), getNy(), getDx(),
+                getDy(), crs, bounds.getGeometry());
+    }
+
+    public float getDx() {
+        // convert km to m for dx
+        return attributes.getPixel_x_size() * 1000;
+    }
+
+    public float getDy() {
+        // convert km to m for dy
+        return attributes.getPixel_y_size() * 1000;
+    }
+
+    public int getNx() {
+        return attributes.getProduct_tile_width();
+    }
+
+    public int getNy() {
+        return attributes.getProduct_tile_height();
+    }
 
     /**
      * Using projection information, calculate the corner points of the data in
@@ -305,59 +122,51 @@ public abstract class GOESRProjection {
      * 
      * @return The calculated corner points.
      */
-    public GeoRectangle calcCornerPoints() throws GOESRProjectionException {
-        GeoRectangle corners = null;
+    private GeoRectangle calcCornerPoints() throws GOESRProjectionException {
+        float tileCenterLat = attributes.getTile_center_latitude();
+        float tileCenterLon = attributes.getTile_center_longitude();
 
-        double[] dIn = new double[4 * 2];
-        double[] dOut = new double[4 * 2];
-
-        double dx = getAttributes().getPixel_x_size() * 1000;
-        double dy = getAttributes().getPixel_y_size() * 1000;
-
-        int nx = getAttributes().getProduct_tile_width();
-        int ny = getAttributes().getProduct_tile_height();
-
-        int colOffset = getAttributes().getTile_column_offset();
-        int rowOffset = getAttributes().getTile_row_offset();
-
-        double leftSide = -(getAttributes().getProduct_columns() / 2d)
-                + colOffset;
-        double rightSide = leftSide + nx;
-
-        int rows = getAttributes().getProduct_rows();
-        double topSide = (rows / 2d) - rowOffset;
-        double bottomSide = topSide - ny;
-        // UpperLeft
-        dIn[0] = leftSide * dx;
-        dIn[1] = topSide * dy;
-        // UpperRight
-        dIn[2] = rightSide * dx;
-        dIn[3] = dIn[1];
-        // LowerRight
-        dIn[4] = dIn[2];
-        dIn[5] = bottomSide * dy;
-        // LowerLeft
-        dIn[6] = dIn[0];
-        dIn[7] = dIn[5];
+        double[] in = new double[] { tileCenterLon, tileCenterLat };
+        double[] out = new double[in.length];
 
         try {
-            if (toLatLon == null) {
-                toLatLon = MapUtil.getTransformToLatLon(getCrs());
-            }
-            toLatLon.transform(dIn, 0, dOut, 0, 4);
-        } catch (TransformException te) {
-            StringBuilder message = new StringBuilder(
-                    "Could not transform the corner point data ");
-            message = GOESRUtil.formatCornerPoints(dIn, message);
-            throw new GOESRProjectionException(message.toString(), te);
-        } catch (FactoryException fe) {
-            String msg = String.format("Could not create LatLon transform from " + getCrs());
-            throw new GOESRProjectionException(msg, fe);
-        }
-        if (dOut != null) {
-            corners = new GeoRectangle(dOut);
+            latLonToCRS.transform(in, 0, out, 0, 1);
+        } catch (TransformException e) {
+            throw new GOESRProjectionException(
+                    "Error transforming tile center point to CRS space", e);
         }
 
-        return corners;
+        double tileCRSCenterX = out[0];
+        double tileCRSCenterY = out[1];
+
+        double dx = getDx();
+        double dy = getDy();
+
+        int nx = getNx();
+        int ny = getNy();
+
+        double crsTileXOffset = (nx * dx) / 2.0;
+        double crsTileYOffset = (ny * dy) / 2.0;
+
+        in = new double[8];
+        out = new double[in.length];
+
+        // UL
+        in[0] = tileCRSCenterX - crsTileXOffset;
+        in[1] = tileCRSCenterY + crsTileYOffset;
+
+        // UR
+        in[2] = tileCRSCenterX + crsTileXOffset;
+        in[3] = tileCRSCenterY + crsTileYOffset;
+
+        // LR
+        in[4] = tileCRSCenterX + crsTileXOffset;
+        in[5] = tileCRSCenterY - crsTileYOffset;
+
+        // LL
+        in[6] = tileCRSCenterX - crsTileXOffset;
+        in[7] = tileCRSCenterY - crsTileYOffset;
+
+        return new GeoRectangle(in);
     }
 }

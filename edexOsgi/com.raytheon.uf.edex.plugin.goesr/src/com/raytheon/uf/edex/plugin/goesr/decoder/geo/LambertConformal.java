@@ -19,18 +19,19 @@
  **/
 package com.raytheon.uf.edex.plugin.goesr.decoder.geo;
 
-import org.opengis.referencing.crs.ProjectedCRS;
+import org.geotools.referencing.operation.DefaultMathTransformFactory;
+import org.opengis.parameter.ParameterValueGroup;
+import org.opengis.referencing.FactoryException;
+import org.opengis.referencing.NoSuchIdentifierException;
+import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 import ucar.nc2.Variable;
 
-import com.raytheon.uf.common.dataplugin.satellite.SatMapCoverage;
 import com.raytheon.uf.common.geospatial.MapUtil;
-import com.raytheon.uf.common.status.IUFStatusHandler;
-import com.raytheon.uf.common.status.UFStatus;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRAttributes;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRConstants;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil;
-import com.vividsolutions.jts.geom.Polygon;
+import com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory.GOESRCoordinateReferenceSystemFactory;
 
 /**
  * A class representation of the GOES-R LambertConformal projection information
@@ -42,15 +43,23 @@ import com.vividsolutions.jts.geom.Polygon;
  * 
  * Date         Ticket#    Engineer    Description
  * ------------ ---------- ----------- --------------------------
- * Jun 1, 2012        796 jkorman     Initial creation
- * 
+ * Jun 1, 2012         796 jkorman     Initial creation
+ * Jul 5, 2013        2123 mschenke    Refactored to be CRS factory
  * </pre>
  * 
  * @author jkorman
  * @version 1.0
  */
 
-public class LambertConformal extends GOESRProjection {
+public class LambertConformal implements GOESRCoordinateReferenceSystemFactory {
+
+    private static final String LAMBERT_PROJECTION_ID = "Lambert_Conformal_Conic_1SP";
+
+    private static final DefaultMathTransformFactory dmtFactory = new DefaultMathTransformFactory();
+
+    private static final double DEF_FALSE_EASTING = 0.0;
+
+    private static final double DEF_FALSE_NORTHING = 0.0;
 
     // Default from the ICD.
     private static final double DEF_SEMI_MAJOR = 6371200;
@@ -58,82 +67,67 @@ public class LambertConformal extends GOESRProjection {
     // Default from the ICD.
     private static final double DEF_SEMI_MINOR = 6371200;
 
-    /**
-     * Create an instance of a GOES-R LambertConformal projection using the
-     * supplied projection and attributes data.
+    private static final double DEF_STD_PARALLEL = -9999;
+    
+    private static final double DEF_CENTRAL_MERIDIAN = -9999;
+
+    /*
+     * (non-Javadoc)
      * 
-     * @param projData
-     *            The netCDF variable for this projection.
-     * @param attributes
-     *            netCDF global attributes for the GOES-R data.
+     * @see
+     * com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory.
+     * GOESRCoordinateReferenceSystemFactory
+     * #constructCoordinateReferenceSystem(ucar.nc2.Variable,
+     * com.raytheon.uf.edex.plugin.goesr.decoder.GOESRAttributes)
      */
-    public LambertConformal(Variable projData, GOESRAttributes attributes) {
-        super(projData, attributes);
+    @Override
+    public CoordinateReferenceSystem constructCoordinateReferenceSystem(
+            Variable projData, GOESRAttributes attributes)
+            throws GOESRProjectionException {
+        double falseEasting = GOESRUtil.getAttributeDouble(projData
+                .findAttribute(GOESRConstants.PROJ_ATTR_FALSE_EASTING_ID),
+                DEF_FALSE_EASTING);
+        double falseNorthing = GOESRUtil.getAttributeDouble(projData
+                .findAttribute(GOESRConstants.PROJ_ATTR_FALSE_NORTHING_ID),
+                DEF_FALSE_NORTHING);
+        double semiMajor = GOESRUtil.getAttributeDouble(
+                projData.findAttribute(GOESRConstants.PROJ_ATTR_SEMI_MAJOR_ID),
+                DEF_SEMI_MAJOR);
+        double semiMinor = GOESRUtil.getAttributeDouble(
+                projData.findAttribute(GOESRConstants.PROJ_ATTR_SEMI_MINOR_ID),
+                DEF_SEMI_MINOR);
 
-        double standardParallel = GOESRUtil
-                .getAttributeDouble(
-                        projData.findAttribute(GOESRConstants.LAMBERT_STANDARD_PARALLEL),
-                        -9999);
-        setStandardLat1(standardParallel);
-        setStandardLat2(standardParallel);
+        double standardParallel = GOESRUtil.getAttributeDouble(projData
+                .findAttribute(GOESRConstants.PROJ_ATTR_STANDARD_PARALLEL_ID),
+                DEF_STD_PARALLEL);
 
-        setProjOriginLatitude(GOESRUtil.getAttributeDouble(
-                projData.findAttribute(GOESRConstants.LAMBERT_PROJ_ORIGIN_LAT),
-                0));
+        double centralMeridian = GOESRUtil.getAttributeDouble(projData
+                .findAttribute(GOESRConstants.PROJ_ATTR_CENTRAL_MERIDIAN_ID),
+                DEF_CENTRAL_MERIDIAN);
 
-        setCentralMeridianLongitude(GOESRUtil
-                .getAttributeDouble(
-                        projData.findAttribute(GOESRConstants.LAMBERT_CENTRAL_MERIDIAN),
-                        -9999));
-        setSemiMajor(GOESRUtil.getAttributeDouble(
-                projData.findAttribute(GOESRConstants.PROJ_SEMI_MINOR),
-                DEF_SEMI_MAJOR));
-        setSemiMinor(GOESRUtil.getAttributeDouble(
-                projData.findAttribute(GOESRConstants.PROJ_SEMI_MAJOR),
-                DEF_SEMI_MINOR));
+        try {
+            ParameterValueGroup parameters = dmtFactory
+                    .getDefaultParameters(LAMBERT_PROJECTION_ID);
 
-        ProjectedCRS crs = MapUtil.constructLambertConformal(getSemiMajor(),
-                getSemiMinor(), getStandardLat1(), getStandardLat2(),
-                getCentralMeridianLongitude());
-        setCrs(crs);
-    }
+            parameters.parameter("semi_major").setValue(semiMajor);
+            parameters.parameter("semi_minor").setValue(semiMinor);
+            parameters.parameter("latitude_of_origin").setValue(
+                    standardParallel);
+            parameters.parameter("longitude_of_origin").setValue(
+                    centralMeridian);
+            parameters.parameter("false_easting").setValue(falseEasting);
+            parameters.parameter("false_northing").setValue(falseNorthing);
 
-    /**
-     * Get the coverage object for the projection information.
-     * 
-     * @return The coverage object for the projection information.
-     * @throws GOESRProjectionException
-     *             An error occurred attempting to create the coverage.
-     */
-    protected SatMapCoverage getCoverage() throws GOESRProjectionException {
-        SatMapCoverage coverage = new SatMapCoverage();
-
-        Float v = getAttributes().getPixel_x_size();
-        coverage.setDx(v);
-        v = getAttributes().getPixel_y_size();
-        coverage.setDy(v);
-
-        coverage.setNx(getAttributes().getProduct_tile_width());
-        coverage.setNy(getAttributes().getProduct_tile_height());
-        coverage.setProjection(SatMapCoverage.PROJ_LAMBERT);
-        coverage.setLov(getCentralMeridianLongitude().floatValue());
-        coverage.setLatin(getStandardLat1().floatValue());
-        coverage.setCrsWKT(getCrs().toWKT());
-
-        GeoRectangle b = calcCornerPoints();
-        if (b != null) {
-            Polygon geom = b.getGeometry();
-
-            coverage.setLocation(geom);
-            coverage.setLa1((float) b.getUL_Lat());
-            coverage.setLo1((float) b.getUL_Lon());
-            // lower right
-            coverage.setLa2((float) b.getLR_Lat());
-            coverage.setLo2((float) b.getLR_Lon());
-
-            coverage.setGid(coverage.hashCode());
+            return MapUtil.constructProjection(LAMBERT_PROJECTION_ID,
+                    parameters);
+        } catch (NoSuchIdentifierException e) {
+            throw new GOESRProjectionException(
+                    "Unable to find projection by name: "
+                            + LAMBERT_PROJECTION_ID, e);
+        } catch (FactoryException e) {
+            throw new GOESRProjectionException(
+                    "Error constructing projected CRS", e);
         }
-        return coverage;
     }
 
 }

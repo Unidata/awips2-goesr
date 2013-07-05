@@ -19,10 +19,20 @@
  **/
 package com.raytheon.uf.edex.plugin.goesr.decoder.geo;
 
-import com.raytheon.uf.common.dataplugin.satellite.SatMapCoverage;
-import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRAttributes;
+import org.geotools.referencing.operation.DefaultMathTransformFactory;
+import org.opengis.parameter.ParameterValueGroup;
+import org.opengis.referencing.FactoryException;
+import org.opengis.referencing.NoSuchIdentifierException;
+import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 import ucar.nc2.Variable;
+
+import com.raytheon.uf.common.geospatial.MapUtil;
+import com.raytheon.uf.common.geospatial.projection.Geostationary;
+import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRAttributes;
+import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRConstants;
+import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil;
+import com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory.GOESRCoordinateReferenceSystemFactory;
 
 /**
  * A class representation of the GOES-R FixedGrid projection information
@@ -36,78 +46,101 @@ import ucar.nc2.Variable;
  * 
  * Date         Ticket#    Engineer    Description
  * ------------ ---------- ----------- --------------------------
- * Jun 1, 2012        796 jkorman     Initial creation
- * 
+ * Jun 1, 2012        796  jkorman     Initial creation
+ * Jul 5, 2013       2123  mschenke    Implemented Geostationary projection
  * </pre>
  * 
  * @author jkorman
  * @version 1.0
  */
 
-public class FixedGrid extends GOESRProjection {
+public class FixedGrid implements GOESRCoordinateReferenceSystemFactory {
+
+    private static final DefaultMathTransformFactory dmtFactory = new DefaultMathTransformFactory();
+
+    private static final double DEF_FALSE_EASTING = 0.0;
+
+    private static final double DEF_FALSE_NORTHING = 0.0;
 
     // Default from the ICD.
-    private static final double DEF_SEMI_MAJOR = 6378137d;
+    private static final double DEF_SEMI_MAJOR = 6378137.0;
 
     // Default from the ICD.
-    private static final double DEF_SEMI_MINOR = 6356732.31414d;
+    private static final double DEF_SEMI_MINOR = 6356732.31414;
 
     // Default satellite height in meters, from the ICD.
-    private static final double DEF_SAT_HEIGHT = 35786023d;
+    private static final double DEF_SAT_HEIGHT = 35786023.0;
 
-    /**
-     * Height in meters above the surface
-     */
-    private Double perspectiveHeight;
+    private static final String DEF_SWEEP_AXIS = "x";
 
-    /**
-     * Create an instance of a GOES-R FixedGrid projection using the supplied
-     * projection and attributes data.
+    /*
+     * (non-Javadoc)
      * 
-     * @param projData
-     *            The netCDF variable for this projection.
-     * @param attributes
-     *            netCDF global attributes for the GOES-R data.
+     * @see
+     * com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory.
+     * GOESRCoordinateReferenceSystemFactory
+     * #constructCoordinateReferenceSystem(ucar.nc2.Variable,
+     * com.raytheon.uf.edex.plugin.goesr.decoder.GOESRAttributes)
      */
-    public FixedGrid(Variable projData, GOESRAttributes attributes) {
-        super(projData, attributes);
+    @Override
+    public CoordinateReferenceSystem constructCoordinateReferenceSystem(
+            Variable projData, GOESRAttributes attributes)
+            throws GOESRProjectionException {
+        double falseEasting = GOESRUtil.getAttributeDouble(projData
+                .findAttribute(GOESRConstants.PROJ_ATTR_FALSE_EASTING_ID),
+                DEF_FALSE_EASTING);
+        double falseNorthing = GOESRUtil.getAttributeDouble(projData
+                .findAttribute(GOESRConstants.PROJ_ATTR_FALSE_NORTHING_ID),
+                DEF_FALSE_NORTHING);
+        double semiMajor = GOESRUtil.getAttributeDouble(
+                projData.findAttribute(GOESRConstants.PROJ_ATTR_SEMI_MAJOR_ID),
+                DEF_SEMI_MAJOR);
+        double semiMinor = GOESRUtil.getAttributeDouble(
+                projData.findAttribute(GOESRConstants.PROJ_ATTR_SEMI_MINOR_ID),
+                DEF_SEMI_MINOR);
 
-        // Defaults from ICD until we have real data to look at!
-        setPerspectiveHeight(DEF_SAT_HEIGHT);
-        setSemiMajor(DEF_SEMI_MAJOR);
-        setSemiMinor(DEF_SEMI_MINOR);
+        double standardParallel = GOESRUtil.getAttributeDouble(
+                projData.findAttribute(GOESRConstants.PROJ_ATTR_ORIGIN_LAT_ID),
+                -9999);
+
+        double centralMeridian = GOESRUtil.getAttributeDouble(
+                projData.findAttribute(GOESRConstants.PROJ_ATTR_ORIGIN_LON_ID),
+                -9999);
+
+        double perspectivePointHeight = GOESRUtil
+                .getAttributeDouble(
+                        projData.findAttribute(GOESRConstants.PROJ_FIXEDGRID_ATTR_PERSPECTIVE_POINT_HEIGHT_ID),
+                        DEF_SAT_HEIGHT);
+        String sweepAxis = GOESRUtil
+                .getAttributeString(
+                        projData.findAttribute(GOESRConstants.PROJ_FIXEDGRID_ATTR_SWEEP_ANGLE_AXIS_ID),
+                        DEF_SWEEP_AXIS);
+
+        try {
+            ParameterValueGroup parameters = dmtFactory
+                    .getDefaultParameters(Geostationary.PROJECTION_NAME);
+
+            parameters.parameter("semi_major").setValue(semiMajor);
+            parameters.parameter("semi_minor").setValue(semiMinor);
+            parameters.parameter("latitude_of_origin").setValue(
+                    standardParallel);
+            parameters.parameter("central_meridian").setValue(centralMeridian);
+            parameters.parameter("false_easting").setValue(falseEasting);
+            parameters.parameter("false_northing").setValue(falseNorthing);
+            parameters.parameter(Geostationary.PERSPECTIVE_HEIGHT).setValue(
+                    perspectivePointHeight);
+            parameters.parameter(Geostationary.SWEEP_AXIS).setValue(
+                    DEF_SWEEP_AXIS.equals(sweepAxis) ? 0 : 1);
+
+            return MapUtil.constructProjection(Geostationary.PROJECTION_NAME,
+                    parameters);
+        } catch (NoSuchIdentifierException e) {
+            throw new GOESRProjectionException(
+                    "Unable to find projection by name: "
+                            + Geostationary.PROJECTION_NAME, e);
+        } catch (FactoryException e) {
+            throw new GOESRProjectionException(
+                    "Error constructing projected CRS", e);
+        }
     }
-
-    /**
-     * Get the height of the perspective in meters. This is the satellite
-     * altitude.
-     * 
-     * @return the perspectiveHeight The height of the perspective in meters
-     */
-    public Double getPerspectiveHeight() {
-        return perspectiveHeight;
-    }
-
-    /**
-     * Set the height of the perspective in meters. This is the satellite
-     * altitude.
-     * 
-     * @param perspectiveHeight
-     *            The height of the perspective in meters
-     */
-    public void setPerspectiveHeight(Double perspectiveHeight) {
-        this.perspectiveHeight = perspectiveHeight;
-    }
-
-    /**
-     * Get the coverage object for the projection information.
-     * 
-     * @return The coverage object for the projection information.
-     * @throws GOESRProjectionException
-     *             An error occurred attempting to create the coverage.
-     */
-    protected SatMapCoverage getCoverage() throws GOESRProjectionException {
-        throw new GOESRProjectionException("FixedGrid not yet implemted");
-    }
-
 }

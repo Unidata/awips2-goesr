@@ -19,9 +19,10 @@
  **/
 package com.raytheon.uf.edex.plugin.goesr.decoder.geo;
 
-import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 import ucar.nc2.NetcdfFile;
 import ucar.nc2.Variable;
@@ -30,6 +31,7 @@ import com.raytheon.edex.plugin.satellite.dao.SatMapCoverageDao;
 import com.raytheon.uf.common.dataplugin.satellite.SatMapCoverage;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRAttributes;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRConstants;
+import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil;
 
 /**
  * Create the map projection corresponding to the projection information
@@ -41,7 +43,8 @@ import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRConstants;
  * 
  * Date         Ticket#    Engineer    Description
  * ------------ ---------- ----------- --------------------------
- * Jun 1, 2012        796 jkorman     Initial creation
+ * Jun 1, 2012         796 jkorman     Initial creation
+ * Jul 5, 2013        2123 mschenke    Refactored to have CRS factory for each type of CRS
  * 
  * </pre>
  * 
@@ -51,15 +54,25 @@ import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRConstants;
 
 public class GOESRProjectionFactory {
 
-    private Map<String, Class<? extends GOESRProjection>> projMap = new HashMap<String, Class<? extends GOESRProjection>>();
-    {
-        projMap.put(GOESRConstants.PROJ_LAMBERT, LambertConformal.class);
-        projMap.put(GOESRConstants.PROJ_MERCATOR, Mercator.class);
-        projMap.put(GOESRConstants.PROJ_POLAR, PolarStereographic.class);
-        projMap.put(GOESRConstants.PROJ_FIXEDGRID, FixedGrid.class);
+    public static interface GOESRCoordinateReferenceSystemFactory {
+
+        public CoordinateReferenceSystem constructCoordinateReferenceSystem(
+                Variable projData, GOESRAttributes attributes)
+                throws GOESRProjectionException;
+
     }
 
-    private SatMapCoverageDao satDao = null;
+    private Map<String, GOESRCoordinateReferenceSystemFactory> projMap = new HashMap<String, GOESRCoordinateReferenceSystemFactory>();
+    {
+        projMap.put(GOESRConstants.PROJECTION_LAMBERT_ID,
+                new LambertConformal());
+        projMap.put(GOESRConstants.PROJECTION_MERCATOR_ID, new Mercator());
+        projMap.put(GOESRConstants.PROJECTION_POLAR_ID,
+                new PolarStereographic());
+        projMap.put(GOESRConstants.PROJECTION_FIXEDGRID_ID, new FixedGrid());
+    }
+
+    private SatMapCoverageDao satDao;
 
     /**
      * Create an instance of this factory.
@@ -77,34 +90,20 @@ public class GOESRProjectionFactory {
     public GOESRProjection createProjection(NetcdfFile cdfFile,
             String projName, GOESRAttributes attributes)
             throws GOESRProjectionException {
-        GOESRProjection proj = null;
-
         Variable projection = cdfFile.findVariable(projName);
         if (projection != null) {
-
-            Class<? extends GOESRProjection> clazz = projMap.get(projName);
-            if (clazz != null) {
-                try {
-                    Constructor<? extends GOESRProjection> c = clazz
-                            .getConstructor(new Class[] { Variable.class,
-                                    GOESRAttributes.class });
-                    if (c != null) {
-                        try {
-                            proj = c.newInstance(new Object[] { projection,
-                                    attributes });
-                        } catch (Exception e) {
-                            String msg = String
-                                    .format("Could not create projection instance for [%s]",
-                                            projection);
-                            throw new GOESRProjectionException(msg, e);
-                        }
-                    }
-                } catch (Exception e) {
-                    String msg = String
-                            .format("Could not create constructor for [%s]",
-                                    projection);
-                    throw new GOESRProjectionException(msg, e);
-                }
+            GOESRCoordinateReferenceSystemFactory factory = projMap
+                    .get(projName);
+            if (factory != null) {
+                CoordinateReferenceSystem crs = factory
+                        .constructCoordinateReferenceSystem(projection,
+                                attributes);
+                String name = GOESRUtil
+                        .getAttributeString(
+                                projection
+                                        .findAttribute(GOESRConstants.PROJ_ATTR_GRID_MAPPING_NAME_ID),
+                                "UNKNOWN");
+                return new GOESRProjection(attributes, name, crs);
             } else {
                 String message = String.format(
                         "Invalid projection identifier [%s].", projName);
@@ -113,7 +112,6 @@ public class GOESRProjectionFactory {
         } else {
             throw new GOESRProjectionException("Projection variable was null");
         }
-        return proj;
     }
 
     /**
