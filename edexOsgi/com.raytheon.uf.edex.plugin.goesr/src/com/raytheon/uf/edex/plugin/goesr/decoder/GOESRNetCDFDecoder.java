@@ -120,7 +120,6 @@ public class GOESRNetCDFDecoder implements GOESRDataDecoder {
             rec = null;
         }
         if (rec != null) {
-            rec.setPluginName(GOESRConstants.SAT_PLUGIN_NAME);
             // Set the satellite altitude in kilometers
             rec.setSatHeight(attributes.getSatellite_altitude().intValue() / 1000);
 
@@ -251,12 +250,14 @@ public class GOESRNetCDFDecoder implements GOESRDataDecoder {
                             .getCoverage(projection);
                     if (coverage != null) {
                         rec = new SatelliteRecord();
+
+                        // Read out units
+                        String units = Unit.ONE.toString();
                         Attribute attr = griddedData
                                 .findAttribute(GOESRConstants.CMI_ATTR_UNITS_ID);
-                        String units = attr.getStringValue();
-                        if ("1".equals(units)) {
-                            // 1 is not a parseable unit, Unit.ONE string
-                            units = Unit.ONE.toString();
+                        if (attr != null
+                                && "1".equals(attr.getStringValue()) == false) {
+                            units = attr.getStringValue();
                         }
                         rec.setUnits(units);
                         rec.setCoverage(coverage);

@@ -32,6 +32,7 @@ import com.raytheon.uf.common.dataplugin.satellite.SatMapCoverage;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRAttributes;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRConstants;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil;
+import com.vividsolutions.jts.geom.Coordinate;
 
 /**
  * Create the map projection corresponding to the projection information
@@ -54,15 +55,54 @@ import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil;
 
 public class GOESRProjectionFactory {
 
-    public static interface GOESRCoordinateReferenceSystemFactory {
+    public abstract static class AbstractGOESRProjectionFactoryImplementation {
 
-        public CoordinateReferenceSystem constructCoordinateReferenceSystem(
+        public GOESRProjection constructProjection(Variable projData,
+                GOESRAttributes attributes) throws GOESRProjectionException {
+            return new GOESRProjection(getName(projData), getDx(projData,
+                    attributes), getDy(projData, attributes), getNx(projData,
+                    attributes), getNy(projData, attributes),
+                    getTileCenterPoint(projData, attributes),
+                    constructCoordinateReferenceSystem(projData, attributes));
+        }
+
+        public double getDx(Variable projData, GOESRAttributes attributes) {
+            // convert km to m for dx
+            return attributes.getPixel_x_size() * 1000;
+        }
+
+        public double getDy(Variable projData, GOESRAttributes attributes) {
+            // convert km to m for dx
+            return attributes.getPixel_y_size() * 1000;
+        }
+
+        public int getNx(Variable projData, GOESRAttributes attributes) {
+            return attributes.getProduct_tile_width();
+        }
+
+        public int getNy(Variable projData, GOESRAttributes attributes) {
+            return attributes.getProduct_tile_height();
+        }
+
+        public Coordinate getTileCenterPoint(Variable projData,
+                GOESRAttributes attributes) {
+            return new Coordinate(attributes.getTile_center_longitude(),
+                    attributes.getTile_center_latitude());
+        }
+
+        public String getName(Variable projData) {
+            return GOESRUtil
+                    .getAttributeString(
+                            projData.findAttribute(GOESRConstants.PROJ_ATTR_GRID_MAPPING_NAME_ID),
+                            "UNKNOWN");
+        }
+
+        public abstract CoordinateReferenceSystem constructCoordinateReferenceSystem(
                 Variable projData, GOESRAttributes attributes)
                 throws GOESRProjectionException;
-
     }
 
-    private Map<String, GOESRCoordinateReferenceSystemFactory> projMap = new HashMap<String, GOESRCoordinateReferenceSystemFactory>();
+    private Map<String, AbstractGOESRProjectionFactoryImplementation> projMap = new HashMap<String, AbstractGOESRProjectionFactoryImplementation>();
     {
         projMap.put(GOESRConstants.PROJECTION_LAMBERT_ID,
                 new LambertConformal());
@@ -92,18 +132,10 @@ public class GOESRProjectionFactory {
             throws GOESRProjectionException {
         Variable projection = cdfFile.findVariable(projName);
         if (projection != null) {
-            GOESRCoordinateReferenceSystemFactory factory = projMap
+            AbstractGOESRProjectionFactoryImplementation factory = projMap
                     .get(projName);
             if (factory != null) {
-                CoordinateReferenceSystem crs = factory
-                        .constructCoordinateReferenceSystem(projection,
-                                attributes);
-                String name = GOESRUtil
-                        .getAttributeString(
-                                projection
-                                        .findAttribute(GOESRConstants.PROJ_ATTR_GRID_MAPPING_NAME_ID),
-                                "UNKNOWN");
-                return new GOESRProjection(attributes, name, crs);
+                return factory.constructProjection(projection, attributes);
             } else {
                 String message = String.format(
                         "Invalid projection identifier [%s].", projName);

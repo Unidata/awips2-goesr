@@ -32,7 +32,7 @@ import com.raytheon.uf.common.geospatial.projection.Geostationary;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRAttributes;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRConstants;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil;
-import com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory.GOESRCoordinateReferenceSystemFactory;
+import com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory.AbstractGOESRProjectionFactoryImplementation;
 
 /**
  * A class representation of the GOES-R FixedGrid projection information
@@ -54,9 +54,12 @@ import com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory.GOES
  * @version 1.0
  */
 
-public class FixedGrid implements GOESRCoordinateReferenceSystemFactory {
+public class FixedGrid extends AbstractGOESRProjectionFactoryImplementation {
 
     private static final DefaultMathTransformFactory dmtFactory = new DefaultMathTransformFactory();
+
+    /** Multiplier for angular separation. From SE-21 Metadata Model */
+    private static final double RADIANS_PER_KM_SPACING = 28 * 1e-6;
 
     private static final double DEF_FALSE_EASTING = 0.0;
 
@@ -107,10 +110,7 @@ public class FixedGrid implements GOESRCoordinateReferenceSystemFactory {
                 projData.findAttribute(GOESRConstants.PROJ_ATTR_ORIGIN_LON_ID),
                 -9999);
 
-        double perspectivePointHeight = GOESRUtil
-                .getAttributeDouble(
-                        projData.findAttribute(GOESRConstants.PROJ_FIXEDGRID_ATTR_PERSPECTIVE_POINT_HEIGHT_ID),
-                        DEF_SAT_HEIGHT);
+        double satelliteOrbitalHeight = getSatelliteOrbitalHeight(projData);
         String sweepAxis = GOESRUtil
                 .getAttributeString(
                         projData.findAttribute(GOESRConstants.PROJ_FIXEDGRID_ATTR_SWEEP_ANGLE_AXIS_ID),
@@ -127,8 +127,8 @@ public class FixedGrid implements GOESRCoordinateReferenceSystemFactory {
             parameters.parameter("central_meridian").setValue(centralMeridian);
             parameters.parameter("false_easting").setValue(falseEasting);
             parameters.parameter("false_northing").setValue(falseNorthing);
-            parameters.parameter(Geostationary.PERSPECTIVE_HEIGHT).setValue(
-                    perspectivePointHeight);
+            parameters.parameter(Geostationary.ORBITAL_HEIGHT).setValue(
+                    satelliteOrbitalHeight);
             parameters.parameter(Geostationary.SWEEP_AXIS).setValue(
                     DEF_SWEEP_AXIS.equals(sweepAxis) ? 0 : 1);
 
@@ -142,5 +142,32 @@ public class FixedGrid implements GOESRCoordinateReferenceSystemFactory {
             throw new GOESRProjectionException(
                     "Error constructing projected CRS", e);
         }
+    }
+
+    @Override
+    public double getDx(Variable projData, GOESRAttributes attributes) {
+        return getActualGridSpacing(super.getDx(projData, attributes),
+                projData, attributes);
+    }
+
+    @Override
+    public double getDy(Variable projData, GOESRAttributes attributes) {
+        return getActualGridSpacing(super.getDy(projData, attributes),
+                projData, attributes);
+    }
+
+    private double getActualGridSpacing(double gridSpacing, Variable projData,
+            GOESRAttributes attributes) {
+        double angularSeparation = (gridSpacing / 1000.0)
+                * RADIANS_PER_KM_SPACING;
+        return Math.tan(angularSeparation)
+                * getSatelliteOrbitalHeight(projData);
+    }
+
+    private double getSatelliteOrbitalHeight(Variable projData) {
+        return GOESRUtil
+                .getAttributeDouble(
+                        projData.findAttribute(GOESRConstants.PROJ_FIXEDGRID_ATTR_PERSPECTIVE_POINT_HEIGHT_ID),
+                        DEF_SAT_HEIGHT);
     }
 }

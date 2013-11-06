@@ -24,9 +24,10 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.opengis.referencing.operation.MathTransform;
 import org.opengis.referencing.operation.TransformException;
 
+import com.raytheon.edex.util.satellite.SatSpatialFactory;
 import com.raytheon.uf.common.dataplugin.satellite.SatMapCoverage;
 import com.raytheon.uf.common.geospatial.MapUtil;
-import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRAttributes;
+import com.vividsolutions.jts.geom.Coordinate;
 
 /**
  * Base class for GOES-R map projections.
@@ -51,19 +52,31 @@ public class GOESRProjection {
     /** Name of the projection. */
     private final String name;
 
-    /** Global attributes from the GOES-R data. */
-    private final GOESRAttributes attributes;
-
     /** Calculated Coordinate Reference System */
     private final CoordinateReferenceSystem crs;
 
     /** Hold on to the transform for this projection. */
     private final MathTransform latLonToCRS;
 
-    public GOESRProjection(GOESRAttributes attributes, String name,
-            CoordinateReferenceSystem crs) throws GOESRProjectionException {
-        this.attributes = attributes;
+    private double dx;
+
+    private double dy;
+
+    private int nx;
+
+    private int ny;
+
+    private Coordinate tileCenterPoint;
+
+    public GOESRProjection(String name, double dx, double dy, int nx, int ny,
+            Coordinate tileCenter, CoordinateReferenceSystem crs)
+            throws GOESRProjectionException {
         this.name = name;
+        this.dx = dx;
+        this.dy = dy;
+        this.nx = nx;
+        this.ny = ny;
+        this.tileCenterPoint = tileCenter;
         this.crs = crs;
         try {
             this.latLonToCRS = MapUtil.getTransformFromLatLon(crs);
@@ -94,26 +107,24 @@ public class GOESRProjection {
         GeoRectangle bounds = calcCornerPoints();
         double minX = bounds.getLL_X();
         double minY = bounds.getLL_Y();
-        return new SatMapCoverage(minX, minY, getNx(), getNy(), getDx(),
-                getDy(), crs, bounds.getGeometry());
+        return new SatMapCoverage(SatSpatialFactory.UNDEFINED, minX, minY,
+                getNx(), getNy(), getDx(), getDy(), crs);
     }
 
-    public float getDx() {
-        // convert km to m for dx
-        return attributes.getPixel_x_size() * 1000;
+    public double getDx() {
+        return dx;
     }
 
-    public float getDy() {
-        // convert km to m for dy
-        return attributes.getPixel_y_size() * 1000;
+    public double getDy() {
+        return dy;
     }
 
     public int getNx() {
-        return attributes.getProduct_tile_width();
+        return nx;
     }
 
     public int getNy() {
-        return attributes.getProduct_tile_height();
+        return ny;
     }
 
     /**
@@ -123,8 +134,8 @@ public class GOESRProjection {
      * @return The calculated corner points.
      */
     private GeoRectangle calcCornerPoints() throws GOESRProjectionException {
-        float tileCenterLat = attributes.getTile_center_latitude();
-        float tileCenterLon = attributes.getTile_center_longitude();
+        double tileCenterLat = tileCenterPoint.y;
+        double tileCenterLon = tileCenterPoint.x;
 
         double[] in = new double[] { tileCenterLon, tileCenterLat };
         double[] out = new double[in.length];

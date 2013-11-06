@@ -31,7 +31,7 @@ import com.raytheon.uf.common.geospatial.MapUtil;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRAttributes;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRConstants;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil;
-import com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory.GOESRCoordinateReferenceSystemFactory;
+import com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory.AbstractGOESRProjectionFactoryImplementation;
 
 /**
  * A class representation of the GOES-R PolarStereographic projection
@@ -52,8 +52,8 @@ import com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory.GOES
  * @version 1.0
  */
 
-public class PolarStereographic implements
-        GOESRCoordinateReferenceSystemFactory {
+public class PolarStereographic extends
+        AbstractGOESRProjectionFactoryImplementation {
 
     private static final String POLAR_PROJECTION_ID = "Stereographic_North_Pole";
 
@@ -70,8 +70,9 @@ public class PolarStereographic implements
     private static final double DEF_SEMI_MINOR = 6371200;
 
     private static final double DEF_STD_PARALLEL = -9999;
-    
+
     private static final double DEF_CENTRAL_MERIDIAN = -9999;
+
     /*
      * (non-Javadoc)
      * 

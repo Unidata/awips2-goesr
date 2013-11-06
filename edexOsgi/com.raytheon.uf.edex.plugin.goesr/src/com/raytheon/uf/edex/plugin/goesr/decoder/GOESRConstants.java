@@ -87,11 +87,6 @@ public class GOESRConstants {
      */
     public static final String SOURCE_GOESR = "GOESR";
 
-    /**
-     * Name of the satellite component.
-     */
-    public static final String SAT_PLUGIN_NAME = "satellite";
-
     public static final int BIT_DEPTH_08 = 8;
 
     public static final int BIT_DEPTH_09 = 9;

@@ -31,7 +31,7 @@ import com.raytheon.uf.common.geospatial.MapUtil;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRAttributes;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRConstants;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil;
-import com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory.GOESRCoordinateReferenceSystemFactory;
+import com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory.AbstractGOESRProjectionFactoryImplementation;
 
 /**
  * A class representation of the GOES-R Mercator projection information
@@ -52,7 +52,7 @@ import com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory.GOES
  * @version 1.0
  */
 
-public class Mercator implements GOESRCoordinateReferenceSystemFactory {
+public class Mercator extends AbstractGOESRProjectionFactoryImplementation {
 
     private static final String MERCATOR_PROJECTION_ID = "Mercator_2SP";
 

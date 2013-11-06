@@ -31,7 +31,7 @@ import com.raytheon.uf.common.geospatial.MapUtil;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRAttributes;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRConstants;
 import com.raytheon.uf.edex.plugin.goesr.decoder.GOESRUtil;
-import com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory.GOESRCoordinateReferenceSystemFactory;
+import com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory.AbstractGOESRProjectionFactoryImplementation;
 
 /**
  * A class representation of the GOES-R LambertConformal projection information
@@ -51,7 +51,8 @@ import com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory.GOES
  * @version 1.0
  */
 
-public class LambertConformal implements GOESRCoordinateReferenceSystemFactory {
+public class LambertConformal extends
+        AbstractGOESRProjectionFactoryImplementation {
 
     private static final String LAMBERT_PROJECTION_ID = "Lambert_Conformal_Conic_1SP";
 
@@ -68,7 +69,7 @@ public class LambertConformal implements GOESRCoordinateReferenceSystemFactory {
     private static final double DEF_SEMI_MINOR = 6371200;
 
     private static final double DEF_STD_PARALLEL = -9999;
-    
+
     private static final double DEF_CENTRAL_MERIDIAN = -9999;
 
     /*
