@@ -36,12 +36,14 @@
 		<endpoint id="goesrFileEndpoint" uri="file:${edex.home}/data/GOESR?delete=true"/>
 		
 		<route id="goesrJMSIngestRoute">
-			<from uri="jms-goesr:queue:Ingest.GOESR?destinationResolver=#qpidDurableResolver" />
+			<from uri="jms-goesr:queue:Ingest.GOESR" />
+			
 			<to uri="direct-vm:goesrIngestRoute"/>
 		</route>
 		
 		<route id="goesrFileIngestRoute">
 			<from uri="goesrFileEndpoint" />
+			<bean ref="fileToString" />
 			<to uri="direct-vm:goesrIngestRoute"/>
 		</route>
 
@@ -56,6 +58,7 @@
             </setHeader>
 			<doTry>
 				<pipeline>
+				    <bean ref="stringToFile" />
 					<bean ref="extractWMOHeader" method="remove"/>
 					<bean ref="goesrDecoder" method="decode" />
 					<to uri="direct-vm:persistIndexAlert" />
