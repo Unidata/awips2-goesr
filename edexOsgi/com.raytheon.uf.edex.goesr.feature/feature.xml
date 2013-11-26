@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="com.raytheon.edex.wa.feature"
-      label="EDEX Work Assignment Feature"
+      id="com.raytheon.uf.edex.goesr.feature"
+      label="GOESR Feature"
       version="1.0.0.qualifier"
       provider-name="RAYTHEON">
 
@@ -17,12 +17,11 @@
       [Enter License Description here.]
    </license>
 
-   <includes
-         id="com.raytheon.edex.feature.uframe"
-         version="0.0.0"/>
-
-   <includes
-         id="com.raytheon.uf.edex.goesr.feature"
-         version="0.0.0"/>
+   <plugin
+         id="com.raytheon.uf.edex.plugin.goesr"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>
