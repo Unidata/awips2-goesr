@@ -28,7 +28,6 @@ import ucar.nc2.Attribute;
 import ucar.nc2.NetcdfFile;
 import ucar.nc2.Variable;
 
-import com.raytheon.edex.exception.DecoderException;
 import com.raytheon.uf.common.dataplugin.satellite.SatMapCoverage;
 import com.raytheon.uf.common.dataplugin.satellite.SatelliteMessageData;
 import com.raytheon.uf.common.dataplugin.satellite.SatelliteRecord;
@@ -96,7 +95,7 @@ public class GOESRNetCDFDecoder implements GOESRDataDecoder {
      *             Thrown for various errors while constructing the decoder.
      */
     public GOESRNetCDFDecoder(NetcdfFile netcdfFile,
-            GOESRProjectionFactory projFactory) throws DecoderException {
+            GOESRProjectionFactory projFactory) {
         this.cdfFile = netcdfFile;
         this.projFactory = projFactory;
         this.attributes = new GOESRAttributes(cdfFile);

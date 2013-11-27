@@ -4,7 +4,6 @@ import java.util.UUID;
 
 import ucar.nc2.NetcdfFile;
 
-import com.raytheon.edex.esb.Headers;
 import com.raytheon.uf.common.dataplugin.PluginDataObject;
 import com.raytheon.uf.common.dataplugin.satellite.SatelliteRecord;
 import com.raytheon.uf.common.status.IUFStatusHandler;
@@ -53,7 +52,7 @@ public class GOESRDecoder {
      * @return An array of PluginDataObject containing the decoded GOES-R
      *         satellite data.
      */
-    public PluginDataObject[] decode(byte[] goesrData, Headers headers) {
+    public PluginDataObject[] decode(byte[] goesrData) {
         GOESRDataDecoder decoder = null;
         try {
             decoder = new GOESRNetCDFDecoder(NetcdfFile.openInMemory(UUID
