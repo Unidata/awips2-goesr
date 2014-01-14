@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <requestPatterns xmlns:ns2="group">
-    <regex>TG.*</regex>
+	<!-- TODO Only one of these will match the actual WMO headers in use, figure 
+		out which one. -->
+	<regex>^TG</regex>
+	<regex>^TIR</regex>
 </requestPatterns>
