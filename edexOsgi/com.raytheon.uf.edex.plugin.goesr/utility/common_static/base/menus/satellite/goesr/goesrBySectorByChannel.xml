@@ -40,7 +40,7 @@
 		<substitute key="entity" value="GOES%"/>
 	</contribute>
 	<contribute xsi:type="subinclude" subMenu="Puerto Rico" fileName="menus/satellite/goesr/goesrByChannel.xml">
-		<substitute key="sector" value="PRRegi"/>
+		<substitute key="sector" value="PRREGI"/>
 		<substitute key="entity" value="GOES%"/>
 	</contribute>
 	<contribute xsi:type="subinclude" subMenu="West Conus" fileName="menus/satellite/goesr/goesrByChannel.xml">

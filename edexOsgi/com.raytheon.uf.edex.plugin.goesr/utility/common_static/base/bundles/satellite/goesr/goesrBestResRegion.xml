@@ -32,7 +32,7 @@
 							</capability>
 						</capabilities>
 					</loadProperties>
-					<resourceData xsi:type="satBestResResourceData" inclusionFactor="${inclusionFactor;0.4}">
+					<resourceData xsi:type="satBestResResourceData" inclusionFactor="${inclusionFactor;0.6}">
 						<metadataMap>
 							<mapping key="pluginName">
 								<constraint constraintValue="satellite"
@@ -43,7 +43,7 @@
 									constraintType="EQUALS" />
 							</mapping>
 							<mapping key="sectorID">
-								<constraint constraintValue="WFD,EFD,WCONUS,ECONUS"
+								<constraint constraintValue="WFD,EFD,${region;AK}REGI"
 									constraintType="IN" />
 							</mapping>
 							<mapping key="creatingEntity">
@@ -53,7 +53,7 @@
 						</metadataMap>
 						<resource>
 							<properties>
-								<pdProps maxDisplayWidth="50000000" minDisplayWidth="10000000" />
+								<pdProps maxDisplayWidth="50000000" minDisplayWidth="${regionWidth;5000000}" />
 							</properties>
 							<resourceData xsi:type="satBlendedResourceData" timeMatchMode="${timeMatchMode;EVERY_IMAGE}">
 								<resource>
@@ -69,7 +69,7 @@
 													constraintType="EQUALS" />
 											</mapping>
 											<mapping key="sectorID">
-												<constraint constraintValue="WFD"
+												<constraint constraintValue="${secondaryPosition;E}FD"
 													constraintType="EQUALS" />
 											</mapping>
 											<mapping key="creatingEntity">
@@ -92,7 +92,7 @@
 													constraintType="EQUALS" />
 											</mapping>
 											<mapping key="sectorID">
-												<constraint constraintValue="EFD"
+												<constraint constraintValue="${primaryPosition;W}FD"
 													constraintType="EQUALS" />
 											</mapping>
 											<mapping key="creatingEntity">
@@ -106,55 +106,54 @@
 						</resource>
 						<resource>
 							<properties>
-								<pdProps maxDisplayWidth="10000000" minDisplayWidth="0" />
+								<pdProps maxDisplayWidth="${regionWidth;5000000}" minDisplayWidth="0" />
 							</properties>
-							<resourceData xsi:type="satBlendedResourceData" timeMatchMode="${timeMatchMode;EVERY_IMAGE}">
-								<resource>
-									<resourceData xsi:type="satResourceData">
-                              			<binOffset posOffset="150" negOffset="150"/>
-										<metadataMap>
-											<mapping key="pluginName">
-												<constraint constraintValue="satellite"
-													constraintType="EQUALS" />
-											</mapping>
-											<mapping key="physicalElement">
-												<constraint constraintValue="${element}"
-													constraintType="EQUALS" />
-											</mapping>
-											<mapping key="sectorID">
-												<constraint constraintValue="WCONUS"
-													constraintType="EQUALS" />
-											</mapping>
-											<mapping key="creatingEntity">
-												<constraint constraintValue="${entity}"
-													constraintType="LIKE" />
-											</mapping>
-										</metadataMap>
-									</resourceData>
-								</resource>
-								<resource>
-									<resourceData xsi:type="satResourceData">
-                              			<binOffset posOffset="150" negOffset="150"/>
-										<metadataMap>
-											<mapping key="pluginName">
-												<constraint constraintValue="satellite"
-													constraintType="EQUALS" />
-											</mapping>
-											<mapping key="physicalElement">
-												<constraint constraintValue="${element}"
-													constraintType="EQUALS" />
-											</mapping>
-											<mapping key="sectorID">
-												<constraint constraintValue="ECONUS"
-													constraintType="EQUALS" />
-											</mapping>
-											<mapping key="creatingEntity">
-												<constraint constraintValue="${entity}"
-													constraintType="LIKE" />
-											</mapping>
-										</metadataMap>
-									</resourceData>
-								</resource>
+							<resourceData xsi:type="satResourceData">
+                            			<binOffset posOffset="150" negOffset="150"/>
+								<metadataMap>
+									<mapping key="pluginName">
+										<constraint constraintValue="satellite"
+											constraintType="EQUALS" />
+									</mapping>
+									<mapping key="physicalElement">
+										<constraint constraintValue="${element}"
+											constraintType="EQUALS" />
+									</mapping>
+									<mapping key="sectorID">
+										<constraint constraintValue="${region;AK}REGI"
+											constraintType="EQUALS" />
+									</mapping>
+									<mapping key="creatingEntity">
+										<constraint constraintValue="${entity}"
+											constraintType="LIKE" />
+									</mapping>
+								</metadataMap>
+							</resourceData>
+						</resource>
+						<resource>
+							<properties>
+								<pdProps maxDisplayWidth="${regionWidth;5000000}" minDisplayWidth="0" />
+							</properties>
+							<resourceData xsi:type="satResourceData">
+                            			<binOffset posOffset="150" negOffset="150"/>
+								<metadataMap>
+									<mapping key="pluginName">
+										<constraint constraintValue="satellite"
+											constraintType="EQUALS" />
+									</mapping>
+									<mapping key="physicalElement">
+										<constraint constraintValue="${element}"
+											constraintType="EQUALS" />
+									</mapping>
+									<mapping key="sectorID">
+										<constraint constraintValue="${region;AK}REGI"
+											constraintType="EQUALS" />
+									</mapping>
+									<mapping key="creatingEntity">
+										<constraint constraintValue="${entity}"
+											constraintType="LIKE" />
+									</mapping>
+								</metadataMap>
 							</resourceData>
 						</resource>
 					</resourceData>

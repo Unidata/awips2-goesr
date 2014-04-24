@@ -132,7 +132,13 @@ public class GOESRNetCDFDecoder implements GOESRDataDecoder {
 
             String[] parts = attributes.getProduct_name().split("-");
             // datauri(3)
-            rec.setSectorID(parts[0]);
+            /*
+             * The ICD indicates all the regions are upper case but previos
+             * revisions included lower case variants, to ensure that all data,
+             * even older test data gets a consistent sector always force upper
+             * case.
+             */
+            rec.setSectorID(parts[0].toUpperCase());
             String physicalElement = String.format("CH-%02d-%4.2fum",
                     attributes.getChannel_id(),
                     attributes.getCentral_wavelength());
