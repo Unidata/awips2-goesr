@@ -3,24 +3,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
   http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
+    <bean class="com.raytheon.uf.common.status.logback.ThreadBasedAppender" factory-method="registerThreadPattern">
+        <constructor-arg value="satellite" />
+        <constructor-arg value="Ingest.GOESR.*" />
+    </bean>
+
 	<bean id="goesrPluginName" class="java.lang.String">
 		<constructor-arg type="java.lang.String" value="goesr" />
 	</bean>
-
-	<bean id="goesrThreadPool"
-		class="com.raytheon.uf.edex.esb.camel.spring.JmsThreadPoolTaskExecutor">
-		<property name="corePoolSize" value="1" />
-		<property name="maxPoolSize" value="1" />
-	</bean>
-
-	<bean id="jmsIngestGOESRConfig" class="org.apache.camel.component.jms.JmsConfiguration"
-		factory-bean="jmsConfig" factory-method="copy" />
-
-	<bean id="jms-goesr" class="org.apache.camel.component.jms.JmsComponent">
-		<constructor-arg ref="jmsIngestGOESRConfig" />
-		<property name="taskExecutor" ref="goesrThreadPool" />
-	</bean>
-
 
 	<bean id="goesrDistRegistry" factory-bean="distributionSrv"
 		factory-method="register">
@@ -33,23 +23,8 @@
 	<camelContext id="goesr-camel" xmlns="http://camel.apache.org/schema/spring"
 		errorHandlerRef="errorHandler">
 
-		<endpoint id="goesrFileEndpoint" uri="file:${edex.home}/data/GOESR?delete=true" />
-
-		<route id="goesrJMSIngestRoute">
-			<from uri="jms-goesr:queue:Ingest.GOESR" />
-
-			<to uri="direct-vm:goesrIngestRoute" />
-		</route>
-
-		<route id="goesrFileIngestRoute">
-			<from uri="goesrFileEndpoint" />
-			<bean ref="fileToString" />
-			<to uri="direct-vm:goesrIngestRoute" />
-		</route>
-
-		<!-- Begin goesr routes -->
 		<route id="goesrIngestRoute">
-			<from uri="direct-vm:goesrIngestRoute" />
+			<from uri="jms-durable:queue:Ingest.GOESR" />
 			<setHeader headerName="pluginName">
 				<constant>satellite</constant>
 			</setHeader>
