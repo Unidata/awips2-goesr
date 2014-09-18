@@ -16,3 +16,4 @@ Require-Bundle: javax.measure,
  com.raytheon.uf.common.dataplugin,
  com.raytheon.uf.common.datastorage,
  com.raytheon.uf.edex.core
+Export-Package: com.raytheon.uf.edex.plugin.goesr
