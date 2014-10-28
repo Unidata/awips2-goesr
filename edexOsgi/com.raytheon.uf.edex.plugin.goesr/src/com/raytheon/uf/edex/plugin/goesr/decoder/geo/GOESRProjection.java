@@ -19,6 +19,7 @@
  **/
 package com.raytheon.uf.edex.plugin.goesr.decoder.geo;
 
+import org.geotools.geometry.DirectPosition2D;
 import org.opengis.referencing.FactoryException;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.opengis.referencing.operation.MathTransform;
@@ -36,10 +37,11 @@ import com.vividsolutions.jts.geom.Coordinate;
  * 
  * SOFTWARE HISTORY
  * 
- * Date         Ticket#    Engineer    Description
- * ------------ ---------- ----------- --------------------------
- * Jun 1, 2012         796 jkorman     Initial creation
- * Jul 5, 2013        2123 mschenke    Refactored to create GOES-R Projection given a CRS
+ * Date          Ticket#  Engineer    Description
+ * ------------- -------- ----------- --------------------------
+ * Jun 01, 2012  796      jkorman     Initial creation
+ * Jul 05, 2013  2123     mschenke    Refactored to create GOES-R Projection given a CRS
+ * Oct 29, 2014  3770     bsteffen    Calculate corners from product center instead of tile center.
  * 
  * </pre>
  * 
@@ -68,15 +70,20 @@ public class GOESRProjection {
 
     private Coordinate tileCenterPoint;
 
-    public GOESRProjection(String name, double dx, double dy, int nx, int ny,
-            Coordinate tileCenter, CoordinateReferenceSystem crs)
+    private int tileOffsetX;
+    
+    private int tileOffsetY;
+    
+    private Coordinate productCenterPoint;
+    
+    private int productWidth;
+    
+    private int productHeight;
+    
+    public GOESRProjection(String name, CoordinateReferenceSystem crs)
             throws GOESRProjectionException {
+        super();
         this.name = name;
-        this.dx = dx;
-        this.dy = dy;
-        this.nx = nx;
-        this.ny = ny;
-        this.tileCenterPoint = tileCenter;
         this.crs = crs;
         try {
             this.latLonToCRS = MapUtil.getTransformFromLatLon(crs);
@@ -85,6 +92,64 @@ public class GOESRProjection {
                     "Unable to get tranform from lat/lon to projection crs with name: "
                             + name);
         }
+    }
+
+    /**
+     * Set the parameters defining the tile dimensions. These parameters MUST be
+     * set before calling {@link #getCoverage()}.
+     * 
+     * @param nx
+     *            number of grid points in the width of the tile.
+     * @param ny
+     *            number of grid points in the height of the tile.
+     * @param dx
+     *            spacing(in meters) between grid cells in x direction
+     * @param dy
+     *            spacing(in meters) between grid cells in y direction
+     */
+    public void setTileDimensions(int nx, int ny, double dx, double dy) {
+        this.nx = nx;
+        this.ny = ny;
+        this.dx = dx;
+        this.dy = dy;
+    }
+
+    /**
+     * Set the Lat/Lon of the tile center which can be used for geolocating the
+     * tile. This information is not used if
+     * {@link #setProductTileParameters(Coordinate, int, int, int, int)} is
+     * given usable parameters, one of the two methods MUST be called before
+     * calling {@link #getCoverage()}.
+     */
+    public void setTileCenterPoint(Coordinate tileCenterPoint) {
+        this.tileCenterPoint = tileCenterPoint;
+    }
+
+    /**
+     * Set the parameters necessary for geolocating this tile relative to the
+     * product location. This method of geolocation is preferred to
+     * {@link #setTileCenterPoint(Coordinate)}, one of the two methods MUST be
+     * called before calling {@link #getCoverage()}.
+     * 
+     * @param productCenterPoint
+     *            center point of product in Lat/Lon
+     * @param productWidth
+     *            number of grid points in the width of the product.
+     * @param productHeight
+     *            number of grid points in the height of the product.
+     * @param tileOffsetX
+     *            number of grid points that this tile is offset from the
+     *            product in the x direction.
+     * @param tileOffsetY
+     *            number of grid points that this tile is offset from the
+     *            product in the y direction.
+     */
+    public void setProductTileParameters(Coordinate productCenterPoint, int productWidth, int productHeight, int tileOffsetX, int tileOffsetY){
+        this.productCenterPoint = productCenterPoint;
+        this.productWidth = productWidth;
+        this.productHeight = productHeight;
+        this.tileOffsetX = tileOffsetX;
+        this.tileOffsetY = tileOffsetY;
     }
 
     /**
@@ -104,7 +169,17 @@ public class GOESRProjection {
      *             An error occurred attempting to create the coverage.
      */
     protected SatMapCoverage getCoverage() throws GOESRProjectionException {
-        GeoRectangle bounds = calcCornerPoints();
+        GeoRectangle bounds = null;
+        if (productCenterPoint != null) {
+            /*
+             * The product center method is more reliable because some tiles in
+             * the geostationary projection have a center that is off the edge
+             * of the earth and cannot be used.
+             */
+            bounds = calcCornerPointsFromProductCenter();
+        } else {
+            bounds = calcCornerPointsFromTileCenter();
+        }
         double minX = bounds.getLL_X();
         double minY = bounds.getLL_Y();
         return new SatMapCoverage(SatSpatialFactory.UNDEFINED, minX, minY,
@@ -129,11 +204,12 @@ public class GOESRProjection {
 
     /**
      * Using projection information, calculate the corner points of the data in
-     * latitude/longitude space.
+     * crs space. This version uses the tile center and tile size.
      * 
      * @return The calculated corner points.
      */
-    private GeoRectangle calcCornerPoints() throws GOESRProjectionException {
+    private GeoRectangle calcCornerPointsFromTileCenter()
+            throws GOESRProjectionException {
         double tileCenterLat = tileCenterPoint.y;
         double tileCenterLon = tileCenterPoint.x;
 
@@ -179,5 +255,49 @@ public class GOESRProjection {
         in[7] = tileCRSCenterY - crsTileYOffset;
 
         return new GeoRectangle(in);
+    }
+
+    /**
+     * Using projection information, calculate the corner points of the data in
+     * crs. This version uses the product center, product size, tile offset, and
+     * tile size.
+     * 
+     * @return The calculated corner points.
+     */
+    private GeoRectangle calcCornerPointsFromProductCenter()
+            throws GOESRProjectionException {
+        DirectPosition2D productCenter = new DirectPosition2D(productCenterPoint.x, productCenterPoint.y);
+        try {
+            latLonToCRS.transform(productCenter, productCenter);
+        } catch (TransformException e) {
+            throw new GOESRProjectionException(
+                    "Error transforming tile center point to CRS space", e);
+        }
+        
+        double left = productCenter.x + (tileOffsetX - productWidth / 2.0) * dx;
+        double right = left + nx*dx;
+        
+        double top = productCenter.y - (tileOffsetY - productHeight / 2.0) * dy;
+        double bottom = top - ny * dy;
+
+        double[] corners = new double[8];
+
+        // UL
+        corners[0] = left;
+        corners[1] = top;
+
+        // UR
+        corners[2] = right;
+        corners[3] = top;
+
+        // LR
+        corners[4] = right;
+        corners[5] = bottom;
+
+        // LL
+        corners[6] = left;
+        corners[7] = bottom;
+
+        return new GeoRectangle(corners);
     }
 }

@@ -42,10 +42,12 @@ import com.vividsolutions.jts.geom.Coordinate;
  * 
  * SOFTWARE HISTORY
  * 
- * Date         Ticket#    Engineer    Description
- * ------------ ---------- ----------- --------------------------
- * Jun 1, 2012         796 jkorman     Initial creation
- * Jul 5, 2013        2123 mschenke    Refactored to have CRS factory for each type of CRS
+ * Date          Ticket#  Engineer    Description
+ * ------------- -------- ----------- --------------------------
+ * Jun 01, 2012  796      jkorman     Initial creation
+ * Jul 05, 2013  2123     mschenke    Refactored to have CRS factory for each type of CRS
+ * Oct 29, 2014  3770     bsteffen    Pass more attributes to the projection.
+ * 
  * 
  * </pre>
  * 
@@ -59,11 +61,27 @@ public class GOESRProjectionFactory {
 
         public GOESRProjection constructProjection(Variable projData,
                 GOESRAttributes attributes) throws GOESRProjectionException {
-            return new GOESRProjection(getName(projData), getDx(projData,
-                    attributes), getDy(projData, attributes), getNx(projData,
-                    attributes), getNy(projData, attributes),
-                    getTileCenterPoint(projData, attributes),
+            GOESRProjection projection = new GOESRProjection(getName(projData),
                     constructCoordinateReferenceSystem(projData, attributes));
+            projection.setTileDimensions(getNx(projData, attributes),
+                    getNy(projData, attributes), getDx(projData, attributes),
+                    getDy(projData, attributes));
+            projection.setTileCenterPoint(getTileCenterPoint(projData,
+                    attributes));
+            /*
+             * Give the projection factory all the information available and let
+             * it choose the geolocation method.
+             */
+            Coordinate productCenter = new Coordinate(
+                    attributes.getProduct_center_longitude(),
+                    attributes.getProduct_center_latitude());
+            projection.setProductTileParameters(productCenter,
+                    attributes.getProduct_columns(),
+                    attributes.getProduct_rows(),
+                    attributes.getTile_column_offset(),
+                    attributes.getTile_row_offset());
+            return projection;
+
         }
 
         public double getDx(Variable projData, GOESRAttributes attributes) {
