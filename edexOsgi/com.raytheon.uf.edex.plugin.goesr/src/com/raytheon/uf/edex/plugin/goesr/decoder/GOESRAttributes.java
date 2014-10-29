@@ -48,11 +48,12 @@ import ucar.nc2.NetcdfFile;
  *   
  *  SOFTWARE HISTORY
  *  
- *  Date         Ticket#    Engineer    Description
- *  ------------ ---------- ----------- --------------------------
- *  Jun 19, 2012        796 jkorman     Initial creation
- *  Jul  5, 2013       2123 mschenke    Added attributes, updated attributes that changed
- *  
+ * Date          Ticket#  Engineer    Description
+ * ------------- -------- ----------- --------------------------
+ * Jun 19, 2012  796      jkorman     Initial creation
+ * Jul  5, 2013  2123     mschenke    Added attributes, updated attributes that changed
+ * Oct 29, 2014  3770     bsteffen    Use more unreasonable default values for Lat/Lon coordinates.
+ * 
  * </pre>
  * 
  * @author jkorman
@@ -499,11 +500,11 @@ public class GOESRAttributes {
 
         attr = cdfFile
                 .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_SATELLITE_LATITUDE_ID);
-        satellite_latitude = (float) getAttributeDouble(attr, -1);
+        satellite_latitude = (float) getAttributeDouble(attr, Double.NaN);
         // double(SATELLITE_LATITUDE, 0)
         attr = cdfFile
                 .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_SATELLITE_LONGITUDE_ID);
-        satellite_longitude = (float) getAttributeDouble(attr, -1);
+        satellite_longitude = (float) getAttributeDouble(attr, Double.NaN);
         // double(SATELLITE_LONGITUDE, -180..180)
         attr = cdfFile
                 .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_SATELLITE_ALTITUDE_ID);
@@ -518,11 +519,11 @@ public class GOESRAttributes {
 
         attr = cdfFile
                 .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_PRODUCT_CENTER_LAT_ID);
-        product_center_latitude = (float) getAttributeDouble(attr, -1);
+        product_center_latitude = (float) getAttributeDouble(attr, Double.NaN);
         // double(PRODUCT_CENTER_LAT, -90..90)
         attr = cdfFile
                 .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_PRODUCT_CENTER_LON_ID);
-        product_center_longitude = (float) getAttributeDouble(attr, -1);
+        product_center_longitude = (float) getAttributeDouble(attr, Double.NaN);
         // double(PRODUCT_CENTER_LON, -180..180)
 
         attr = cdfFile
@@ -576,11 +577,11 @@ public class GOESRAttributes {
 
         attr = cdfFile
                 .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_TILE_CENTER_LAT_ID);
-        tile_center_latitude = (float) getAttributeDouble(attr, -1);
+        tile_center_latitude = (float) getAttributeDouble(attr, Double.NaN);
         // double(TILE_CENTER_LAT,-90..90)
         attr = cdfFile
                 .findGlobalAttribute(GOESRConstants.GLOBAL_ATTR_TILE_CENTER_LON_ID);
-        tile_center_longitude = (float) getAttributeDouble(attr, -1);
+        tile_center_longitude = (float) getAttributeDouble(attr, Double.NaN);
         // double(TILE_CENTER_LON, -180..180)
     }
 

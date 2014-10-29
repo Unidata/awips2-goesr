@@ -32,13 +32,16 @@ import com.raytheon.uf.common.status.UFStatus;
 
 /**
  * Some GOES-R utility methods.
+ * 
  * <pre>
  * 
  * SOFTWARE HISTORY
  * 
- * Date         Ticket#    Engineer    Description
- * ------------ ---------- ----------- --------------------------
- * Jun 22, 2012        796 jkorman     Initial creation
+ * Date          Ticket#  Engineer    Description
+ * ------------- -------- ----------- --------------------------
+ * Jun 22, 2012  796      jkorman     Initial creation
+ * Oct 29, 2014  3770     bsteffen    Allow getAttributeDouble to handle an
+ *                                    empty string without errors.
  * 
  * </pre>
  * 
@@ -158,12 +161,21 @@ public class GOESRUtil {
         if (attr != null) {
             Number n = null;
             if (DataType.STRING.equals(attr.getDataType())) {
-                try {
-                    n = Double.parseDouble(attr.getStringValue());
-                } catch (NumberFormatException nfe) {
-                    log.error("Could not parse Double value ["
-                            + attr.getStringValue() + "] name = "
-                            + attr.getName());
+                String stringValue = attr.getStringValue();
+                /*
+                 * The ICD indicates there are cases where double values should
+                 * be sent as blank attributes if no reasonable value could be
+                 * found(specifically tile_center_latitude and
+                 * tile_center_longitude) so do not log an error in this case.
+                 */
+                if(!stringValue.isEmpty()){
+                    try {
+                        n = Double.parseDouble(attr.getStringValue());
+                    } catch (NumberFormatException nfe) {
+                        log.error("Could not parse Double value ["
+                                + attr.getStringValue() + "] name = "
+                                + attr.getName());
+                    }
                 }
             } else {
                 n = attr.getNumericValue();
