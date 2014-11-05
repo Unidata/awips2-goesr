@@ -178,14 +178,7 @@ public class GOESRProjectionFactory {
         SatMapCoverage coverage = projection.getCoverage();
 
         try {
-            SatMapCoverage c = satDao.queryByMapId(coverage.getGid());
-            if (c != null) {
-                // We found a persisted coverage, so use it.
-                coverage = c;
-            } else {
-                // Save the coverage we created.
-                satDao.persist(coverage);
-            }
+            coverage = satDao.getOrCreateCoverage(coverage);
         } catch (Exception e) {
             throw new GOESRProjectionException("Could not create coverage", e);
         }
