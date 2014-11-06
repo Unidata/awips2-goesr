@@ -23,7 +23,7 @@
     <!-- Where himawari channel/wavelengths match goesr they are commented out to avoid double definitions for the same thing. -->
 	<styleRule>
 		<paramLevelMatches>
-			<!-- Same as GOESR: <parameter>CH-08-6.20um</parameter> -->
+			<parameter>CH-08-6.20um</parameter>
 			<parameter>CH-09-6.90um</parameter>
 			<parameter>CH-10-7.30um</parameter>
 			<parameter>CH-11-8.60um</parameter>
