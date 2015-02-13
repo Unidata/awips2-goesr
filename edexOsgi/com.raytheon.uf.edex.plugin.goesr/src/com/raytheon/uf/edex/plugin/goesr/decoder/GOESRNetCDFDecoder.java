@@ -20,6 +20,8 @@
 package com.raytheon.uf.edex.plugin.goesr.decoder;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.measure.unit.Unit;
 
@@ -62,6 +64,8 @@ import com.raytheon.uf.edex.plugin.goesr.decoder.geo.GOESRProjectionFactory;
  * ------------ ---------- ----------- --------------------------
  * May 31, 2012        796 jkorman     Initial creation
  * Jul  5, 2013       2123 mschenke    Changed to use in-memory netcdf object
+ * Feb 13, 2015       4043 bsteffen    Include scene number in secctor.
+ * 
  * </pre>
  * 
  * @author jkorman
@@ -72,6 +76,8 @@ public class GOESRNetCDFDecoder implements GOESRDataDecoder {
 
     private static final transient IUFStatusHandler log = UFStatus
             .getHandler(GOESRNetCDFDecoder.class);
+
+    private final Pattern SCENE_PATTERN = Pattern.compile("-\\d{1,3}$");
 
     private GOESRProjectionFactory projFactory;
 
@@ -133,12 +139,18 @@ public class GOESRNetCDFDecoder implements GOESRDataDecoder {
             String[] parts = attributes.getProduct_name().split("-");
             // datauri(3)
             /*
-             * The ICD indicates all the regions are upper case but previos
+             * The ICD indicates all the regions are upper case but previous
              * revisions included lower case variants, to ensure that all data,
              * even older test data gets a consistent sector always force upper
              * case.
              */
-            rec.setSectorID(parts[0].toUpperCase());
+            String sector = parts[0].toUpperCase();
+            Matcher sceneMatcher = SCENE_PATTERN.matcher(attributes
+                    .getSource_scene());
+            if (sceneMatcher.matches()) {
+                sector = sector + sceneMatcher.group(0);
+            }
+            rec.setSectorID(sector);
             String physicalElement = String.format("CH-%02d-%4.2fum",
                     attributes.getChannel_id(),
                     attributes.getCentral_wavelength());
@@ -305,11 +317,12 @@ public class GOESRNetCDFDecoder implements GOESRDataDecoder {
                             "Could not create projection/coverage information for GOES-R data",
                             ipe);
                 }
-            } else {
             }
         } else {
             log.error("No image grid data found in GOES-R data");
         }
         return rec;
     }
+
 }
+
