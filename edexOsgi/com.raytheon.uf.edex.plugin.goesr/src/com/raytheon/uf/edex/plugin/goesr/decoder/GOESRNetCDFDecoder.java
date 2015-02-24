@@ -77,7 +77,7 @@ public class GOESRNetCDFDecoder implements GOESRDataDecoder {
     private static final transient IUFStatusHandler log = UFStatus
             .getHandler(GOESRNetCDFDecoder.class);
 
-    private final Pattern SCENE_PATTERN = Pattern.compile("-\\d{1,3}$");
+    private static final Pattern SCENE_PATTERN = Pattern.compile("-\\d{1,3}$");
 
     private GOESRProjectionFactory projFactory;
 
@@ -147,7 +147,7 @@ public class GOESRNetCDFDecoder implements GOESRDataDecoder {
             String sector = parts[0].toUpperCase();
             Matcher sceneMatcher = SCENE_PATTERN.matcher(attributes
                     .getSource_scene());
-            if (sceneMatcher.matches()) {
+            if (sceneMatcher.find()) {
                 sector = sector + sceneMatcher.group(0);
             }
             rec.setSectorID(sector);
@@ -323,6 +323,5 @@ public class GOESRNetCDFDecoder implements GOESRDataDecoder {
         }
         return rec;
     }
-
 }
 
