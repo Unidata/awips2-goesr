@@ -18,7 +18,11 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
-<colorMap>
-    <color r="0" g="0" b="0" a="1" />
-    <color r="1" g="1" b="1" a="1" />
-</colorMap>
+<purgeRuleSet>
+  <key>sectorID</key>
+  <key>physicalElement</key>
+  <rule>
+    <keyValue>HFD</keyValue>
+    <period>01-00:00:00</period>
+  </rule>
+</purgeRuleSet>
