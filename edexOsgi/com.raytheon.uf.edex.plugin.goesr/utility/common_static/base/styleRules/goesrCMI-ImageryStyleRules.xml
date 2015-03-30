@@ -19,7 +19,7 @@
         further_licensing_information.
     -->
 <styleRuleset>
-  <!-- GOES-R Satellite Rules -->
+  <!-- GOES-R CMI Satellite Rules -->
   <styleRule>
     <paramLevelMatches>
       <parameter>CH-07-3.90um</parameter>

@@ -17,7 +17,7 @@
  * See the AWIPS II Master Rights File ("Master Rights File.pdf") for
  * further licensing information.
  **/
-package com.raytheon.uf.edex.plugin.goesr.decoder.geo;
+package com.raytheon.uf.edex.plugin.goesr.exception;
 
 /**
  * Thrown when the given projection could not be created.
@@ -26,9 +26,10 @@ package com.raytheon.uf.edex.plugin.goesr.decoder.geo;
  * 
  * SOFTWARE HISTORY
  * 
- * Date         Ticket#    Engineer    Description
- * ------------ ---------- ----------- --------------------------
- * Jul 3, 2012            jkorman     Initial creation
+ * Date          Ticket#  Engineer    Description
+ * ------------- -------- ----------- --------------------------
+ * Jul 03, 2012           jkorman     Initial creation
+ * Apr 17, 2015  4043     bsteffen    Extend GoesrDecoderException
  * 
  * </pre>
  * 
@@ -36,16 +37,9 @@ package com.raytheon.uf.edex.plugin.goesr.decoder.geo;
  * @version 1.0
  */
 
-public class GOESRProjectionException extends Exception {
+public class GoesrProjectionException extends GoesrDecoderException {
 
-    private static final long serialVersionUID = 9077163987824558053L;
-
-    /**
-     * Constructs a InvalidProjectionException with no error message.
-     */
-    public GOESRProjectionException() {
-        super();
-    }
+    private static final long serialVersionUID = 1L;
 
     /**
      * Constructs a InvalidProjectionException with an error message.
@@ -53,7 +47,7 @@ public class GOESRProjectionException extends Exception {
      * @param message
      *            The exception detail message.
      */
-    public GOESRProjectionException(String message) {
+    public GoesrProjectionException(String message) {
         super(message);
     }
 
@@ -66,7 +60,7 @@ public class GOESRProjectionException extends Exception {
      * @param cause
      *            The exception that caused this exception to be thrown.
      */
-    public GOESRProjectionException(String message, Throwable cause) {
+    public GoesrProjectionException(String message, Throwable cause) {
         super(message, cause);
     }
 
