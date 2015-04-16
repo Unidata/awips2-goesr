@@ -21,16 +21,15 @@
 <menuContributionFile>
   <!-- Default install location is nowhere, only want menu at specific sites. -->
   <include installTo="menu:no.where" fileName="menus/satellite/goesr/goesrMenu.xml" />
-  <!-- Uncomment this element to inculde himawari with d2d satellite menu -->
+  <!-- Uncomment this element to include goesr with d2d satellite menu -->
   <!--
   <include installTo="menu:satellite?before=GROUP5" fileName="menus/satellite/goesr/goesrMenu.xml" />
   -->
-  <!-- Uncomment this element to inculde himawari as top level menu in D2D -->
+  <!-- Uncomment this element to include goesr as top level menu in D2D -->
   <!--
   <include installTo="menu:org.eclipse.ui.main.menu?after=satellite"
     fileName="menus/satellite/goesr/goesrMenu.xml">
-    <visibleOnActionSet>com.raytheon.uf.viz.d2d.ui.D2DActionSet
-    </visibleOnActionSet>
+    <visibleOnActionSet>com.raytheon.uf.viz.d2d.ui.D2DActionSet</visibleOnActionSet>
   </include>
   -->
 </menuContributionFile>
