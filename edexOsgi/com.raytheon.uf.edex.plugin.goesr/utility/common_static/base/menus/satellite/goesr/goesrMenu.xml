@@ -48,7 +48,8 @@
 		</contribute>
 		<contribute xsi:type="titleItem" titleText="------ By Sector ------" id="goesrBySector"/>
 		<contribute xsi:type="subinclude" subMenu="All Channels" fileName="menus/satellite/goesr/goesrBySectorByChannel.xml" />
-		<contribute xsi:type="subinclude" subMenu="Derived" fileName="menus/satellite/goesr/goesrBySectorDerived.xml" />
+        <contribute xsi:type="subinclude" subMenu="Level 2 Products" fileName="menus/satellite/goesr/goesrLevel2.xml" />
+		<contribute xsi:type="subinclude" subMenu="Locally Derived" fileName="menus/satellite/goesr/goesrBySectorLocallyDerived.xml" />
 		<contribute xsi:type="subinclude" subMenu="RGB Composites" fileName="menus/satellite/goesr/goesrBySectorRGBComposites.xml" />
 		<contribute xsi:type="titleItem" titleText="------ Conus With Legacy ------" id="goesrWithLegacy"/>
 		<contribute xsi:type="subinclude" subMenu="GOES-R + GOES-15" fileName="menus/satellite/goesr/goesrConusWithLegacy.xml">

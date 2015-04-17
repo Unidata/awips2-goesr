@@ -20,57 +20,57 @@
     -->
 <menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <contribute xsi:type="subinclude" subMenu="Alaska"
-    fileName="menus/satellite/goesr/goesrDerived.xml">
+    fileName="menus/satellite/goesr/goesrLocallyDerived.xml">
     <substitute key="sector" value="AKREGI" />
     <substitute key="entity" value="GOES%" />
   </contribute>
   <contribute xsi:type="subinclude" subMenu="East Conus"
-    fileName="menus/satellite/goesr/goesrDerived.xml">
+    fileName="menus/satellite/goesr/goesrLocallyDerived.xml">
     <substitute key="sector" value="ECONUS" />
     <substitute key="entity" value="GOES%" />
   </contribute>
   <contribute xsi:type="subinclude" subMenu="East Full Disk"
-    fileName="menus/satellite/goesr/goesrDerived.xml">
+    fileName="menus/satellite/goesr/goesrLocallyDerived.xml">
     <substitute key="sector" value="EFD" />
     <substitute key="entity" value="GOES%" />
   </contribute>
   <contribute xsi:type="subinclude" subMenu="East Mesoscale 1"
-    fileName="menus/satellite/goesr/goesrDerived.xml">
+    fileName="menus/satellite/goesr/goesrLocallyDerived.xml">
     <substitute key="sector" value="EMESO-1" />
     <substitute key="entity" value="GOES%" />
   </contribute>
   <contribute xsi:type="subinclude" subMenu="East Mesoscale 2"
-    fileName="menus/satellite/goesr/goesrDerived.xml">
+    fileName="menus/satellite/goesr/goesrLocallyDerived.xml">
     <substitute key="sector" value="EMESO-2" />
     <substitute key="entity" value="GOES%" />
   </contribute>
   <contribute xsi:type="subinclude" subMenu="Hawaii"
-    fileName="menus/satellite/goesr/goesrDerived.xml">
+    fileName="menus/satellite/goesr/goesrLocallyDerived.xml">
     <substitute key="sector" value="HIREGI" />
     <substitute key="entity" value="GOES%" />
   </contribute>
   <contribute xsi:type="subinclude" subMenu="Puerto Rico"
-    fileName="menus/satellite/goesr/goesrDerived.xml">
+    fileName="menus/satellite/goesr/goesrLocallyDerived.xml">
     <substitute key="sector" value="PRREGI" />
     <substitute key="entity" value="GOES%" />
   </contribute>
   <contribute xsi:type="subinclude" subMenu="West Conus"
-    fileName="menus/satellite/goesr/goesrDerived.xml">
+    fileName="menus/satellite/goesr/goesrLocallyDerived.xml">
     <substitute key="sector" value="WCONUS" />
     <substitute key="entity" value="GOES%" />
   </contribute>
   <contribute xsi:type="subinclude" subMenu="West Full Disk"
-    fileName="menus/satellite/goesr/goesrDerived.xml">
+    fileName="menus/satellite/goesr/goesrLocallyDerived.xml">
     <substitute key="sector" value="WFD" />
     <substitute key="entity" value="GOES%" />
   </contribute>
   <contribute xsi:type="subinclude" subMenu="West Mesoscale 1"
-    fileName="menus/satellite/goesr/goesrDerived.xml">
+    fileName="menus/satellite/goesr/goesrLocallyDerived.xml">
     <substitute key="sector" value="WMESO-1" />
     <substitute key="entity" value="GOES%" />
   </contribute>
   <contribute xsi:type="subinclude" subMenu="West Mesoscale 2"
-    fileName="menus/satellite/goesr/goesrDerived.xml">
+    fileName="menus/satellite/goesr/goesrLocallyDerived.xml">
     <substitute key="sector" value="WMESO-2" />
     <substitute key="entity" value="GOES%" />
   </contribute>
