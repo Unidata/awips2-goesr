@@ -209,26 +209,38 @@ public class DataDescription {
             throw new GoesrDecoderException("Unable to read data from "
                     + this.variable, e);
         }
-        short[] sdata = (short[]) data;
-        for (int i = 0; i < sdata.length; i += 1) {
+        int length = java.lang.reflect.Array.getLength(data);
+        /* Depending on the type one of bdata or sdata must be set to not null. */
+        byte[] bdata = null;
+        short[] sdata = null;
+        if (data instanceof short[]) {
+            sdata = (short[]) data;
+        } else if (data instanceof byte[]) {
+            bdata = (byte[]) data;
+        } else {
+            throw new GoesrDecoderException("Unexpected data of type: "
+                    + data.getClass().getSimpleName());
+        }
+        for (int i = 0; i < length; i += 1) {
             boolean fill = true;
             for (DataMaskDescription mask : this.masks) {
                 if (mask.getValue() == maskData[i]) {
                     if (!mask.isKeep()) {
-                        sdata[i] = (short) mask.getFill();
+                        if (bdata == null) {
+                            sdata[i] = (short) mask.getFill();
+                        } else {
+                            bdata[i] = (byte) mask.getFill();
+                        }
                     }
                     fill = false;
                     break;
                 }
             }
             if (fill) {
-                if (data instanceof short[]) {
-                    ((short[]) data)[i] = fillValue.shortValue();
-                } else if (data instanceof byte[]) {
-                    ((byte[]) data)[i] = fillValue.byteValue();
+                if (bdata == null) {
+                    sdata[i] = fillValue.shortValue();
                 } else {
-                    throw new GoesrDecoderException("Unexpected data of type: "
-                            + data.getClass().getSimpleName());
+                    bdata[i] = fillValue.byteValue();
                 }
             }
         }

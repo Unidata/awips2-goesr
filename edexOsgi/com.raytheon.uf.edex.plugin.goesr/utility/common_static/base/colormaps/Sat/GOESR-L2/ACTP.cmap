@@ -18,14 +18,12 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
-<goesrProductDescriptions>
-  <description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-AOD(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <data variable="AOD" maskVariable="DQF">
-      <mask value="0" keep="true" />
-    </data>
-    <physicalElement value="AOD" />
-    <units value="*1" />
-  </description>
-</goesrProductDescriptions>
+<colorMap>
+    <color r="0.0" g="0.0" b="0.0" a="0.0" />
+    <color r="0.0" g="1.0" b="1.0" a="1.0" />
+    <color r="0.0" g="1.0" b="0.0" a="1.0" />
+    <color r="0.0" g="0.5" b="0.0" a="1.0" />
+    <color r="1.0" g="0.0" b="0.0" a="1.0" />
+    <color r="1.0" g="1.0" b="1.0" a="1.0" />
+    <color r="0.0" g="0.0" b="0.0" a="0.0" />
+</colorMap>

@@ -22,7 +22,10 @@
   <description>
     <match attribute="dataset_name"
       pattern="OR_ABI-L2-COD(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <data variable="COD" />
+    <data variable="COD" maskVariable="DQF">
+      <mask value="0" keep="true" />
+    </data>
     <physicalElement value="COD" />
+    <units value="*1" />
   </description>
 </goesrProductDescriptions>

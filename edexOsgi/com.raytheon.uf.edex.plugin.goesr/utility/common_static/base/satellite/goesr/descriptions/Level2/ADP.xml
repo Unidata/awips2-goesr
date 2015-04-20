@@ -25,6 +25,7 @@
     <data bitset="Aerosol Dust Smoke" />
     <physicalElement value="ADP" />
   </description>
+  <!-- Enable these descriptions to decode individual fields separately. -->
   <!--description>
     <match attribute="dataset_name"
       pattern="OR_ABI-L2-ADP(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
