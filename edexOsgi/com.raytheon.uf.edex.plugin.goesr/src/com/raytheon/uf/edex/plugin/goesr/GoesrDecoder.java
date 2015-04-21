@@ -226,6 +226,7 @@ public class GoesrDecoder {
                 true);
         ProductDescriptions descriptions = new ProductDescriptions();
         for (LocalizationFile file : files) {
+            logger.info("Loading goesr data description from " + file.getName());
             try (InputStream inputStream = file.openInputStream()) {
                 ProductDescriptions unmarshalled = JAXB.unmarshal(inputStream,
                         ProductDescriptions.class);

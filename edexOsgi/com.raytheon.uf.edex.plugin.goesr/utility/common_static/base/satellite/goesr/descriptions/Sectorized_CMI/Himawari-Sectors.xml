@@ -20,7 +20,7 @@
     -->
 <goesrProductDescriptions>
   <description>
-    <match attribute="product_name" pattern="HFD-\d\d\d-B\d\d-M[34]C[01]\d" />
+    <match attribute="product_name" pattern="HFD-\d\d\d-B\d\d-M[1]C[01]\d" />
     <sectorID value="HFD" />
   </description>
 </goesrProductDescriptions>
