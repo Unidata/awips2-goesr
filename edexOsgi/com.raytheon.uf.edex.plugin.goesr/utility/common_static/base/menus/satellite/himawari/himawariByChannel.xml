@@ -52,51 +52,51 @@
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
     menuText="Channel 7(3.9u)" id="himawari-ch7">
     <substitute key="element" value="CH-07-3.90um" />
-    <substitute key="colormap" value="Sat/IR/CIRA (IR Default)" />
+    <substitute key="colormap" value="Sat/IR/CIMSS_IR" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
     menuText="Channel 8(6.2u)" id="himawari-ch8">
     <substitute key="element" value="CH-08-6.20um" />
-    <substitute key="colormap" value="Sat/IR/CIRA (IR Default)" />
+    <substitute key="colormap" value="Sat/IR/CIMSS_WV" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
     menuText="Channel 9(6.9u)" id="himawari-ch9">
     <substitute key="element" value="CH-09-6.90um" />
-    <substitute key="colormap" value="Sat/IR/CIRA (IR Default)" />
+    <substitute key="colormap" value="Sat/IR/CIMSS_WV" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
     menuText="Channel 10(7.3u)" id="himawari-ch10">
     <substitute key="element" value="CH-10-7.30um" />
-    <substitute key="colormap" value="Sat/IR/CIRA (IR Default)" />
+    <substitute key="colormap" value="Sat/IR/CIMSS_WV" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
     menuText="Channel 11(8.6u)" id="himawari-ch11">
     <substitute key="element" value="CH-11-8.60um" />
-    <substitute key="colormap" value="Sat/IR/CIRA (IR Default)" />
+    <substitute key="colormap" value="Sat/IR/CIMSS_IR" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
     menuText="Channel 12(9.6u)" id="himawari-ch12">
     <substitute key="element" value="CH-12-9.60um" />
-    <substitute key="colormap" value="Sat/IR/CIRA (IR Default)" />
+    <substitute key="colormap" value="Sat/IR/CIMSS_IR" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
     menuText="Channel 13(10.4u)" id="himawari-ch13">
     <substitute key="element" value="CH-13-10.40um" />
-    <substitute key="colormap" value="Sat/IR/CIRA (IR Default)" />
+    <substitute key="colormap" value="Sat/IR/CIMSS_IR" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
     menuText="Channel 14(11.2u)" id="himawari-ch14">
     <substitute key="element" value="CH-14-11.20um" />
-    <substitute key="colormap" value="Sat/IR/CIRA (IR Default)" />
+    <substitute key="colormap" value="Sat/IR/CIMSS_IR" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
     menuText="Channel 15(12.4u)" id="himawari-ch15">
     <substitute key="element" value="CH-15-12.40um" />
-    <substitute key="colormap" value="Sat/IR/CIRA (IR Default)" />
+    <substitute key="colormap" value="Sat/IR/CIMSS_IR" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
     menuText="Channel 16(13.3u)" id="himawari-ch16">
     <substitute key="element" value="CH-16-13.30um" />
-    <substitute key="colormap" value="Sat/IR/CIRA (IR Default)" />
+    <substitute key="colormap" value="Sat/IR/CIMSS_IR" />
   </contribute>
 </menuTemplate>
