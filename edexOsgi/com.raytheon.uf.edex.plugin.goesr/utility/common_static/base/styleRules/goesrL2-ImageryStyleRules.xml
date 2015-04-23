@@ -274,6 +274,75 @@
   </styleRule>
   <styleRule>
     <paramLevelMatches>
+      <parameter>FDC Area</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>Fire Area</displayLegend>
+      <displayUnits>km*km</displayUnits>
+      <range scale="LINEAR">
+        <minValue>0</minValue>
+        <maxValue>4</maxValue>
+      </range>
+      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <colorbarLabeling>
+        <values>0 1 2 3 4</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>FDC Power</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>Fire Power</displayLegend>
+      <displayUnits>MW</displayUnits>
+      <range scale="LINEAR">
+        <minValue>0</minValue>
+        <maxValue>1000</maxValue>
+      </range>
+      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <colorbarLabeling>
+        <values>0 200 400 600 800 1000</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>FDC Temp</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>Fire Temperature</displayLegend>
+      <displayUnits>K</displayUnits>
+      <range scale="LINEAR">
+        <minValue>400</minValue>
+        <maxValue>1200</maxValue>
+      </range>
+      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <colorbarLabeling>
+        <values>400 600 800 1000 1200</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>FDC Area</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>Fire Area</displayLegend>
+      <displayUnits>km*km</displayUnits>
+      <range scale="LINEAR">
+        <minValue>0</minValue>
+        <maxValue>4</maxValue>
+      </range>
+      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <colorbarLabeling>
+        <values>0 1 2 3 4</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+  
+  <styleRule>
+    <paramLevelMatches>
       <parameter>RRQPE</parameter>
     </paramLevelMatches>
     <imageStyle>
@@ -337,6 +406,40 @@
       <defaultColormap>Sat/Precip Water/Precip Water - New CIMSS Table</defaultColormap>
       <colorbarLabeling>
         <values>0 17 34 50 67 84</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>VAH</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>Volcanic Ash Cloud Height</displayLegend>
+      <displayUnits>m</displayUnits>
+      <range scale="LINEAR">
+        <minValue>0</minValue>
+        <maxValue>30000</maxValue>
+      </range>
+      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <colorbarLabeling>
+        <values>0 10000 20000 30000</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>VAML</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>Volcanic Ash Mass Loading</displayLegend>
+      <displayUnits>ton_us/(km*km)</displayUnits>
+      <range scale="LINEAR">
+        <minValue>0</minValue>
+        <maxValue>300</maxValue>
+      </range>
+      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <colorbarLabeling>
+        <values>0 50 100 150 200 250 300</values>
       </colorbarLabeling>
     </imageStyle>
   </styleRule>

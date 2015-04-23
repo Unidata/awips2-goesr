@@ -161,14 +161,11 @@ public class DataDescription {
 
                 Number fillValue = getFillValue(dataVariable, data);
 
-                if (maskVariable != null) {
-                    applyMask(cdfFile, data, fillValue);
-
-                }
 
                 String units = getUnits(dataVariable);
 
                 if (verticalDimension == null) {
+                    applyMask(cdfFile, data, fillValue);
                     SatelliteRecord record = createNewRecord(coverage, data,
                             fillValue, attributes);
                     if (units != null) {
@@ -201,15 +198,31 @@ public class DataDescription {
 
     private void applyMask(NetcdfFile cdfFile, Object data, Number fillValue)
             throws GoesrDecoderException {
+        if (this.maskVariable == null) {
+            return;
+        }
         Variable maskVariable = cdfFile.findVariable(this.maskVariable);
-        byte[] maskData = null;
+        Object maskData = null;
         try {
-            maskData = (byte[]) maskVariable.read().copyTo1DJavaArray();
+            maskData = maskVariable.read().copyTo1DJavaArray();
         } catch (IOException e) {
             throw new GoesrDecoderException("Unable to read data from "
                     + this.variable, e);
         }
-        int length = java.lang.reflect.Array.getLength(data);
+        /*
+         * Depending on the type one of bMaskData or sMaskData must be set to
+         * not null.
+         */
+        byte[] bMaskData = null;
+        short[] sMaskData = null;
+        if (maskData instanceof byte[]) {
+            bMaskData = (byte[]) maskData;
+        } else if (maskData instanceof short[]) {
+            sMaskData = (short[]) maskData;
+        } else {
+            throw new GoesrDecoderException("Unexpected data of type: "
+                    + data.getClass().getSimpleName());
+        }
         /* Depending on the type one of bdata or sdata must be set to not null. */
         byte[] bdata = null;
         short[] sdata = null;
@@ -221,10 +234,12 @@ public class DataDescription {
             throw new GoesrDecoderException("Unexpected data of type: "
                     + data.getClass().getSimpleName());
         }
+        int length = java.lang.reflect.Array.getLength(data);
         for (int i = 0; i < length; i += 1) {
             boolean fill = true;
             for (DataMaskDescription mask : this.masks) {
-                if (mask.getValue() == maskData[i]) {
+                int maskVal = bMaskData == null ? sMaskData[i] : bMaskData[i];
+                if (mask.getValue() == maskVal) {
                     if (!mask.isKeep()) {
                         if (bdata == null) {
                             sdata[i] = (short) mask.getFill();
@@ -283,6 +298,7 @@ public class DataDescription {
             } else {
                 attributes = new HashMap<>(attributes);
             }
+            applyMask(cdfFile, newData, fillValue);
             /*
              * This allows the vertical dimension to be used in
              * ProductDescriptions so that the records generated have unique
@@ -362,7 +378,7 @@ public class DataDescription {
         }
         SatMapCoverage coverage = projectionFactory.getCoverage(cdfFile,
                 grid_mapping);
-
+        applyMask(cdfFile, data, BITSET_FILL);
         return createNewRecord(coverage, data, BITSET_FILL, null);
     }
 

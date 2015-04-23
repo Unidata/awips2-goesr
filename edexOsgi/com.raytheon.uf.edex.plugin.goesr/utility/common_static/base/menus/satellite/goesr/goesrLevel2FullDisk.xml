@@ -74,6 +74,7 @@
         <substitute key="colormap" value="Sat/GOESR-L2/VTRSB"/>
     </contribute>
     <contribute xsi:type="subinclude" subMenu="Derived Stability Indices" fileName="menus/satellite/goesr/goesrLevel2Stability.xml" />
+    <contribute xsi:type="subinclude" subMenu="Fire/Hot Spot" fileName="menus/satellite/goesr/goesrLevel2Fire.xml" />
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
                 menuText="RR/QPE" id="goesr-rrqpe">
         <substitute key="entity" value="GOES%" />
@@ -98,4 +99,5 @@
         <substitute key="element" value="TPW"/>
         <substitute key="colormap" value="Sat/Precip Water/Precip Water - New CIMSS Table"/>
     </contribute>
+    <contribute xsi:type="subinclude" subMenu="Volcanic Ash" fileName="menus/satellite/goesr/goesrLevel2Volcano.xml" />
 </menuTemplate>

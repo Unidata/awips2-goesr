@@ -68,6 +68,7 @@
         <substitute key="colormap" value="Sat/GOESR-L2/VTRSB"/>
     </contribute>
     <contribute xsi:type="subinclude" subMenu="Derived Stability Indices" fileName="menus/satellite/goesr/goesrLevel2Stability.xml" />
+    <contribute xsi:type="subinclude" subMenu="Fire/Hot Spot" fileName="menus/satellite/goesr/goesrLevel2Fire.xml" />
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
                 menuText="Snow Cover" id="goesr-fsc">
         <substitute key="entity" value="GOES%" />

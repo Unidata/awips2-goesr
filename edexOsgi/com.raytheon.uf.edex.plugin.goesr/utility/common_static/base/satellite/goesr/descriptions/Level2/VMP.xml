@@ -22,8 +22,10 @@
   <description>
     <match attribute="dataset_name"
       pattern="OR_ABI-L2-LVMP(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <data variable="LVM" verticalDimension="pressure" />
-    <physicalElement format="LVM-%4.2fhPa" formatAttributes="pressure" />
-    <units value="%" />
+    <data variable="LVM" verticalDimension="pressure" maskVariable="DQF_Overall">
+      <mask value="0" keep="true" />
+    </data>
+    <physicalElement format="VMP-%4.2fhPa" formatAttributes="pressure" />
+    <units value="%*100" />
   </description>
 </goesrProductDescriptions>
