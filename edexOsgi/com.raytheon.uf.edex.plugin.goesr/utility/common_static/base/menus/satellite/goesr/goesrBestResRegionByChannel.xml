@@ -64,19 +64,19 @@
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrBestResRegion.xml" 
                 menuText="Channel 8(6.19u)" id="goesr-ch8">
         <substitute key="element" value="CH-08-6.19um"/>
-        <substitute key="colormap" value="Sat/IR/CIMSS_WV"/>
+        <substitute key="colormap" value="Sat/WV/CIMSS_WV"/>
         <substitute key="entity" value="GOES%"/>
     </contribute>
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrBestResRegion.xml" 
                 menuText="Channel 9(6.95u)" id="goesr-ch9">
         <substitute key="element" value="CH-09-6.95um"/>
-        <substitute key="colormap" value="Sat/IR/CIMSS_WV"/>
+        <substitute key="colormap" value="Sat/WV/CIMSS_WV"/>
         <substitute key="entity" value="GOES%"/>
     </contribute>
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrBestResRegion.xml" 
                 menuText="Channel 10(7.34u)" id="goesr-ch10">
         <substitute key="element" value="CH-10-7.34um"/>
-        <substitute key="colormap" value="Sat/IR/CIMSS_WV"/>
+        <substitute key="colormap" value="Sat/WV/CIMSS_WV"/>
         <substitute key="entity" value="GOES%"/>
     </contribute>
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrBestResRegion.xml" 
