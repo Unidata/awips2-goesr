@@ -93,7 +93,7 @@ public abstract class AbstractDimensionEnvelopeFactory implements
             double orbitalHeight = GoesrSatelliteHeight.getOrbitalHeight(crs,
                     SI.METER);
             if (Double.isNaN(orbitalHeight)) {
-                return 1000 * scale * RADIANS_PER_KM_SPACING;
+                return 1000 * scale / RADIANS_PER_KM_SPACING;
             } else {
                 return Math.tan(scale) * orbitalHeight;
             }

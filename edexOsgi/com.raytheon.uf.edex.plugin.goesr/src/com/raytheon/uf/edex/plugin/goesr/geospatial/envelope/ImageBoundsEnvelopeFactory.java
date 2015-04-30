@@ -34,7 +34,7 @@ import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
  * Uses the x and y variables to determine nx and ny, then use the
  * x_image_bounds and y_image_bounds to find the min/max extents of the data and
  * divide by nx or ny to find dx or dy. Sectorized CMI data does not include the
- * image_bounds and will nto work with this image factory.
+ * image_bounds and will not work with this image factory.
  * 
  * <pre>
  * 
@@ -92,13 +92,16 @@ public class ImageBoundsEnvelopeFactory extends
             return null;
         }
 
-        minx = findDistance(crs, minx, x);
-        maxx = findDistance(crs, maxx, x);
-        miny = findDistance(crs, miny, y);
-        maxy = findDistance(crs, maxy, y);
+        double dx_native = (maxx - minx) / nx;
+        double dy_native = (maxy - miny) / ny;
 
-        double dx = (maxx - minx) / nx;
-        double dy = (maxy - miny) / ny;
+        double dx = findDistance(crs, dx_native, x);
+        double dy = findDistance(crs, dy_native, y);
+
+        minx = minx * dx / dx_native;
+        maxx = maxx * dx / dx_native;
+        miny = miny * dy / dy_native;
+        maxy = maxy * dy / dy_native;
 
         GoesrEnvelope envelope = new GoesrEnvelope();
         envelope.setNx(nx);
