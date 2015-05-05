@@ -26,6 +26,7 @@ import org.opengis.referencing.FactoryException;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.opengis.referencing.operation.TransformException;
 
+import ucar.ma2.DataType;
 import ucar.nc2.Attribute;
 import ucar.nc2.NetcdfFile;
 
@@ -43,7 +44,7 @@ import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
  * 
  * Date          Ticket#  Engineer    Description
  * ------------- -------- ----------- --------------------------
- * Apr 17, 2015  4043     bsteffen    Initial creation
+ * Apr 17, 2015  4336     bsteffen    Initial creation
  * 
  * </pre>
  * 
@@ -61,13 +62,18 @@ public class TileCenterEnvelopeFactory extends AbstractCenterEnvelopeFactory {
         }
         DirectPosition2D center = new DirectPosition2D();
         Attribute attr = cdfFile.findGlobalAttribute("tile_center_longitude");
-        if(attr == null){
+        /*
+         * The empty string is used by himawari when the center of a tile is off
+         * the world, since all valid data is numeric assume any string is
+         * invalid.
+         */
+        if (attr == null || attr.getDataType() == DataType.STRING) {
             return null;
         }else{
             center.x = attr.getNumericValue().doubleValue();
         }
         attr = cdfFile.findGlobalAttribute("tile_center_latitude");
-        if (attr == null) {
+        if (attr == null || attr.getDataType() == DataType.STRING) {
             return null;
         } else {
             center.y = attr.getNumericValue().doubleValue();

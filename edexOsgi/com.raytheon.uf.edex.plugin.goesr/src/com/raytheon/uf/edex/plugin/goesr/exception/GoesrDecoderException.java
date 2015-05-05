@@ -29,7 +29,7 @@ package com.raytheon.uf.edex.plugin.goesr.exception;
  * 
  * Date          Ticket#  Engineer    Description
  * ------------- -------- ----------- --------------------------
- * Apr 17, 2015  4043     bsteffen    Initial creation
+ * Apr 17, 2015  4336     bsteffen    Initial creation
  * 
  * </pre>
  * 
