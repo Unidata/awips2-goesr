@@ -57,17 +57,17 @@
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
     menuText="Channel 8(6.2u)" id="himawari-ch8">
     <substitute key="element" value="CH-08-6.20um" />
-    <substitute key="colormap" value="Sat/IR/CIMSS_WV" />
+    <substitute key="colormap" value="Sat/WV/CIMSS_WV" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
     menuText="Channel 9(6.9u)" id="himawari-ch9">
     <substitute key="element" value="CH-09-6.90um" />
-    <substitute key="colormap" value="Sat/IR/CIMSS_WV" />
+    <substitute key="colormap" value="Sat/WV/CIMSS_WV" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
     menuText="Channel 10(7.3u)" id="himawari-ch10">
     <substitute key="element" value="CH-10-7.30um" />
-    <substitute key="colormap" value="Sat/IR/CIMSS_WV" />
+    <substitute key="colormap" value="Sat/WV/CIMSS_WV" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
     menuText="Channel 11(8.6u)" id="himawari-ch11">
