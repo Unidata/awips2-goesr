@@ -25,13 +25,13 @@
     out to avoid double definitions for the same thing. -->
   <styleRule>
     <paramLevelMatches>
-      <!-- Same as GOESR: <parameter>CH-07-3.90um</parameter> -->
-      <parameter>CH-11-8.60um</parameter>
-      <parameter>CH-12-9.60um</parameter>
-      <parameter>CH-13-10.40um</parameter>
-      <!-- Same as GOESR: <parameter>CH-14-11.20um</parameter> -->
-      <parameter>CH-15-12.40um</parameter>
-      <!-- Same as GOESR: <parameter>CH-16-13.30um</parameter> -->
+      <parameter>CH-07-3.89um</parameter>
+      <parameter>CH-11-8.59um</parameter>
+      <parameter>CH-12-9.64um</parameter>
+      <parameter>CH-13-10.41um</parameter>
+      <parameter>CH-14-11.24um</parameter>
+      <parameter>CH-15-12.38um</parameter>
+      <parameter>CH-16-13.28um</parameter>
     </paramLevelMatches>
     <imageStyle>
       <displayUnits>C</displayUnits>
@@ -48,9 +48,9 @@
   </styleRule>
   <styleRule>
     <paramLevelMatches>
-      <parameter>CH-08-6.20um</parameter>
-      <parameter>CH-09-6.90um</parameter>
-      <parameter>CH-10-7.30um</parameter>
+      <parameter>CH-08-6.24um</parameter>
+      <parameter>CH-09-6.94um</parameter>
+      <parameter>CH-10-7.35um</parameter>
     </paramLevelMatches>
     <imageStyle>
       <displayUnits>C</displayUnits>
@@ -71,8 +71,8 @@
       <parameter>CH-02-0.51um</parameter>
       <parameter>CH-03-0.64um</parameter>
       <parameter>CH-04-0.86um</parameter>
-      <parameter>CH-05-1.60um</parameter>
-      <parameter>CH-06-2.30um</parameter>
+      <parameter>CH-05-1.61um</parameter>
+      <parameter>CH-06-2.26um</parameter>
     </paramLevelMatches>
     <imageStyle>
       <range scale="LINEAR">

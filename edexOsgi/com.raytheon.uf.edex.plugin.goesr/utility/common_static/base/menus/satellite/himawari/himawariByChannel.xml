@@ -40,63 +40,63 @@
     <substitute key="colormap" value="Sat/VIS/ZA (Vis Default)" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
-    menuText="Channel 5(1.6u)" id="himawari-ch5">
-    <substitute key="element" value="CH-05-1.60um" />
+    menuText="Channel 5(1.61u)" id="himawari-ch5">
+    <substitute key="element" value="CH-05-1.61um" />
     <substitute key="colormap" value="Sat/VIS/ZA (Vis Default)" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
-    menuText="Channel 6(2.3u)" id="himawari-ch6">
-    <substitute key="element" value="CH-06-2.30um" />
+    menuText="Channel 6(2.26u)" id="himawari-ch6">
+    <substitute key="element" value="CH-06-2.26um" />
     <substitute key="colormap" value="Sat/VIS/ZA (Vis Default)" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
-    menuText="Channel 7(3.9u)" id="himawari-ch7">
-    <substitute key="element" value="CH-07-3.90um" />
+    menuText="Channel 7(3.89u)" id="himawari-ch7">
+    <substitute key="element" value="CH-07-3.89um" />
     <substitute key="colormap" value="Sat/IR/CIMSS_IR" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
-    menuText="Channel 8(6.2u)" id="himawari-ch8">
-    <substitute key="element" value="CH-08-6.20um" />
+    menuText="Channel 8(6.24u)" id="himawari-ch8">
+    <substitute key="element" value="CH-08-6.24um" />
     <substitute key="colormap" value="Sat/WV/CIMSS_WV" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
-    menuText="Channel 9(6.9u)" id="himawari-ch9">
-    <substitute key="element" value="CH-09-6.90um" />
+    menuText="Channel 9(6.94u)" id="himawari-ch9">
+    <substitute key="element" value="CH-09-6.94um" />
     <substitute key="colormap" value="Sat/WV/CIMSS_WV" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
-    menuText="Channel 10(7.3u)" id="himawari-ch10">
-    <substitute key="element" value="CH-10-7.30um" />
+    menuText="Channel 10(7.35u)" id="himawari-ch10">
+    <substitute key="element" value="CH-10-7.35um" />
     <substitute key="colormap" value="Sat/WV/CIMSS_WV" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
-    menuText="Channel 11(8.6u)" id="himawari-ch11">
-    <substitute key="element" value="CH-11-8.60um" />
+    menuText="Channel 11(8.59u)" id="himawari-ch11">
+    <substitute key="element" value="CH-11-8.59um" />
     <substitute key="colormap" value="Sat/IR/CIMSS_IR" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
-    menuText="Channel 12(9.6u)" id="himawari-ch12">
-    <substitute key="element" value="CH-12-9.60um" />
+    menuText="Channel 12(9.64u)" id="himawari-ch12">
+    <substitute key="element" value="CH-12-9.64um" />
     <substitute key="colormap" value="Sat/IR/CIMSS_IR" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
-    menuText="Channel 13(10.4u)" id="himawari-ch13">
-    <substitute key="element" value="CH-13-10.40um" />
+    menuText="Channel 13(10.41u)" id="himawari-ch13">
+    <substitute key="element" value="CH-13-10.41um" />
     <substitute key="colormap" value="Sat/IR/CIMSS_IR" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
-    menuText="Channel 14(11.2u)" id="himawari-ch14">
-    <substitute key="element" value="CH-14-11.20um" />
+    menuText="Channel 14(11.24u)" id="himawari-ch14">
+    <substitute key="element" value="CH-14-11.24um" />
     <substitute key="colormap" value="Sat/IR/CIMSS_IR" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
-    menuText="Channel 15(12.4u)" id="himawari-ch15">
-    <substitute key="element" value="CH-15-12.40um" />
+    menuText="Channel 15(12.38u)" id="himawari-ch15">
+    <substitute key="element" value="CH-15-12.38um" />
     <substitute key="colormap" value="Sat/IR/CIMSS_IR" />
   </contribute>
   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
-    menuText="Channel 16(13.3u)" id="himawari-ch16">
-    <substitute key="element" value="CH-16-13.30um" />
+    menuText="Channel 16(13.28u)" id="himawari-ch16">
+    <substitute key="element" value="CH-16-13.28um" />
     <substitute key="colormap" value="Sat/IR/CIMSS_IR" />
   </contribute>
 </menuTemplate>
