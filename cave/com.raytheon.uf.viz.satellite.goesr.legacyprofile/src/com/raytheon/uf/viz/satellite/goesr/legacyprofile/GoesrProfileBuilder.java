@@ -59,6 +59,7 @@ import com.raytheon.uf.viz.d2d.nsharp.SoundingLayerBuilder;
  * Date          Ticket#  Engineer    Description
  * ------------- -------- ----------- --------------------------
  * Apr 30, 2015  4335     bsteffen    Initial creation
+ * May 13, 2015  4445     bsteffen    Remove GOESR sounding layer builder.
  * 
  * </pre>
  * 
@@ -102,7 +103,7 @@ public class GoesrProfileBuilder {
         }
         SoundingLayerBuilder layer = map.get(pressure);
         if (layer == null) {
-            layer = new GoesrSoundingLayerBuilder();
+            layer = new SoundingLayerBuilder();
             layer.addPressure(pressure, SI.HECTO(SI.PASCAL));
             map.put(pressure, layer);
         }
