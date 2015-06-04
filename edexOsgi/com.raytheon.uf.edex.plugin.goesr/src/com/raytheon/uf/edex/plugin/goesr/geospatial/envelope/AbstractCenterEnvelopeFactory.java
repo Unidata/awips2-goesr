@@ -44,7 +44,7 @@ import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrSatelliteHeight;
  * 
  * Date          Ticket#  Engineer    Description
  * ------------- -------- ----------- --------------------------
- * Apr 17, 2015  4043     bsteffen    Initial creation
+ * Apr 17, 2015  4336     bsteffen    Initial creation
  * 
  * </pre>
  * 
@@ -57,6 +57,12 @@ public abstract class AbstractCenterEnvelopeFactory implements
     protected GoesrEnvelope loadDistanceNumber(NetcdfFile cdfFile,
             CoordinateReferenceSystem crs) {
         GoesrEnvelope envelope = new GoesrEnvelope();
+        int tileNx;
+        int tileNy;
+        int productNx;
+        int productNy;
+        int offsetx;
+        int offsety;
         Attribute attr = cdfFile.findGlobalAttribute("pixel_x_size");
         if (attr == null) {
             return null;
@@ -73,14 +79,51 @@ public abstract class AbstractCenterEnvelopeFactory implements
         if (attr == null) {
             return null;
         } else {
-            envelope.setNx(attr.getNumericValue().intValue());
+            tileNx = attr.getNumericValue().intValue();
         }
         attr = cdfFile.findGlobalAttribute("product_tile_height");
         if (attr == null) {
             return null;
         } else {
-            envelope.setNy(attr.getNumericValue().intValue());
+            tileNy = attr.getNumericValue().intValue();
         }
+        attr = cdfFile.findGlobalAttribute("product_columns");
+        if (attr == null) {
+            return null;
+        } else {
+            productNx = attr.getNumericValue().intValue();
+        }
+        attr = cdfFile.findGlobalAttribute("product_rows");
+        if (attr == null) {
+            return null;
+        } else {
+            productNy = attr.getNumericValue().intValue();
+        }
+        attr = cdfFile.findGlobalAttribute("tile_column_offset");
+        if (attr == null) {
+            return null;
+        } else {
+            offsetx = attr.getNumericValue().intValue();
+        }
+        attr = cdfFile.findGlobalAttribute("tile_row_offset");
+        if (attr == null) {
+            return null;
+        } else {
+            offsety = attr.getNumericValue().intValue();
+        }
+
+        /*
+         * When the productNx is not evenly divisible by the tileNx the tileNx
+         * is not the actual tileNx. For example if productNx is 1808 tiled to
+         * 1024 than all tiles will have a tileNx of 1024 even the the rightmost
+         * tiles have an actual nx of 784
+         */
+        tileNx = Math.min(productNx - offsetx, tileNx);
+        tileNy = Math.min(productNy - offsety, tileNy);
+
+        envelope.setNx(tileNx);
+        envelope.setNy(tileNy);
+
         double orbitalHeight = GoesrSatelliteHeight.getOrbitalHeight(crs,
                 SI.KILOMETER);
         if (!Double.isNaN(orbitalHeight)) {

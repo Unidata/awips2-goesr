@@ -39,7 +39,7 @@ import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
  * 
  * Date          Ticket#  Engineer    Description
  * ------------- -------- ----------- --------------------------
- * Apr 17, 2015  4043     bsteffen    Initial creation
+ * Apr 17, 2015  4336     bsteffen    Initial creation
  * 
  * </pre>
  * 
@@ -77,8 +77,8 @@ public class DimensionEnvelopeFactory extends AbstractDimensionEnvelopeFactory {
                     "Unable to read min values of x or y dimesnions.", e);
         }
 
-        minx = minx * scalex + (offsetx / scalex) * dx;
-        miny = miny * scaley + (offsety / scaley) * dy;
+        minx = (minx + offsetx / scalex) * dx;
+        miny = (miny + offsety / scaley) * dy;
 
         GoesrEnvelope envelope = new GoesrEnvelope();
         envelope.setNx(nx);

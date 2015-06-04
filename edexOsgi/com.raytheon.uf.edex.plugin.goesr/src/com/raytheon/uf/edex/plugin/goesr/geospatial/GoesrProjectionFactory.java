@@ -66,7 +66,7 @@ import com.raytheon.uf.edex.plugin.goesr.geospatial.envelope.TileCenterEnvelopeF
  * Jun 01, 2012  796      jkorman     Initial creation
  * Jul 05, 2013  2123     mschenke    Refactored to have CRS factory for each type of CRS
  * Oct 29, 2014  3770     bsteffen    Pass more attributes to the projection.
- * Apr 17, 2015  4043     bsteffen    Split out crs and envelope creation into distinct factories.
+ * Apr 17, 2015  4336     bsteffen    Split out crs and envelope creation into distinct factories.
  * 
  * </pre>
  * 
@@ -218,9 +218,8 @@ public class GoesrProjectionFactory {
             }
             builder.append("\n");
         }
-        builder.append("****************************************");
-        builder.append("****************************************");
-        logger.debug(builder.toString());
+        builder.append("****************************************\n");
+        logger.info(builder.toString());
     }
 
 

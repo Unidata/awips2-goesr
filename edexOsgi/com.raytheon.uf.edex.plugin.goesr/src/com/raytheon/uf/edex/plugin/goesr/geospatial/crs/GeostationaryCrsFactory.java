@@ -41,7 +41,7 @@ import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
  * ------------- -------- ----------- --------------------------
  * Jun 01, 2012  796      jkorman     Initial creation
  * Jul 05, 2013  2123     mschenke    Implemented Geostationary projection
- * Apr 17, 2015  4043     bsteffen    Converted to be only a CRS factory.
+ * Apr 17, 2015  4336     bsteffen    Converted to be only a CRS factory.
  * 
  * </pre>
  * 

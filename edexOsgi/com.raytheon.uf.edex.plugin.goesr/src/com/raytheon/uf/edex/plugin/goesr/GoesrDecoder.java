@@ -70,7 +70,7 @@ import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrSatelliteHeight;
  * May 31, 2012  796      jkorman     Initial creation
  * Jul  5, 2013  2123     mschenke    Changed to use in-memory netcdf object
  * Feb 13, 2015  4043     bsteffen    Include scene number in sector.
- * Apr 17, 2015  4043     bsteffen    Rewrite to be configurable for other attribute conventions.
+ * Apr 17, 2015  4336     bsteffen    Rewrite to be configurable for other attribute conventions.
  * 
  * </pre>
  * 
