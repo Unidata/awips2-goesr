@@ -20,4 +20,4 @@ Require-Bundle: com.raytheon.uf.viz.d2d.nsharp;bundle-version="1.14.1",
  org.eclipse.ui;bundle-version="3.8.2",
  com.raytheon.viz.ui;bundle-version="1.14.1",
  com.raytheon.uf.common.geospatial;bundle-version="1.14.2",
- com.raytheon.viz.core.contours;bundle-version="1.14.0"
+ com.raytheon.uf.viz.core.grid;bundle-version="1.15.0"

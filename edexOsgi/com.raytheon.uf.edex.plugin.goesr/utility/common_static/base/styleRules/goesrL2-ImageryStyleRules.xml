@@ -210,7 +210,7 @@
     </paramLevelMatches>
     <imageStyle>
       <displayLegend>K-Index</displayLegend>
-      <displayUnits>K</displayUnits>
+      <displayUnits>C</displayUnits>
       <range scale="LINEAR">
         <minValue>-70</minValue>
         <maxValue>70</maxValue>
@@ -227,7 +227,7 @@
     </paramLevelMatches>
     <imageStyle>
       <displayLegend>Lifted Index</displayLegend>
-      <displayUnits>K</displayUnits>
+      <displayUnits>C</displayUnits>
       <range scale="LINEAR">
         <minValue>-40</minValue>
         <maxValue>40</maxValue>
@@ -244,7 +244,7 @@
     </paramLevelMatches>
     <imageStyle>
       <displayLegend>Showalter Index</displayLegend>
-      <displayUnits>K</displayUnits>
+      <displayUnits>C</displayUnits>
       <range scale="LINEAR">
         <minValue>-30</minValue>
         <maxValue>30</maxValue>
@@ -261,7 +261,7 @@
     </paramLevelMatches>
     <imageStyle>
       <displayLegend>Total Totals</displayLegend>
-      <displayUnits>K</displayUnits>
+      <displayUnits>C</displayUnits>
       <range scale="LINEAR">
         <minValue>-60</minValue>
         <maxValue>60</maxValue>
