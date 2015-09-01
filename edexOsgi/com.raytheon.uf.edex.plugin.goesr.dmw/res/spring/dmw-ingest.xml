@@ -36,6 +36,7 @@
             <doTry>
                 <pipeline>
                     <bean ref="stringToFile" />
+                    <bean ref="extractWMOHeader" method="remove" />
                     <bean ref="dmwDecoder" method="decode" />
                     <bean ref="dmwSHFilter" method="filter" />
                     <to uri="direct-vm:persistIndexAlert" />
