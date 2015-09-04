@@ -443,4 +443,21 @@
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>LST</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>Land Surface (Skin) Temperature</displayLegend>
+      <displayUnits>C</displayUnits>
+      <range scale="LINEAR">
+        <minValue>-25</minValue>
+        <maxValue>45</maxValue>
+      </range>
+      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <colorbarLabeling>
+        <values>-25 -20 -15 -10 -5 0 5 10 15 20 25 30 35 40 45</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
 </styleRuleset>
