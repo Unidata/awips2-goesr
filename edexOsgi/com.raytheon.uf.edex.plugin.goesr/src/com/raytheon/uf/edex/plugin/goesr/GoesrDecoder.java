@@ -19,12 +19,12 @@
  **/
 package com.raytheon.uf.edex.plugin.goesr;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
 
 import javax.measure.unit.SI;
 import javax.xml.bind.JAXB;
@@ -71,6 +71,7 @@ import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrSatelliteHeight;
  * Jul  5, 2013  2123     mschenke    Changed to use in-memory netcdf object
  * Feb 13, 2015  4043     bsteffen    Include scene number in sector.
  * Apr 17, 2015  4336     bsteffen    Rewrite to be configurable for other attribute conventions.
+ * Sep 28, 2015  4872     bsteffen    Decode File instead of byte[]
  * 
  * </pre>
  * 
@@ -101,25 +102,16 @@ public class GoesrDecoder {
      *            bytes must be in netcdf format with no additional headers.
      * @return Satellite Records.
      */
-    public SatelliteRecord[] decode(String name, byte[] goesrData) {
+    public SatelliteRecord[] decode(File file) {
         if (projectionFactory == null) {
             logger.error("Cannot decode goesr data because no projection factory is available.");
             return new SatelliteRecord[0];
         } else if (descriptions == null) {
             logger.error("Cannot decode goesr data because no descriptions were loaded.");
         }
-
-        if (name == null) {
-            /*
-             * Name is not used by anything in this plugin but is needed to
-             * construct the NetcdfFile
-             */
-            name = UUID.randomUUID().toString();
-        }
-
         NetcdfFile cdfFile = null;
         try {
-            cdfFile = NetcdfFile.openInMemory(name, goesrData);
+            cdfFile = NetcdfFile.open(file.getAbsolutePath());
             List<SatelliteRecord> records = decodeFile(cdfFile);
             for (Iterator<SatelliteRecord> it = records.iterator(); it
                     .hasNext();) {

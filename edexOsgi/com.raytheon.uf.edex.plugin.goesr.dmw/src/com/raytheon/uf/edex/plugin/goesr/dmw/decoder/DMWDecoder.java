@@ -19,13 +19,13 @@
  **/
 package com.raytheon.uf.edex.plugin.goesr.dmw.decoder;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
-import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,17 +44,18 @@ import com.raytheon.uf.common.time.DataTime;
 
 /**
  * Decoder for Derived Motion Wind products.
- *
+ * 
  * <pre>
- *
+ * 
  * SOFTWARE HISTORY
- *
+ * 
  * Date         Ticket#    Engineer    Description
  * ------------ ---------- ----------- --------------------------
  * Apr 7, 2015  4334       nabowle     Initial creation
- *
+ * Sep 28, 2015 4872       bsteffen    Decode File instead of byte[]
+ * 
  * </pre>
- *
+ * 
  * @author nabowle
  * @version 1.0
  */
@@ -108,7 +109,7 @@ public class DMWDecoder {
      *            The headers.
      * @return The decoded objects.
      */
-    public PluginDataObject[] decode(byte[] data, Headers headers) {
+    public PluginDataObject[] decode(File file, Headers headers) {
 
         String traceId = "";
 
@@ -119,9 +120,9 @@ public class DMWDecoder {
         }
 
         try {
-            if (data != null && data.length > 0) {
+            if (file != null && file.length() > 0) {
                 try {
-                    decodeData(data, traceId, records);
+                    decodeData(file, traceId, records);
                 } catch (Exception e) {
                     statusHandler.error(traceId + "-Error in decode", e);
                 } finally {
@@ -145,9 +146,9 @@ public class DMWDecoder {
 
     /**
      * Decodes the file, adding valid obs to the records list.
-     *
-     * @param messageData
-     *            The data.
+     * 
+     * @param file
+     *            The file.
      * @param traceId
      *            The traceId.
      * @param records
@@ -155,10 +156,9 @@ public class DMWDecoder {
      * @throws Exception
      *             if there's any unrecoverable issues with the file.
      */
-    private void decodeData(byte[] messageData, String traceId,
+    private void decodeData(File file, String traceId,
             List<PluginDataObject> records) throws Exception {
-        NetcdfFile dataFile = NetcdfFile.openInMemory(UUID.randomUUID()
-                .toString(), messageData);
+        NetcdfFile dataFile = NetcdfFile.open(file.getAbsolutePath());
 
         Variable latVar = dataFile.findVariable("lat");
         Variable lonVar = dataFile.findVariable("lon");

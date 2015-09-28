@@ -43,8 +43,8 @@
       <doTry>
         <pipeline>
           <bean ref="stringToFile" />
-          <bean ref="extractWMOHeader" method="remove" />
-          <bean ref="goesrDecoder" method="decode(${header.ingestFileName}, ${body})" />
+          <bean ref="getFileWithoutWmoHeader" />
+          <bean ref="goesrDecoder" method="decode" />
           <to uri="direct-vm:persistIndexAlert" />
         </pipeline>
         <doCatch>
