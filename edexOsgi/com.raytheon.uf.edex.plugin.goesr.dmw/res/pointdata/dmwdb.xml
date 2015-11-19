@@ -19,6 +19,7 @@
         further_licensing_information.
     -->
 <pointDataDbDescription>
+  <parameter name="validTime" queryName="dataTime.refTime" type="LONG" unit="ms" />
   <parameter name="latitude" queryName="location.latitude" type="FLOAT" unit="°" />
   <parameter name="longitude" queryName="location.longitude" type="FLOAT" unit="°" />
   <parameter name="stationId" queryName="location.stationId" type="STRING" />
