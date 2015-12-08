@@ -21,14 +21,20 @@ verticalDimension attribute which should be the name of the variable describing
 the 3rd dimension.
 
 The descriptive elements are used to specify the physicalElement,
-creatingEntity, source, sectorID, satHeight, units, and dataTime of a
-SatelliteRecord. Each description can include a constant value, an attribute
-name whose value will be stored in the correct attribute, or a format and a
-list of attributes whose values will be used within the format. The dataTime
-description also requires a date format that will be used to parse a date
-from an the specified attribute.
+creatingEntity, source, sectorID, satHeight, and units of a
+SatelliteRecord. Each description can be a constant value, an attribute or
+variable whose value will be stored in the correct attribute, or a format and a
+list of constants, attributes, and variables whose values will be used within
+the format.
 
-For netcdf files that contain multiple products a description contaiing a data
+The dataTime element has a refTime element that requires a value, attribute, or 
+variable that holds the refTime as either a formatted String or as an offset 
+from an epoch. If the refTime value is a formatted String, it also requires a 
+date format that will be used to parse a date from an the specified field. If 
+the refTime value is an offset from an epoch, the epoch must be specified as 
+well as the offset units.
+
+For netcdf files that contain multiple products, a description containing a data
 element should be created for each product. The descriptive for a description
 with a data element will only be applied to products created with the data. Any
 description without a data element will be applied to all the satellite records

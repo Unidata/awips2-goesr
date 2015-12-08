@@ -25,6 +25,8 @@
     <data variable="LVT" verticalDimension="pressure" maskVariable="DQF_Overall">
       <mask value="0" keep="true" />
     </data>
-    <physicalElement format="VTP-%4.2fhPa" formatAttributes="pressure" />
+    <formattedPhysicalElement format="VTP-%4.2fhPa">
+        <attribute name="pressure" /> 
+    </formattedPhysicalElement>
   </description>
 </goesrProductDescriptions>

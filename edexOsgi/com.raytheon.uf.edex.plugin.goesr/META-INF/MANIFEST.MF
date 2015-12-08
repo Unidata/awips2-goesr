@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: GOESR Decoder
 Bundle-SymbolicName: com.raytheon.uf.edex.plugin.goesr
-Bundle-Version: 1.15.0.qualifier
+Bundle-Version: 1.15.1.qualifier
 Bundle-Vendor: RAYTHEON
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: javax.measure,
@@ -16,5 +16,6 @@ Require-Bundle: javax.measure,
  com.raytheon.uf.common.datastorage,
  com.raytheon.uf.edex.core,
  com.raytheon.uf.common.localization;bundle-version="1.14.1",
- org.slf4j;bundle-version="1.7.5"
+ org.slf4j;bundle-version="1.7.5",
+ com.raytheon.uf.edex.netcdf;bundle-version="1.15.1"
 Export-Package: com.raytheon.uf.edex.plugin.goesr
