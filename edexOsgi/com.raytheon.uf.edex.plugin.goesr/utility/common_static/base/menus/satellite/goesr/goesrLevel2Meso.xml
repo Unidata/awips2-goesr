@@ -57,6 +57,12 @@
     </contribute>
     <contribute xsi:type="subinclude" subMenu="Derived Stability Indices" fileName="menus/satellite/goesr/goesrLevel2Stability.xml" />
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Land Skin Temp" id="goesr-lst">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="LST"/>
+        <substitute key="colormap" value="Sat/GOESR-L2/VTRSB"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
                 menuText="Snow Cover" id="goesr-fsc">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="FSC"/>
