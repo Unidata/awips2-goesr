@@ -18,14 +18,34 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
+    <!-- TOWRdocs Header
+         DMW menu file.
+    -->
+    <!-- TOWRdocs Description
+         This file adds derived motion winds (DMWs) to the GOES-R pull-down menu in the CAVE. If you click the GOES-R button
+         at the top of the CAVE, you will see a drop-down of product options, including DMWs, due to the presence of this menu
+         file.
+    -->
+    <!-- TOWRdocs Status
+         This file is a modification of the baseline DMW menu file of the same name.  It is updated to include the GOES-Test 
+         orbital slot products for selection. The dmwByScene.xml referenced in this file remains unmodified and under the menus
+         directory in the /base path.
+    -->
+    <!-- TOWRdocs POC
+         Lee Byerle
+    -->
 <menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <contribute xsi:type="titleItem" titleText="------ Derived Motion Winds ------" />
-    <contribute xsi:type="subinclude" subMenu="GOES-East" fileName="menus/satellite/goesr/dmwByScene.xml"
-         id="DMWGoesEast">
-         <substitute key="orbitalSlot" value="GOES-East"/>
+    <contribute xsi:type="subinclude" subMenu="GOES-East"
+        fileName="menus/satellite/goesr/dmwByScene.xml" id="DMWGoesEast">
+        <substitute key="orbitalSlot" value="GOES-East" />
     </contribute>
-    <contribute xsi:type="subinclude" subMenu="GOES-West" fileName="menus/satellite/goesr/dmwByScene.xml"
-         id="DMWGoesWest">
-         <substitute key="orbitalSlot" value="GOES-West"/>
+    <contribute xsi:type="subinclude" subMenu="GOES-West"
+        fileName="menus/satellite/goesr/dmwByScene.xml" id="DMWGoesWest">
+        <substitute key="orbitalSlot" value="GOES-West" />
+    </contribute>
+    <contribute xsi:type="subinclude" subMenu="GOES-Test"
+        fileName="menus/satellite/goesr/dmwByScene.xml" id="DMWGoesTest">
+        <substitute key="orbitalSlot" value="GOES-Test" />
     </contribute>
 </menuTemplate>
