@@ -33,18 +33,18 @@ import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
  * 
  * SOFTWARE HISTORY
  * 
- * Date          Ticket#  Engineer    Description
- * ------------- -------- ----------- --------------------------
- * Jun 01, 2012  796      jkorman     Initial creation
- * Jul 05, 2013  2123     mschenke    Refactored to be CRS factory
- * Apr 17, 2015  4336     bsteffen    Converted to be only a CRS factory.
+ * Date          Ticket#  Engineer  Description
+ * ------------- -------- --------- --------------------------------------------
+ * Jun 01, 2012  796      jkorman   Initial creation
+ * Jul 05, 2013  2123     mschenke  Refactored to be CRS factory
+ * Apr 17, 2015  4336     bsteffen  Converted to be only a CRS factory.
+ * May 02, 2016  5612     bsteffen  Use standard_parallel attribute to define
+ *                                  standard_parallel_1
  * 
  * </pre>
  * 
  * @author jkorman
- * @version 1.0
  */
-
 public class NorthPolarStereographicCrsFactory extends GoesrCrsFactory {
 
     @Override
@@ -55,7 +55,7 @@ public class NorthPolarStereographicCrsFactory extends GoesrCrsFactory {
     @Override
     protected void addSpecificParameters(Variable projectionVariable,
             ParameterValueGroup parameters) throws GoesrProjectionException {
-        setDoubleParameter(projectionVariable, "latitude_of_projection_origin",
+        setDoubleParameter(projectionVariable, "standard_parallel",
                 parameters, "standard_parallel_1");
         setDoubleParameter(projectionVariable,
                 "straight_vertical_longitude_from_pole", parameters,
