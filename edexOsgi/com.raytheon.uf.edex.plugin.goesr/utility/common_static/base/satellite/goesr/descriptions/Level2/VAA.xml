@@ -19,21 +19,38 @@
         further_licensing_information.
     -->
 <goesrProductDescriptions>
+  <default>
+    <matches>
+      <match pattern="OR_ABI-L2-VAA(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+        <attribute name="dataset_name" />
+      </match>
+    </matches>
+  </default>
+  
   <description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-VAA(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <data variable="VAH" maskVariable="RET_DQF">
-      <mask value="0" keep="true" />
+    <data>
+      <variable name="VAH" />
+      <discreteMask name="RET_DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
     </data>
-    <physicalElement value="VAH" />
+    <physicalElement>
+      <value value="VAH" />
+    </physicalElement>
   </description>
+  
   <description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-VAA(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <data variable="VAML" maskVariable="RET_DQF">
-      <mask value="0" keep="true" />
+    <data>
+      <variable name="VAML" />
+      <discreteMask name="RET_DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
     </data>
-    <physicalElement value="VAML" />
-    <units value="ton_us/(km*km)" />
+    <units>
+      <value value="ton_us/(km*km)" />
+    </units>
+    <physicalElement>
+      <value value="VAML" />
+    </physicalElement>
   </description>
 </goesrProductDescriptions>

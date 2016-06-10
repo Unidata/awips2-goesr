@@ -37,28 +37,61 @@
          Lee Byerle
     -->
 <goesrProductDescriptions>
+  <default>
+    <matches>
+        <match pattern="GOES-Test">
+            <attribute name="orbital_slot" />
+        </match>
+    </matches>
+  </default>
+
     <description>
-        <match attribute="orbital_slot" pattern="GOES-Test" />
-        <match attribute="scene_id" pattern="CONUS" />
-        <sectorID value="TCONUS" />
-    </description>
-    <description>
-        <match attribute="orbital_slot" pattern="GOES-Test" />
-        <match attribute="scene_id" pattern="Full Disk" />
-        <sectorID value="TFD" />
-    </description>
-    <description>
-        <match attribute="dataset_name"
-            pattern="OR_ABI-L2-\w{3,5}M1-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-        <match attribute="orbital_slot" pattern="GOES-Test" />
-        <match attribute="scene_id" pattern="Mesoscale" />
-        <sectorID value="TMESO-1" />
-    </description>
-    <description>
-        <match attribute="dataset_name"
-            pattern="OR_ABI-L2-\w{3,5}M2-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-        <match attribute="orbital_slot" pattern="GOES-Test" />
-        <match attribute="scene_id" pattern="Mesoscale" />
-        <sectorID value="TMESO-2" />
-    </description>
+    <matches>
+        <match  pattern="CONUS">
+            <attribute name="scene_id" />
+        </match>
+    </matches>
+    <sectorID>
+        <value value="TCONUS" />
+    </sectorID>
+  </description>
+  
+  <description>
+    <matches>
+        <match  pattern="Full Disk">
+            <attribute name="scene_id" />
+        </match>
+    </matches>
+    <sectorID>
+        <value value="TFD" />
+    </sectorID>
+  </description>
+  
+  <description>
+    <matches>
+      <match pattern="OR_ABI-L2-\w{3,5}M1-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+        <attribute name="dataset_name" />
+      </match>
+      <match pattern="Mesoscale">
+        <attribute name="scene_id" />
+      </match>
+    </matches>
+    <sectorID>
+        <value value="TMESO-1" />
+    </sectorID>
+  </description>
+
+  <description>
+    <matches>
+      <match pattern="OR_ABI-L2-\w{3,5}M2-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+        <attribute name="dataset_name" />
+      </match>
+      <match  pattern="Mesoscale">
+          <attribute name="scene_id" />
+      </match>
+    </matches>
+    <sectorID>
+        <value value="TMESO-2" />
+    </sectorID>
+  </description>
 </goesrProductDescriptions>

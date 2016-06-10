@@ -19,16 +19,29 @@
         further_licensing_information.
     -->
 <goesrProductDescriptions>
+  <default>
+    <matches>
+      <match pattern="OR_ABI-L2-FSC(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+        <attribute name="dataset_name" />
+      </match>
+    </matches>
+  </default>
+
   <description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-FSC(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <data variable="FSC" maskVariable="DQF">
-      <mask value="0" keep="true" />
+    <data>
+      <variable name="FSC" />
+      <discreteMask name="DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
     </data>
-    <physicalElement value="FSC" />
     <!-- The units are percent in the netcdf file, which means values from 0 to 1. The 
       javax units framework used by awips thinks percent is 0 to 100. So using 
       %*100 gets the javax units framework to interpret things correctly. -->
-    <units value="%*100" />
+    <units>
+      <value value="%*100" />
+    </units>
+    <physicalElement>
+      <value value="FSC" />
+    </physicalElement>
   </description>
 </goesrProductDescriptions>

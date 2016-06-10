@@ -25,12 +25,23 @@
        ACHA : AWG Cloud Height Algorithm
        AWG  : Algorithm Working Group
        -->
+  <default>
+    <matches>
+      <match pattern="OR_ABI-L2-ACHA(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+        <attribute name="dataset_name" />
+      </match>
+    </matches>
+  </default>
+
   <description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-ACHA(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <data variable="HT" maskVariable="DQF">
-      <mask value="0" keep="true" />
+    <data>
+      <variable name="HT" />
+      <discreteMask name="DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
     </data>
-    <physicalElement value="CTH" />
+    <physicalElement>
+      <value value="CTH" />
+    </physicalElement>
   </description>
 </goesrProductDescriptions>

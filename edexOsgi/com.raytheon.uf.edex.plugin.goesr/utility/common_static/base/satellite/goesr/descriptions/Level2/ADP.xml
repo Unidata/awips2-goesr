@@ -19,29 +19,45 @@
         further_licensing_information.
     -->
 <goesrProductDescriptions>
+  <default>
+    <matches>
+      <match pattern="OR_ABI-L2-ADP(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+        <attribute name="dataset_name" />
+      </match>
+    </matches>
+  </default>
+
   <description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-ADP(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
     <data bitset="Aerosol Dust Smoke" />
-    <physicalElement value="ADP" />
+    <physicalElement>
+      <value value="ADP" />
+    </physicalElement>
   </description>
+
   <!-- Enable these descriptions to decode individual fields separately. -->
-  <!--description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-ADP(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <data variable="Aerosol" />
-    <physicalElement value="Aerosol" />
+  <!--<description>
+    <data>
+        <variable name="Aerosol"/>
+    </data>
+    <physicalElement>
+      <value value="Aerosol" />
+    </physicalElement>
   </description>
   <description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-ADP(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <data variable="Dust" />
-    <physicalElement value="Dust" />
+    <data>
+        <variable name="Dust"/>
+    </data>
+    <physicalElement>
+      <value value="Dust" />
+    </physicalElement>
   </description>
   <description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-ADP(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <data variable="Smoke" />
-    <physicalElement value="Smoke" />
-  </description-->
+    <data>
+        <variable name="Smoke"/>
+    </data>
+    <physicalElement>
+      <value value="Smoke" />
+    </physicalElement>
+  </description>
+  -->
 </goesrProductDescriptions>

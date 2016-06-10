@@ -19,14 +19,26 @@
         further_licensing_information.
     -->
 <goesrProductDescriptions>
+  <default>
+    <matches>
+      <match pattern="OR_ABI-L2-LVTP(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+        <attribute name="dataset_name" />
+      </match>
+    </matches>
+  </default>
+
   <description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-LVTP(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <data variable="LVT" verticalDimension="pressure" maskVariable="DQF_Overall">
-      <mask value="0" keep="true" />
+    <data>
+      <variable name="LVT" />
+      <discreteMask name="DQF_Overall" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
     </data>
-    <formattedPhysicalElement format="VTP-%4.2fhPa">
-        <attribute name="pressure" /> 
-    </formattedPhysicalElement>
+    
+    <physicalElement>
+      <formatted format="VTP-%4.2fhPa">
+        <variable name="pressure" />
+      </formatted>
+    </physicalElement>
   </description>
 </goesrProductDescriptions>

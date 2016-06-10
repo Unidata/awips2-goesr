@@ -21,8 +21,14 @@ package com.raytheon.uf.edex.plugin.goesr.decoder.lookup;
 
 import java.util.Map;
 
+import ucar.nc2.Attribute;
+import ucar.nc2.NetcdfFile;
+import ucar.nc2.Variable;
+
 import com.raytheon.uf.common.dataplugin.satellite.SatelliteRecord;
 import com.raytheon.uf.common.datastorage.records.IDataRecord;
+import com.raytheon.uf.edex.netcdf.description.exception.InvalidDescriptionException;
+import com.raytheon.uf.edex.plugin.goesr.description.data.GoesrDataDescription;
 
 /**
  * Utility class for Goes-R Decoding.
@@ -67,5 +73,48 @@ public class GoesrUtils {
             return null;
         }
         return attributes.get(name);
+    }
+
+    public static Number getFillValue(Variable variable, Object data) {
+        Number fillValue = 0;
+        Attribute attr = variable.findAttribute("_FillValue");
+        if (attr != null) {
+            fillValue = attr.getNumericValue();
+            attr = variable.findAttribute("_Unsigned");
+            if (attr != null) {
+                boolean unsigned = attr.getStringValue().equals("true");
+                if (unsigned && fillValue.intValue() < 0) {
+                    if (data instanceof byte[]) {
+                        fillValue = 0xFF & (fillValue.intValue());
+                    } else if (data instanceof short[]) {
+                        fillValue = 0xFFFF & (fillValue.intValue());
+                    }
+                }
+            }
+        }
+        return fillValue;
+    }
+
+    public static String getUnits(NetcdfFile file,
+            GoesrDataDescription dataDesc, Variable variable)
+            throws InvalidDescriptionException {
+        String units = null;
+        if (dataDesc.getUnits() != null) {
+            units = dataDesc.getUnits().getString(file);
+            if ("1".equals(units)) {
+                units = null;
+            }
+        }
+    
+        if (units == null) {
+            Attribute attr = variable.findAttribute("units");
+            if (attr != null) {
+                units = attr.getStringValue();
+                if ("1".equals(units)) {
+                    units = null;
+                }
+            }
+        }
+        return units;
     }
 }

@@ -19,28 +19,61 @@
         further_licensing_information.
     -->
 <goesrProductDescriptions>
-  <description>
-    <match attribute="orbital_slot" pattern="GOES-West" />
-    <match attribute="scene_id" pattern="CONUS" />
-    <sectorID value="WCONUS" />
+  <default>
+    <matches>
+        <match pattern="GOES-West">
+            <attribute name="orbital_slot" />
+        </match>
+    </matches>
+  </default>
+
+    <description>
+    <matches>
+        <match  pattern="CONUS">
+            <attribute name="scene_id" />
+        </match>
+    </matches>
+    <sectorID>
+        <value value="WCONUS" />
+    </sectorID>
   </description>
+  
   <description>
-    <match attribute="orbital_slot" pattern="GOES-West" />
-    <match attribute="scene_id" pattern="Full Disk" />
-    <sectorID value="WFD" />
+    <matches>
+        <match  pattern="Full Disk">
+            <attribute name="scene_id" />
+        </match>
+    </matches>
+    <sectorID>
+        <value value="WFD" />
+    </sectorID>
   </description>
+  
   <description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-\w{3,5}M1-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <match attribute="orbital_slot" pattern="GOES-West" />
-    <match attribute="scene_id" pattern="Mesoscale" />
-    <sectorID value="WMESO-1" />
+    <matches>
+      <match pattern="OR_ABI-L2-\w{3,5}M1-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+        <attribute name="dataset_name" />
+      </match>
+      <match pattern="Mesoscale">
+        <attribute name="scene_id" />
+      </match>
+    </matches>
+    <sectorID>
+        <value value="WMESO-1" />
+    </sectorID>
   </description>
+
   <description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-\w{3,5}M2-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <match attribute="orbital_slot" pattern="GOES-West" />
-    <match attribute="scene_id" pattern="Mesoscale" />
-    <sectorID value="WMESO-2" />
+    <matches>
+      <match pattern="OR_ABI-L2-\w{3,5}M2-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+        <attribute name="dataset_name" />
+      </match>
+      <match  pattern="Mesoscale">
+          <attribute name="scene_id" />
+      </match>
+    </matches>
+    <sectorID>
+        <value value="WMESO-2" />
+    </sectorID>
   </description>
 </goesrProductDescriptions>

@@ -19,32 +19,29 @@
         further_licensing_information.
     -->
 <goesrProductDescriptions>
+  <default>
+    <matches>
+        <match pattern="OR_ABI-L2-\w{3,5}(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+            <attribute name="dataset_name"/>
+        </match>
+    </matches>
+  </default>
+
   <description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-\w{3,5}(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <sourceAttribute name="production_site" />
     <dataTime>
         <formattedRefTime dateFormat="yyyy-MM-dd'T'HH:mm:ss.S'Z'">
             <attribute name="time_coverage_start"/> 
         </formattedRefTime>
     </dataTime>
-  </description>
-  <description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-\w{3,5}(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <match attribute="platform_ID" pattern="G16" />
-    <creatingEntity value="GOES-16" />
-  </description>
-  <description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-\w{3,5}(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <match attribute="platform_ID" pattern="G17" />
-    <creatingEntity value="GOES-17" />
-  </description>
-  <description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-\w{3,5}(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <match attribute="platform_ID" pattern="G18" />
-    <creatingEntity value="GOES-18" />
+
+    <source>
+        <attribute name="production_site" />
+    </source>
+
+    <creatingEntity>
+        <pattern inputPattern="G(1[678])" outputFormat="GOES-%S">
+            <attribute name="platform_ID" />
+        </pattern>
+    </creatingEntity>
   </description>
 </goesrProductDescriptions>

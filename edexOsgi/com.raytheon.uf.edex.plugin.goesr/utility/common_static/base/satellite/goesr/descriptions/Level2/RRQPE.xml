@@ -19,13 +19,26 @@
         further_licensing_information.
     -->
 <goesrProductDescriptions>
+  <default>
+    <matches>
+      <match pattern="OR_ABI-L2-RRQPE(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+        <attribute name="dataset_name" />
+      </match>
+    </matches>
+  </default>
+
   <description>
-    <match attribute="dataset_name"
-      pattern="OR_ABI-L2-RRQPE(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc" />
-    <data variable="RRQPE" maskVariable="DQF">
-      <mask value="0" keep="true" />
+    <data>
+      <variable name="RRQPE" />
+      <discreteMask name="DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
     </data>
-    <physicalElement value="RRQPE" />
-    <units value="mm/h" />
+    <units>
+      <value value="mm/h" />
+    </units>
+    <physicalElement>
+      <value value="RRQPE" />
+    </physicalElement>
   </description>
 </goesrProductDescriptions>
