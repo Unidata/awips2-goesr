@@ -36,7 +36,9 @@ import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrSatelliteHeight;
  * calculate minX and minY either by using the product center or tile center
  * attributes. Since the Level2 data types do not set these attributes,
  * factories of this type are generally only applicable to the sectorized CMI
- * files.
+ * files. This factory converts meter spacing into angular spacing using
+ * {@link GoesrEnvelopeFactory#RADIANS_PER_KM_SPACING} so it is only suitable
+ * for GOES-R data and should not be used for Himawari-8 data.
  * 
  * <pre>
  * 
@@ -45,6 +47,7 @@ import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrSatelliteHeight;
  * Date          Ticket#  Engineer    Description
  * ------------- -------- ----------- --------------------------
  * Apr 17, 2015  4336     bsteffen    Initial creation
+ * Mar 15, 2016  5456     bsteffen    Update javadoc to point out himawari deficiency
  * 
  * </pre>
  * 

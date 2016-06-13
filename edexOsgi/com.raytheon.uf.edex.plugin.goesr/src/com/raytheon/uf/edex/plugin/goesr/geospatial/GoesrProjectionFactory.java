@@ -67,6 +67,7 @@ import com.raytheon.uf.edex.plugin.goesr.geospatial.envelope.TileCenterEnvelopeF
  * Jul 05, 2013  2123     mschenke    Refactored to have CRS factory for each type of CRS
  * Oct 29, 2014  3770     bsteffen    Pass more attributes to the projection.
  * Apr 17, 2015  4336     bsteffen    Split out crs and envelope creation into distinct factories.
+ * Mar 15, 2016  5456     bsteffen    Change Priority of envelope factories
  * 
  * </pre>
  * 
@@ -116,10 +117,10 @@ public class GoesrProjectionFactory {
         crsMap.put("polar_projection", polar);
         crsMap.put("fixedgrid_projection", geostationary);
 
+        envelopeList.add(new DimensionEnvelopeFactory());
+        envelopeList.add(new ImageBoundsEnvelopeFactory());
         envelopeList.add(new ProductCenterEnvelopeFactory());
         envelopeList.add(new TileCenterEnvelopeFactory());
-        envelopeList.add(new ImageBoundsEnvelopeFactory());
-        envelopeList.add(new DimensionEnvelopeFactory());
     }
 
     public GoesrCrsFactory registerCrsFactory(String name,

@@ -72,6 +72,7 @@ import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrSatelliteHeight;
  * Feb 13, 2015  4043     bsteffen    Include scene number in sector.
  * Apr 17, 2015  4336     bsteffen    Rewrite to be configurable for other attribute conventions.
  * Sep 28, 2015  4872     bsteffen    Decode File instead of byte[]
+ * Mar 16, 2016  5456     bsteffen    Fix log statements
  * 
  * </pre>
  * 
@@ -118,17 +119,17 @@ public class GoesrDecoder {
                 SatelliteRecord record = it.next();
                 if (record.getDataTime() == null) {
                     logger.error(
-                            "Discarding Record due to missing DataTime: %",
+                            "Discarding Record due to missing DataTime: {}",
                             record);
                     it.remove();
                 } else if (record.getPhysicalElement() == null) {
                     logger.error(
-                            "Discarding Record due to missing physical element: %",
+                            "Discarding Record due to missing physical element: {}",
                             record);
                     it.remove();
                 } else if (record.getSectorID() == null) {
                     logger.error(
-                            "Discarding Record due to missing sector ID: %",
+                            "Discarding Record due to missing sector ID: {}",
                             record);
                     it.remove();
                 }

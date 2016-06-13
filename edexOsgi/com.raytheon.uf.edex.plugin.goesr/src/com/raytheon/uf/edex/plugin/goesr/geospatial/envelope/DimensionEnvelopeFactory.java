@@ -40,6 +40,7 @@ import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
  * Date          Ticket#  Engineer    Description
  * ------------- -------- ----------- --------------------------
  * Apr 17, 2015  4336     bsteffen    Initial creation
+ * Mar 15, 2016  5456     bsteffen    Add 0.5 to shift from cell center to cell corner.
  * 
  * </pre>
  * 
@@ -77,6 +78,14 @@ public class DimensionEnvelopeFactory extends AbstractDimensionEnvelopeFactory {
                     "Unable to read min values of x or y dimesnions.", e);
         }
 
+        /*
+         * The variables define the position of the center of the data value,
+         * expand by half a pixel to get the edge of the "image"
+         */
+        minx -= 0.5;
+        miny -= 0.5;
+
+        /* Convert from pixel spacing to meter spacing. */
         minx = (minx + offsetx / scalex) * dx;
         miny = (miny + offsety / scaley) * dy;
 

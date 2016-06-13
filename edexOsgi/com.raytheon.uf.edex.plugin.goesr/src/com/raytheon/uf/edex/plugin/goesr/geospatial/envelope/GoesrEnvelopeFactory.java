@@ -37,6 +37,7 @@ import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
  * Date          Ticket#  Engineer    Description
  * ------------- -------- ----------- --------------------------
  * Apr 17, 2015  4336     bsteffen    Initial creation
+ * Mar 15, 2016  5456     bsteffen    Update javadoc of RADIANS_PER_KM_SPACING
  * 
  * </pre>
  * 
@@ -49,7 +50,8 @@ public interface GoesrEnvelopeFactory {
      * Default conversion value that is used to convert from an angle between
      * the satellite and a point of earth into a meter spacing. This value is an
      * approximation and a better value can usually be determined by using the
-     * actual orbital height.
+     * actual orbital height. This value is an approximation defined for GOES-R
+     * data and may not be valid for other satellites.
      */
     public static final double RADIANS_PER_KM_SPACING = 28 * 1e-6;
 
