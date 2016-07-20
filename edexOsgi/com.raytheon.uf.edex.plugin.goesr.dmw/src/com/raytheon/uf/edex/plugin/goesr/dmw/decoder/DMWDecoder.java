@@ -20,30 +20,51 @@
 package com.raytheon.uf.edex.plugin.goesr.dmw.decoder;
 
 import java.io.File;
+import java.io.InputStream;
+import java.io.IOException; 
 import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
+
+import javax.xml.bind.JAXB;
+
+import com.raytheon.edex.esb.Headers;
+
+import com.raytheon.uf.common.dataplugin.PluginDataObject;
+import com.raytheon.uf.common.dataplugin.goesr.dmw.DMWRecord;
+
+import com.raytheon.uf.common.localization.exception.LocalizationException;
+import com.raytheon.uf.common.localization.LocalizationFile;
+import com.raytheon.uf.common.localization.IPathManager;
+
+import com.raytheon.uf.common.pointdata.spatial.SurfaceObsLocation;
+
+import com.raytheon.uf.common.status.IUFStatusHandler;
+import com.raytheon.uf.common.status.UFStatus;
+
+import com.raytheon.uf.common.time.DataTime;
+import com.raytheon.uf.common.time.util.TimeUtil;
+
+import com.raytheon.uf.edex.netcdf.description.AttributeDescription;
+import com.raytheon.uf.edex.netcdf.description.VariableDescription;
+import com.raytheon.uf.edex.netcdf.description.ValueDescription;
+import com.raytheon.uf.edex.netcdf.description.exception.InvalidDescriptionException;
+
+import com.raytheon.uf.edex.plugin.goesr.dmw.description.ProductDescription;
+import com.raytheon.uf.edex.plugin.goesr.dmw.description.ProductDescriptions;
 
 import ucar.ma2.Array;
 import ucar.nc2.Attribute;
 import ucar.nc2.NetcdfFile;
 import ucar.nc2.Variable;
 
-import com.raytheon.edex.esb.Headers;
-import com.raytheon.uf.common.dataplugin.PluginDataObject;
-import com.raytheon.uf.common.dataplugin.goesr.dmw.DMWRecord;
-import com.raytheon.uf.common.pointdata.spatial.SurfaceObsLocation;
-import com.raytheon.uf.common.status.IUFStatusHandler;
-import com.raytheon.uf.common.status.UFStatus;
-import com.raytheon.uf.common.time.DataTime;
-
 /**
- * Decoder for Derived Motion Wind products.
+ * Decoder for Derived Motion Wind products. Updated to handle both GOES-R and
+ * Himawari DMWs through Product Descriptions files
  * 
  * <pre>
  * 
@@ -53,6 +74,7 @@ import com.raytheon.uf.common.time.DataTime;
  * ------------ ---------- ----------- --------------------------
  * Apr 7, 2015  4334       nabowle     Initial creation
  * Sep 28, 2015 4872       bsteffen    Decode File instead of byte[]
+ * July 13, 2016  19051     mcomerford      Enhanced DMW plugin update (DCS 19051)
  * 
  * </pre>
  * 
@@ -61,47 +83,24 @@ import com.raytheon.uf.common.time.DataTime;
  */
 
 public class DMWDecoder {
-    /**
-     * The only Data Quality Flag indicating valid data. Any non-zero value
-     * indicates an invalid point.
-     */
-    private static final int VALID_DQF = 0;
 
-    private static final String MESOSCALE = "Mesoscale";
+    private static final transient IUFStatusHandler statusHandler = UFStatus.getHandler(DMWDecoder.class);
 
-    /** Pattern to extract mesoscale scene number from the dataset name. */
-    private static final Pattern MESO_SCENE_PATTERN = Pattern
-            .compile("DMWM(?<mesoscene>\\d)");
-
-    private static final transient IUFStatusHandler statusHandler = UFStatus
-            .getHandler(DMWDecoder.class);
-
-    private static final Calendar epoch;
-
-    private static final String COVERAGE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.S'Z'";
-
-    static {
-        epoch = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
-        epoch.clear();
-        epoch.setTimeZone(TimeZone.getTimeZone("GMT"));
-        epoch.set(Calendar.YEAR, 2000);
-        epoch.set(Calendar.MONTH, Calendar.JANUARY);
-        epoch.set(Calendar.DAY_OF_MONTH, 1);
-        epoch.set(Calendar.HOUR_OF_DAY, 12);
-        epoch.set(Calendar.MINUTE, 0);
-        epoch.set(Calendar.SECOND, 0);
-        epoch.set(Calendar.MILLISECOND, 0);
-    }
+    /** Used to parse the ProductDescription-defined epoch (handling the dataTime). */
+    private static final String DATE_STRING = "yyyy-MM-dd HH:mm:ss";
+    
+    /** The ProductDescriptions that will be loaded from the description file. */
+    private ProductDescriptions descriptions;
 
     /**
      * Constructor.
      */
     public DMWDecoder() {
-        super();
+    super();
     }
 
     /**
-     * Decode a GOES-R DMW file.
+     * Decode a GOES-R/Himawari DMW file.
      *
      * @param data
      *            The file data.
@@ -153,60 +152,160 @@ public class DMWDecoder {
      *            The traceId.
      * @param records
      *            The list to add valid records to.
-     * @throws Exception
-     *             if there's any unrecoverable issues with the file.
      */
-    private void decodeData(File file, String traceId,
-            List<PluginDataObject> records) throws Exception {
+    private void decodeData(File file, String traceId, List<PluginDataObject> records) throws IOException {
+        
         NetcdfFile dataFile = NetcdfFile.open(file.getAbsolutePath());
 
-        Variable latVar = dataFile.findVariable("lat");
-        Variable lonVar = dataFile.findVariable("lon");
-        Variable spdVar = dataFile.findVariable("wind_speed");
-        Variable dirVar = dataFile.findVariable("wind_direction");
-        Variable dqfVar = dataFile.findVariable("DQF"); // quality factor
+        int descMatch = 0; // # of descriptions that have generated legit DMWRecords
 
-        // Full Disk, CONUS, or Mesoscale.
-        String scene = dataFile.findGlobalAttribute("scene_id")
-                .getStringValue();
-        if (MESOSCALE.equals(scene)) {
-            // determine which mesoscale scene from dataset name.
-            String dataset = dataFile.findGlobalAttribute("dataset_name")
-                    .getStringValue();
-            Matcher matcher = MESO_SCENE_PATTERN.matcher(dataset);
-            if (matcher.find()) {
-                String mesoScene = matcher.group("mesoscene");
-                scene = scene + mesoScene;
-            } else {
-                statusHandler.info(traceId
-                        + " - Using default Mesoscale Scene.");
-                scene = scene + "1";
+        // Loop through the Product Descriptions file(s) to generate DMWRecords
+        for  (ProductDescription description : descriptions.getDescriptions()) {
+            try {
+                processDescription(description, dataFile, records);
+                descMatch++; // If we make it here then the description was valid (although no DMWRecords) may have been generated
+            } catch (InvalidDescriptionException e) {
+                // Only print the thrown InvalidDescriptionException if "debug" is specified in description file 
+                if (description.getDebugStatus()) {
+                    statusHandler.info("ProductDescription \"" + description.getName() + "\" -- " +
+                        e.getMessage());            
+                }
+            } catch (Exception e) {
+                // Any Exceptions that aren't caught as InvalidDescriptionException
+                statusHandler.info("An uncaught error occurred while processing description " + description.getName() + ": " +
+                    e.getMessage());
             }
         }
-        String orbitalSlot = dataFile.findGlobalAttribute("orbital_slot")
-                .getStringValue();
-        int channel = dataFile.findVariable("band_id").readScalarInt();
 
-        if (latVar == null || lonVar == null || spdVar == null
-                || dirVar == null || dqfVar == null) {
-            throw new IllegalArgumentException(
-                    "File does not contain a valid derived motion wind product.");
+        dataFile.close();
+
+        if (descMatch == 0) {
+            statusHandler.info("No descriptions provided are valid for the file " + file.getName());
         }
+    }
+
+    /**
+     * Processes a ProductDescription to decode file and populate the records list
+     *
+     * @param description
+     *              instance being processed.
+     * @param file
+     *              The file to be decoded.
+     * @param records
+     *              The list of PluginDataObject to populate w/ valid obs.
+     * @throws Exception
+     *              To log the which product description throws the error and where it is thrown.
+     */
+    private void processDescription(ProductDescription description, NetcdfFile dataFile, 
+        List<PluginDataObject> records) throws IOException, InvalidDescriptionException{
+
+        // Date handling
+        String epochStr = description.getDataTime().getEpoch();
+        TimeUnit timeUnits = description.getDataTime().getUnits();
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_STRING);
+        Date timeDate;
+        try {
+            timeDate = sdf.parse(epochStr);
+        } catch (ParseException e) {
+            throw new InvalidDescriptionException("The \"epoch\" attribute of the \"<dateTime>\" bean must be of format \"yyyy-MM-dd HH:mm:ss\".");
+        }
+        Calendar epochCal = TimeUtil.newGmtCalendar(timeDate);
+
+        // Initialize the variable(s) given the ProductDescriptions
+        Variable latVar, lonVar, spdVar, dirVar, dqfVar, filVar, epochOffsetVar;
+        try {
+            latVar = dataFile.findVariable(description.getLat().getName()); 
+            lonVar = dataFile.findVariable(description.getLon().getName());           
+            spdVar = dataFile.findVariable(description.getWspd().getName());
+            dirVar = dataFile.findVariable(description.getWdir().getName());
+            dqfVar = dataFile.findVariable(description.getDQF().getName());
+            filVar = dataFile.findVariable(description.getFilter().getName());
+            epochOffsetVar = dataFile.findVariable(description.getDataTime().getField().getName());
+        } catch (Exception e) {
+            throw new InvalidDescriptionException("An error occurred while assigning the NetCDF Variables");
+        }
+
+        // Quick check to see if a valid winds product may exist
+        if (latVar == null || lonVar == null || spdVar == null || 
+                dirVar == null || dqfVar == null) {
+            throw new InvalidDescriptionException("The Product Description could not load the necessary Variables from the file.");
+        }
+
+        // determining the percentage of valid DQF's in the file (no DMWRecords if this is present in description file and <= 0)
+        float percentGoodDQFVal = 0.0f;
+        if (description.getPercentGoodDQF() != null) {
+                try {
+                    if (description.getPercentGoodDQF() instanceof VariableDescription){
+
+                        Variable percentGoodDQF = dataFile.findVariable(description.getPercentGoodDQF().getName());
+                        percentGoodDQFVal = percentGoodDQF.readScalarFloat();
+
+                    } else if (description.getPercentGoodDQF() instanceof AttributeDescription) {
+
+                        Attribute percentGoodDQF = dqfVar.findAttribute(description.getPercentGoodDQF().getName());
+                        percentGoodDQFVal = percentGoodDQF.getNumericValue().floatValue();
+                    }
+
+                } catch (Exception e) {
+                    throw new InvalidDescriptionException("An error occurred while decoding \"<percentGoodDQF>\" field");
+                }
+
+            if (percentGoodDQFVal <= 0.0f) {
+                throw new InvalidDescriptionException("\"<percentGoodDQF>\" field shows no valid winds in the file");
+            }
+        }
+
+        String scene="";
+        try {
+            if (description.getScene() instanceof AttributeDescription) {                       
+                scene = description.getScene().getString(dataFile);
+            } else if (description.getScene() instanceof ValueDescription) {
+                ValueDescription sceneDesc = (ValueDescription) description.getScene();
+                scene = sceneDesc.getValue();
+            }
+        } catch (Exception e) {
+                throw new InvalidDescriptionException("An error occurred while decoding \"<scene>\" field; ", e);
+        }
+
+        String orbitalSlot = "";
+        if (description.getOrbitalSlot() != null) {
+            try {
+                if (description.getOrbitalSlot() instanceof AttributeDescription) {
+                    orbitalSlot = description.getOrbitalSlot().getString(dataFile);
+                } else if (description.getOrbitalSlot() instanceof ValueDescription) {
+                    ValueDescription orbitalSlotDesc = (ValueDescription) description.getOrbitalSlot();
+                    orbitalSlot = orbitalSlotDesc.getString(dataFile);
+                }
+            } catch (Exception e) {
+                throw new InvalidDescriptionException("An error occurred while decoding \"orbitalSlot\" field; ", e);
+            }
+        }
+
+        // String orbitalSlot = dataFile.findGlobalAttribute(description.getOrbitalSlot().getName()).getStringValue();
+        int channel = dataFile.findVariable(description.getChannel().getName()).readScalarInt();
+
         Array lats = latVar.read();
         Array lons = lonVar.read();
         Array spds = spdVar.read();
         Array dirs = dirVar.read();
         Array dqfs = dqfVar.read();
+        Array filters = filVar.read();
 
         long latsSize = lats.getSize();
-        if (latsSize != lons.getSize() || latsSize != spds.getSize()
-                || latsSize != dirs.getSize() || latsSize != dqfs.getSize()) {
-            throw new IllegalArgumentException(
-                    "File data is not of the same length.");
+        if (latsSize != lons.getSize() || latsSize != spds.getSize() 
+            || latsSize != dirs.getSize() || latsSize != dqfs.getSize()) {
+            throw new InvalidDescriptionException("The required data arrays within the file are not of the same length");
         }
-
-        Calendar datetime = getDateTime(dataFile, traceId);
-
+        
+        // Handle setting the epoch/timestamp of the data (GOES-R : Scalar,  Himawari : Array)
+        int epochOffsetVal = 0;
+        Array epochOffsets = null;
+        if (epochOffsetVar.isScalar()) {
+            epochOffsetVal = epochOffsetVar.readScalarInt();
+        } else {
+            epochOffsets = epochOffsetVar.read();
+        }
+            
         double lat;
         double lon;
         float speed;
@@ -214,99 +313,86 @@ public class DMWDecoder {
         byte quality;
         DMWRecord record;
         SurfaceObsLocation location;
-        while (lats.hasNext() && lons.hasNext() && spds.hasNext()
-                && dirs.hasNext() && dqfs.hasNext()) {
+        Float filter;
+
+        while (lats.hasNext() && lons.hasNext() && spds.hasNext() 
+            && dirs.hasNext() && dqfs.hasNext()) {
+
             lat = lats.nextDouble();
             lon = lons.nextDouble();
-            speed = spds.nextFloat();
+            speed = spds.nextFloat(); 
             direction = dirs.nextFloat();
             quality = dqfs.nextByte();
 
-            if (quality == VALID_DQF) {
-                record = new DMWRecord();
-                record.setScene(scene);
-                record.setChannel(channel);
-                record.setOrbitalSlot(orbitalSlot);
+            // Get the next float in the "filters" Array. If there is no next float in the Array, default the value
+            if (filters.hasNext()) {
+                try {
+                    filter = filters.nextFloat();
+                } catch (Exception e){
+                    filter = (Float) null;
+                } 
+            } else {
+                filter = (Float) null;
+            }
 
-                location = new SurfaceObsLocation();
-                location.assignLocation((float) lat, (float) lon);
-                location.generateCoordinateStationId();
-                record.setLocation(location);
+            // Now to do the same only for the epoch
+            if (!epochOffsetVar.isScalar()) {
+                if(epochOffsets.hasNext()) {
+                    try {
+                        Number epochOffset = (Number) epochOffsets.next();
+                        epochOffsetVal = epochOffset.intValue();
+                    } catch (Exception e) {
+                        throw new InvalidDescriptionException("An error occurred while decoding \"<dataTime> <variable>\" field; ", e);
+                    }
+                } else {
+                    throw new InvalidDescriptionException("Uncaught error occurred while decoding \"<dataTime>\" field");
+                }
+            }
 
-                record.setWindSpd(Float.valueOf(speed));
-                record.setWindDir(Float.valueOf(direction));
+            // Only create records for the description's valid DQF variable
+            if (quality == description.getValidDQF()) {
 
-                record.setDataTime(new DataTime(datetime));
+                    record = new DMWRecord();
 
-                records.add(record);
+                    record.setScene(scene);
+                    record.setChannel(channel);
+                    record.setOrbitalSlot(orbitalSlot);
+
+                    location = new SurfaceObsLocation();
+                    location.assignLocation((float) lat, (float) lon);
+                    location.generateCoordinateStationId();
+                    record.setLocation(location);
+
+                    record.setWindSpd(speed);
+                    record.setWindDir(direction);
+
+                    record.setFilter(filter);
+
+                    Calendar datetime = (Calendar) epochCal.clone();
+                    datetime.add(Calendar.SECOND, epochOffsetVal);
+                    record.setDataTime(new DataTime(datetime));
+                        
+                    records.add(record);
             }
         }
     }
 
     /**
-     * @param dataFile
-     *            The NetCDF File
-     * @return The mid-point between the start and end image scan.
-     * @throws Exception
-     *             If the dates are invalid.
+     * The {@link IPathManager} is used to look up descriptions files.
      */
-    private Calendar getDateTime(NetcdfFile dataFile, String traceId) throws Exception {
-        /*
-         * TODO: Using the time variable doesn't match the coverage start/end
-         * dates. Not sure if I'm wrong or it's the data. Also, some time values
-         * are not filled, so for now I'm parsing the coverage date attributes
-         */
-        // Variable timeVar = dataFile.findVariable("time");
-        // double timeOffset = timeVar.readScalarDouble();
-        // int timeSec = (int) (timeOffset);
+    public void setPathManager(IPathManager pathManager) {
+        LocalizationFile[] files = pathManager.listStaticFiles("satellite/dmw/descriptions", new String[] { ".xml" }, true, true);
+        ProductDescriptions descriptions = new ProductDescriptions();
+        for (LocalizationFile file : files) {
+            statusHandler.info("Loading DMW data description(s) from " + file.getPath());
 
-        // Calendar date = (Calendar) epoch.clone();
-        // date.add(Calendar.SECOND, timeSec);
-        // date.add(Calendar.MILLISECOND, (int) ((timeOffset - timeSec) *
-        // 1000));
-
-        // return date;
-
-        Calendar date;
-
-        SimpleDateFormat sdf = new SimpleDateFormat(COVERAGE_FORMAT);
-        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-
-        Attribute startAttr = dataFile
-                .findGlobalAttribute("time_coverage_start");
-        Attribute endAttr = dataFile.findGlobalAttribute("time_coverage_end");
-
-        Date start;
-        Date end;
-        if (startAttr != null && endAttr != null) {
-            start = sdf.parse(startAttr.getStringValue());
-            end = sdf.parse(endAttr.getStringValue());
-
-            Calendar startCal = (Calendar) epoch.clone();
-            startCal.setTime(start);
-            Calendar endCal = (Calendar) epoch.clone();
-            endCal.setTime(end);
-
-            long midpointMs = (startCal.getTimeInMillis() + endCal.getTimeInMillis()) / 2;
-
-            date = (Calendar) epoch.clone();
-            date.setTimeInMillis(midpointMs);
-        } else if (endAttr != null) {
-            end = sdf.parse(endAttr.getStringValue());
-            date = (Calendar) epoch.clone();
-            date.setTime(end);
-            statusHandler.warn(traceId
-                    + " - Using coverage end date as reftime.");
-        } else if (startAttr != null) {
-            start = sdf.parse(startAttr.getStringValue());
-            date = (Calendar) epoch.clone();
-            date.setTime(start);
-            statusHandler.warn(traceId
-                    + " - Using coverage start date as reftime.");
-        } else {
-            throw new IllegalArgumentException("Coverage period not found.");
+            try (InputStream inputStream = file.openInputStream()) {
+                ProductDescriptions unmarshalled = JAXB.unmarshal(inputStream, ProductDescriptions.class);
+                descriptions.addDescriptions(unmarshalled);
+            } catch (LocalizationException | IOException e) {
+                statusHandler.error("Unable to load product descriptions from " + file.getPath(), e);
+            }
         }
-
-        return date;
+        this.descriptions = descriptions;
     }
 }
