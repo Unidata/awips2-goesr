@@ -39,18 +39,20 @@ import com.raytheon.uf.edex.netcdf.description.field.indirect.DelegateFieldDescr
 /**
  * A description of the data contained with a {@link NetcdfFile} that can be
  * used to extract the message data for use in a {@link SatelliteRecord}
- *
+ * 
  * <pre>
- *
+ * 
  * SOFTWARE HISTORY
- *
+ * 
  * Date         Ticket#    Engineer    Description
  * ------------ ---------- ----------- --------------------------
  * Apr 17, 2015 4336       bsteffen    Initial creation
  * May 26, 2016 5584       nabowle     Rename and refactor for consolidation.
+ * Jul 21, 2016 5584       nabowle     Check data masks within isPresent()
  *
+ * 
  * </pre>
- *
+ * 
  * @author nabowle
  */
 @XmlAccessorType(XmlAccessType.NONE)
@@ -131,15 +133,17 @@ public class GoesrDataDescription extends DataDescription {
     }
 
     /**
-     * If the variable is configured, this.variable.isPresent(file) is returned.
-     * If the bitset is configured, true will be returned only if every variable
-     * in the bitset is present. If neither is configured, an
-     * InvalidDescriptionException will be thrown.
-     * 
+     * If any data masks are configured, true will only be returned if all data
+     * masks are present. If the variable is configured,
+     * this.variable.isPresent(file) is returned. If the bitset is configured,
+     * true will be returned only if every variable in the bitset is present. If
+     * neither is configured, an InvalidDescriptionException will be thrown.
+     *
      * @param file
      *            The netcdf file.
      * @return true if the described variable is present in the netcdf file, or
-     *         if all the bitset variables are present.
+     *         if all the bitset variables are present, and all configured data
+     *         masks are present.
      * @throws InvalidDescriptionException
      *             if the variable description and bitset variables are not
      *             configured, or if the variable description is invalid.
@@ -147,8 +151,12 @@ public class GoesrDataDescription extends DataDescription {
     @Override
     public boolean isPresent(NetcdfFile file)
             throws InvalidDescriptionException {
+        boolean dataVarConfigured = false;
         if (this.variable != null) {
-            return this.variable.isPresent(file);
+            if (!this.variable.isPresent(file)) {
+                return false;
+            }
+            dataVarConfigured = true;
         }
 
         if (this.bitset != null && !this.bitset.isEmpty()) {
@@ -159,11 +167,23 @@ public class GoesrDataDescription extends DataDescription {
                     return false;
                 }
             }
-            return true;
+            dataVarConfigured = true;
         }
 
-        throw new InvalidDescriptionException(
-                "the data variable or bitset variables must be configured.");
+        if (!dataVarConfigured) {
+            throw new InvalidDescriptionException(
+                    "the data variable or bitset variables must be configured.");
+        }
+
+        if (this.masks != null) {
+            for (AbstractDataMaskDescription mask : this.masks) {
+                if (!mask.isPresent(file)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     @Override
