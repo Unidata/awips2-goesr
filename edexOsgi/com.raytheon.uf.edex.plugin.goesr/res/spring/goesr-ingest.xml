@@ -33,7 +33,7 @@
     errorHandlerRef="errorHandler">
 
     <route id="goesrIngestRoute">
-      <from uri="jms-durable:queue:Ingest.GOESR" />
+      <from uri="jms-durable:queue:Ingest.GOESR?concurrentConsumers=${goesr-decode.threads}" />
       <setHeader headerName="pluginName">
         <constant>satellite</constant>
       </setHeader>
