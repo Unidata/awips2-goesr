@@ -26,6 +26,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.Index;
+
 import com.raytheon.uf.common.dataplugin.PluginDataObject;
 import com.raytheon.uf.common.dataplugin.annotations.DataURI;
 import com.raytheon.uf.common.dataplugin.persist.IPersistable;
@@ -38,7 +40,8 @@ import com.raytheon.uf.common.serialization.annotations.DynamicSerialize;
 import com.raytheon.uf.common.serialization.annotations.DynamicSerializeElement;
 
 /**
- * GOES-R Derived Motion Wind Record.
+ * GOES-R Derived Motion Wind Record. Updated to include "filter" DB column for
+ * pressure-based filtering of GOES-R/Himawari DMWs.
  *
  * <pre>
  *
@@ -47,16 +50,20 @@ import com.raytheon.uf.common.serialization.annotations.DynamicSerializeElement;
  * Date         Ticket#    Engineer    Description
  * ------------ ---------- ----------- --------------------------
  * Apr 6, 2015  4334       nabowle     Initial creation
+ * July 14, 2016  19051   mcomerford   Added "filter" field (DCS 19051)
  *
  * </pre>
  *
  * @author nabowle
  * @version 1.0
  */
+
 @Entity
 @SequenceGenerator(initialValue = 1, name = PluginDataObject.ID_GEN, sequenceName = "dmwseq")
 @Table(name = DMWRecord.PLUGIN_NAME, uniqueConstraints = { @UniqueConstraint(columnNames = {
-        "orbitalSlot", "scene", "channel", "refTime", "latitude", "longitude" }) })
+        "orbitalSlot", "scene", "channel", "refTime", "latitude", "longitude", "filter" }) })
+@org.hibernate.annotations.Table(appliesTo = DMWRecord.PLUGIN_NAME, indexes = {
+        @Index(name = "%TABLE%_filterandwspd_index", columnNames = {"filter", "windspd"}) })
 @DynamicSerialize
 public class DMWRecord extends PersistablePluginDataObject implements
         ISpatialEnabled, IPersistable {
@@ -77,12 +84,12 @@ public class DMWRecord extends PersistablePluginDataObject implements
 
     @DataURI(position = 2)
     @DynamicSerializeElement
-    @Column(nullable = false, length = 9)
+    @Column(nullable = false, length = 20)
     private String orbitalSlot;
 
     @DataURI(position = 3)
     @DynamicSerializeElement
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 20)
     private String scene;
 
     @DataURI(position = 4)
@@ -103,6 +110,13 @@ public class DMWRecord extends PersistablePluginDataObject implements
     @Column
     private float windDir;
 
+    /**
+     * Allows for filtering based off of a defined NetCDF-4 Variable
+     * (e.g. Pressure, Altitude, etc.)
+     */
+    @Column
+    @DynamicSerializeElement
+    private Float filter;
 
     /**
      * Constructor.
@@ -242,4 +256,82 @@ public class DMWRecord extends PersistablePluginDataObject implements
     public void setPointDataView(PointDataView pointDataView) {
         this.pointDataView = pointDataView;
     }
+
+    /**
+     * @return the filter
+     */
+    public Float getFilter() {
+        return filter;
+    }
+
+    /**
+     * @param filter
+     *             the filter to set
+     */
+    public void setFilter(Float filter) {
+        this.filter = filter;
+    }
+
+    @Override
+    public int hashCode() {
+
+        final int prime = 31;
+        int result = super.hashCode();
+
+        result = prime * result + ((pointDataView == null) ? 0 : pointDataView.hashCode());
+        result = prime * result + ((location == null) ? 0 : location.hashCode());
+        result = prime * result + ((orbitalSlot == null) ? 0 : orbitalSlot.hashCode());
+        result = prime * result + ((scene == null) ? 0 : scene.hashCode());
+        result = prime * result + Integer.valueOf(channel).hashCode();
+        result = prime * result + Float.valueOf(windSpd).hashCode();
+        result = prime * result + Float.valueOf(windDir).hashCode();
+        result = prime * result + ((filter == null) ? 0 : filter.hashCode());
+
+        return result;
+
+    }
+
+     @Override
+     public boolean equals(Object obj){
+        
+        if (this == obj)
+            return true;
+        if (!super.equals(obj))
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+
+        DMWRecord record = (DMWRecord) obj;
+
+        if (pointDataView == null) {
+            if (record.pointDataView != null)
+                return false;
+        } else if (!pointDataView.equals(record.pointDataView)) 
+            return false;
+        if (location == null) {
+            if (record.location != null)
+                return false;
+        } else if (!location.equals(record.location)) 
+            return false;
+        if (orbitalSlot == null) {
+            if (record.orbitalSlot != null)
+                return false;
+        } else if (!orbitalSlot.equals(record.orbitalSlot))
+            return false;
+        if (scene == null) {
+            if (record.scene != null)
+                return false;
+        } else if (!scene.equals(record.scene))
+            return false;
+        if (channel != record.channel)
+            return false;
+        if (windSpd != record.windSpd)
+            return false;
+        if (windDir != record.windDir)
+            return false;
+        if (filter != record.filter)
+            return false;
+
+        return true;
+     }
 }
