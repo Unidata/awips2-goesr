@@ -1,22 +1,18 @@
 package com.raytheon.uf.edex.plugin.goesr.dmw.description;
 
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
 
-import com.raytheon.uf.edex.netcdf.description.AbstractFieldDescription;
-import com.raytheon.uf.edex.netcdf.description.AttributeDescription;
-import com.raytheon.uf.edex.netcdf.description.ValueDescription;
-import com.raytheon.uf.edex.netcdf.description.VariableDescription;
-
-import com.raytheon.uf.edex.netcdf.description.date.DataTimeDescription;
-import com.raytheon.uf.edex.netcdf.description.date.EpochOffsetDateValue;
+import com.raytheon.uf.edex.netcdf.description.field.date.EpochOffsetDateValue;
+import com.raytheon.uf.edex.netcdf.description.field.direct.VariableDescription;
+import com.raytheon.uf.edex.netcdf.description.field.indirect.DelegateFieldDescription;
 
 /**
- * A single Derived Motion Winds (DMW) Product Description. Used by the DMWDecoder
- * to decode fields from a single NetCDF file into multiple DMWRecords.
+ * A single Derived Motion Winds (DMW) Product Description. Used by the
+ * DMWDecoder to decode fields from a single NetCDF file into multiple
+ * DMWRecords.
  *
  * <pre>
  *
@@ -61,126 +57,213 @@ public class ProductDescription {
     @XmlElement
     private EpochOffsetDateValue dataTime;
 
+    @XmlElement
+    private DelegateFieldDescription orbitalSlot = null;
 
-    @XmlElements({
-        @XmlElement(name = "orbitalSlotAttribute", type = AttributeDescription.class),
-        @XmlElement(name = "orbitalSlotValue", type = ValueDescription.class)
-    })
-    private AbstractFieldDescription orbitalSlot = null;
+    @XmlElement
+    private DelegateFieldDescription percentGoodDQF = null;
 
-    @XmlElements({
-        @XmlElement(name = "percentGoodDQFVariable", type = VariableDescription.class),
-        @XmlElement(name = "percentGoodDQFAttribute", type = AttributeDescription.class)
-    })
-    private AbstractFieldDescription percentGoodDQF = null;
+    @XmlElement
+    private DelegateFieldDescription scene;
 
-    @XmlElements({
-        @XmlElement(name = "sceneValue", type = ValueDescription.class),
-        @XmlElement(name = "sceneAttribute", type = AttributeDescription.class)
-    })
-    private AbstractFieldDescription scene;
-    
     @XmlElement
     private int validDQF;
 
     @XmlElement(name = "debug")
     private boolean debugStatus = false;
-    
-    /** Getters & Setters */
+
+    /**
+     * @return the name
+     */
     public String getName() {
         return name;
     }
+
+    /**
+     * @param name the name to set
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * @return the lat
+     */
     public VariableDescription getLat() {
         return lat;
     }
+
+    /**
+     * @param lat the lat to set
+     */
     public void setLat(VariableDescription lat) {
         this.lat = lat;
     }
 
+    /**
+     * @return the lon
+     */
     public VariableDescription getLon() {
         return lon;
     }
+
+    /**
+     * @param lon the lon to set
+     */
     public void setLon(VariableDescription lon) {
         this.lon = lon;
     }
 
+    /**
+     * @return the wspd
+     */
     public VariableDescription getWspd() {
         return wspd;
     }
+
+    /**
+     * @param wspd the wspd to set
+     */
     public void setWspd(VariableDescription wspd) {
         this.wspd = wspd;
     }
 
+    /**
+     * @return the wdir
+     */
     public VariableDescription getWdir() {
         return wdir;
     }
+
+    /**
+     * @param wdir the wdir to set
+     */
     public void setWdir(VariableDescription wdir) {
         this.wdir = wdir;
     }
 
+    /**
+     * @return the dqf
+     */
     public VariableDescription getDQF() {
         return dqf;
     }
+
+    /**
+     * @param dqf the dqf to set
+     */
     public void setDQF(VariableDescription dqf) {
         this.dqf = dqf;
     }
 
+    /**
+     * @return the filter
+     */
     public VariableDescription getFilter() {
         return filter;
     }
+
+    /**
+     * @param filter the filter to set
+     */
     public void setFilter(VariableDescription filter) {
         this.filter = filter;
     }
 
+    /**
+     * @return the channel
+     */
     public VariableDescription getChannel() {
         return channel;
     }
+
+    /**
+     * @param channel the channel to set
+     */
     public void setChannel(VariableDescription channel) {
         this.channel = channel;
     }
 
+    /**
+     * @return the dataTime
+     */
     public EpochOffsetDateValue getDataTime() {
         return dataTime;
     }
+
+    /**
+     * @param dataTime the dataTime to set
+     */
     public void setDataTime(EpochOffsetDateValue dataTime) {
         this.dataTime = dataTime;
     }
 
-    public AbstractFieldDescription getOrbitalSlot() {
+    /**
+     * @return the orbitalSlot
+     */
+    public DelegateFieldDescription getOrbitalSlot() {
         return orbitalSlot;
     }
-    public void setOrbitalSlot(AbstractFieldDescription orbitalSlot) {
+
+    /**
+     * @param orbitalSlot the orbitalSlot to set
+     */
+    public void setOrbitalSlot(DelegateFieldDescription orbitalSlot) {
         this.orbitalSlot = orbitalSlot;
     }
 
-    public AbstractFieldDescription getPercentGoodDQF() {
+    /**
+     * @return the percentGoodDQF
+     */
+    public DelegateFieldDescription getPercentGoodDQF() {
         return percentGoodDQF;
     }
-    public void setPercentGoodDQF(AbstractFieldDescription percentGoodDQF) {
+
+    /**
+     * @param percentGoodDQF the percentGoodDQF to set
+     */
+    public void setPercentGoodDQF(DelegateFieldDescription percentGoodDQF) {
         this.percentGoodDQF = percentGoodDQF;
     }
 
-    public AbstractFieldDescription getScene() {
+    /**
+     * @return the scene
+     */
+    public DelegateFieldDescription getScene() {
         return scene;
     }
-    public void setScene(AbstractFieldDescription scene) {
+
+    /**
+     * @param scene the scene to set
+     */
+    public void setScene(DelegateFieldDescription scene) {
         this.scene = scene;
     }
 
+    /**
+     * @return the validDQF
+     */
     public int getValidDQF() {
         return validDQF;
     }
+
+    /**
+     * @param validDQF the validDQF to set
+     */
     public void setValidDQF(int validDQF) {
         this.validDQF = validDQF;
     }
 
-    public boolean getDebugStatus() {
+    /**
+     * @return the debugStatus
+     */
+    public boolean isDebugStatus() {
         return debugStatus;
     }
+
+    /**
+     * @param debugStatus the debugStatus to set
+     */
     public void setDebugStatus(boolean debugStatus) {
         this.debugStatus = debugStatus;
     }

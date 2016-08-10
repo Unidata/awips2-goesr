@@ -16,7 +16,8 @@ Require-Bundle: com.raytheon.uf.common.pointdata;bundle-version="1.14.0",
  com.raytheon.edex.common;bundle-version="1.14.1",
  ucar.nc2,
  com.raytheon.uf.common.dataplugin.goesr.dmw,
- com.raytheon.uf.edex.netcdf
+ com.raytheon.uf.edex.netcdf,
+ com.raytheon.uf.common.localization;bundle-version="1.15.1"
 Export-Package: com.raytheon.uf.edex.plugin.goesr.dmw.dao,
  com.raytheon.uf.edex.plugin.goesr.dmw.decoder,
  com.raytheon.uf.edex.plugin.goesr.dmw.description

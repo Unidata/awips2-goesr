@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-    
+
     <!-- TOWRdocs Header
         The DMW Product Descriptions configuration file for GOES-R.
     -->
@@ -19,21 +19,21 @@
 
         <lat>
             The "Latitude" Variable
-        
+
         <lon>
             The "Longitude" Variable
-        
+
         <wspd>
             The "Wind Speed" Variable
-        
+
         <wdir>
             The "Wind Direction" Variable
-        
+
         <dqf>
             The "Data Quality Flag" Variable. This maps the NetCDF Variable that handles the
             "quality" of each observation (good obs, bad because ______, etc.)
-        
-        <percentGoodDQFAttribute>
+
+        <percentGoodDQF>
             Attribute (For GOES-R ONLY) of the "DQF" Variable, that maps the percentage
             of winds observations that have a "good obs" quality flag associated.
 
@@ -45,7 +45,7 @@
 
                         **IMPORTANT** - If this is your case, be sure to modify the <validDQF> tag
                                 to match the DQF You are interested in!
-        
+
         <validDQF>
             User-set variable that determines which DQF to use to create a DMW Record.
             This value is default at 0 ("good observation"), but may be altered to ingest
@@ -60,18 +60,18 @@
             The Variable that determines what value to insert into the "filter" column for a
             DMWRecord. This defaults to pressure for DMWs (for altitude-based querying) but
             realistically may be expanded to handle other NetCDF Variables in the same file.
-        
+
         <channel>
             The Variable that maps the "Channel Number" of the satellite associated with
             the observation.
 
-        <orbitalSlotValue>
+        <orbitalSlot>
             Maps to the NetCDF Global Attribute "orbital_slot" in GOES-R DMW Files.
 
             NOTE: Himawari DMW Files are slightly different, and thus this value is user-set in the
                         description instead.
 
-        <sceneValue>
+        <scene>
             Maps to the NetCDF Global Attribute "scene_id" in GOES-R DMW Files.
 
             NOTE: Himawari DMW Files are slightly different, and thus this value is user-set in the
@@ -115,9 +115,9 @@
     <!-- TOWRdocs POC
         Matt Comerford
     -->
-    
+
 <dmwProductDescriptions>
-    
+
     <!-- GOES-R Products -->
     <description name="GOES-R">
         <lat name="lat" />
@@ -125,16 +125,22 @@
         <wspd name="wind_speed" />
         <wdir name="wind_direction" />
         <dqf name="DQF" />
-        <percentGoodDQFAttribute name="percent_good_wind_qf" />
+        <percentGoodDQF>
+            <attribute name="percent_good_wind_qf" />
+        </percentGoodDQF>
         <filter name="pressure" />
         <channel name="band_id" />
         <validDQF>0</validDQF>
-        <orbitalSlotAttribute name="orbital_slot" />
-        <sceneAttribute name="scene_id" />
+        <orbitalSlot>
+            <attribute name="orbital_slot" />
+        </orbitalSlot>
+        <scene>
+            <attribute name="scene_id" />
+        </scene>
         <dataTime epoch="2000-01-01 12:00:00" units="SECONDS">
             <variable name="time" />
         </dataTime>
-        <debug>false</debug> <!-- Option for verbose logging of errors cause by this Description -->
+        <debug>false</debug>
     </description>
-    
+
 </dmwProductDescriptions>
