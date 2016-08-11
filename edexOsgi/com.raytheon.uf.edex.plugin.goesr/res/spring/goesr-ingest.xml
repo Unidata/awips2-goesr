@@ -32,8 +32,10 @@
   <camelContext id="goesr-camel" xmlns="http://camel.apache.org/schema/spring"
     errorHandlerRef="errorHandler">
 
+    <endpoint id="goesrJmsEndpoint" uri="jms-durable:queue:Ingest.GOESR?concurrentConsumers=${goesr-decode.threads}" />
+
     <route id="goesrIngestRoute">
-      <from uri="jms-durable:queue:Ingest.GOESR?concurrentConsumers=${goesr-decode.threads}" />
+      <from ref="goesrJmsEndpoint" />
       <setHeader headerName="pluginName">
         <constant>satellite</constant>
       </setHeader>
