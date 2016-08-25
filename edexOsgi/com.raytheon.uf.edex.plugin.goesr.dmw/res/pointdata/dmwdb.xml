@@ -28,4 +28,6 @@
   <parameter name="scene" queryName="scene" type="STRING" />
   <parameter name="channel" queryName="channel" type="INT" />
   <parameter name="orbitalSlot" queryName="orbitalSlot" type="STRING" />
+  <parameter name="filter" queryName="filter" type="FLOAT" />
 </pointDataDbDescription>
+

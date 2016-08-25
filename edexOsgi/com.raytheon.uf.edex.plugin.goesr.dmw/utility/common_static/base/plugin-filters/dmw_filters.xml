@@ -18,9 +18,33 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
+
+    <!-- TOWRdocs Header
+        File that sets the lat/lon bounds for filtering Derived Motion Winds (DMW)
+        records.
+    -->
+    <!-- TOWRdocs Description
+        This file sets the upper and lower bounds for latitude and longitude of 
+        DMW products. Upon ingest, if a DMWRecord is created with any lat/lons
+        outside the values below, That record will not be added to the Postgres
+        database.
+    -->
+    <!-- TOWRdocs Status
+        This file is currently in the baseline for AWIPS Version 16.2.2. The filter has
+        been commented out, as the DMW Plugin for GOES-R will now handle Himawari
+        data (DCS 19051). I have left the commented-out filter in, however, in case any
+        sites would like to filter their winds on a site-localization level (i.e. if they don't
+        use Himawari winds).
+    -->
+    <!-- TOWRdocs POC
+        Matt Comerford
+    -->
+
+
 <pluginDataObjectFilter>
+<!-- Uncomment section below to exclude all southern hemisphere DMW data on ingest. -->
+    <!--
     <filterElements xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="rectFilterElement">
-        <!-- Exclude all southern hemisphere data. -->
         <filterElementName>Exclude SouthernHemisphere</filterElementName>
         <filterType>EXCLUDE</filterType>
         <upperLeftLat>-0.1</upperLeftLat>
@@ -29,4 +53,6 @@
         <lowerRightLon>180.0</lowerRightLon>
     </filterElements>
     <filterName>Point.DMW</filterName>
+-->
 </pluginDataObjectFilter>
+
