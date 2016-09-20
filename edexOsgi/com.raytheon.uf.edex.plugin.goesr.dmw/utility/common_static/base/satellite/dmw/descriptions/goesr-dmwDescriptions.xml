@@ -126,7 +126,8 @@
         <wdir name="wind_direction" />
         <dqf name="DQF" />
         <percentGoodDQF>
-            <attribute name="percent_good_wind_qf" />
+            <variableAttribute attributeName="percent_good_wind_qf"
+                variableName="DQF" />
         </percentGoodDQF>
         <filter name="pressure" />
         <channel name="band_id" />
