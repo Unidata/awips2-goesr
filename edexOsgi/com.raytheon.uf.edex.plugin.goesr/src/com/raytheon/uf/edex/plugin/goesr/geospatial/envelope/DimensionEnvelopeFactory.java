@@ -20,13 +20,22 @@
 package com.raytheon.uf.edex.plugin.goesr.geospatial.envelope;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import javax.measure.unit.SI;
 
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.opengis.referencing.crs.ProjectedCRS;
+import org.opengis.referencing.datum.Ellipsoid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
+import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrSatelliteHeight;
 
 import ucar.nc2.NetcdfFile;
 import ucar.nc2.Variable;
-
-import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
 
 /**
  * 
@@ -37,22 +46,26 @@ import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
  * 
  * SOFTWARE HISTORY
  * 
- * Date          Ticket#  Engineer    Description
- * ------------- -------- ----------- --------------------------
- * Apr 17, 2015  4336     bsteffen    Initial creation
- * Mar 15, 2016  5456     bsteffen    Add 0.5 to shift from cell center to cell corner.
+ * Date          Ticket#  Engineer  Description
+ * ------------- -------- --------- --------------------------------------------
+ * Apr 17, 2015  4336     bsteffen  Initial creation
+ * Mar 15, 2016  5456     bsteffen  Add 0.5 to shift from cell center to cell
+ *                                  corner.
+ * Nov 15, 2016  5994     bsteffen  Log a warning for potentially problematic
+ *                                  Geostationary envelopes.
  * 
  * </pre>
  * 
  * @author bsteffen
- * @version 1.0
  */
 public class DimensionEnvelopeFactory extends AbstractDimensionEnvelopeFactory {
+
+    protected final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
     public GoesrEnvelope getEnvelopeFromDimensions(NetcdfFile cdfFile,
             CoordinateReferenceSystem crs, Variable x, Variable y)
-            throws GoesrProjectionException {
+                    throws GoesrProjectionException {
         int nx = x.getDimension(0).getLength();
         int ny = y.getDimension(0).getLength();
 
@@ -96,7 +109,83 @@ public class DimensionEnvelopeFactory extends AbstractDimensionEnvelopeFactory {
         envelope.setDy(dy);
         envelope.setMinX(minx);
         envelope.setMinY(miny);
+
+        validate(cdfFile, crs, envelope);
+
         return envelope;
+    }
+
+    /**
+     * Detect common errors and log warnings that the envelope may be invalid.
+     * Specifically this will detect if the data has an incorrect sign on the
+     * scale or offset of the y variable which results in a product that is
+     * impossible to display because it doesn't contain any points on the
+     * reference ellipsoid. This has been a common problem in sample data so it
+     * is helpful for the decoder to automatically diagnose the problem.
+     * 
+     * @param cdfFile
+     *            the source file.
+     * @param crs
+     *            the coordinate system of the envelope
+     * @param envelope
+     *            the envelope.
+     */
+    private void validate(NetcdfFile cdfFile, CoordinateReferenceSystem crs,
+            GoesrEnvelope envelope) {
+        if (crs instanceof ProjectedCRS
+                && crs.getName().getCode().equals("Geostationary")) {
+            Ellipsoid ellpsoid = ((ProjectedCRS) crs).getBaseCRS().getDatum()
+                    .getEllipsoid();
+            double semiMajor = ellpsoid.getSemiMajorAxis();
+            double orbitalHeight = GoesrSatelliteHeight.getOrbitalHeight(crs,
+                    SI.METER);
+            double maxValid = semiMajor * orbitalHeight
+                    / (orbitalHeight + semiMajor);
+            double minValid = -1 * maxValid;
+
+            /*
+             * Products near the edge of the disk normally have a min value just
+             * outside of the range [minValid,maxValid] but the dx/dy values
+             * result in a majority of the product being within the valid range.
+             * These checks detect the case where the dx,dy just make the rest
+             * of the product further out of range.
+             */
+
+            if (envelope.getMinY() > maxValid && envelope.getDy() > 0) {
+                logGeostationaryWarning(cdfFile, "above", "y");
+            } else if (envelope.getMinY() < minValid && envelope.getDy() < 0) {
+                logGeostationaryWarning(cdfFile, "below", "y");
+            }
+            if (envelope.getMinX() > maxValid && envelope.getDx() > 0) {
+                logGeostationaryWarning(cdfFile, "right of", "x");
+            } else if (envelope.getMinX() < minValid && envelope.getDx() < 0) {
+                logGeostationaryWarning(cdfFile, "left of", "x");
+            }
+        }
+    }
+
+    /**
+     * Log a verbose warning that a geostationary envelope is outside the
+     * reference ellipsoid.
+     * 
+     * @param cdfFile
+     *            the source file
+     * @param location
+     *            the location of the envelope relative to the reference
+     *            ellipsoid(left, right, above or below).
+     * @param variableName
+     *            the name of the variable that is presumed to be incorrect
+     */
+    private void logGeostationaryWarning(NetcdfFile cdfFile, String location,
+            String variableName) {
+        Path shortFilename = Paths.get(cdfFile.getLocation()).getFileName();
+        Variable var = cdfFile.findVariable(variableName);
+        Number scale = var.findAttribute("scale_factor").getNumericValue();
+        Number offset = var.findAttribute("add_offset").getNumericValue();
+        logger.warn(
+                "Geostationary envelope is defined {} the reference ellipsoid and may not be viewable on a map."
+                        + " The scale_factor({}) and add_offset({}) of the {} variable in {} may be incorrect.",
+                location, scale, offset, variableName, shortFilename);
     }
 
 }
