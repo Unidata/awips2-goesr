@@ -18,26 +18,37 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
+    <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
+    -->
 <bundle>
-  <displayList>
-        <displays xsi:type="nsharpSkewTPaneDisplay" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <displayList>
+        <displays xsi:type="nsharpSkewTPaneDisplay"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <descriptor xsi:type="nsharpSkewTPaneDescriptor">
                 <resource>
                     <loadProperties loadWithoutData="true" />
-                    <resourceData xsi:type="goesrLegacyProfileResourceData" soundingType="GOES" pointName="${pointName;A}">
+                    <resourceData xsi:type="goesrLegacyProfileResourceData"
+                        soundingType="GOES" pointName="${pointName;A}">
                         <metadataMap>
-                                <mapping key="sectorID">
-                                        <constraint constraintValue="${sector}" constraintType="EQUALS" />
-                                </mapping>
-                                <mapping key="creatingEntity">
-                                        <constraint constraintValue="GOES%" constraintType="LIKE" />
-                                </mapping>
-                                <mapping key="pluginName">
-                                        <constraint constraintValue="satellite" constraintType="EQUALS" />
-                                </mapping>
-                                <mapping key="physicalElement">
-                                        <constraint constraintValue="V%P-%hPa" constraintType="LIKE" />
-                                </mapping>
+                            <mapping key="sectorID">
+                                <constraint constraintValue="${sector}"
+                                    constraintType="EQUALS" />
+                            </mapping>
+                            <mapping key="creatingEntity">
+                                <constraint constraintValue="GOES%"
+                                    constraintType="LIKE" />
+                            </mapping>
+                            <mapping key="pluginName">
+                                <constraint constraintValue="satellite"
+                                    constraintType="EQUALS" />
+                            </mapping>
+                            <mapping key="physicalElement">
+                                <constraint constraintValue="V%P-%hPa"
+                                    constraintType="LIKE" />
+                            </mapping>
                         </metadataMap>
                     </resourceData>
                 </resource>
