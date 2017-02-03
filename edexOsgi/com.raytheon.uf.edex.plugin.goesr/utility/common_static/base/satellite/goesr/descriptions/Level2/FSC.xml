@@ -18,30 +18,35 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
+    <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
+    -->
 <goesrProductDescriptions>
-  <default>
-    <matches>
-      <match pattern="OR_ABI-L2-FSC(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
-        <attribute name="dataset_name" />
-      </match>
-    </matches>
-  </default>
-
-  <description>
-    <data>
-      <variable name="FSC" />
-      <discreteMask name="DQF" value="0" keep="true">
-        <fillByte>-1</fillByte>
-      </discreteMask>
-    </data>
+    <default>
+        <matches>
+            <match
+                pattern="OR_ABI-L2-FSC(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+                <attribute name="dataset_name" />
+            </match>
+        </matches>
+    </default>
+    <description>
+        <data>
+            <variable name="FSC" />
+            <discreteMask name="DQF" value="0" keep="true">
+                <fillByte>-1</fillByte>
+            </discreteMask>
+        </data>
     <!-- The units are percent in the netcdf file, which means values from 0 to 1. The 
       javax units framework used by awips thinks percent is 0 to 100. So using 
       %*100 gets the javax units framework to interpret things correctly. -->
-    <units>
-      <value value="%*100" />
-    </units>
-    <physicalElement>
-      <value value="FSC" />
-    </physicalElement>
-  </description>
+        <units>
+            <value value="%*100" />
+        </units>
+        <physicalElement>
+            <value value="FSC" />
+        </physicalElement>
+    </description>
 </goesrProductDescriptions>

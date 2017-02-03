@@ -18,51 +18,54 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
+    <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
+    -->
 <goesrProductDescriptions>
-  <default>
-    <matches>
-      <match pattern="OR_ABI-L2-FDC(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
-        <attribute name="dataset_name" />
-      </match>
-    </matches>
-  </default>
-
-  <description>
-    <data>
-      <variable name="Area" />
-      <discreteMask name="DQF" value="0" keep="true">
-        <fillByte>-1</fillByte>
-      </discreteMask>
-    </data>
-    <units>
-      <value value="km*km" />
-    </units>
-    <physicalElement>
-      <value value="FDC Area" />
-    </physicalElement>
-  </description>
-
-  <description>
-    <data>
-      <variable name="Power" />
-      <discreteMask name="DQF" value="0" keep="true">
-        <fillByte>-1</fillByte>
-      </discreteMask>
-    </data>
-    <physicalElement>
-      <value value="FDC Power" />
-    </physicalElement>
-  </description>
-
-  <description>
-    <data>
-      <variable name="Temp" />
-      <discreteMask name="DQF" value="0" keep="true">
-        <fillByte>-1</fillByte>
-      </discreteMask>
-    </data>
-    <physicalElement>
-      <value value="FDC Temp" />
-    </physicalElement>
-  </description>
+    <default>
+        <matches>
+            <match
+                pattern="OR_ABI-L2-FDC(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+                <attribute name="dataset_name" />
+            </match>
+        </matches>
+    </default>
+    <description>
+        <data>
+            <variable name="Area" />
+            <discreteMask name="DQF" value="0" keep="true">
+                <fillByte>-1</fillByte>
+            </discreteMask>
+        </data>
+        <units>
+            <value value="km*km" />
+        </units>
+        <physicalElement>
+            <value value="FDC Area" />
+        </physicalElement>
+    </description>
+    <description>
+        <data>
+            <variable name="Power" />
+            <discreteMask name="DQF" value="0" keep="true">
+                <fillByte>-1</fillByte>
+            </discreteMask>
+        </data>
+        <physicalElement>
+            <value value="FDC Power" />
+        </physicalElement>
+    </description>
+    <description>
+        <data>
+            <variable name="Temp" />
+            <discreteMask name="DQF" value="0" keep="true">
+                <fillByte>-1</fillByte>
+            </discreteMask>
+        </data>
+        <physicalElement>
+            <value value="FDC Temp" />
+        </physicalElement>
+    </description>
 </goesrProductDescriptions>

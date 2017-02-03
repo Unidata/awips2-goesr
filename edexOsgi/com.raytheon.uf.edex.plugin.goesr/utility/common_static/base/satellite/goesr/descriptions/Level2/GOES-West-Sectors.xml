@@ -18,62 +18,63 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
+    <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
+    -->
 <goesrProductDescriptions>
-  <default>
-    <matches>
-        <match pattern="GOES-West">
-            <attribute name="orbital_slot" />
-        </match>
-    </matches>
-  </default>
-
+    <default>
+        <matches>
+            <match pattern="GOES-West">
+                <attribute name="orbital_slot" />
+            </match>
+        </matches>
+    </default>
     <description>
-    <matches>
-        <match  pattern="CONUS">
-            <attribute name="scene_id" />
-        </match>
-    </matches>
-    <sectorID>
-        <value value="WCONUS" />
-    </sectorID>
-  </description>
-  
-  <description>
-    <matches>
-        <match  pattern="Full Disk">
-            <attribute name="scene_id" />
-        </match>
-    </matches>
-    <sectorID>
-        <value value="WFD" />
-    </sectorID>
-  </description>
-  
-  <description>
-    <matches>
-      <match pattern="OR_ABI-L2-\w{3,5}M1-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
-        <attribute name="dataset_name" />
-      </match>
-      <match pattern="Mesoscale">
-        <attribute name="scene_id" />
-      </match>
-    </matches>
-    <sectorID>
-        <value value="WMESO-1" />
-    </sectorID>
-  </description>
-
-  <description>
-    <matches>
-      <match pattern="OR_ABI-L2-\w{3,5}M2-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
-        <attribute name="dataset_name" />
-      </match>
-      <match  pattern="Mesoscale">
-          <attribute name="scene_id" />
-      </match>
-    </matches>
-    <sectorID>
-        <value value="WMESO-2" />
-    </sectorID>
-  </description>
+        <matches>
+            <match pattern="CONUS">
+                <attribute name="scene_id" />
+            </match>
+        </matches>
+        <sectorID>
+            <value value="WCONUS" />
+        </sectorID>
+    </description>
+    <description>
+        <matches>
+            <match pattern="Full Disk">
+                <attribute name="scene_id" />
+            </match>
+        </matches>
+        <sectorID>
+            <value value="WFD" />
+        </sectorID>
+    </description>
+    <description>
+        <matches>
+            <match pattern="OR_ABI-L2-\w{3,5}M1-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+                <attribute name="dataset_name" />
+            </match>
+            <match pattern="Mesoscale">
+                <attribute name="scene_id" />
+            </match>
+        </matches>
+        <sectorID>
+            <value value="WMESO-1" />
+        </sectorID>
+    </description>
+    <description>
+        <matches>
+            <match pattern="OR_ABI-L2-\w{3,5}M2-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+                <attribute name="dataset_name" />
+            </match>
+            <match pattern="Mesoscale">
+                <attribute name="scene_id" />
+            </match>
+        </matches>
+        <sectorID>
+            <value value="WMESO-2" />
+        </sectorID>
+    </description>
 </goesrProductDescriptions>
