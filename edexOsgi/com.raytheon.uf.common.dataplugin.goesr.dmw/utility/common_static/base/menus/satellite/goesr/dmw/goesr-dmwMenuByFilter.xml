@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-   
+    <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
+    -->
    <!-- TOWRdocs Header
         GOES-R DMW sub-menu items file (Ordering by channel or filter)
     -->
@@ -21,31 +25,26 @@
     <!-- TOWRdocs POC
         Matt Comerford
     -->
-    
 <menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
     <!-- By Filter -->
-    <contribute xsi:type="subinclude" subMenu="By Pressure"
-        fileName="menus/satellite/goesr/dmw/goesr-dmwMenuByPressure.xml">
+    <contribute xsi:type="subinclude" subMenu="By Pressure" fileName="menus/satellite/goesr/dmw/goesr-dmwMenuByPressure.xml">
         <substitute key="legend1" value="All Ch DMW" />
         <substitute key="svg" value="goesr/dmwPlotDesign.svg" />
         <substitute key="plugin" value="dmw" />
     </contribute>
     
     <!-- By Mandatory Levels -->
-    <contribute xsi:type="subinclude" subMenu="By Mandatory Levels"
-        fileName="menus/satellite/goesr/dmw/goesr-dmwMenuByMandatoryLevels.xml">
+    <contribute xsi:type="subinclude" subMenu="By Mandatory Levels" fileName="menus/satellite/goesr/dmw/goesr-dmwMenuByMandatoryLevels.xml">
         <substitute key="legend1" value="All Ch DMW" />
         <substitute key="svg" value="goesr/dmwPlotDesign.svg" />
         <substitute key="plugin" value="dmw" />
     </contribute>
     
     <!-- By Channel -->
-    <contribute xsi:type="subinclude" subMenu="By Channel"
-        fileName="menus/satellite/goesr/dmw/goesr-dmwMenuByChannel.xml">
+    <contribute xsi:type="subinclude" subMenu="By Channel" fileName="menus/satellite/goesr/dmw/goesr-dmwMenuByChannel.xml">
         <substitute key="legend1" value="DMW (Ch" />
         <substitute key="svg" value="goesr/dmwPlotDesign.svg" />
         <substitute key="plugin" value="dmw" />
     </contribute>
-    
 </menuTemplate>

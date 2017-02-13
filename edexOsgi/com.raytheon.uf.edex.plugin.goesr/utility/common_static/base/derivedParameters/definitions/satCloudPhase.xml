@@ -18,9 +18,13 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
+    <!-- 
+        This is an incremental override file, indicating that the files
+        at different localization levels will be combined. 
+    -->
 <DerivedParameter unit="K" name="Satellite Cloud Phase[8.5-11.2 um]" abbreviation="satCloudPhase">
     <Method name="Difference">
-        <Field abbreviation="CH-11-8.50um" unit="K"/>
-        <Field abbreviation="CH-14-11.20um" unit="K"/>
+        <Field abbreviation="CH-11-8.50um" unit="K" />
+        <Field abbreviation="CH-14-11.20um" unit="K" />
     </Method>
 </DerivedParameter>

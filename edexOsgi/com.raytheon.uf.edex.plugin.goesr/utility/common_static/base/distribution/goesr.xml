@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <!--
+        This is an absolute override file, indicating that a higher priority
+        version of the file will completely replace a lower priority version
+        of the file.
+    -->
 <requestPatterns xmlns:ns2="group">
-	<regex>^TI[SR]</regex>
+    <regex>^TI[SR]</regex>
     <!-- This pattern is intended to match standardized Level 2 filenames, it will not be used over LDM -->
     <regex>^OR_ABI-L2-\w{3,5}(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc$</regex>
 </requestPatterns>

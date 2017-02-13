@@ -18,9 +18,13 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
+    <!-- 
+        This is an incremental override file, indicating that the files
+        at different localization levels will be combined. 
+    -->
 <DerivedParameter name="Satellite Vegetation[0.64-0.87 um]" abbreviation="satVegetation">
     <Method name="Difference">
-        <Field abbreviation="CH-02-0.64um" unit="/4096"/>
-        <Field abbreviation="CH-03-0.87um" unit="/4096"/>
+        <Field abbreviation="CH-02-0.64um" unit="/4096" />
+        <Field abbreviation="CH-03-0.87um" unit="/4096" />
     </Method>
 </DerivedParameter>
