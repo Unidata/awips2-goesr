@@ -18,10 +18,29 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
+    <!-- TOWRdocs Header
+         GOES-R Product Description file
+    -->
+    <!-- TOWRdocs Description
+         GOES-R description configuration.  This file accounts for additional dataset_name
+         combinations for GOES-R derived products:
+
+         "OR" = OE Real-Time Data
+         "OT" = OE Test Data
+         "IR" = ITE Real-Time Data
+         "IT" = ITE Test Data"
+     -->
+    <!-- TOWRdocs Status
+         This file is a modification to the previous baseline file of the same name, which currently
+         accounts for products whose dataset_name begins with "OR".
+    -->
+    <!-- TOWRdocs POC
+         Lee Byerle 12/12/2016
+    -->
 <goesrProductDescriptions>
   <default>
     <matches>
-      <match pattern="OR_ABI-L2-ACM(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+      <match pattern="[OI][RT]_ABI-L2-ACM(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
         <attribute name="dataset_name" />
       </match>
     </matches>

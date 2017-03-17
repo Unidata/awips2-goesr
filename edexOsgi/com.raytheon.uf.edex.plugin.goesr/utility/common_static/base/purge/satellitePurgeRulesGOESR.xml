@@ -18,6 +18,19 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
+    <!-- TOWRdocs Header
+         GOES-R satellite edex purge rules.
+    -->
+    <!-- TOWRdocs Description
+         Purge rule options are added to the baseline file for the Test/Center position.
+         The additions are for TCONUS, TFD, TMESO-1, TMESO-2.
+    -->
+    <!-- TOWRdocs Status
+         Update to previous baseline file of the same name
+     -->
+    <!-- TOWRdocs POC
+         Lee Byerle
+    -->
 <purgeRuleSet>
   <key>sectorID</key>
   <key>physicalElement</key>
@@ -63,6 +76,22 @@
   </rule>
   <rule>
     <keyValue>WMESO-2</keyValue>
+    <period>01-00:00:00</period>
+  </rule>
+  <rule>
+    <keyValue>TCONUS</keyValue>
+    <period>01-00:00:00</period>
+  </rule>
+  <rule>
+    <keyValue>TFD</keyValue>
+    <period>01-00:00:00</period>
+  </rule>
+  <rule>
+    <keyValue>TMESO-1</keyValue>
+    <period>01-00:00:00</period>
+  </rule>
+  <rule>
+    <keyValue>TMESO-2</keyValue>
     <period>01-00:00:00</period>
   </rule>
 </purgeRuleSet>
