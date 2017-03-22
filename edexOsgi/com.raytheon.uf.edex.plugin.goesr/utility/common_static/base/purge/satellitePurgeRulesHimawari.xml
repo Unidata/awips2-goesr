@@ -19,10 +19,7 @@
         further_licensing_information.
     -->
 <purgeRuleSet>
-  <key>sectorID</key>
-  <key>physicalElement</key>
-  <rule>
-    <keyValue>HFD</keyValue>
-    <period>01-00:00:00</period>
-  </rule>
+    <defaultRule>
+        <versionsToKeep>256</versionsToKeep>
+    </defaultRule>
 </purgeRuleSet>
