@@ -22,9 +22,9 @@
         This is an incremental override file, indicating that the files
         at different localization levels will be combined. 
     -->
-<DerivedParameter unit="K" name="Satellite Moisture[11.2-12.3 um]" abbreviation="satMoisture">
+<DerivedParameter unit="K" name="Satellite Upper Level Info[11.2-6.19 um]" abbreviation="satUpperLevelInfo">
     <Method name="Difference">
-        <Field abbreviation="CH-14-11.20um" unit="K" />
-        <Field abbreviation="CH-15-12.30um" unit="K" />
+        <Field abbreviation="abiCh14Alias" unit="K"/>
+        <Field abbreviation="abiCh08Alias" unit="K"/>
     </Method>
 </DerivedParameter>

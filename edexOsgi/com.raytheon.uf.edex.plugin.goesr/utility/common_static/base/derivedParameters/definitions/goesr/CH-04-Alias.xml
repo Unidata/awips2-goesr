@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DerivedParameter name="ABI Channel 4 Alias" abbreviation="abiCh04Alias" xmlns:ns2="group" unit="%">
+    <Method name="Alias">
+        <Field abbreviation="CH-04-1.38um" />
+    </Method>
+</DerivedParameter>
