@@ -34,12 +34,6 @@
         <property name="pathManager" ref="dmwPathManager" />
     </bean>
 
-    <!-- Filter out all southern hemisphere data -->
-    <bean id="dmwSHFilter" class="com.raytheon.uf.edex.decodertools.core.filterimpl.PluginDataObjectFilter">
-        <constructor-arg type="java.lang.String" value="dmw_filters.xml" />
-        <constructor-arg type="java.lang.String" value="BASE" />
-    </bean>
-
     <bean id="dmwDistRegistry" factory-bean="distributionSrv"
         factory-method="register">
         <constructor-arg value="dmw" />
@@ -60,7 +54,6 @@
                     <bean ref="stringToFile" />
                     <bean ref="getFileWithoutWmoHeader" />
                     <bean ref="dmwDecoder" method="decode" />
-                    <bean ref="dmwSHFilter" method="filter" />
                     <to uri="direct-vm:persistIndexAlert" />
                 </pipeline>
                 <doCatch>
