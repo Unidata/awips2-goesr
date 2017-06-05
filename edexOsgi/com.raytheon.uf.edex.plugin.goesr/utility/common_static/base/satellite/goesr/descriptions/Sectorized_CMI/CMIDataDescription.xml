@@ -18,40 +18,43 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
+    <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
+    -->
 <goesrProductDescriptions>
-  <default>
-    <matches>
-        <match pattern="\w{3,6}-\d\d\d-B\d\d(-S[12]-[NS]\d{1,2}[EW]\d{1,3})?-M[134]C[01]\d">
-            <attribute name="product_name" />
-        </match>
-    </matches>
-  </default>
-
-  <description>
-    <data>
-        <variable name="Sectorized_CMI" />
-    </data>
-
-    <dataTime>
-        <formattedRefTime dateFormat="yyyyDDDHHmmss">
-            <attribute name="start_date_time" />
-        </formattedRefTime>
-    </dataTime>
-
-    <physicalElement>
-        <formatted format="CH-%02d-%4.2fum">
-            <attribute name="channel_id" />
-            <attribute name="central_wavelength" />
-        </formatted>
-    </physicalElement>
-    <creatingEntity>
-        <attribute name="satellite_id" />
-    </creatingEntity>
-    <source>
-        <attribute name="production_location" />
-    </source>
-    <satHeight>
-        <attribute name="satellite_altitude" />
-    </satHeight>
-  </description>
+    <default>
+        <matches>
+            <match
+                pattern="\w{3,6}-\d\d\d-B\d\d(-S[12]-[NS]\d{1,2}[EW]\d{1,3})?-M[134]C[01]\d">
+                <attribute name="product_name" />
+            </match>
+        </matches>
+    </default>
+    <description>
+        <data>
+            <variable name="Sectorized_CMI" />
+        </data>
+        <dataTime>
+            <formattedRefTime dateFormat="yyyyDDDHHmmss">
+                <attribute name="start_date_time" />
+            </formattedRefTime>
+        </dataTime>
+        <physicalElement>
+            <formatted format="CH-%02d-%4.2fum">
+                <attribute name="channel_id" />
+                <attribute name="central_wavelength" />
+            </formatted>
+        </physicalElement>
+        <creatingEntity>
+            <attribute name="satellite_id" />
+        </creatingEntity>
+        <source>
+            <attribute name="production_location" />
+        </source>
+        <satHeight>
+            <attribute name="satellite_altitude" />
+        </satHeight>
+    </description>
 </goesrProductDescriptions>

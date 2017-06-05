@@ -37,6 +37,11 @@
     <!-- TOWRdocs POC
          Lee Byerle 12/12/2016
     -->
+    <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
+    -->
 <goesrProductDescriptions>
   <default>
     <matches>

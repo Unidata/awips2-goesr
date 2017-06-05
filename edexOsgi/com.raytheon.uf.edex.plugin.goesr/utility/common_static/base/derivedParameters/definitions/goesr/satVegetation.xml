@@ -18,9 +18,13 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
-<DerivedParameter unit="K" name="Satellite Upper Level Info[11.2-6.19 um]" abbreviation="satUpperLevelInfo">
+    <!-- 
+        This is an incremental override file, indicating that the files
+        at different localization levels will be combined. 
+    -->
+<DerivedParameter name="Satellite Vegetation[0.64-0.87 um]" abbreviation="satVegetation">
     <Method name="Difference">
-        <Field abbreviation="CH-14-11.20um" unit="K"/>
-        <Field abbreviation="CH-08-6.19um" unit="K"/>
+        <Field abbreviation="abiCh02Alias" unit="/4096"/>
+        <Field abbreviation="abiCh03Alias" unit="/4096"/>
     </Method>
 </DerivedParameter>

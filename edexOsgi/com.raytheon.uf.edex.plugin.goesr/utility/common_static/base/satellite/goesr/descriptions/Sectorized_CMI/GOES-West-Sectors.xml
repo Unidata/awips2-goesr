@@ -18,88 +18,88 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
+    <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
+    -->
 <goesrProductDescriptions>
-<description>
-    <matches>
-      <match pattern="WFD-\d\d\d-B\d\d-M[34]C[01]\d">
-        <attribute name="product_name" />
-      </match>
-    </matches>
-    <sectorID>
-      <value value="WFD" />
-    </sectorID>
-  </description>
-  
-  <description>
-    <matches>
-      <match pattern="WCONUS-\d\d\d-B\d\d-M[34]C[01]\d">
-        <attribute name="product_name" />
-      </match>
-    </matches>
-    <sectorID>
-      <value value="WCONUS" />
-    </sectorID>
-  </description>
+    <description>
+        <matches>
+            <match pattern="WFD-\d\d\d-B\d\d-M[34]C[01]\d">
+                <attribute name="product_name" />
+            </match>
+        </matches>
+        <sectorID>
+            <value value="WFD" />
+        </sectorID>
+    </description>
+    <description>
+        <matches>
+            <match pattern="WCONUS-\d\d\d-B\d\d-M[34]C[01]\d">
+                <attribute name="product_name" />
+            </match>
+        </matches>
+        <sectorID>
+            <value value="WCONUS" />
+        </sectorID>
+    </description>
   
   <!-- For meso some sample data has included Scene ID in product_name while other sample data does not, support either. -->
-  <description>
-    <matches type="OR">
-      <match pattern="WMESO-\d\d\d-B\d\d-S1-[NS]\d{1,2}[EW]\d{1,3}-M[34]C[01]\d">
-        <attribute name="product_name" />
-      </match>
-      <matches>
-        <match pattern="WMESO-\d\d\d-B\d\d-M[34]C[01]\d">
-            <attribute name="product_name" />
-        </match>
-        <match pattern="Mesoscale-1">
-            <attribute name="source_scene" />
-        </match>
-      </matches>
-    </matches>
-    <sectorID>
-      <value value="WMESO-1" />
-    </sectorID>
-  </description>
-
-  <description>
-    <matches type="OR">
-      <match pattern="WMESO-\d\d\d-B\d\d-S2-[NS]\d{1,2}[EW]\d{1,3}-M[34]C[01]\d">
-        <attribute name="product_name" />
-      </match>
-      <matches>
-        <match pattern="WMESO-\d\d\d-B\d\d-M[34]C[01]\d">
-            <attribute name="product_name" />
-        </match>
-        <match pattern="Mesoscale-2">
-            <attribute name="source_scene" />
-        </match>
-      </matches>
-    </matches>
-    <sectorID>
-      <value value="WMESO-2" />
-    </sectorID>
-  </description>
-  
-  <description>
-    <matches>
-      <match pattern="AKREGI-\d\d\d-B\d\d-M[34]C[01]\d">
-        <attribute name="product_name" />
-      </match>
-    </matches>
-    <sectorID>
-      <value value="AKREGI" />
-    </sectorID>
-  </description>
-
-  <description>
-    <matches>
-      <match pattern="HIREGI-\d\d\d-B\d\d-M[34]C[01]\d">
-        <attribute name="product_name" />
-      </match>
-    </matches>
-    <sectorID>
-      <value value="HIREGI" />
-    </sectorID>
-  </description>
-
+    <description>
+        <matches type="OR">
+            <match pattern="WMESO-\d\d\d-B\d\d-S1-[NS]\d{1,2}[EW]\d{1,3}-M[34]C[01]\d">
+                <attribute name="product_name" />
+            </match>
+            <matches>
+                <match pattern="WMESO-\d\d\d-B\d\d-M[34]C[01]\d">
+                    <attribute name="product_name" />
+                </match>
+                <match pattern="Mesoscale-1">
+                    <attribute name="source_scene" />
+                </match>
+            </matches>
+        </matches>
+        <sectorID>
+            <value value="WMESO-1" />
+        </sectorID>
+    </description>
+    <description>
+        <matches type="OR">
+            <match pattern="WMESO-\d\d\d-B\d\d-S2-[NS]\d{1,2}[EW]\d{1,3}-M[34]C[01]\d">
+                <attribute name="product_name" />
+            </match>
+            <matches>
+                <match pattern="WMESO-\d\d\d-B\d\d-M[34]C[01]\d">
+                    <attribute name="product_name" />
+                </match>
+                <match pattern="Mesoscale-2">
+                    <attribute name="source_scene" />
+                </match>
+            </matches>
+        </matches>
+        <sectorID>
+            <value value="WMESO-2" />
+        </sectorID>
+    </description>
+    <description>
+        <matches>
+            <match pattern="AKREGI-\d\d\d-B\d\d-M[34]C[01]\d">
+                <attribute name="product_name" />
+            </match>
+        </matches>
+        <sectorID>
+            <value value="AKREGI" />
+        </sectorID>
+    </description>
+    <description>
+        <matches>
+            <match pattern="HIREGI-\d\d\d-B\d\d-M[34]C[01]\d">
+                <attribute name="product_name" />
+            </match>
+        </matches>
+        <sectorID>
+            <value value="HIREGI" />
+        </sectorID>
+    </description>
 </goesrProductDescriptions>

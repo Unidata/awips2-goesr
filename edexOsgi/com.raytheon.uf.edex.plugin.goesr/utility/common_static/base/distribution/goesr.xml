@@ -46,6 +46,11 @@
     <!-- TOWRdocs POC
          Lee Byerle 12/12/2016
     -->
+    <!--
+        This is an absolute override file, indicating that a higher priority
+        version of the file will completely replace a lower priority version
+        of the file.
+    -->
 <requestPatterns xmlns:ns2="group">
     <regex>^TI[SR]</regex>
     <!-- This pattern is intended to match standardized Level 2 filenames, it will not be used over LDM -->
@@ -58,3 +63,4 @@
     <regex>^OR_HFD</regex>
     <regex>^H8FD.B</regex>
 </requestPatterns>
+

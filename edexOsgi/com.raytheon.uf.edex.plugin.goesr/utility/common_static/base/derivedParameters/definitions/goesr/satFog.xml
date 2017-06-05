@@ -18,9 +18,13 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
-<DerivedParameter unit="K" name="Satellite Moisture[11.2-12.3 um]" abbreviation="satMoisture">
+    <!-- 
+        This is an incremental override file, indicating that the files
+        at different localization levels will be combined. 
+    -->
+<DerivedParameter unit="K" name="Satellite Fog[3.9-11.2 um]" abbreviation="satFog">
     <Method name="Difference">
-        <Field abbreviation="CH-14-11.20um" unit="K"/>
-        <Field abbreviation="CH-15-12.30um" unit="K"/>
+        <Field abbreviation="abiCh07Alias" unit="K"/>
+        <Field abbreviation="abiCh14Alias" unit="K"/>
     </Method>
 </DerivedParameter>
