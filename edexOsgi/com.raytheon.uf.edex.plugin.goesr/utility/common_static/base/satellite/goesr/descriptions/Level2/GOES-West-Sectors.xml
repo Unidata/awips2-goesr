@@ -50,6 +50,7 @@
             </match>
         </matches>
     </default>
+
     <description>
         <matches>
             <match pattern="CONUS">
@@ -60,6 +61,7 @@
             <value value="WCONUS" />
         </sectorID>
     </description>
+
     <description>
         <matches>
             <match pattern="Full Disk">
@@ -70,9 +72,10 @@
             <value value="WFD" />
         </sectorID>
     </description>
+
     <description>
         <matches>
-            <match pattern="OR_ABI-L2-\w{3,5}M1-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+            <match pattern="[OI][RT]_ABI-L2-\w{3,5}M1-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
                 <attribute name="dataset_name" />
             </match>
             <match pattern="Mesoscale">
@@ -83,46 +86,10 @@
             <value value="WMESO-1" />
         </sectorID>
     </description>
-    <description>
-
-    <matches>
-        <match  pattern="CONUS">
-            <attribute name="scene_id" />
-        </match>
-    </matches>
-    <sectorID>
-        <value value="WCONUS" />
-    </sectorID>
-  </description>
-  
-  <description>
-    <matches>
-        <match  pattern="Full Disk">
-            <attribute name="scene_id" />
-        </match>
-    </matches>
-    <sectorID>
-        <value value="WFD" />
-    </sectorID>
-  </description>
-  
-  <description>
-    <matches>
-      <match pattern="[OI][RT]_ABI-L2-\w{3,5}(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
-        <attribute name="dataset_name" />
-      </match>
-      <match pattern="Mesoscale">
-        <attribute name="scene_id" />
-      </match>
-    </matches>
-    <sectorID>
-        <value value="WMESO-1" />
-    </sectorID>
-  </description>
 
   <description>
     <matches>
-      <match pattern="[OI][RT]_ABI-L2-\w{3,5}(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+      <match pattern="[OI][RT]_ABI-L2-\w{3,5}M2-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
         <attribute name="dataset_name" />
       </match>
       <match  pattern="Mesoscale">

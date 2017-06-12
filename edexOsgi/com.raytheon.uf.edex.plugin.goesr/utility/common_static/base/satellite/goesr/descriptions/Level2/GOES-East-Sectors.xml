@@ -75,7 +75,7 @@
   
   <description>
     <matches>
-      <match pattern="[OI][RT]_ABI-L2-\w{3,5}(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+      <match pattern="[OI][RT]_ABI-L2-\w{3,5}M1-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
         <attribute name="dataset_name" />
       </match>
       <match pattern="Mesoscale">
@@ -89,7 +89,7 @@
 
   <description>
     <matches>
-      <match pattern="[OI][RT]_ABI-L2-\w{3,5}(C|F|M1|M2)-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+      <match pattern="[OI][RT]_ABI-L2-\w{3,5}M2-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
         <attribute name="dataset_name" />
       </match>
       <match  pattern="Mesoscale">
