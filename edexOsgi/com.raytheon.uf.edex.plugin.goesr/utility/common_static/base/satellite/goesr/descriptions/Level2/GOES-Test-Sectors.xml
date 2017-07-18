@@ -24,22 +24,23 @@
         of the file. 
     -->
     <!-- TOWRdocs Header
-         GOES-R Center/Test Position Sectors description file for Level2 products.
+         GOES-R Product Description file
     -->
     <!-- TOWRdocs Description
-         This file specifies descriptions for the Center/Test position sectors.
-         Description files are used to decode the GOES-R
-         netcdf imagery and Level2 products. When there are new products a description file
-         must be added. This file specifies products for the Test/Center location. When description
-         files are added or modified, edex must be restarted for the changes to be reflected.
-    -->
+         GOES-R description configuration.  This file accounts for additional dataset_name
+         combinations for GOES-R derived products:
+
+         "OR" = OE Real-Time Data
+         "OT" = OE Test Data
+         "IR" = ITE Real-Time Data
+         "IT" = ITE Test Data"
+     -->
     <!-- TOWRdocs Status
-         This is a new file not included in the current baseline. The baseline does not contain 
-         Center/Test position Level2 descriptions. This file is similar to the baseline 
-         GOES-East-Sectors.xml and GOES-West-Sectors.xml files.
+         This file is a modification to the previous baseline file of the same name, which currently
+         accounts for products whose dataset_name begins with "OR".
     -->
     <!-- TOWRdocs POC
-         Lee Byerle
+         Lee Byerle 12/12/2016
     -->
 <goesrProductDescriptions>
     <default>
@@ -49,6 +50,7 @@
             </match>
         </matches>
     </default>
+
     <description>
         <matches>
             <match pattern="CONUS">
@@ -59,6 +61,7 @@
             <value value="TCONUS" />
         </sectorID>
     </description>
+
     <description>
         <matches>
             <match pattern="Full Disk">
@@ -69,9 +72,10 @@
             <value value="TFD" />
         </sectorID>
     </description>
+
     <description>
         <matches>
-            <match pattern="OR_ABI-L2-\w{3,5}M1-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+            <match pattern="[OI][RT]_ABI-L2-\w{3,5}M1-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
                 <attribute name="dataset_name" />
             </match>
             <match pattern="Mesoscale">
@@ -82,17 +86,18 @@
             <value value="TMESO-1" />
         </sectorID>
     </description>
-    <description>
-        <matches>
-            <match pattern="OR_ABI-L2-\w{3,5}M2-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
-                <attribute name="dataset_name" />
-            </match>
-            <match pattern="Mesoscale">
-                <attribute name="scene_id" />
-            </match>
-        </matches>
-        <sectorID>
-            <value value="TMESO-2" />
-        </sectorID>
-    </description>
+
+  <description>
+    <matches>
+      <match pattern="[OI][RT]_ABI-L2-\w{3,5}M2-M[34]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+        <attribute name="dataset_name" />
+      </match>
+      <match  pattern="Mesoscale">
+          <attribute name="scene_id" />
+      </match>
+    </matches>
+    <sectorID>
+        <value value="TMESO-2" />
+    </sectorID>
+  </description>
 </goesrProductDescriptions>
