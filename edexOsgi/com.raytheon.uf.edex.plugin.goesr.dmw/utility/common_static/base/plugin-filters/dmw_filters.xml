@@ -19,7 +19,9 @@
         further_licensing_information.
     -->
     <!--
-        This is a base file that is not intended to be overridden.
+        This is an absolute override file, indicating that a higher priority
+        version of the file will completely replace a lower priority version
+        of the file.
     -->
     <!-- TOWRdocs Header
         File that sets the lat/lon bounds for filtering Derived Motion Winds (DMW)

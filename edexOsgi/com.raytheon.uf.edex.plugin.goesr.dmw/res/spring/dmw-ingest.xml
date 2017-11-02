@@ -39,7 +39,6 @@
     <!-- Filter out all southern hemisphere data -->
     <bean id="dmwSHFilter" class="com.raytheon.uf.edex.decodertools.core.filterimpl.PluginDataObjectFilter">
         <constructor-arg type="java.lang.String" value="dmw_filters.xml" />
-        <constructor-arg type="java.lang.String" value="BASE" />
     </bean>
 
     <bean id="dmwDistRegistry" factory-bean="distributionSrv"
