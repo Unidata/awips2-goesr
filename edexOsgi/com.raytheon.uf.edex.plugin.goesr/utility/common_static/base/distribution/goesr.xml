@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-    <!-- TOWRdocs Header
-         GOES-R Imagery and Level2 product distribution file.
-    -->
     <!-- TOWRdocs Description
          Distribution file for GOES-R CMI and Level2 products. Added IXT.. expressions to recognize
          WMO headers for derived products.  The following headers are recognized: 
@@ -41,21 +38,11 @@
          "IR" = ITE Real-Time Data
          "IT" = ITE Test Data"
     -->
-    <!-- TOWRdocs Status
-    -->
-    <!-- TOWRdocs POC
-         Lee Byerle 12/12/2016
-    -->
-    <!--
-        This is an absolute override file, indicating that a higher priority
-        version of the file will completely replace a lower priority version
-        of the file.
-    -->
 <requestPatterns xmlns:ns2="group">
+    <regex>.*GOES16.*</regex>
     <regex>^TI[SR]</regex>
-    <!-- This pattern is intended to match standardized Level 2 filenames, it will not be used over LDM -->
     <regex>^[OI][RT]_ABI-L2-\w{3,5}(C|F|M1|M2)-M[\d]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc$</regex>
-    <!-- WMO headers for derived products -->
+    <!-- derived products -->
     <regex>^IXT[ABCDEFGHIJKLMNOPQ]</regex>
     <!-- Cloud top pressure, cloud optical depth, cloud particle size -->
     <regex>^IXT[XYW]01</regex>
