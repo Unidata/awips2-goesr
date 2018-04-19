@@ -27,7 +27,7 @@
     <default>
         <matches>
             <match
-                pattern="\w{3,6}-\d\d\d-B\d\d(-S[12]-[NS]\d{1,2}[EW]\d{1,3})?-M[134]C[01]\d">
+                pattern="\w{3,6}-\d\d\d-B\d\d(-S[12]-[NS]\d{1,2}[EW]\d{1,3})?-M\dC[01]\d">
                 <attribute name="product_name" />
             </match>
         </matches>
