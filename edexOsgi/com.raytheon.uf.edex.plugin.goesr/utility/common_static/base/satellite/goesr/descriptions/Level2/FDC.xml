@@ -70,7 +70,7 @@
     <data>
       <variable name="Power" />
       <discreteMask name="DQF" value="0" keep="true">
-        <fillByte>-1</fillByte>
+        <fillByte>-9</fillByte>
       </discreteMask>
     </data>
     <physicalElement>

@@ -27,26 +27,26 @@
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="CAPE" id="goesr-cape">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="CAPE" />
-        <substitute key="colormap" value="Sat/GOESR-L2/VTRSB" />
+        <substitute key="colormap" value="GOES-R/GOESR-L2/color-cape-10" />
     </contribute>
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="K-Index" id="goesr-ki">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="KI" />
-        <substitute key="colormap" value="Sat/GOESR-L2/VTRSB" />
+        <substitute key="colormap" value="GOES-R/GOESR-L2/color-cape-10" />
     </contribute>
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Lifted Index" id="goer-li">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="LI" />
-        <substitute key="colormap" value="Sat/GOESR-L2/VTRSB" />
+        <substitute key="colormap" value="GOES-R/GOESR-L2/color-li-10" />
     </contribute>
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Showalter Index" id="goer-si">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="SI" />
-        <substitute key="colormap" value="Sat/GOESR-L2/VTRSB" />
+        <substitute key="colormap" value="GOES-R/GOESR-L2/color-cape-10" />
     </contribute>
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Total Totals" id="goer-tt">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="TT" />
-        <substitute key="colormap" value="Sat/GOESR-L2/VTRSB" />
+        <substitute key="colormap" value="GOES-R/GOESR-L2/color-cape-10" />
     </contribute>
 </menuTemplate>

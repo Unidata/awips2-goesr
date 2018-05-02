@@ -81,12 +81,12 @@
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="RR/QPE" id="goesr-rrqpe">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="RRQPE" />
-        <substitute key="colormap" value="Sat/GOESR-L2/RRQPE" />
+        <substitute key="colormap" value="GOES-R/GOESR-L2/RRQPE1" />
     </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Sea Surface Temp" id="goesr-sst">
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Sea Surface Temperature" id="goesr-sst">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="SST" />
-        <substitute key="colormap" value="Sat/GOESR-L2/VTRSB" />
+        <substitute key="colormap" value="GOES-R/GOESR-L2/GOES-SST-35" />
     </contribute>
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Snow Cover" id="goesr-fsc">
         <substitute key="entity" value="GOES%" />
@@ -96,7 +96,7 @@
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Total Precip Water" id="goesr-tpw">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="TPW" />
-        <substitute key="colormap" value="Sat/Precip Water/Precip Water - New CIMSS Table" />
+        <substitute key="colormap" value="GOES-R/GOESR-L2/color-pw10-10" />
     </contribute>
     <contribute xsi:type="subinclude" subMenu="Volcanic Ash" fileName="menus/satellite/goesr/goesrLevel2Volcano.xml" />
 </menuTemplate>
