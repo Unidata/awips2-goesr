@@ -157,7 +157,21 @@
             <attribute name="orbital_slot" />
         </orbitalSlot>
         <scene>
-            <attribute name="scene_id" />
+            <!-- The dataset_name typically includes a character that indicates
+                 the scene and may contain a number, for example DMWC, DMWF,
+                 DMWM1, or DMWM2. This will parse the number and append it to 
+                 the scene_id. Unfortunately the formatted element treats the
+                 number as a double, resulting in something like Mesoscale1.0
+                 so the outer pattern strips off the extra decimal place.
+            -->
+            <pattern inputPattern="([^\.]*)(?:\.0)?">
+                <formatted format="%s%s">
+                    <attribute name="scene_id" />
+                    <pattern inputPattern=".*-DMW\w(\d?)-.*">
+                        <attribute name="dataset_name" />
+                    </pattern>
+                </formatted>
+            </pattern>
         </scene>
         <dataTime epoch="2000-01-01 12:00:00" units="SECONDS">
             <variable name="time" />
