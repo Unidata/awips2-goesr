@@ -54,7 +54,7 @@
   <description>
     <data>
       <variable name="VAH" />
-      <discreteMask name="RET_DQF" value="0" keep="true">
+      <discreteMask name="DET_DQF" value="0" keep="true">
         <fillByte>-1</fillByte>
       </discreteMask>
     </data>
@@ -66,7 +66,7 @@
   <description>
     <data>
       <variable name="VAML" />
-      <discreteMask name="RET_DQF" value="0" keep="true">
+      <discreteMask name="DET_DQF" value="0" keep="true">
         <fillByte>-1</fillByte>
       </discreteMask>
     </data>

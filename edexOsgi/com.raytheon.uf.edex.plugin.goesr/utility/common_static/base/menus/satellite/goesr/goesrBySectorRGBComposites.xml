@@ -80,19 +80,19 @@
         <substitute key="sector" value="WMESO-2" />
         <substitute key="entity" value="GOES%" />
     </contribute>
-    <contribute xsi:type="subinclude" subMenu="Test Conus" fileName="menus/satellite/goesr/goesrRGBComposites.xml">
+    <contribute xsi:type="subinclude" subMenu="Center Conus" fileName="menus/satellite/goesr/goesrRGBComposites.xml">
         <substitute key="sector" value="TCONUS" />
         <substitute key="entity" value="GOES%" />
     </contribute>
-    <contribute xsi:type="subinclude" subMenu="Test Full Disk" fileName="menus/satellite/goesr/goesrRGBComposites.xml">
+    <contribute xsi:type="subinclude" subMenu="Center Full Disk" fileName="menus/satellite/goesr/goesrRGBComposites.xml">
         <substitute key="sector" value="TFD" />
         <substitute key="entity" value="GOES%" />
     </contribute>
-    <contribute xsi:type="subinclude" subMenu="Test Mesoscale 1" fileName="menus/satellite/goesr/goesrRGBComposites.xml">
+    <contribute xsi:type="subinclude" subMenu="Center Mesoscale 1" fileName="menus/satellite/goesr/goesrRGBComposites.xml">
         <substitute key="sector" value="TMESO-1" />
         <substitute key="entity" value="GOES%" />
     </contribute>
-    <contribute xsi:type="subinclude" subMenu="Test Mesoscale 2" fileName="menus/satellite/goesr/goesrRGBComposites.xml">
+    <contribute xsi:type="subinclude" subMenu="Center Mesoscale 2" fileName="menus/satellite/goesr/goesrRGBComposites.xml">
         <substitute key="sector" value="TMESO-2" />
         <substitute key="entity" value="GOES%" />
     </contribute>
