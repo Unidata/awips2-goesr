@@ -39,6 +39,6 @@
     -->
 <purgeRuleSet>
     <defaultRule>
-        <period>00-18:00:00</period>
+        <period>07-00:00:00</period>
     </defaultRule>
 </purgeRuleSet>
