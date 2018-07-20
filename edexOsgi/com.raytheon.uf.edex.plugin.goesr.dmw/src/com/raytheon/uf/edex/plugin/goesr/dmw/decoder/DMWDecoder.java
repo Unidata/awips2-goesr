@@ -118,15 +118,7 @@ public class DMWDecoder {
                     decodeData(file, traceId, records);
                 } catch (Exception e) {
                     statusHandler.error(traceId + "-Error in decode", e);
-                } finally {
-                    if (records.isEmpty()) {
-                        statusHandler.info(
-                                String.format("%s - Decoded no obs", traceId));
-                    } else {
-                        statusHandler.info(String.format("%s - Decoded %d obs",
-                                traceId, records.size()));
-                    }
-                }
+                } 
             } else {
                 statusHandler.info(traceId + "- No data in file");
             }
@@ -383,8 +375,6 @@ public class DMWDecoder {
                 true);
         ProductDescriptions descriptions = new ProductDescriptions();
         for (LocalizationFile file : files) {
-            statusHandler.info(
-                    "Loading DMW data description(s) from " + file.getPath());
 
             try (InputStream inputStream = file.openInputStream()) {
                 ProductDescriptions unmarshalled = JAXB.unmarshal(inputStream,
