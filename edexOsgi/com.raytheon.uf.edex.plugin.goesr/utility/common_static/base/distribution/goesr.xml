@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-    <!-- TOWRdocs Header
-         GOES-R Imagery and Level2 product distribution file.
-    -->
-    <!-- TOWRdocs Description
+    <!-- 
          Distribution file for GOES-R CMI and Level2 products. Added IXT.. expressions to recognize
          WMO headers for derived products.  The following headers are recognized: 
 
@@ -29,9 +26,10 @@
          IXTX - Cloud Top Pressure
          IXTY - Cloud Optical Depth
          IXTW - Cloud Particle Size
+         IXTR - GLM products
 
-         The WMO headers for GLM (IXTR) and derived motion winds (DMW,IXTU) are 
-         not included here, but are located in separate distribution files as part of separate plugins.
+         The WMO header for derived motion winds (DMW,IXTU) is
+         not included here, see dmw.xml 
          An entry for Himawari imagery is also included, here, used in testing.
 
           12/12/2016 Updates ABI match pattern to account for:
@@ -40,11 +38,8 @@
          "OT" = OE Test Data
          "IR" = ITE Real-Time Data
          "IT" = ITE Test Data"
-    -->
-    <!-- TOWRdocs Status
-    -->
-    <!-- TOWRdocs POC
-         Lee Byerle 12/12/2016
+
+       8/5/2018 add TIU for G-17 Meso, Add IXTR for GLM products Lee Byerle.
     -->
     <!--
         This is an absolute override file, indicating that a higher priority
@@ -52,11 +47,11 @@
         of the file.
     -->
 <requestPatterns xmlns:ns2="group">
-    <regex>^TI[SR]</regex>
+    <regex>^TI[SRU]</regex>
     <!-- This pattern is intended to match standardized Level 2 filenames, it will not be used over LDM -->
     <regex>^[OI][RT]_ABI-L2-\w{3,5}(C|F|M1|M2)-M[\d]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc$</regex>
     <!-- WMO headers for derived products -->
-    <regex>^IXT[ABCDEFGHIJKLMNOPQ]</regex>
+    <regex>^IXT[ABCDEFGHIJKLMNOPQR]</regex>
     <!-- Cloud top pressure, cloud optical depth, cloud particle size -->
     <regex>^IXT[XYW]01</regex>
     <!-- Himawari Imagery -->

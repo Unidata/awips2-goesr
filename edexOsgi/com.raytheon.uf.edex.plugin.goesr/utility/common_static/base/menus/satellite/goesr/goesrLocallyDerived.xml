@@ -63,9 +63,4 @@
         <substitute key="element" value="satVegetation" />
         <substitute key="colormap" value="Grid/gridded data" />
     </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Upper Level Info(11.2-6.19 μm)"
-        id="goesr-upper-level-info">
-        <substitute key="element" value="satUpperLevelInfo" />
-        <substitute key="colormap" value="Grid/gridded data" />
-    </contribute>
 </menuTemplate>

@@ -18,9 +18,13 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
-   <!--
-        This is an incremental override file, indicating that the files
-        at different localization levels will be combined.
+   <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
+    -->
+   <!-- Incorporates updates per NWS SET/GLM Implementation Teams.  
+        8/7/2018 Lee Byerle
     -->
 <styleRuleset>
   <!-- GOES-R Level 2 Satellite Rules -->
@@ -30,35 +34,36 @@
     </paramLevelMatches>
     <imageStyle>
       <displayLegend>GOES Aerosol Detection</displayLegend>
-      <defaultColormap>Sat/GOESR-L2/ADP</defaultColormap>
+      <defaultColormap>GOES-R/GOESR-L2/ADP</defaultColormap> 
       <range scale="LINEAR">
         <minValue>-0.5</minValue>
         <maxValue>8.5</maxValue>
       </range>
-      <dataMapping>
-        <entry displayValue="0" pixelValue="0" label="Clear" sample="Clear" />
-        <entry displayValue="1" pixelValue="1" label="Aerosol" sample="Aerosol" />
-        <entry displayValue="2" pixelValue="2" label="Dust" sample="Dust" />
-        <entry displayValue="3" pixelValue="3" label="A+D" sample="Aerosol+Dust" />
-        <entry displayValue="4" pixelValue="4" label="Smoke" sample="Smoke" />
-        <entry displayValue="5" pixelValue="5" label="A+S" sample="Aerosol+Smoke" />
-        <entry displayValue="6" pixelValue="6" label="A+D" sample="Dust+Smoke" />
-        <entry displayValue="7" pixelValue="7" label="A+D+S" sample="Aerosol+Dust+Smoke" />
-        <entry displayValue="8" pixelValue="255" label="NO DATA" sample="NO DATA" />
-     </dataMapping>
+      <dataMapping> 
+        <entry displayValue="0" pixelValue="0" label="Clear" sample="Clear" /> 
+        <entry displayValue="1" pixelValue="1" label="" sample="" /> 
+        <entry displayValue="2" pixelValue="2" label="Dust" sample="Dust" /> 
+        <entry displayValue="3" pixelValue="3" label="" sample="Dust" /> 
+        <entry displayValue="4" pixelValue="4" label="Smoke" sample="Smoke" /> 
+        <entry displayValue="5" pixelValue="5" label="" sample="Smoke" />  
+        <entry displayValue="6" pixelValue="6" label="Dust+Smoke" sample="Dust+Smoke" /> 
+        <entry displayValue="7" pixelValue="7" label="" sample="Dust+Smoke" /> 
+        <entry displayValue="8" pixelValue="255" label="NO DATA" sample="NO DATA" /> 
+     </dataMapping>  
     </imageStyle>
   </styleRule>
+
   <styleRule>
     <paramLevelMatches>
       <parameter>AOD</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES Aerosol Optical Depth (unitless)</displayLegend>
+      <displayLegend>GOES Aerosol Optical Depth (unitless) </displayLegend>
       <range scale="LINEAR">
         <minValue>0</minValue>
         <maxValue>1</maxValue>
       </range>
-      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
       <colorbarLabeling>
         <values>0 .2 .4 .6 .8 1</values>
       </colorbarLabeling>
@@ -69,8 +74,8 @@
       <parameter>CSM</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES Clear Sky Mask</displayLegend>
-      <defaultColormap>Sat/GOESR-L2/CSM</defaultColormap>
+      <displayLegend>GOES Clear Sky Mask </displayLegend>
+      <defaultColormap>GOES-R/GOESR-L2/CSM</defaultColormap>
       <range scale="LINEAR">
         <minValue>-0.5</minValue>
         <maxValue>2.5</maxValue>
@@ -87,12 +92,12 @@
       <parameter>COD</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES Cloud Optical Depth</displayLegend>
+      <displayLegend>GOES Cloud Optical Depth (unitless)</displayLegend>
       <range scale="LINEAR">
         <minValue>0</minValue>
         <maxValue>100</maxValue>
       </range>
-      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
       <colorbarLabeling>
         <values>0 20 40 60 80 100</values>
       </colorbarLabeling>
@@ -104,12 +109,12 @@
     </paramLevelMatches>
     <imageStyle>
       <displayLegend>GOES Cloud Particle Size Distribution (μm)</displayLegend>
-      <displayUnits>microm</displayUnits>
+      <displayUnits>microm</displayUnits> 
       <range scale="LINEAR">
         <minValue>0</minValue>
         <maxValue>100</maxValue>
       </range>
-      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
       <colorbarLabeling>
         <values>0 20 40 60 80 100</values>
       </colorbarLabeling>
@@ -126,9 +131,9 @@
         <minValue>0</minValue>
         <maxValue>65000</maxValue>
       </range>
-      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
       <colorbarLabeling>
-        <values>0 5000 10000 20000 30000 40000 50000 60000 65000</values>
+        <values>0 5000 10000 20000 30000 40000 50000 60000 65000 </values>
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
@@ -138,7 +143,7 @@
     </paramLevelMatches>
     <imageStyle>
       <displayLegend>GOES Cloud Top Phase</displayLegend>
-      <defaultColormap>Sat/GOESR-L2/ACTP</defaultColormap>
+      <defaultColormap>GOES-R/GOESR-L2/ACTP</defaultColormap>
       <range scale="LINEAR">
         <minValue>-0.5</minValue>
         <maxValue>6.5</maxValue>
@@ -165,7 +170,7 @@
         <minValue>0</minValue>
         <maxValue>1100</maxValue>
       </range>
-      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
       <colorbarLabeling>
         <values>0 200 400 600 800 1000</values>
       </colorbarLabeling>
@@ -182,7 +187,7 @@
         <minValue>55</minValue>
         <maxValue>-109</maxValue>
       </range>
-      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
       <colorbarLabeling>
         <values>40 20 0 -20 -40 -60 -80</values>
       </colorbarLabeling>
@@ -288,7 +293,7 @@
         <minValue>0</minValue>
         <maxValue>4000000</maxValue>
       </range>
-      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
       <colorbarLabeling>
         <values>0 1000000 2000000 3000000 4000000</values>
       </colorbarLabeling>
@@ -305,7 +310,7 @@
         <minValue>0</minValue>
         <maxValue>1000</maxValue>
       </range>
-      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
       <colorbarLabeling>
         <values>0 200 400 600 800 1000</values>
       </colorbarLabeling>
@@ -322,12 +327,13 @@
         <minValue>400</minValue>
         <maxValue>1200</maxValue>
       </range>
-      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
       <colorbarLabeling>
         <values>400 600 800 1000 1200</values>
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
+  
   <styleRule>
     <paramLevelMatches>
       <parameter>RRQPE</parameter>
@@ -362,6 +368,42 @@
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>SSTF</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES Sea Surface Temperature (F)</displayLegend>
+      <displayUnits>F</displayUnits>
+      <range scale="LINEAR">
+        <minValue>23</minValue>
+        <maxValue>95</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/GOES-SST-35</defaultColormap>
+      <colorbarLabeling>
+        <values>23 32 50 59 68 77 86 95</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>LST</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES Land Surface (Skin) Temperature (F)</displayLegend>
+      <displayUnits>F</displayUnits>
+      <range scale="LINEAR">
+        <minValue>-10</minValue>
+        <maxValue>110</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
+      <colorbarLabeling>
+        <values>-10 0 10 20 30 40 50 60 70 80 90 100 110</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
   <styleRule>
     <paramLevelMatches>
       <parameter>FSC</parameter>
@@ -373,7 +415,7 @@
         <minValue>0</minValue>
         <maxValue>100</maxValue>
       </range>
-      <defaultColormap>Sat/GOESR-L2/FSC</defaultColormap>
+      <defaultColormap>GOES-R/GOESR-L2/FSC</defaultColormap>
       <colorbarLabeling>
         <values>0 25 50 75 100</values>
       </colorbarLabeling>
@@ -388,11 +430,11 @@
       <displayUnits>in</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
-        <maxValue>3</maxValue>
+        <maxValue>2.5</maxValue>
       </range>
       <defaultColormap>GOES-R/GOESR-L2/color-pw10-10</defaultColormap>
       <colorbarLabeling>
-        <values>0 .7 1.3 2 2.2 2.5 3</values>
+        <values>0 .7 1.3 2 2.2 2.5</values>
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
@@ -401,13 +443,13 @@
       <parameter>VAH</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES Volcanic Ash Cloud Height (ft)</displayLegend>
+      <displayLegend>GOES Volcanic Ash Cloud Height (High Confidence) (ft)</displayLegend>
       <displayUnits>ft</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
-        <maxValue>70000</maxValue>
+        <maxValue>70000</maxValue> 
       </range>
-      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
       <colorbarLabeling>
         <values>0 20000 40000 60000</values>
       </colorbarLabeling>
@@ -418,33 +460,90 @@
       <parameter>VAML</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES Volcanic Ash Mass Loading (ton/(km*km))</displayLegend>
+      <displayLegend>GOES Volcanic Ash Mass Loading (High Confidence) (ton/(km*km))</displayLegend>
       <displayUnits>ton_us/(km*km)</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
         <maxValue>50</maxValue>
       </range>
-      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
       <colorbarLabeling>
-        <values>0 10 20 30 40 50</values>
+        <values>0 10 20 30 40 50 </values>
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
-  <styleRule>
+
+ <styleRule>
     <paramLevelMatches>
-      <parameter>LST</parameter>
+      <parameter>VAH2</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES Land Surface (Skin) Temperature (F)</displayLegend>
-      <displayUnits>F</displayUnits>
+      <displayLegend>GOES Volcanic Ash Cloud Height (Medium Confidence) (ft)</displayLegend>
+      <displayUnits>ft</displayUnits>
       <range scale="LINEAR">
-        <minValue>-10</minValue>
-        <maxValue>110</maxValue>
+        <minValue>0</minValue>
+        <maxValue>70000</maxValue>
       </range>
-      <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
+      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
       <colorbarLabeling>
-        <values>-10 0 10 20 30 40 50 60 70 80 90 100 110</values>
+        <values>0 20000 40000 60000</values>
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>VAML2</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES Volcanic Ash Mass Loading (Medium Confidence) (ton/(km*km))</displayLegend>
+      <displayUnits>ton_us/(km*km)</displayUnits>
+      <range scale="LINEAR">
+        <minValue>0</minValue>
+        <maxValue>50</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
+      <colorbarLabeling>
+        <values>0 10 20 30 40 50 </values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+
+<!-- Below is for 1-min FED -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Flash_Extent_Density</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GLM Flash Extent Density (flashes/min) (1min)</displayLegend>
+      <range scale="LOG">
+        <minValue>0.125</minValue>
+        <maxValue>50</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
+      <colorbarLabeling>
+        <values>0 1 2 4 8 16 32</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<!-- GLM moving window, 5min  -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Flash_Extent_Density_Window</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GLM Flash Extent Density (flashes/5min) (5min-1min update)</displayLegend>
+      <range scale="LOG">
+        <minValue>1</minValue>
+        <maxValue>260</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
+      <colorbarLabeling>
+        <values>0 2 4 8 16 32 64 128 256</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
 </styleRuleset>

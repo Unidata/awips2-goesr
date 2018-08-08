@@ -22,8 +22,11 @@
         This is an incremental override file, indicating that the files
         at different localization levels will be combined. 
     -->
+    <!-- replaced Difference with DifferenceTwoAdj, better handling of diff values close to zero
+         8/5/2018 8/5/2018 Lee Byerle
+    -->
 <DerivedParameter unit="K" name="Satellite Upper Level Info[11.2-6.19 um]" abbreviation="satUpperLevelInfo">
-    <Method name="Difference">
+    <Method name="DifferenceTwoAdj">
         <Field abbreviation="abiCh14Alias" unit="K"/>
         <Field abbreviation="abiCh08Alias" unit="K"/>
     </Method>
