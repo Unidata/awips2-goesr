@@ -27,11 +27,11 @@
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Ash Cloud Height" id="goesr-vah">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="VAH" />
-        <substitute key="colormap" value="Sat/GOESR-L2/VTRSB" />
+        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
     </contribute>
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Ash Mass Load" id="goesr-vaml">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="VAML" />
-        <substitute key="colormap" value="Sat/GOESR-L2/VTRSB" />
+        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
     </contribute>
 </menuTemplate>
