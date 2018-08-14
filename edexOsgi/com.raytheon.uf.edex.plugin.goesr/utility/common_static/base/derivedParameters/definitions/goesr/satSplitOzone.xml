@@ -22,9 +22,9 @@
         This is an incremental override file, indicating that the files
         at different localization levels will be combined. 
     -->
-<DerivedParameter name="Vegetation[0.64-0.87 um]" abbreviation="satVegetation">
+<DerivedParameter unit="K" name="Split Ozone [9.6-10.3 um]" abbreviation="satSplitOzone">
     <Method name="Difference">
-        <Field abbreviation="abiCh02Alias" unit="/4096"/>
-        <Field abbreviation="abiCh03Alias" unit="/4096"/>
+        <Field abbreviation="abiCh12Alias" unit="K"/>
+        <Field abbreviation="abiCh13Alias" unit="K"/>
     </Method>
 </DerivedParameter>

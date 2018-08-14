@@ -69,6 +69,6 @@
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Total Precip Water" id="goesr-tpw">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="TPW" />
-        <substitute key="colormap" value="Sat/Precip Water/Precip Water - New CIMSS Table" />
+        <substitute key="colormap" value="GOES-R/GOESR-L2/color-pw10-10" />
     </contribute>
 </menuTemplate>

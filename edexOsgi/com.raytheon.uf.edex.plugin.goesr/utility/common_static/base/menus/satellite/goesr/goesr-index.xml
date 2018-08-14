@@ -19,12 +19,20 @@
         further_licensing_information.
     -->
     <!-- 
-        This is an incremental override file, indicating that the files
-        at different localization levels will be combined. 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
     -->
-<DerivedParameter name="Vegetation[0.64-0.87 um]" abbreviation="satVegetation">
-    <Method name="Difference">
-        <Field abbreviation="abiCh02Alias" unit="/4096"/>
-        <Field abbreviation="abiCh03Alias" unit="/4096"/>
-    </Method>
-</DerivedParameter>
+<menuContributionFile>
+  <!-- Default install location is nowhere, only want menu at specific sites. -->
+<!--    <include installTo="menu:no.where" fileName="menus/satellite/goesr/goesrMenu.xml" /> -->
+  <!-- Uncomment the element below to include goesr with d2d satellite menu -->
+  <include installTo="menu:satellite?before=GROUP1" fileName="menus/satellite/goesr/goesrMenu.xml" />
+  <!-- Uncomment this element to include goesr as top level menu in D2D -->
+  <!--
+  <include installTo="menu:org.eclipse.ui.main.menu?after=satellite"
+    fileName="menus/satellite/goesr/goesrMenu.xml">
+    <visibleOnActionSet>com.raytheon.uf.viz.d2d.ui.D2DActionSet</visibleOnActionSet>
+  </include>
+  -->
+</menuContributionFile>

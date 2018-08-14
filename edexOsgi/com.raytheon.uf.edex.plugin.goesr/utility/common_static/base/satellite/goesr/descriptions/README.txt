@@ -17,7 +17,7 @@ element will determine if the description should be used.
 
 A data element is optional in a description, if present there can be only one.
 If a data element is specified then it should contain the name of the variable
-containing the numeric, gridded data for the satellite image. An
+containing the numeric, Gridded Data for the satellite image. An
 alternative to specifying a variable name within the data element is to specify
 a bitset containing multiple variables that will be joined together, one bit per
 product.

@@ -18,28 +18,28 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
-    <!-- 
+   <!--
         This is an incremental override file, indicating that the files
-        at different localization levels will be combined. 
+        at different localization levels will be combined.
     -->
 <styleRuleset>
-    <!-- GOES-R Derived Satellite Rules -->
-    <styleRule>
-        <paramLevelMatches>
-            <parameter>satMoisture</parameter>
-        </paramLevelMatches>
-        <imageStyle>
-            <displayUnits label="C">K</displayUnits>
-            <range scale="LINEAR">
-                <minValue>-1.0</minValue>
-                <maxValue>16.0</maxValue>
-            </range>
-            <defaultColormap>Grid/Isentropic</defaultColormap>
-            <colorbarLabeling>
-                <values>0 3 6 9 12 15</values>
-            </colorbarLabeling>
-        </imageStyle>
-    </styleRule>
+  <!-- GOES-R Derived Satellite Rules -->
+<styleRule>
+    <paramLevelMatches>
+      <parameter>satMoisture</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayUnits>K</displayUnits>
+      <range scale="LINEAR">
+        <minValue>-15</minValue>
+        <maxValue>15</maxValue>
+      </range>
+      <defaultColormap>GOES-R/IR/dust_and_moisture_split_window</defaultColormap>
+      <colorbarLabeling>
+        <values>-12 -8 -4 0 4 8 12 </values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
     <styleRule>
         <paramLevelMatches>
             <parameter>satCloudPhase</parameter>
@@ -56,38 +56,118 @@
             </colorbarLabeling>
         </imageStyle>
     </styleRule>
-    <styleRule>
-        <paramLevelMatches>
-            <parameter>satFog</parameter>
-        </paramLevelMatches>
-        <imageStyle>
-            <displayUnits label="C">K</displayUnits>
-            <range scale="LINEAR">
-                <minValue>-10.0</minValue>
-                <maxValue>50.0</maxValue>
-            </range>
-            <defaultColormap>Sat/Derived Fog (3.9-11.2 u)</defaultColormap>
-            <colorbarLabeling>
-                <values>0 10 20 30 40 50</values>
-            </colorbarLabeling>
-        </imageStyle>
-    </styleRule>
-    <styleRule>
-        <paramLevelMatches>
-            <parameter>satUpperLevelInfo</parameter>
-        </paramLevelMatches>
-        <imageStyle>
-            <displayUnits label="C">K</displayUnits>
-            <range scale="LINEAR">
-                <minValue>-30.0</minValue>
-                <maxValue>90.0</maxValue>
-            </range>
-            <defaultColormap>Grid/Gridded Data</defaultColormap>
-            <colorbarLabeling>
-                <values>-20 0 20 40 60 80</values>
-            </colorbarLabeling>
-        </imageStyle>
-    </styleRule>
+<styleRule>
+    <paramLevelMatches>
+      <parameter>satFog</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayUnits>K</displayUnits> 
+      <range scale="LINEAR">
+        <minValue>-15</minValue>
+        <maxValue>15</maxValue>
+      </range>
+      <defaultColormap>GOES-R/IR/fogdiff_blue</defaultColormap>
+      <colorbarLabeling>
+        <values>-12 -8 -4 0 4 8 12 </values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+<styleRule>
+    <paramLevelMatches>
+      <parameter>satDayFog</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayUnits>K</displayUnits> 
+      <range scale="LINEAR">
+        <minValue>-5</minValue>
+        <maxValue>60</maxValue>
+      </range>
+      <defaultColormap>Grid/Gridded Data</defaultColormap>
+      <colorbarLabeling>
+        <values>-5 0 5 10 20 30 40 50 </values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+<styleRule>
+    <paramLevelMatches>
+      <parameter>SplitWV</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayUnits>K</displayUnits>
+      <range scale="LINEAR">
+        <minValue>-35</minValue>
+        <maxValue>5</maxValue>
+      </range>
+      <defaultColormap>Grid/Gridded Data</defaultColormap>
+      <colorbarLabeling>
+        <values>-35 -25 -15 -5 0 5 </values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+<styleRule>
+    <paramLevelMatches>
+      <parameter>satSplitOzone</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayUnits>K</displayUnits>
+      <range scale="LINEAR">
+        <minValue>-45</minValue>
+        <maxValue>5</maxValue>
+      </range>
+      <defaultColormap>Grid/Gridded Data</defaultColormap>
+      <colorbarLabeling>
+        <values>-45 -35 -25 -15 -5 0 5 </values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+<styleRule>
+    <paramLevelMatches>
+      <parameter>satSplitCloudTopPhase</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayUnits>K</displayUnits>
+      <range scale="LINEAR">
+        <minValue>-10</minValue>
+        <maxValue>25</maxValue>
+      </range>
+      <defaultColormap>Grid/Gridded Data</defaultColormap>
+      <colorbarLabeling>
+        <values>-5 0 5 10 15 20</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+<styleRule>
+    <paramLevelMatches>
+      <parameter>satSplitSnow</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayUnits>%</displayUnits> 
+      <range scale="LINEAR">
+        <minValue>-75</minValue>
+        <maxValue>25</maxValue>
+      </range>
+      <defaultColormap>Grid/Gridded Data</defaultColormap>
+      <colorbarLabeling>
+        <values>-70 -60 -50 -40 -30 -20 -10 0 10 20 </values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+<styleRule>
+    <paramLevelMatches>
+      <parameter>satSplitFire</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayUnits>%</displayUnits> 
+      <range scale="LINEAR">
+        <minValue>50</minValue>
+        <maxValue>-25</maxValue>
+      </range>
+      <defaultColormap>GOES-R/IR/enhanced-rainbow-11</defaultColormap>
+      <colorbarLabeling>
+        <values>40 30 20 10 0 -10 -20</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
     <styleRule>
         <paramLevelMatches>
             <parameter>satSnow</parameter>
