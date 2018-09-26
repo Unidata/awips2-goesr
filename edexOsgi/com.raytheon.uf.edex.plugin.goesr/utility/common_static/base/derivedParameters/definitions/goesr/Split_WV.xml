@@ -22,8 +22,11 @@
         This is an incremental override file, indicating that the files
         at different localization levels will be combined. 
     -->
+    <!-- replaced Difference with DifferenceTwoAdj, better handling of diff values close to zero
+         8/5/2018 8/5/2018 Lee Byerle
+    -->
 <DerivedParameter unit="K" name="Split Water Vapor [6.19-7.34 um]" abbreviation="SplitWV">
-    <Method name="Difference">
+    <Method name="DifferenceTwoAdj">
         <Field abbreviation="abiCh08Alias" unit="K"/>
         <Field abbreviation="abiCh10Alias" unit="K"/>
     </Method>

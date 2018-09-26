@@ -18,29 +18,15 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
-    <!-- TOWRdocs Header
-         GOES-R Product Description file
-    -->
-    <!-- TOWRdocs Description
-         GOES-R description configuration.  This file accounts for additional dataset_name
-         combinations for GOES-R derived products:
-
-         "OR" = OE Real-Time Data
-         "OT" = OE Test Data
-         "IR" = ITE Real-Time Data
-         "IT" = ITE Test Data"
-     -->
-    <!-- TOWRdocs Status
-         This file is a modification to the previous baseline file of the same name, which currently
-         accounts for products whose dataset_name begins with "OR".
-    -->
-    <!-- TOWRdocs POC
-         Lee Byerle 12/12/2016
-    -->
-    <!-- 
+   <!-- 
         This is an absolute override file, indicating that a higher priority 
         version of the file will completely replace a lower priority version
         of the file. 
+    -->
+    <!-- 
+         Use detection DQF instead of retrieval DQF.  
+         Define medium confidence, single layer ash-based parameters for use in bundle
+         that displays VAH, VAH2, VAML, VAML2. Updated 8/5/2018 Lee Byerle
     -->
 <goesrProductDescriptions>
   <default>
@@ -51,6 +37,7 @@
     </matches>
   </default>
   
+<!-- DET_DQF 0, Corresponds to high conf single or multi-layer ash flag -->
   <description>
     <data>
       <variable name="VAH" />
@@ -76,6 +63,34 @@
     <physicalElement>
       <value value="VAML" />
     </physicalElement>
-  </description>
-</goesrProductDescriptions>
+  </description> 
 
+<!-- DET_DQF 8, mask for medium confidence single layer ash -->
+  <description>
+    <data>
+      <variable name="VAH" />
+      <discreteMask name="DET_DQF" value="8" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="VAH2" />
+    </physicalElement>
+  </description>
+  
+  <description>
+    <data>
+      <variable name="VAML" />
+      <discreteMask name="DET_DQF" value="8" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <units>
+      <value value="ton_us/(km*km)" />
+    </units>
+    <physicalElement>
+      <value value="VAML2" />
+    </physicalElement>
+  </description> 
+
+</goesrProductDescriptions>

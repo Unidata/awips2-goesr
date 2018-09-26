@@ -22,8 +22,11 @@
         This is an incremental override file, indicating that the files
         at different localization levels will be combined. 
     -->
+    <!-- replaced Difference with DifferenceTwoAdj, better handling of diff values close to zero
+         8/5/2018 8/5/2018 Lee Byerle
+    -->
 <DerivedParameter name="Vegetation[0.64-0.87 um]" abbreviation="satVegetation">
-    <Method name="Difference">
+    <Method name="DifferenceTwoAdj">
         <Field abbreviation="abiCh02Alias" unit="/4096"/>
         <Field abbreviation="abiCh03Alias" unit="/4096"/>
     </Method>

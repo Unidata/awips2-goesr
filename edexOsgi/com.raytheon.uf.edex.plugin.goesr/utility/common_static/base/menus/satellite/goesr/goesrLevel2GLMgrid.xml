@@ -23,7 +23,15 @@
         version of the file will completely replace a lower priority version
         of the file. 
     -->
-<menuContributionFile>
-    <include installTo="menu:goesr" fileName="menus/satellite/goesr/profileMenu.xml">
-    </include>
-</menuContributionFile>
+    <!-- 
+         GLM Grid products
+         Added 8/7/2018 Lee Byerle 
+    -->
+<menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="1min GLM Flash Extent Density" id="goesr-glmfed1min">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="GLM_Flash_Extent_Density"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_grid"/> 
+    </contribute>
+</menuTemplate>

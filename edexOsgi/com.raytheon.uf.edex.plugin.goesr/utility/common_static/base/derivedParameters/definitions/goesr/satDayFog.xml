@@ -22,8 +22,17 @@
         This is an incremental override file, indicating that the files
         at different localization levels will be combined. 
     -->
-<DerivedParameter unit="K" name="Day Fog[3.9-10.3 um]" abbreviation="satDayFog">
-    <Method name="Difference">
+    <!-- 
+         8/31/2017
+         The satellite ID will appear in the legend per the bundle.  Therefore, removed
+         "GOES-16" in the name
+         10/30/2017 New channel difference added by SET
+         11/5/2017 Added alias to improve performance
+         12/20/2017 replaced Difference with DifferenceTwoAdj, better handling of diff values close to zero.
+         Added 8/5/2018 for goesrLocallyDerived. Distinct from satFogRev in the units are K vs C.  Lee Byerle
+    -->
+<DerivedParameter unit="K" name="Day Fog [3.9-10.3 um]" abbreviation="satDayFog">
+    <Method name="DifferenceTwoAdj">
         <Field abbreviation="abiCh07Alias" unit="K"/>
         <Field abbreviation="abiCh13Alias" unit="K"/>
     </Method>

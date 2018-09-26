@@ -23,6 +23,8 @@
         version of the file will completely replace a lower priority version
         of the file. 
     -->
+    <!-- 8/7/2018 Updated to add Legacy profiles and DMWs.  Lee Byerle
+     -->
 <menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <contribute xsi:type="subinclude" subMenu="East Full Disk" fileName="menus/satellite/goesr/goesrLevel2FullDisk.xml" >
       <substitute key="sector" value="EFD" />
@@ -60,4 +62,96 @@
     <contribute xsi:type="subinclude" subMenu="Center Mesoscale 2" fileName="menus/satellite/goesr/goesrLevel2Meso.xml" >
       <substitute key="sector" value="TMESO-2" />
     </contribute>
+
+
+    <!-- The menu title item -->
+    <contribute xsi:type="titleItem" titleText="------ Derived Motion Winds ------" />
+
+    <!-- GOES-East -->
+    <contribute xsi:type="subinclude" subMenu="GOES-East"
+        fileName="menus/satellite/goesr/dmw/goesr-dmwMenuByScene.xml" id="DMWGoesEast">
+         <substitute key="orbitalSlot" value="GOES-East"/>
+    </contribute>
+
+    <!-- GOES-West -->
+    <contribute xsi:type="subinclude" subMenu="GOES-West"
+        fileName="menus/satellite/goesr/dmw/goesr-dmwMenuByScene.xml" id="DMWGoesWest">
+         <substitute key="orbitalSlot" value="GOES-West"/>
+    </contribute>
+
+    <!-- GOES-Test -->
+    <contribute xsi:type="subinclude" subMenu="GOES-Center"
+        fileName="menus/satellite/goesr/dmw/goesr-dmwMenuByScene.xml" id="DMWGoesTest">
+         <substitute key="orbitalSlot" value="GOES-Test"/>
+    </contribute>
+
+  <contribute xsi:type="titleItem" titleText="------ Legacy Temp/Moisture Profile ------" />
+
+  <contribute xsi:type="subMenu" menuText="GOES-East" id="ProfileGoesEast">
+    <contribute xsi:type="bundleItem"
+      file="bundles/satellite/GoesrLegacyProfileMap.xml" menuText="Full Disk"
+      id="LVMP-EFD">
+      <substitute key="sector" value="EFD" />
+    </contribute>
+    <contribute xsi:type="bundleItem"
+      file="bundles/satellite/GoesrLegacyProfileMap.xml" menuText="CONUS"
+      id="LVMP-ECONUS">
+      <substitute key="sector" value="ECONUS" />
+    </contribute>
+    <contribute xsi:type="bundleItem"
+      file="bundles/satellite/GoesrLegacyProfileMap.xml" menuText="Mesoscale 1"
+      id="LVMP-EMESO1">
+      <substitute key="sector" value="EMESO-1" />
+    </contribute>
+    <contribute xsi:type="bundleItem"
+      file="bundles/satellite/GoesrLegacyProfileMap.xml" menuText="Mesoscale 2"
+      id="LVMP-EMESO2">
+      <substitute key="sector" value="EMESO-2" />
+    </contribute>
+  </contribute>
+    <contribute xsi:type="subMenu" menuText="GOES-West" id="ProfileGoesWest">
+    <contribute xsi:type="bundleItem"
+      file="bundles/satellite/GoesrLegacyProfileMap.xml" menuText="Full Disk"
+      id="LVMP-WFD">
+      <substitute key="sector" value="WFD" />
+    </contribute>
+    <contribute xsi:type="bundleItem"
+      file="bundles/satellite/GoesrLegacyProfileMap.xml" menuText="CONUS"
+      id="LVMP-WCONUS">
+      <substitute key="sector" value="WCONUS" />
+    </contribute>
+    <contribute xsi:type="bundleItem"
+      file="bundles/satellite/GoesrLegacyProfileMap.xml" menuText="Mesoscale 1"
+      id="LVMP-WMESO1">
+      <substitute key="sector" value="WMESO-1" />
+    </contribute>
+    <contribute xsi:type="bundleItem"
+      file="bundles/satellite/GoesrLegacyProfileMap.xml" menuText="Mesoscale 2"
+      id="LVMP-WMESO2">
+      <substitute key="sector" value="WMESO-2" />
+    </contribute>
+  </contribute>
+    <contribute xsi:type="subMenu" menuText="GOES-Center" id="ProfileGoesTest">
+    <contribute xsi:type="bundleItem"
+      file="bundles/satellite/GoesrLegacyProfileMap.xml" menuText="Full Disk"
+      id="LVMP-TFD">
+      <substitute key="sector" value="TFD" />
+    </contribute>
+    <contribute xsi:type="bundleItem"
+      file="bundles/satellite/GoesrLegacyProfileMap.xml" menuText="CONUS"
+      id="LVMP-TCONUS">
+      <substitute key="sector" value="TCONUS" />
+    </contribute>
+    <contribute xsi:type="bundleItem"
+      file="bundles/satellite/GoesrLegacyProfileMap.xml" menuText="Mesoscale 1"
+      id="LVMP-TMESO1">
+      <substitute key="sector" value="TMESO-1" />
+    </contribute>
+    <contribute xsi:type="bundleItem"
+      file="bundles/satellite/GoesrLegacyProfileMap.xml" menuText="Mesoscale 2"
+      id="LVMP-TMESO2">
+      <substitute key="sector" value="TMESO-2" />
+    </contribute>
+  </contribute>
+
 </menuTemplate>

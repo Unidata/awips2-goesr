@@ -18,37 +18,13 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
-    <!-- TOWRdocs Header
-         GOES-R SST product description file.
-    -->
-    <!-- TOWRdocs Description
-         Modification of the 16.4.1 baseline file of the same name to specify a new fillByte.
-         The baselne fillByte of -1 results in a constant display value of 340.05 K (66.9C)
-         in undefined areas, including over land. This results in saturation at the high
-         end of the color table over those areas.  This configuration file modifies fillByte
-         to be zero, resulting in no values sampled over the land areas.
-
-         This file accounts for additional dataset_name
-         combinations for GOES-R derived products:
-
-         "OR" = OE Real-Time Data
-         "OT" = OE Test Data
-         "IR" = ITE Real-Time Data
-         "IT" = ITE Test Data"
-
-    -->
-    <!-- TOWRdocs Status
-         Modification of the fillByte value in the previous baseline SST descriptor file of the
-         same name, for 16.4.1. Also adds additional combinations for the dataset_name
-   -->
-    <!-- TOWRdocs POC
-         Lee Byerle 9/22/16
-    -->
-    <!-- 
+   <!-- 
         This is an absolute override file, indicating that a higher priority 
         version of the file will completely replace a lower priority version
         of the file. 
     -->
+    <!-- Adds second desc for option to specify SST degF, degC in a bundle, per NWS SET. 
+         Updated 8/7/2018 Lee Byerle  -->
 <goesrProductDescriptions>
 
   <default>
@@ -63,11 +39,24 @@
     <data>
       <variable name="SST" />
       <discreteMask name="DQF" value="0" keep="true">
-        <fillByte>-1</fillByte>
+      <fillByte>-1</fillByte>
       </discreteMask>
     </data>
     <physicalElement>
       <value value="SST" />
+    </physicalElement>
+  </description>
+
+<!-- TOWR-S 1/31/2018 Add addl SST that can be used to display degF in bundle-->
+  <description>
+    <data>
+      <variable name="SST" />
+      <discreteMask name="DQF" value="0" keep="true">
+      <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="SSTF" />
     </physicalElement>
   </description>
  
