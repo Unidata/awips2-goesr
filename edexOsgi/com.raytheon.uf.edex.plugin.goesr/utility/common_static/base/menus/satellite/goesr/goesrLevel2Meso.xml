@@ -23,6 +23,7 @@
         version of the file will completely replace a lower priority version
         of the file. 
     -->
+    <!-- Updated 8/7/2018 Lee Byerle -->
 <menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Aerosol Detection" id="goesr-adp">
         <substitute key="entity" value="GOES%" />

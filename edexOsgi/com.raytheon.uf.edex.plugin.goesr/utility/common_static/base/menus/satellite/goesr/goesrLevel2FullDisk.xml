@@ -23,6 +23,7 @@
         version of the file will completely replace a lower priority version
         of the file. 
     -->
+   <!-- Updated 8/7/2018 Lee Byerle -->
 <menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Aerosol Detection" id="goesr-adp">
         <substitute key="entity" value="GOES%" />
@@ -83,10 +84,12 @@
         <substitute key="element" value="RRQPE" />
         <substitute key="colormap" value="GOES-R/GOESR-L2/RRQPE1" />
     </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Sea Surface Temperature" id="goesr-sst">
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesSST_degF_degC_bundle.xml" 
+                menuText="Sea Surface Temperature" id="goesr-sst2">
         <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="SST" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/GOES-SST-35" />
+        <substitute key="SSTdegF" value="SSTF"/>
+        <substitute key="SSTdegC" value="SST"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/GOES-SST-35"/>
     </contribute>
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Snow Cover" id="goesr-fsc">
         <substitute key="entity" value="GOES%" />

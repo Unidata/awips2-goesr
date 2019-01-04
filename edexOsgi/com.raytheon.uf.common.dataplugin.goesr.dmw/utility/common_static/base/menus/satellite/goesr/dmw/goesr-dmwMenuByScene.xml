@@ -58,8 +58,13 @@
         <substitute key="scene" value="CONUS" />
     </contribute>
 
-    <!-- Mesoscale -->
-    <contribute xsi:type="subinclude" subMenu="Mesoscale" fileName="menus/satellite/goesr/dmw/goesr-dmwMenuByFilter.xml">
-        <substitute key="scene" value="Mesoscale" />
+    <!-- Mesoscale1 -->
+    <contribute xsi:type="subinclude" subMenu="Mesoscale1" fileName="menus/satellite/goesr/dmw/goesr-dmwMenuByFilter.xml">
+        <substitute key="scene" value="Mesoscale1" />
+    </contribute>
+    
+    <!-- Mesoscale2 -->
+    <contribute xsi:type="subinclude" subMenu="Mesoscale2" fileName="menus/satellite/goesr/dmw/goesr-dmwMenuByFilter.xml">
+        <substitute key="scene" value="Mesoscale2" />
     </contribute>
 </menuTemplate>
