@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <!-- TOWRdocs Header
+                  GOES-R CMIP Common Description file
+    -->
+    <!-- TOWRdocs Description
+                  GOES-R CMIP description configuration.  This file is used to visualize CLASS CMIP files.
+         Place in /awips2/edex/data/utility/common_static/site/XYZ/satellite/goesr/descriptions/CMIP
+     -->
+    <!-- TOWRdocs Status
+                  This file is not included within the baseline.  Therefore, create a directory as stated above.
+    -->
+    <!-- TOWRdocs POC
+                  Lee Cronce, CIMSS/SSEC/University of Wisconsin 12/13/2018
+    -->
+<goesrProductDescriptions>
+    <default>
+        <matches>
+            <match pattern="[OI][RT]_ABI-L2-\w{4}(C|F|M1|M2)-M[34]C\d\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+                <attribute name="dataset_name"/>
+            </match>
+        </matches>
+    </default>
+
+    <description>
+        <dataTime>
+            <formattedRefTime dateFormat="yyyy-MM-dd'T'HH:mm:ss.S'Z'">
+                <attribute name="time_coverage_start"/> 
+            </formattedRefTime>
+        </dataTime>
+
+        <source>
+            <attribute name="production_site" />
+        </source>
+
+        <creatingEntity>
+            <pattern inputPattern="G(1[678])" outputFormat="GOES-%S CMIP">
+                <attribute name="platform_ID" />
+            </pattern>
+        </creatingEntity>
+    </description>
+</goesrProductDescriptions>

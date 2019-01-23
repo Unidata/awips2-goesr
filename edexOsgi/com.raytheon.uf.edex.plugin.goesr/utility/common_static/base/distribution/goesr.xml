@@ -50,18 +50,18 @@
         This is an absolute override file, indicating that a higher priority
         version of the file will completely replace a lower priority version
         of the file.
-/data/ldm/pub/native/satellite/GOES/GOES16/Mesoscale-2/Channel15/20190107/GOES16_Mesoscale-2_20190107_174255_12.30_2km_37.1N_86.6W.nc4
     -->
 <requestPatterns xmlns:ns2="group">
     <regex>^TI[SR]</regex>
-    <regex>[OI][RT]_ABI</regex>
-    <regex>.*GOES.*.nc4</regex>
-    <!-- WMO headers for derived products -->
+    <!-- This pattern is intended to match standardized Level 2 filenames, it will not be used over LDM -->
+    <regex>^[OI][RT]_ABI-L2-\w{3,5}(C|F|M1|M2)-M[\d]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc$</regex>
+    <regex>OR_ABI-L1b-Rad</regex>
+    <!-- derived products -->
     <regex>^IXT[ABCDEFGHIJKLMNOPQ]</regex>
     <!-- Cloud top pressure, cloud optical depth, cloud particle size -->
     <regex>^IXT[XYW]01</regex>
     <!-- Himawari Imagery -->
-    <regex>OR_HFD</regex>
+    <regex>^OR_HFD</regex>
     <regex>^H8FD.B</regex>
 </requestPatterns>
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <!-- TOWRdocs Header
+                           GOES-R CMIP Channel Data Description File
+    -->
+    <!-- TOWRdocs Description
+                           GOES-R CMIP data description configuration.  This file is used to visualize CLASS CMIP files.
+         Place in /awips2/edex/data/utility/common_static/site/XYZ/satellite/goesr/descriptions/CMIP
+     -->
+    <!-- TOWRdocs Status
+                           This file is not included within the baseline.  Therefore, create a directory as stated above.
+    -->
+    <!-- TOWRdocs POC
+                           Lee Cronce, CIMSS/SSEC/University of Wisconsin 12/13/2018
+    -->
+<goesrProductDescriptions>
+    <default>
+        <matches>
+            <match pattern="[OI][RT]_ABI-L2-\w{4}(C|F|M1|M2)-M[34]C02_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+                <attribute name="dataset_name" />
+            </match>
+        </matches>
+    </default>
+
+    <description>
+        <data>
+            <variable name="CMI" />
+            <discreteMask name="DQF" value="0" keep="true">
+                <fillByte>-1</fillByte>
+            </discreteMask>
+        </data>
+        <physicalElement>
+            <value value="CH-02-0.64um" />
+        </physicalElement>
+    </description>
+</goesrProductDescriptions>
