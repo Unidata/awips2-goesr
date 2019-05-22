@@ -19,8 +19,8 @@
  **/
 package com.raytheon.uf.edex.plugin.goesr.geospatial;
 
+import javax.measure.Unit;
 import javax.measure.quantity.Length;
-import javax.measure.unit.Unit;
 
 import org.geotools.referencing.CRS;
 import org.geotools.referencing.operation.projection.MapProjection;
