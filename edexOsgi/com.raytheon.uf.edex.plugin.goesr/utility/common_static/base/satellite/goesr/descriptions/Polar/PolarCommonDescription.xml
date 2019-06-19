@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+   <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
+    -->
+   <!-- TOWRdocs Header
+         Polar common description file
+    -->
+    <!-- TOWRdocs Description
+         Polar product descriptions file. Place in
+         /awips2/edex/data/utility/common_static/site/XYZ/satellite/goesr/descriptions/Polar
+     -->
+    <!-- TOWRdocs Status
+         New file not yet baselined for use in 17.1.1 and higher
+         Create a directory at the site level called /Polar as listed above
+    -->
+    <!-- TOWRdocs POC
+         Jordan Gerth, CIMSS/SSEC/Univ. of Wisconsin 9/13/2017
+    -->
+<goesrProductDescriptions>
+    <default>
+        <matches>
+            <match pattern="AWIPS_.+">
+                <attribute name="awips_id" />
+            </match>
+        </matches>
+    </default>
+    <description>
+        <source>
+            <attribute name="production_location" />
+        </source>
+        <physicalElement>
+            <attribute name="physical_element" />
+        </physicalElement>
+        <creatingEntity>
+            <attribute name="satellite_id" />
+        </creatingEntity>
+        <dataTime>
+            <formattedRefTime dateFormat="yyyy-MM-dd'T'HH:mm:ss">
+                <attribute name="start_date_time" />
+            </formattedRefTime>
+        </dataTime>
+        <sectorID>
+            <attribute name="sector_id" />
+        </sectorID>
+        <data>
+            <variable name="data" />
+        </data>
+    </description>
+</goesrProductDescriptions>

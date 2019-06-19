@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DerivedParameter name="GOES-R VIS/IR Sandwich - Green Component" abbreviation="goesrSandwichGreen" xmlns:ns2="group">
+    <Method name="goesrSandwich">
+        <Field abbreviation="abiCh02Alias"/>
+        <Field abbreviation="abiCh13Alias"/>
+<!--         <Field abbreviation="CH-02-0.64um" unit="%" /> -->
+<!--         <Field abbreviation="CH-13-10.35um" unit="K" /> -->
+        <ConstantField value="1"/>
+    </Method>
+</DerivedParameter>

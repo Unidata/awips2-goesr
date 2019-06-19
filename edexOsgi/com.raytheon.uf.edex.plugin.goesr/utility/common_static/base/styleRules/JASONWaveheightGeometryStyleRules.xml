@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+   <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
+    -->
+    <!-- TOWRdocs Header
+        The various Styling Rules defined for Geometries.
+    -->
+    <!-- TOWRdocs Description
+        This file defines the various DBGeo StyleRules that handle the color, colormapping, sampling, etc. 
+        aspects of Geometry instances rendered through the plugin. 
+
+        StyleRules are defined/captured by defining a match criteria, that will be used to determine which
+        StyleRule best matches a GeoDataRecord. A sample entry, along with descriptions of the <bean> definitions,
+        is shown below:
+
+            <styleRule>
+
+                <!- MatchCriteria (GeoDataRecordCriteria) ->
+                <!- The <geoDataMatches> bean signifies the StyleRules MatchCriteria. That is, it defines the criteria used to 
+                match a GeoDataRecord to its appropriate StyleRule. A GeoDataRecord will return the StyleRule information
+                based on how many matches are found in its MatchCriteria. ->
+
+                <geoDataMatches>
+                    <source></source>       (String) The list of "source" DB column values to include in this Matcher
+                    <product></product>     (String) The list of "product" DB column values to include in this Matcher
+                    <attribute></attribute> (String) The list of Float/Integer/StringAttribute names to include in this matcher
+                </geoDataMatches>
+
+                <!- ImagePreferences ->
+                <!- The <geometryStyle> bean signifies the beginning of the StyleRule definition that matches the MatchCriteria 
+                defined above. ->
+                <geometryStyle>
+
+                    <!- GeometryPreferences ->
+                        <!- Only one of the following may be present for the lineWidth ->
+                        <lineWidthVal></lineWidthVal>   The value to use for the lineWidth
+                        <lineWidthFloatAtt>
+                            <name></name>       (String) name of the FloatAttribute to use for the lineWidth
+                        </lineWidthFloatAtt>
+                        <lineWidthIntAtt>
+                            <name></name>       (String) name of the IntegerAttribute to use for the lineWidth
+                        </lineWidthIntAtt>
+
+                        <!- Only one of the following may be present for the sampleCutoff ->
+                        <sampleCutoffVal></sampleCutoffVal>    The value to use for the sampleCutoff
+                        <sampleCutoffFloatAtt>
+                            <name></name>       (String) name of the FloatAttribute to use for the sampleCutoff
+                        </sampleCutoffFloatAtt>
+                        <sampleCutoffIntAtt>
+                            <name></name>       (String) name of the IntegerAttribute to use for the sampleCutoff
+                        </sampleCutoffIntAtt>
+
+                        <!- Only one of the following may be present for the lineColor ->
+                        <lineColorVal></lineColorVal>   (Color) The value to use for the Geometry color
+
+                        NOTE : if a lineColorVal is specified for the StyleRule, all of the corresponding (matching)
+                            Geometries will be rendered that color. This means it is not necessary to define ColorMap handling
+                            (i.e. <defaultColormap>, <range>, <colorbarLabeling>, etc.)
+
+                        <lineColorFloatAtt>
+                            <name></name>       (String) name of the FloatAttribute whose value will determine the color.
+                        </lineColorFloatAtt>
+                        <lineColorIntAtt>
+                            <name></name>       (String) name of the IntegerAttribute whose value will be used to determine the color.
+                        </lineColorIntAtt>
+
+                        <!- Magnification coincides with a Point Geometry's lineWidth_____Att value. All lineWidth values mapped to a 
+                            given Record attribute will be scaled to [minPointMag, maxPointMag] ->
+                        <minPointMag>           (float) minimum magnification to apply to the lowest (optional) value of lineWidth____Att
+                        <maxPointMag>           (float) maximum magnification to apply to the highest (optional) value of lineWidth_____Att
+                        <pointDisplay>          Determines how to render a point on the screen (BOX, POINT, DISK, CIRCLE, etc.)
+
+                        <!- Mapping DB attribute names/values to user-defined names/values (of a specified unit) ->
+                        <attributeConvert>
+                            <dataName></dataName>           (String) Matches Attribute name in DB
+                            <dataUnits></dataUnits>         (String) The units of the Attribute's Value in the DB
+                            <displayName></displayName>     (String) to rename Attribute for sampling
+                            <displayUnits></displayUnits>   (String) units to convert Attribute's DB value to
+                        </attributeConvert>
+
+                        <filled></filled>   Whether or not to fill in any Point Geometries (optional)
+
+                        <renderPointAs></renderPointAs>     (String) to render Point as (optional)
+                    <!- GeometryPreferences ->
+
+                    <!- The Colormap to load for the resource ->
+                    <defaultColormap></defaultColormap> (String) path to colormap (after /awips2/edex/data/utility/../colormaps/)
+
+                    <!- Range Scale of the Colormap ->
+                    <range scale="LINEAR">
+                        <minValue>-5</minValue>         Minimum value on Resource's Colormap
+                        <maxValue>40</maxValue>         Maximum value on Resource's Colormap
+                    </range>
+
+                    <!- Labels to apply to the Colormap ->
+                    <colorbarLabeling>
+                        <values>-5 5 15 25 35</values> The values to label on the Resoure's Colormap
+                    </colorbarLabeling>
+
+                    <!- SamplePreferences ->
+                    <samplePrefs>
+                        <minValue></minValue>             The minimum value to allow for data sampling
+                        <maxValue></maxValue>             The maximum value to allow for data sampling
+                        <formatString>%.3f</formatString> The number of decimal places to display for values during sampling
+                    </samplePrefs>
+
+                </geometryStyle>
+            </styleRule>  
+
+    -->
+    <!-- TOWRdocs Status
+        This file is new to the 16.4.1 baseline.
+    1/5/2018 L. Byerle, Updated the max wave height to 90ft per previous inputs w/OPC developers.
+    7/17/2018 L. Byerle, Updated path to the default colormap (VTRSB) for consistency w/GOES-R products map location, same name,
+                         instead of Sat/GOESR-L2/VTRSB
+    -->
+    <!-- TOWRdocs POC
+        Matt Comerford
+    -->
+
+<styleRuleset>
+
+    <!-- JASON Altimetry -->
+    <styleRule>
+
+        <!-- MatchCriteria (paramLevelMatches extends MatchCriteria) -->
+        <geoDataMatches>
+            <source>radar altimeter</source>
+            <product>JASON Altimetry</product>
+            <attribute>swh_ku</attribute>
+            <attribute>ssha</attribute>
+        </geoDataMatches>
+
+        <!-- ImagePreferences -->
+        <geometryStyle>
+
+            <!-- GeometryPreferences -->
+            <lineWidthFloatAtt>
+                <name>swh_ku</name>
+            </lineWidthFloatAtt>
+            <sampleCutoffFloatAtt>
+                <name>swh_ku</name>
+            </sampleCutoffFloatAtt>
+            <lineColorFloatAtt>
+                <name>swh_ku</name>
+            </lineColorFloatAtt>
+            <minPointMag>1.0</minPointMag>
+            <maxPointMag>2.5</maxPointMag>
+            <pointDisplay>DISC</pointDisplay>
+
+            <attributeConvert>
+                <dataName>swh_ku</dataName>
+                <dataUnits>m</dataUnits>
+                <displayName>KU Band Significant Waveheight
+                </displayName>
+                <displayUnits>ft</displayUnits>
+            </attributeConvert>
+            <attributeConvert>
+                <dataName>ssha</dataName>
+                <dataUnits>m</dataUnits>
+                <displayName>Sea Surface Height Anomaly</displayName>
+                <displayUnits>ft</displayUnits>
+            </attributeConvert>
+
+            <!-- GeometryPreferences -->
+
+            <!-- The Colormap to load for the resource -->
+            <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
+
+            <!-- Range Scale of the Colormap -->
+            <range scale="LINEAR">
+                <minValue>-5</minValue>
+                <maxValue>90</maxValue>
+<!--                <maxValue>40</maxValue> -->
+            </range>
+
+            <!-- Labels to apply to the Colormap -->
+            <colorbarLabeling>
+                <values>-5 10 20 30 40 50 60 70 80</values>
+<!--                <values>-5 5 15 25 35</values> -->
+            </colorbarLabeling>
+
+            <!-- SamplePreferences -->
+            <samplePrefs>
+                <formatString>%.3f</formatString>
+            </samplePrefs>
+
+            <displayLegend>JASON Waveheight - color/scale: (KU Band
+                Waveheight)
+            </displayLegend>
+            <displayUnits label="ft">ft</displayUnits>
+            <displayFlags></displayFlags>
+
+        </geometryStyle>
+    </styleRule>
+
+</styleRuleset>

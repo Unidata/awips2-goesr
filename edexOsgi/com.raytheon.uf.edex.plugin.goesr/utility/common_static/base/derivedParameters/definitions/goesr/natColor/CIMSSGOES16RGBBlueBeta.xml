@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <!--
+        This_software_was_developed_and_/_or_modified_by_Raytheon_Company,
+        pursuant_to_Contract_DG133W-05-CQ-1067_with_the_US_Government.
+        
+        U.S._EXPORT_CONTROLLED_TECHNICAL_DATA
+        This_software_product_contains_export-restricted_data_whose
+        export/transfer/disclosure_is_restricted_by_U.S._law._Dissemination
+        to_non-U.S._persons_whether_in_the_United_States_or_abroad_requires
+        an_export_license_or_other_authorization.
+        
+        Contractor_Name:________Raytheon_Company
+        Contractor_Address:_____6825_Pine_Street,_Suite_340
+        ________________________Mail_Stop_B8
+        ________________________Omaha,_NE_68106
+        ________________________402.291.0100
+        
+        See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
+        further_licensing_information.
+    -->
+    <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
+    -->
+    <!-- TOWRdocs Header
+         GOES16 True color RGB(Natural) Header
+         True color RGB satellite-derived parameter definition file for the blue band.
+    -->
+   <!-- TOWRdocs Description
+         GOES16 True color RGB
+         This defines the UW-Madison CIMSS GOES16 true color RGB(NAatural) for AWIPS-II, created on the fly.
+         This is achieved by calling the Python method called CIMSSGOES16RGBNaturalBeta, following the UW-Madison CIMSS
+         green channel generation as described in the paper: "How to Generate GOES-16 TRUE COLOR RGB images" The three above mentioned 
+         channels gets passed in to the method through the "field abbreviation", These are then combined and or enhanced
+         to return a green like band. The "ConstantFields" are described in the method function
+         "CIMSSmakeGoes16GreenBandBeta".
+    -->
+    <!-- TOWRdocs Status
+         GOES16 True color RGB(Natural) Status
+         This is a new derived parameter set of files designed to Make GOES-16 True color RGB images on the fly and currently
+         not included in the AWIPS 2 baseline.
+   -->
+   <!--  TOWRdocs POC
+         GOES16 True color RGB POC
+         Kaba Bah
+    -->
+   <!--  
+     CONTACTS: 
+
+      This code was developed at UW Madison CIMSS for generating GOES-16 true color RGB images on the fly,
+        It required no additional information besides the already existing first three GOES16 ABI channels.
+        The green band gets generated on the fly and the enhancements applied do not require and further information:
+
+    Algorith was developed by Kaba Bah at UW-Madison CIMSS.
+        Kaba Bah: (kbah@ssec.wisc.edu),Ph:608-262-4462
+
+   -->
+<DerivedParameter name="GOES-16 ABI True color RGB  - Blue Component" abbreviation="Blue" xmlns:ns2="group">
+      <Method name="CIMSSGOES16RGBNaturalBeta">
+        <Field abbreviation="abiCh01Alias"/>
+                <Field abbreviation="abiCh02Alias"/>
+                <Field abbreviation="abiCh03Alias"/>
+    <ConstantField value="1"/>
+    <ConstantField value="0."/>
+    <ConstantField value="4096"/>
+    <ConstantField value="0"/>
+      </Method>
+</DerivedParameter>
