@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import javax.measure.unit.SI;
-
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.opengis.referencing.crs.ProjectedCRS;
 import org.opengis.referencing.datum.Ellipsoid;
@@ -34,6 +32,7 @@ import org.slf4j.LoggerFactory;
 import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
 import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrSatelliteHeight;
 
+import si.uom.SI;
 import ucar.nc2.NetcdfFile;
 import ucar.nc2.Variable;
 
@@ -138,7 +137,7 @@ public class DimensionEnvelopeFactory extends AbstractDimensionEnvelopeFactory {
                     .getEllipsoid();
             double semiMajor = ellpsoid.getSemiMajorAxis();
             double orbitalHeight = GoesrSatelliteHeight.getOrbitalHeight(crs,
-                    SI.METER);
+                    SI.METRE);
             double maxValid = semiMajor * orbitalHeight
                     / (orbitalHeight + semiMajor);
             double minValid = -1 * maxValid;

@@ -1,60 +1,62 @@
 /**
  * This software was developed and / or modified by Raytheon Company,
  * pursuant to Contract DG133W-05-CQ-1067 with the US Government.
- * 
+ *
  * U.S. EXPORT CONTROLLED TECHNICAL DATA
  * This software product contains export-restricted data whose
  * export/transfer/disclosure is restricted by U.S. law. Dissemination
  * to non-U.S. persons whether in the United States or abroad requires
  * an export license or other authorization.
- * 
+ *
  * Contractor Name:        Raytheon Company
  * Contractor Address:     6825 Pine Street, Suite 340
  *                         Mail Stop B8
  *                         Omaha, NE 68106
  *                         402.291.0100
- * 
+ *
  * See the AWIPS II Master Rights File ("Master Rights File.pdf") for
  * further licensing information.
  **/
 package com.raytheon.uf.edex.plugin.goesr.geospatial.envelope;
 
-import java.text.ParseException;
 import java.text.ParsePosition;
 
-import javax.measure.unit.SI;
-import javax.measure.unit.Unit;
-import javax.measure.unit.UnitFormat;
+import javax.measure.UnconvertibleException;
+import javax.measure.Unit;
+import javax.measure.format.ParserException;
 
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
+import com.raytheon.uf.common.units.UnitConv;
+import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
+import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrSatelliteHeight;
+
+import si.uom.SI;
+import tec.uom.se.format.SimpleUnitFormat;
 import ucar.nc2.Attribute;
 import ucar.nc2.NetcdfFile;
 import ucar.nc2.Variable;
 
-import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
-import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrSatelliteHeight;
-
 /**
- * 
+ *
  * Base class for all envelope factories that find envelopes using the x and y
  * dimension variables.
- * 
+ *
  * <pre>
- * 
+ *
  * SOFTWARE HISTORY
- * 
+ *
  * Date          Ticket#  Engineer    Description
  * ------------- -------- ----------- --------------------------
  * Apr 17, 2015  4336     bsteffen    Initial creation
- * 
+ * May  8, 2019  7596     tgurney     Fixes for units upgrade
+ *
  * </pre>
- * 
+ *
  * @author bsteffen
- * @version 1.0
  */
-public abstract class AbstractDimensionEnvelopeFactory implements
-        GoesrEnvelopeFactory {
+public abstract class AbstractDimensionEnvelopeFactory
+        implements GoesrEnvelopeFactory {
 
     @Override
     public GoesrEnvelope getEnvelope(NetcdfFile cdfFile,
@@ -91,7 +93,7 @@ public abstract class AbstractDimensionEnvelopeFactory implements
             return scale;
         } else if ("rad".equals(units) || "radian".equals(units)) {
             double orbitalHeight = GoesrSatelliteHeight.getOrbitalHeight(crs,
-                    SI.METER);
+                    SI.METRE);
             if (Double.isNaN(orbitalHeight)) {
                 return 1000 * scale / RADIANS_PER_KM_SPACING;
             } else {
@@ -101,17 +103,19 @@ public abstract class AbstractDimensionEnvelopeFactory implements
             return findDistance(crs, scale / 1000 / 1000, "rad");
         } else {
             try {
-                Unit<?> u = UnitFormat.getUCUMInstance().parseProductUnit(
-                        units, new ParsePosition(0));
-                if (u.isCompatible(SI.METER)) {
-                    u.getConverterTo(SI.METER).convert(scale);
+                Unit<?> u = SimpleUnitFormat
+                        .getInstance(SimpleUnitFormat.Flavor.ASCII)
+                        .parseProductUnit(units, new ParsePosition(0));
+                if (u.isCompatible(SI.METRE)) {
+                    UnitConv.getConverterToUnchecked(u, SI.METRE)
+                            .convert(scale);
                 } else {
-                    throw new GoesrProjectionException("Incompatible units: "
-                            + units);
+                    throw new GoesrProjectionException(
+                            "Incompatible units: " + units);
                 }
-            } catch (ParseException e) {
-                throw new GoesrProjectionException("Unrecognized units: "
-                        + units);
+            } catch (UnconvertibleException | ParserException e) {
+                throw new GoesrProjectionException(
+                        "Incompatible units: " + units, e);
             }
         }
 

@@ -22,3 +22,4 @@ Require-Bundle: javax.measure,
  org.apache.commons.beanutils;bundle-version="1.8.3",
  javax.xml.bind
 Export-Package: com.raytheon.uf.edex.plugin.goesr
+Import-Package: com.raytheon.uf.common.units

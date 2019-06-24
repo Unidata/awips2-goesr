@@ -28,14 +28,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.measure.unit.SI;
 import javax.xml.bind.JAXBException;
 
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
-
-import ucar.nc2.Attribute;
-import ucar.nc2.NetcdfFile;
-import ucar.nc2.Variable;
 
 import com.raytheon.uf.common.dataplugin.persist.PersistablePluginDataObject;
 import com.raytheon.uf.common.dataplugin.satellite.SatMapCoverage;
@@ -60,6 +55,12 @@ import com.raytheon.uf.edex.plugin.goesr.description.data.GoesrDataDescription;
 import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
 import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrProjectionFactory;
 import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrSatelliteHeight;
+
+import si.uom.SI;
+import tec.uom.se.unit.MetricPrefix;
+import ucar.nc2.Attribute;
+import ucar.nc2.NetcdfFile;
+import ucar.nc2.Variable;
 
 /**
  * This decoder attempts to open a potential GOES-R netCDF file, decode the data
@@ -231,7 +232,7 @@ public class GoesrNetcdfDecoder extends AbstractNetcdfDecoder {
             CoordinateReferenceSystem crs = ((SatMapCoverage) info
                     .getField("coverage")).getCrs();
             double satHeightD = GoesrSatelliteHeight.getOrbitalHeight(crs,
-                    SI.KILOMETER);
+                    MetricPrefix.KILO(SI.METRE));
             if (!Double.isNaN(satHeightD)) {
                 info.addField("satHeight", (int) satHeightD);
             }
