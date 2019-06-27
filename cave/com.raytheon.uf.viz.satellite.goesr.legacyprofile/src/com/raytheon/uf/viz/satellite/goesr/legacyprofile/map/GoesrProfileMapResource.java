@@ -135,9 +135,8 @@ public class GoesrProfileMapResource extends
      */
     protected GoesrProfileMapResource(GoesrProfileMapResourceData resourceData,
             LoadProperties loadProperties) {
-        super(resourceData, loadProperties);
+        super(resourceData, loadProperties, false);
         this.inputManager = new GoesrProfileMapInputHandler(this);
-        this.dataTimes = new ArrayList<DataTime>();
         getCapability(EditableCapability.class).setEditable(true);
     }
 
@@ -162,7 +161,6 @@ public class GoesrProfileMapResource extends
         List<DataTime> dataTimes = new ArrayList<DataTime>(
                 this.records.keySet());
         Collections.sort(dataTimes);
-        this.dataTimes = dataTimes;
         loadJob.schedule();
     }
 
