@@ -30,5 +30,6 @@
   <parameter name="channel" queryName="channel" type="INT" />
   <parameter name="orbitalSlot" queryName="orbitalSlot" type="STRING" />
   <parameter name="filter" queryName="filter" type="FLOAT" />
+  <parameter name="forecastHr" queryName="dataTime.fcstTime" numDims="1" type="INT" unit="h" dbunit="s"/>
 </pointDataDbDescription>
 
