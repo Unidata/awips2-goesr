@@ -23,6 +23,7 @@
         version of the file will completely replace a lower priority version
         of the file. 
     -->
+<!-- 7/31/2019 L. Byerle added sector to the groupName so that the sector appears in the legend -->
 <bundle xmlns:ns2="http://www.example.org/productType" xmlns:ns3="group">
     <displayList>
         <displays xsi:type="d2DMapRenderableDisplay"
@@ -36,7 +37,7 @@
                         </capabilities>
                     </loadProperties>
                     <resourceData xsi:type="trueColorResourceGroupData">
-                        <groupName>${productName}</groupName>
+                        <groupName>${sector} ${productName}</groupName>
                         <channelResource channelName="${redElement}">
                             <channel>RED</channel>
                             <resourceData xsi:type="satResourceData">

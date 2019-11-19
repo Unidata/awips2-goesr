@@ -23,10 +23,8 @@
         version of the file will completely replace a lower priority version
         of the file. 
     -->
-    <!-- Updated 8/7/2018 Lee Byerle
-    -->
 <menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <contribute xsi:type="subMenu" menuText="GOES-East and GOES-17" id="goesr">
+    <contribute xsi:type="subMenu" menuText="GOES-East and GOES-West" id="goesr">
         <contribute xsi:type="titleItem" titleText="------ By Sector ------" id="goesrBySector"/>
         <contribute xsi:type="subinclude" subMenu="Imagery Channels" fileName="menus/satellite/goesr/goesrBySectorByChannel.xml" />
         <contribute xsi:type="subinclude" subMenu="Derived Products" fileName="menus/satellite/goesr/goesrLevel2.xml" />

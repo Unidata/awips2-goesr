@@ -23,10 +23,6 @@
         version of the file will completely replace a lower priority version
         of the file. 
     -->
-    <!-- 
-        Adds SET/Training Team-approved RGB composites
-        8/7/2018 Lee Byerle
-    -->
 <menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 
@@ -153,6 +149,19 @@
         <substitute key="blueGamma" value="1.0" />
         <substitute key="blueUnit" value="%" />
         </contribute>
+
+        <!-- Sandwich RGB from OPG -->
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBRecipe.xml"
+                        menuText="VIS/IR Sandwich" id="goesr-sandwich">
+                <substitute key="productName" value="Sandwich RGB" />
+                <substitute key="redElement" value="goesrSandwichRed" />
+                <substitute key="greenElement" value="goesrSandwichGreen" />
+                <substitute key="blueElement" value="goesrSandwichBlue" />
+                <substitute key="redLabel" value="Red" />
+                <substitute key="greenLabel" value="Green" />
+                <substitute key="blueLabel" value="Blue" />
+        </contribute>
+
 
     <!-- GLSL Simple Water Vapor. -->
         <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBRecipeGLSL.xml" 

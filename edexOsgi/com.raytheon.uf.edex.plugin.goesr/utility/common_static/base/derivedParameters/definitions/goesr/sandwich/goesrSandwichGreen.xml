@@ -23,12 +23,10 @@
         version of the file will completely replace a lower priority version
         of the file.
     -->
-    <!-- Added 8/5/2018 for goesrRGBComposite. Distinct from
-         satFog given units C vs K.  Lee Byerle 
-    -->
-<DerivedParameter unit="C" name="Fog [10.3-3.9 um]" abbreviation="satFogRGB">
-    <Method name="DifferenceTwoAdj">
-        <Field abbreviation="abiCh13Alias" unit="K"/>
-        <Field abbreviation="abiCh07Alias" unit="K"/>
+<DerivedParameter name="GOES-R VIS/IR Sandwich - Green Component" abbreviation="goesrSandwichGreen" xmlns:ns2="group">
+    <Method name="goesrSandwich">
+        <Field abbreviation="abiCh02Alias"/>
+        <Field abbreviation="abiCh13Alias"/>
+        <ConstantField value="1"/>
     </Method>
 </DerivedParameter>

@@ -23,12 +23,10 @@
         version of the file will completely replace a lower priority version
         of the file.
     -->
-    <!-- Added 8/5/2018 for goesrRGBComposite. Distinct from
-         satFog given units C vs K.  Lee Byerle 
-    -->
-<DerivedParameter unit="C" name="Fog [10.3-3.9 um]" abbreviation="satFogRGB">
-    <Method name="DifferenceTwoAdj">
-        <Field abbreviation="abiCh13Alias" unit="K"/>
-        <Field abbreviation="abiCh07Alias" unit="K"/>
+<DerivedParameter name="NIR - Blue" abbreviation="satNDVI1">
+    <Method name="DifferenceTwoAdj"> 
+       <Field abbreviation="abiCh03Alias"/>
+       <Field abbreviation="abiCh02Alias"/>
     </Method>
 </DerivedParameter>
+

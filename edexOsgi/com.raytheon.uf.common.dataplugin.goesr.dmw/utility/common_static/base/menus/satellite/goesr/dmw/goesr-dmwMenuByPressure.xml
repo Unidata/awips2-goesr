@@ -4,75 +4,69 @@
         version of the file will completely replace a lower priority version
         of the file. 
     -->
-    <!-- TOWRdocs Header
-         DMW menu by pressure.
-    -->
-    <!-- TOWRdocs Description
-Sets the menus for by-pressure DMWs.  Modifies previous baseline file to add additional legend information after the pressure range.
-    -->
-    <!-- TOWRdocs Status
-         An updated menu file for by-pressure DMWs. Contributed by Bill Line of WFO Pueblo.
-   -->
-    <!-- TOWRdocs POC
-         Lee Byerle 1/15/2018
-    -->
-
 <menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
     <!-- 200 mb -->
-    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressure-200.xml" 
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
            menuText="000-250mb" id="goesr-DMW-Pressure-200mb">
         <substitute key="legend" value="000-250mb ${legend1}"/>
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="0--250" />
+        <substitute key="color" value="#ff9696" />
     </contribute>
 
     <!-- 300 mb -->
-    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressure-300.xml" 
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
            menuText="250-350mb" id="goesr-DMW-Pressure-300mb">
         <substitute key="legend" value="250-350mb ${legend1}"/>
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="250--350" />
+        <substitute key="color" value="#ff0000" />
     </contribute>
     
     <!-- 400 mb -->
-    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressure-400.xml" 
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
            menuText="350-450mb" id="goesr-DMW-Pressure-400mb">
         <substitute key="legend" value="350-450mb ${legend1}"/>
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="350--450" />
+        <substitute key="color" value="#960000" />
     </contribute>    
 
     <!-- 500 mb -->
-    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressure-500.xml" 
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
            menuText="450-600mb" id="goesr-DMW-Pressure-500mb">
         <substitute key="legend" value="450-600mb ${legend1}"/>
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="450--600" />
+        <substitute key="color" value="#00ff00" />
     </contribute>
 
     <!-- 700 mb -->
-    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressure-700.xml" 
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
            menuText="600-775mb" id="goesr-DMW-Pressure-700mb">
         <substitute key="legend" value="600-775mb ${legend1}"/>
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="600--775" />
+        <substitute key="color" value="#d2d2ff" />
     </contribute>
 
     <!-- 850 mb -->
-    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressure-850.xml" 
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
            menuText="775-900mb" id="goesr-DMW-Pressure-850mb">
         <substitute key="legend" value="775-900mb ${legend1}"/>
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="775--900" />
+        <substitute key="color" value="#9696ff" />
     </contribute>
 
     <!-- 925 mb -->
-    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressure-925.xml" 
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
            menuText="900mb-SFC" id="goesr-DMW-Pressure-925mb">
         <substitute key="legend" value="900mb-SFC ${legend1}"/>
         <substitute key="pressureConstraint" value="GREATER_THAN" />
         <substitute key="pressure" value="900" />
+        <substitute key="color" value="#0000ff" />
     </contribute>
     
 </menuTemplate>
