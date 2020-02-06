@@ -19,9 +19,6 @@
  **/
 package com.raytheon.uf.viz.satellite.goesr.legacyprofile;
 
-import gov.noaa.nws.ncep.edex.common.sounding.NcSoundingLayer;
-import gov.noaa.nws.ncep.edex.common.sounding.NcSoundingProfile;
-
 import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.ParsePosition;
@@ -34,11 +31,9 @@ import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.measure.Unit;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.quantity.Temperature;
-import javax.measure.unit.SI;
-import javax.measure.unit.Unit;
-import javax.measure.unit.UnitFormat;
 
 import com.raytheon.uf.common.dataplugin.satellite.SatelliteRecord;
 import com.raytheon.uf.common.datastorage.records.IDataRecord;
@@ -46,6 +41,13 @@ import com.raytheon.uf.common.sounding.VerticalSounding;
 import com.raytheon.uf.common.status.IUFStatusHandler;
 import com.raytheon.uf.common.status.UFStatus;
 import com.raytheon.uf.viz.d2d.nsharp.SoundingLayerBuilder;
+
+import gov.noaa.nws.ncep.edex.common.sounding.NcSoundingLayer;
+import gov.noaa.nws.ncep.edex.common.sounding.NcSoundingProfile;
+import si.uom.SI;
+import tec.uom.se.AbstractUnit;
+import tec.uom.se.format.SimpleUnitFormat;
+import tec.uom.se.unit.MetricPrefix;
 
 /**
  * Common code to build {@link VerticalSounding} or a {@link NcSoundingProfile}
@@ -60,11 +62,11 @@ import com.raytheon.uf.viz.d2d.nsharp.SoundingLayerBuilder;
  * ------------- -------- ----------- --------------------------
  * Apr 30, 2015  4335     bsteffen    Initial creation
  * May 13, 2015  4445     bsteffen    Remove GOESR sounding layer builder.
+ * May  8, 2019  7596     tgurney     Fixes for units upgrade
  * 
  * </pre>
  * 
  * @author bsteffen
- * @version 1.0
  */
 public class GoesrProfileBuilder {
     private static final transient IUFStatusHandler statusHandler = UFStatus
@@ -104,7 +106,7 @@ public class GoesrProfileBuilder {
         SoundingLayerBuilder layer = map.get(pressure);
         if (layer == null) {
             layer = new SoundingLayerBuilder();
-            layer.addPressure(pressure, SI.HECTO(SI.PASCAL));
+            layer.addPressure(pressure, MetricPrefix.HECTO(SI.PASCAL));
             map.put(pressure, layer);
         }
         if ("T".equals(paramMatcher.group(1))) {
@@ -136,9 +138,10 @@ public class GoesrProfileBuilder {
     private static Unit<?> getDataUnit(SatelliteRecord record,
             Map<String, Object> dataAttributes) throws ParseException {
 
-        Unit<?> recordUnit = UnitFormat.getUCUMInstance().parseProductUnit(
-                record.getUnits(), new ParsePosition(0));
-        Unit<?> units = recordUnit != null ? recordUnit : Unit.ONE;
+        Unit<?> recordUnit = SimpleUnitFormat
+                .getInstance(SimpleUnitFormat.Flavor.ASCII)
+                .parseProductUnit(record.getUnits(), new ParsePosition(0));
+        Unit<?> units = recordUnit != null ? recordUnit : AbstractUnit.ONE;
         if (dataAttributes == null) {
             return units;
         }
@@ -150,13 +153,13 @@ public class GoesrProfileBuilder {
         if (offset != null) {
             double offsetVal = offset.doubleValue();
             if (offsetVal != 0.0) {
-                units = units.plus(offsetVal);
+                units = units.shift(offsetVal);
             }
         }
         if (scale != null) {
             double scaleVal = scale.doubleValue();
             if (scaleVal != 0.0) {
-                units = units.times(scaleVal);
+                units = units.multiply(scaleVal);
             }
         }
         return units;
