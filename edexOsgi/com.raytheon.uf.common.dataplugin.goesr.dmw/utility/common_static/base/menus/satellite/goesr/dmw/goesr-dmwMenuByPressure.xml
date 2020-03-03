@@ -9,7 +9,7 @@
     <!-- 200 mb -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
            menuText="000-250mb" id="goesr-DMW-Pressure-200mb">
-        <substitute key="legend" value="000-250mb ${legend1}"/>
+        <substitute key="legend" value="${orbitalSlot} 000-250mb ${legend1}"/>
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="0--250" />
         <substitute key="color" value="#ff9696" />
@@ -18,7 +18,7 @@
     <!-- 300 mb -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
            menuText="250-350mb" id="goesr-DMW-Pressure-300mb">
-        <substitute key="legend" value="250-350mb ${legend1}"/>
+        <substitute key="legend" value="${orbitalSlot} 250-350mb ${legend1}"/>
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="250--350" />
         <substitute key="color" value="#ff0000" />
@@ -27,7 +27,7 @@
     <!-- 400 mb -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
            menuText="350-450mb" id="goesr-DMW-Pressure-400mb">
-        <substitute key="legend" value="350-450mb ${legend1}"/>
+        <substitute key="legend" value="${orbitalSlot} 350-450mb ${legend1}"/>
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="350--450" />
         <substitute key="color" value="#960000" />
@@ -36,7 +36,7 @@
     <!-- 500 mb -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
            menuText="450-600mb" id="goesr-DMW-Pressure-500mb">
-        <substitute key="legend" value="450-600mb ${legend1}"/>
+        <substitute key="legend" value="${orbitalSlot} 450-600mb ${legend1}"/>
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="450--600" />
         <substitute key="color" value="#00ff00" />
@@ -45,7 +45,7 @@
     <!-- 700 mb -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
            menuText="600-775mb" id="goesr-DMW-Pressure-700mb">
-        <substitute key="legend" value="600-775mb ${legend1}"/>
+        <substitute key="legend" value="${orbitalSlot} 600-775mb ${legend1}"/>
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="600--775" />
         <substitute key="color" value="#d2d2ff" />
@@ -54,7 +54,7 @@
     <!-- 850 mb -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
            menuText="775-900mb" id="goesr-DMW-Pressure-850mb">
-        <substitute key="legend" value="775-900mb ${legend1}"/>
+        <substitute key="legend" value="${orbitalSlot} 775-900mb ${legend1}"/>
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="775--900" />
         <substitute key="color" value="#9696ff" />
@@ -63,7 +63,7 @@
     <!-- 925 mb -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
            menuText="900mb-SFC" id="goesr-DMW-Pressure-925mb">
-        <substitute key="legend" value="900mb-SFC ${legend1}"/>
+        <substitute key="legend" value="${orbitalSlot} 900mb-SFC ${legend1}"/>
         <substitute key="pressureConstraint" value="GREATER_THAN" />
         <substitute key="pressure" value="900" />
         <substitute key="color" value="#0000ff" />
