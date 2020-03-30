@@ -223,7 +223,7 @@
     </paramLevelMatches>
     <imageStyle>
       <displayLegend>${creatingEntity} Cloud Particle Size Distribution (μm)</displayLegend>
-      <displayUnits>microm</displayUnits> 
+      <displayUnits>µm</displayUnits> 
       <range scale="LINEAR">
         <minValue>0</minValue>
         <maxValue>100</maxValue>
