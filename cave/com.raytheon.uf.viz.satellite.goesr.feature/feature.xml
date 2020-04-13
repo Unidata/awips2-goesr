@@ -35,5 +35,11 @@ further licensing information.
          install-size="0"
          version="0.0.0"
          unpack="true" />
-
+   <plugin
+         id="com.raytheon.uf.common.dataplugin.goesr.dmw"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="true" />
+         
 </feature>
