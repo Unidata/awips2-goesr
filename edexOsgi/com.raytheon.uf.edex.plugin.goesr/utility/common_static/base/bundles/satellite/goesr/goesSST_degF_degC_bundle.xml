@@ -23,8 +23,7 @@
         version of the file will completely replace a lower priority version
         of the file. 
     -->
-    <!-- Added 8/5/2018 Lee Byerle -->
-        <bundle name="GOES Sea Surface Temperature (C), GOES Sea Surface Temperature (F)"> 
+        <bundle> 
             <displayList>
                 <displays xsi:type="d2DMapRenderableDisplay" density="1.0" magnification="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                     <descriptor xsi:type="mapDescriptor">
