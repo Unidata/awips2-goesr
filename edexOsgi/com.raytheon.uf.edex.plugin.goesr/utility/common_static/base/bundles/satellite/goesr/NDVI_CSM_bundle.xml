@@ -23,7 +23,7 @@
         version of the file will completely replace a lower priority version
         of the file. 
     -->
-<bundle name="NDVI with Clear Sky Mask">
+<bundle>
     <displayList>
         <displays xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="d2DMapRenderableDisplay" magnification="1.0" density="1.0" scale="CONUS" mapCenter="-94.85253649177893 38.541158038593636 0.0" zoomLevel="1.0">
             <descriptor xsi:type="mapDescriptor">

@@ -23,7 +23,7 @@
         version of the file will completely replace a lower priority version
         of the file. 
     -->
-        <bundle name="GOES Dust or Smoke Detection Low, Medium, High Confidence"> 
+        <bundle> 
             <displayList>
                 <displays xsi:type="d2DMapRenderableDisplay" density="1.0" magnification="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                     <descriptor xsi:type="mapDescriptor">
