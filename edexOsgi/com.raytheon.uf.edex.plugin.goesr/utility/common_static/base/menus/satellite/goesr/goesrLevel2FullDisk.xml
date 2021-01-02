@@ -124,5 +124,4 @@
         <substitute key="element" value="TPW"/>
         <substitute key="colormap" value="GOES-R/GOESR-L2/color-pw10-10"/>
     </contribute>
-    <contribute xsi:type="subinclude" subMenu="Volcanic Ash" fileName="menus/satellite/goesr/goesrLevel2Volcano.xml" />
 </menuTemplate>

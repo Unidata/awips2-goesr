@@ -556,76 +556,6 @@
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
-  <styleRule>
-    <paramLevelMatches>
-      <parameter>VAH</parameter>
-    </paramLevelMatches>
-    <imageStyle>
-      <displayLegend>${creatingEntity} Volcanic Ash Cloud Height (High Confidence) (ft)</displayLegend>
-      <displayUnits>ft</displayUnits>
-      <range scale="LINEAR">
-        <minValue>0</minValue>
-        <maxValue>70000</maxValue> 
-      </range>
-      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
-      <colorbarLabeling>
-        <values>0 20000 40000 60000</values>
-      </colorbarLabeling>
-    </imageStyle>
-  </styleRule>
-  <styleRule>
-    <paramLevelMatches>
-      <parameter>VAML</parameter>
-    </paramLevelMatches>
-    <imageStyle>
-      <displayLegend>${creatingEntity} Volcanic Ash Mass Loading (High Confidence) (ton/(km*km))</displayLegend>
-      <displayUnits>ton_us/(km*km)</displayUnits>
-      <range scale="LINEAR">
-        <minValue>0</minValue>
-        <maxValue>50</maxValue>
-      </range>
-      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
-      <colorbarLabeling>
-        <values>0 10 20 30 40 50 </values>
-      </colorbarLabeling>
-    </imageStyle>
-  </styleRule>
-
- <styleRule>
-    <paramLevelMatches>
-      <parameter>VAH2</parameter>
-    </paramLevelMatches>
-    <imageStyle>
-      <displayLegend>${creatingEntity} Volcanic Ash Cloud Height (Medium Confidence) (ft)</displayLegend>
-      <displayUnits>ft</displayUnits>
-      <range scale="LINEAR">
-        <minValue>0</minValue>
-        <maxValue>70000</maxValue>
-      </range>
-      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
-      <colorbarLabeling>
-        <values>0 20000 40000 60000</values>
-      </colorbarLabeling>
-    </imageStyle>
-  </styleRule>
-
-  <styleRule>
-    <paramLevelMatches>
-      <parameter>VAML2</parameter>
-    </paramLevelMatches>
-    <imageStyle>
-      <displayLegend>${creatingEntity} Volcanic Ash Mass Loading (Medium Confidence) (ton/(km*km))</displayLegend>
-      <displayUnits>ton_us/(km*km)</displayUnits>
-      <range scale="LINEAR">
-        <minValue>0</minValue>
-        <maxValue>50</maxValue>
-      </range>
-      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
-      <colorbarLabeling>
-        <values>0 10 20 30 40 50 </values>
-      </colorbarLabeling>
-    </imageStyle>
-  </styleRule>
 
 <!-- Below is for 1-min FED -->
   <styleRule>
@@ -659,6 +589,78 @@
       <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
       <colorbarLabeling>
         <values>0 2 4 8 16 32 64 128 256</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+ <styleRule>
+    <paramLevelMatches>
+      <parameter>Fog_Depth</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Cloud Thickness (ft)</displayLegend>
+      <displayUnits>ft</displayUnits>
+      <range scale="LINEAR">
+        <minValue>0</minValue>
+        <maxValue>5000</maxValue>
+      </range>
+      <defaultColormap>Grid/gridded data</defaultColormap>
+      <colorbarLabeling>
+        <values>0 650 1300 2000 2600 3300 3900 4600</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+ <styleRule>
+    <paramLevelMatches>
+      <parameter>IFR_Fog_Prob</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} IFR Fog Probability (%)</displayLegend>
+      <displayUnits>%</displayUnits>
+      <range scale="LINEAR">
+        <minValue>0</minValue>
+        <maxValue>99</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/IFR_PROB</defaultColormap>
+      <colorbarLabeling>
+        <values>0 10 20 30 40 50 60 70 80 90 99</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<styleRule>
+    <paramLevelMatches>
+      <parameter>MVFR_Fog_Prob</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} MVFR Fog Probability (%)</displayLegend>
+      <displayUnits>%</displayUnits>
+      <range scale="LINEAR">
+        <minValue>0</minValue>
+        <maxValue>99</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/MVFR_PROB</defaultColormap>
+      <colorbarLabeling>
+        <values>0 10 20 30 40 50 60 70 80 90 99</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<styleRule>
+    <paramLevelMatches>
+      <parameter>LIFR_Fog_Prob</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} LIFR Fog Probability (%)</displayLegend>
+      <displayUnits>%</displayUnits>
+      <range scale="LINEAR">
+        <minValue>0</minValue>
+        <maxValue>99</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/LIFR_PROB</defaultColormap>
+      <colorbarLabeling>
+        <values>0 10 20 30 40 50 60 70 80 90 99</values>
       </colorbarLabeling>
     </imageStyle>
   </styleRule>

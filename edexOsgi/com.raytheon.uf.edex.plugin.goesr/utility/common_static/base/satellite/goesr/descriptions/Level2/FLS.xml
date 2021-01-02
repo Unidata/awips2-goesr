@@ -23,74 +23,70 @@
         version of the file will completely replace a lower priority version
         of the file. 
     -->
-    <!-- 
-         Use detection DQF instead of retrieval DQF.  
-         Define medium confidence, single layer ash-based parameters for use in bundle
-         that displays VAH, VAH2, VAML, VAML2. Updated 8/5/2018 Lee Byerle
-    -->
 <goesrProductDescriptions>
   <default>
     <matches>
-      <match pattern="[OI][RT]_ABI-L2-VAA(C|F|M1|M2)-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+      <match pattern="ABI-L2-GFLS(C|F)-AWIPS-M\d_v\dr\d_g\d\d_s\d{15}_e\d{15}_c\d{15}.nc">
         <attribute name="dataset_name" />
       </match>
     </matches>
   </default>
-  
-<!-- DET_DQF 0, Corresponds to high conf single or multi-layer ash flag -->
-  <description>
-    <data>
-      <variable name="VAH" />
-      <discreteMask name="DET_DQF" value="0" keep="true">
-        <fillByte>-1</fillByte>
-      </discreteMask>
-    </data>
-    <physicalElement>
-      <value value="VAH" />
-    </physicalElement>
-  </description>
-  
-  <description>
-    <data>
-      <variable name="VAML" />
-      <discreteMask name="DET_DQF" value="0" keep="true">
-        <fillByte>-1</fillByte>
-      </discreteMask>
-    </data>
-    <units>
-      <value value="ton_us/(km*km)" />
-    </units>
-    <physicalElement>
-      <value value="VAML" />
-    </physicalElement>
-  </description> 
 
-<!-- DET_DQF 8, mask for medium confidence single layer ash -->
+ <description>
+    <dataTime>
+        <formattedRefTime dateFormat="yyyy-MM-dd'T'HH:mm:ss'Z'">
+            <attribute name="time_coverage_start"/>
+        </formattedRefTime>
+   </dataTime>
+
+    <source>
+        <attribute name="production_site" />
+    </source>
+
+
+    <creatingEntity>
+        <pattern inputPattern="G(1[678])" outputFormat="GOES-%S">
+            <attribute name="platform_ID" />
+        </pattern>
+    </creatingEntity>
+  </description>
+
+
+
   <description>
     <data>
-      <variable name="VAH" />
-      <discreteMask name="DET_DQF" value="8" keep="true">
-        <fillByte>-1</fillByte>
-      </discreteMask>
+      <variable name="MVFR_Fog_Prob" />
     </data>
     <physicalElement>
-      <value value="VAH2" />
+      <value value="MVFR_Fog_Prob" />
     </physicalElement>
   </description>
-  
+
   <description>
     <data>
-      <variable name="VAML" />
-      <discreteMask name="DET_DQF" value="8" keep="true">
-        <fillByte>-1</fillByte>
-      </discreteMask>
+      <variable name="IFR_Fog_Prob" />
     </data>
-    <units>
-      <value value="ton_us/(km*km)" />
-    </units>
     <physicalElement>
-      <value value="VAML2" />
+      <value value="IFR_Fog_Prob" />
     </physicalElement>
-  </description> 
+  </description>
+
+  <description>
+    <data>
+      <variable name="LIFR_Fog_Prob" />
+    </data>
+    <physicalElement>
+      <value value="LIFR_Fog_Prob" />
+    </physicalElement>
+  </description>
+
+  <description>
+    <data>
+      <variable name="Fog_Depth" />
+    </data>
+    <physicalElement>
+      <value value="Fog_Depth" />
+    </physicalElement>
+  </description>
 
 </goesrProductDescriptions>
