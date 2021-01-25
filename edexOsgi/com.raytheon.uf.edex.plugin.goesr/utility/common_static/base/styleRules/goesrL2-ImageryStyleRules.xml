@@ -447,4 +447,627 @@
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
+  <!--GLM grid style rules below updated 12/23/2020 Tiffany Meyer -->
+<!-- Flash Extent Density, 1min -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Flash_Extent_Density</parameter>
+      <creatingEntity>GOES-16</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-East GLM Flash Extent Density (flashes/min) (1min)</displayLegend>
+      <range scale="LOG">
+        <minValue>0.125</minValue>
+        <maxValue>50</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
+      <colorbarLabeling>
+        <values>0 1 2 4 8 16 32</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<!--Flash Extent Density moving window, 5min  -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Flash_Extent_Density_Window</parameter>
+      <creatingEntity>GOES-16</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-East GLM Flash Extent Density (flashes/5min) (5min-1min update)</displayLegend>
+      <range scale="LOG">
+        <minValue>1</minValue>
+        <maxValue>260</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
+      <colorbarLabeling>
+        <values>0 2 4 8 16 32 64 128 256</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+  
+  <!-- Flash Centroid Density, 1min -->
+   <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Flash_Centroid_Density</parameter>
+      <creatingEntity>GOES-16</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-East GLM Flash Centroid Density (1min)</displayLegend>
+      <range scale="LINEAR">
+        <minValue>0.125</minValue>
+        <maxValue>10</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap> 
+      <colorbarLabeling>
+        <values>0 1 2 4 6 8 10</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule> 
+ 
+   <!-- Flash Centroid Density moving window, 5min -->
+   <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Flash_Centroid_Density_Window</parameter>
+      <creatingEntity>GOES-16</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-East GLM Flash Centroid Density (5min-1min update)</displayLegend>
+      <range scale="LINEAR">
+        <minValue>0.125</minValue>
+        <maxValue>10</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap> 
+      <colorbarLabeling>
+        <values>0 1 2 4 6 8 10</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule> 
+ 
+ <!-- Ave Flash Area 1min -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Average_Flash_Area</parameter>
+      <creatingEntity>GOES-16</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-East GLM Average Flash Area (km^2) (1min)</displayLegend>
+      <displayUnits>km*km</displayUnits>
+      <range scale="LOG">
+        <minValue>60</minValue>
+        <maxValue>2000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_flashsize</defaultColormap>
+      <colorbarLabeling>
+        <values>60 120 300 600 1200 2000</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+<!-- Ave Flash Area moving window, 5min -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Average_Flash_Area_Window</parameter>
+      <creatingEntity>GOES-16</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-East GLM Average Flash Area (km^2) (5min-1min update)</displayLegend>
+      <displayUnits>km*km</displayUnits>
+      <range scale="LOG">
+        <minValue>60</minValue>
+        <maxValue>2000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_flashsize</defaultColormap>
+      <colorbarLabeling>
+        <values>60 120 300 600 1200 2000</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+  
+  <!-- Total Optical Energy 1min -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Total_Optical_Energy</parameter>
+      <creatingEntity>GOES-16</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-East GLM Total Optical Energy (fJ) (1min)</displayLegend>
+      <displayUnits>J*1.0E-15</displayUnits>
+      <range scale="LOG">
+        <minValue>0.003</minValue>
+        <maxValue>150</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_energy</defaultColormap>
+      <colorbarLabeling>
+        <values>1 5 10 25 50 120 150</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<!-- Total Optical Energy window 5min update -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Total_Optical_Energy_Window</parameter>
+      <creatingEntity>GOES-16</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-East GLM Total Optical Energy (fJ) (5min-1min update)</displayLegend>
+      <displayUnits label="1e-15J">J*1.0E-15</displayUnits>
+      <range scale="LOG">
+        <minValue>0.003</minValue>
+        <maxValue>3000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_energy</defaultColormap>
+      <colorbarLabeling>
+        <values>1 5 10 25 50 150 500 1500</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<!-- Group Extent Density, 1min -->
+ <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Group_Extent_Density</parameter>
+      <creatingEntity>GOES-16</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-East GLM Group Extent Density (1min)</displayLegend>
+      <range scale="LINEAR">
+        <minValue>0.125</minValue>
+        <maxValue>10</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
+      <colorbarLabeling>
+        <values>0 1 2 4 6 8 10</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<!-- Group Extent Density moving window, 5min -->
+ <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Group_Extent_Density_Window</parameter>
+      <creatingEntity>GOES-16</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-East GLM Group Extent Density (5min-1min update)</displayLegend>
+      <range scale="LINEAR">
+        <minValue>0.125</minValue>
+        <maxValue>10</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
+      <colorbarLabeling>
+        <values>0 1 2 4 6 8 10</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+  
+  <!-- Group Centroid Density, 1min -->
+ <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Group_Centroid_Density</parameter>
+      <creatingEntity>GOES-16</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-East GLM Group Centroid Density (1min)</displayLegend>
+      <range scale="LINEAR">
+        <minValue>0.125</minValue>
+        <maxValue>10</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
+      <colorbarLabeling>
+        <values>0 1 2 4 6 8 10</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<!-- Group Centroid Density moving window, 5min -->
+ <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Group_Centroid_Density_Window</parameter>
+      <creatingEntity>GOES-16</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-East GLM Group Centroid Density (5min-1min update)</displayLegend>
+      <range scale="LINEAR">
+        <minValue>0.125</minValue>
+        <maxValue>10</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
+      <colorbarLabeling>
+        <values>0 1 2 4 6 8 10</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+  
+  <!-- Ave Flash Area 1min -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Average_Flash_Area</parameter>
+	  <creatingEntity>GOES-16</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-East GLM Average Flash Area (km^2) (1min)</displayLegend>
+      <!-- <displayUnits>km*km</displayUnits> -->
+      <range scale="LOG">
+        <minValue>60</minValue>
+        <maxValue>2000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_flashsize</defaultColormap>
+      <colorbarLabeling>
+        <values>60 120 300 600 1200 2000</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+  <!-- Ave Flash Area 5min moving window -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Average_Flash_Area_Window</parameter>
+      <creatingEntity>GOES-16</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-East GLM Average Flash Area (km^2) (5min-1min update)</displayLegend>
+      <displayUnits>km*km</displayUnits>
+      <range scale="LOG">
+        <minValue>60</minValue>
+        <maxValue>2000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_flashsize</defaultColormap>
+      <colorbarLabeling>
+        <values>60 120 300 600 1200 2000</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+<!-- Minimum Flash Area 5min moving window -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Minimum_Flash_Area</parameter>
+      <creatingEntity>GOES-16</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-East GLM Minimum Flash Area (km^2) (1min update)</displayLegend>
+      <displayUnits>km*km</displayUnits>
+      <range scale="LOG">
+        <minValue>60</minValue>
+        <maxValue>2000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_flashsize</defaultColormap>
+      <colorbarLabeling>
+        <values>60 120 300 600 1200 2000</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+
+<!-- Minimum Flash Area 5min moving window -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Minimum_Flash_Area_Window</parameter>
+      <creatingEntity>GOES-16</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-East GLM Minimum Flash Area (km^2) (5min-1min update)</displayLegend>
+      <displayUnits>km*km</displayUnits>
+      <range scale="LOG">
+        <minValue>60</minValue>
+        <maxValue>2000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_flashsize</defaultColormap>
+      <colorbarLabeling>
+        <values>60 120 300 600 1200 2000</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<!-- Flash Extent Density, 1min -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Flash_Extent_Density</parameter>
+      <creatingEntity>GOES-17</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-West GLM Flash Extent Density (flashes/min) (1min)</displayLegend>
+      <range scale="LOG">
+        <minValue>0.125</minValue>
+        <maxValue>50</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
+      <colorbarLabeling>
+        <values>0 1 2 4 8 16 32</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<!--Flash Extent Density moving window, 5min  -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Flash_Extent_Density_Window</parameter>
+      <creatingEntity>GOES-17</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-West GLM Flash Extent Density (flashes/5min) (5min-1min update)</displayLegend>
+      <range scale="LOG">
+        <minValue>1</minValue>
+        <maxValue>260</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
+      <colorbarLabeling>
+        <values>0 2 4 8 16 32 64 128 256</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+  
+  <!-- Flash Centroid Density, 1min -->
+   <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Flash_Centroid_Density</parameter>
+      <creatingEntity>GOES-17</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-West GLM Flash Centroid Density (1min)</displayLegend>
+      <range scale="LINEAR">
+        <minValue>0.125</minValue>
+        <maxValue>10</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap> 
+      <colorbarLabeling>
+        <values>0 1 2 4 6 8 10</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule> 
+ 
+   <!-- Flash Centroid Density moving window, 5min -->
+   <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Flash_Centroid_Density_Window</parameter>
+      <creatingEntity>GOES-17</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-West GLM Flash Centroid Density (5min-1min update)</displayLegend>
+      <range scale="LINEAR">
+        <minValue>0.125</minValue>
+        <maxValue>10</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap> 
+      <colorbarLabeling>
+        <values>0 1 2 4 6 8 10</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule> 
+ 
+ <!-- Ave Flash Area 1min -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Average_Flash_Area</parameter>
+      <creatingEntity>GOES-17</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-West GLM Average Flash Area (km^2) (1min)</displayLegend>
+      <displayUnits>km*km</displayUnits>
+      <range scale="LOG">
+        <minValue>60</minValue>
+        <maxValue>2000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_flashsize</defaultColormap>
+      <colorbarLabeling>
+        <values>60 120 300 600 1200 2000</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+<!-- Ave Flash Area moving window, 5min -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Average_Flash_Area_Window</parameter>
+      <creatingEntity>GOES-17</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-West GLM Average Flash Area (km^2) (5min-1min update)</displayLegend>
+      <displayUnits>km*km</displayUnits>
+      <range scale="LOG">
+        <minValue>60</minValue>
+        <maxValue>2000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_flashsize</defaultColormap>
+      <colorbarLabeling>
+        <values>60 120 300 600 1200 2000</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+  
+  <!-- Total Optical Energy 1min -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Total_Optical_Energy</parameter>
+      <creatingEntity>GOES-17</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-West GLM Total Optical Energy (fJ) (1min)</displayLegend>
+      <displayUnits>J*1.0E-15</displayUnits>
+      <range scale="LOG">
+        <minValue>0.003</minValue>
+        <maxValue>150</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_energy</defaultColormap>
+      <colorbarLabeling>
+        <values>1 5 10 25 50 120 150</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<!-- Total Optical Energy window 5min update -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Total_Optical_Energy_Window</parameter>
+      <creatingEntity>GOES-17</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-West GLM Total Optical Energy (fJ) (5min-1min update)</displayLegend>
+      <displayUnits label="1e-15J">J*1.0E-15</displayUnits>
+      <range scale="LOG">
+        <minValue>0.003</minValue>
+        <maxValue>3000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_energy</defaultColormap>
+      <colorbarLabeling>
+        <values>1 5 10 25 50 150 500 1500</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<!-- Group Extent Density, 1min -->
+ <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Group_Extent_Density</parameter>
+      <creatingEntity>GOES-17</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-West GLM Group Extent Density (1min)</displayLegend>
+      <range scale="LINEAR">
+        <minValue>0.125</minValue>
+        <maxValue>10</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
+      <colorbarLabeling>
+        <values>0 1 2 4 6 8 10</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<!-- Group Extent Density moving window, 5min -->
+ <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Group_Extent_Density_Window</parameter>
+      <creatingEntity>GOES-17</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-West GLM Group Extent Density (5min-1min update)</displayLegend>
+      <range scale="LINEAR">
+        <minValue>0.125</minValue>
+        <maxValue>10</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
+      <colorbarLabeling>
+        <values>0 1 2 4 6 8 10</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+  
+  <!-- Group Centroid Density, 1min -->
+ <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Group_Centroid_Density</parameter>
+      <creatingEntity>GOES-17</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-West GLM Group Centroid Density (1min)</displayLegend>
+      <range scale="LINEAR">
+        <minValue>0.125</minValue>
+        <maxValue>10</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
+      <colorbarLabeling>
+        <values>0 1 2 4 6 8 10</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<!-- Group Centroid Density moving window, 5min -->
+ <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Group_Centroid_Density_Window</parameter>
+      <creatingEntity>GOES-17</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-West GLM Group Centroid Density (5min-1min update)</displayLegend>
+      <range scale="LINEAR">
+        <minValue>0.125</minValue>
+        <maxValue>10</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
+      <colorbarLabeling>
+        <values>0 1 2 4 6 8 10</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+  
+  <!-- Ave Flash Area 1min -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Average_Flash_Area</parameter>
+	  <creatingEntity>GOES-17</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-West GLM Average Flash Area (km^2) (1min)</displayLegend>
+      <displayUnits>km*km</displayUnits>
+      <range scale="LOG">
+        <minValue>60</minValue>
+        <maxValue>2000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_flashsize</defaultColormap>
+      <colorbarLabeling>
+        <values>60 120 300 600 1200 2000</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+  <!-- Ave Flash Area 5min moving window -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Average_Flash_Area_Window</parameter>
+      <creatingEntity>GOES-17</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-West GLM Average Flash Area (km^2) (5min-1min update)</displayLegend>
+      <displayUnits>km*km</displayUnits>
+      <range scale="LOG">
+        <minValue>60</minValue>
+        <maxValue>2000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_flashsize</defaultColormap>
+      <colorbarLabeling>
+        <values>60 120 300 600 1200 2000</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+<!-- Minimum Flash Area 5min moving window -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Minimum_Flash_Area</parameter>
+      <creatingEntity>GOES-17</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-West GLM Minimum Flash Area (km^2) (1min update)</displayLegend>
+      <displayUnits>km*km</displayUnits>
+      <range scale="LOG">
+        <minValue>60</minValue>
+        <maxValue>2000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_flashsize</defaultColormap>
+      <colorbarLabeling>
+        <values>60 120 300 600 1200 2000</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<!-- Minimum Flash Area 5min moving window -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Minimum_Flash_Area_Window</parameter>
+      <creatingEntity>GOES-17</creatingEntity>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>GOES-West GLM Minimum Flash Area (km^2) (5min-1min update)</displayLegend>
+      <displayUnits>km*km</displayUnits>
+      <range scale="LOG">
+        <minValue>60</minValue>
+        <maxValue>2000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_flashsize</defaultColormap>
+      <colorbarLabeling>
+        <values>60 120 300 600 1200 2000</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+  <!-- End of GLM configurations -->
+
 </styleRuleset>

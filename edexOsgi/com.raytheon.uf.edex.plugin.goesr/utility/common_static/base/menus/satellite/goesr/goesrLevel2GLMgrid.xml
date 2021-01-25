@@ -25,13 +25,50 @@
     -->
     <!-- 
          GLM Grid products
-         Added 8/7/2018 Lee Byerle 
+         Added 8/7/2018 Lee Byerle
+         Updated 1/25/2021 Tiffany Meyer (Unidata) to add additional gridded products 
     -->
 <menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
-                menuText="1min GLM Flash Extent Density" id="goesr-glmfed1min">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="GLM_Flash_Extent_Density"/>
-        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_grid"/> 
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
+                menuText="1min GLM Minimum Flash Area" id="goesr-glmmfa1min">
+        <substitute key="element" value="GLM_Minimum_Flash_Area"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_flashsize"/>
+    </contribute>   
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
+                menuText="1min GLM Average Flash Area" id="goesr-glmafa1min">
+        <substitute key="element" value="GLM_Average_Flash_Area"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_flashsize"/>
     </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
+                menuText="1min GLM Flash Extent Density" id="goesr-glmfed1min">
+        <substitute key="element" value="GLM_Flash_Extent_Density"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_grid"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
+                menuText="1min GLM Group Extent Density" id="goesr-glmgcd1min">
+        <substitute key="element" value="GLM_Group_Extent_Density"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_grid"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
+                menuText="1min GLM Total Optical Energy" id="goesr-glmte1min">
+        <substitute key="element" value="GLM_Total_Optical_Energy"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_energy"/>
+    </contribute>
+<!--    
+     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
+                menuText="1min GLM Flash Centroid Density" id="goesr-glmfcd1min">
+        <substitute key="element" value="GLM_Flash_Centroid_Density"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_grid"/>
+    </contribute>
+       <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
+                menuText="1min GLM Group Centroid Density" id="goesr-glmgcd1min">
+        <substitute key="element" value="GLM_Group_Centroid_Density"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_grid"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml"
+                menuText="1min GLM Average Group Area" id="goesr-glmaga1min">
+        <substitute key="element" value="GLM_Average_Group_Area"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_grid"/>
+    </contribute>
+-->
 </menuTemplate>

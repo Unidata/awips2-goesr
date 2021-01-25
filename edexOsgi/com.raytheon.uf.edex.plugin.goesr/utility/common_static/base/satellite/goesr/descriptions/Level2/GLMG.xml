@@ -38,6 +38,9 @@
     <!-- TOWRdocs POC
          Lee Byerle 6/6/2018
     -->
+    <!-- Unidata Updates
+         1/25/2021 Tiffany Meyer Added all 8 products Eric Bruning is producing at Texas Tech and distributing via Unidata
+    -->
 <goesrProductDescriptions>
 
   <default>
@@ -50,7 +53,7 @@
 
   <description>
     <dataTime>
-        <formattedRefTime dateFormat="yyyy-MM-dd'T'HH:mm:ss.S'Z'">
+        <formattedRefTime dateFormat="yyyy-MM-dd'T'HH:mm:ss'Z'">
             <attribute name="time_coverage_end"/>
         </formattedRefTime>
     </dataTime>
@@ -70,11 +73,14 @@
   <!-- Flash extent density -->
   <description>
     <data>
-      <variable name="Flash_extent_density" />
+      <variable name="flash_extent_density" />
       <discreteMask name="DQF" value="0" keep="true">
       <fillByte>0</fillByte>
       </discreteMask>
     </data>
+    <units>
+      <value value=""/>
+    </units>
     <physicalElement>
       <value value="GLM_Flash_Extent_Density" />
     </physicalElement>
@@ -83,7 +89,7 @@
   <!-- 5/25/2018  Flash extent density moving window -->
   <description>
     <data>
-      <variable name="Flash_extent_density_window" />
+      <variable name="flash_extent_density_window" />
       <discreteMask name="DQF" value="0" keep="true">
       <fillByte>0</fillByte>
       </discreteMask>
@@ -93,39 +99,42 @@
     </physicalElement>
   </description>
 
-  <!-- Event density -->
-<!--  <description>
+  <!-- Flash centroid density -->
+  <description>
     <data>
-      <variable name="Event_density" />
-      <discreteMask name="DQF" value="0" keep="true"> 
-      <fillByte>0</fillByte> 
-      </discreteMask>   
-    </data>
-    <physicalElement>
-      <value value="GLM_Event_Density" />
-    </physicalElement>
-  </description> -->
-
-  <!-- Average Flash Area Window -->
-<!--  <description>
-    <data>
-      <variable name="Average_flash_area_window" />
+      <variable name="flash_centroid_density" />
       <discreteMask name="DQF" value="0" keep="true">
       <fillByte>0</fillByte>
       </discreteMask>
     </data>
     <units>
-      <value value="km*km" />
+      <value value=""/>
     </units>
     <physicalElement>
-      <value value="GLM_Average_Flash_Area_Window" />
+      <value value="GLM_Flash_Centroid_Density" />
     </physicalElement>
-  </description> -->
+  </description>
 
-  <!-- Average Flash Area  -->
-<!--  <description>
+  <!-- Flash centroid density Window 5min-->
+  <description>
     <data>
-      <variable name="Average_flash_area" />
+      <variable name="flash_centroid_density_window" />
+      <discreteMask name="DQF" value="0" keep="true">
+      <fillByte>0</fillByte>
+      </discreteMask>
+    </data>
+    <units>
+      <value value="" />
+    </units>
+    <physicalElement>
+      <value value="GLM_Flash_Centroid_Density_Window" />
+    </physicalElement>
+  </description>
+
+  <!-- Average Flash Area 1min  -->
+  <description>
+    <data>
+      <variable name="average_flash_area" />
       <discreteMask name="DQF" value="0" keep="true">
       <fillByte>0</fillByte>
       </discreteMask>
@@ -136,12 +145,124 @@
     <physicalElement>
       <value value="GLM_Average_Flash_Area" />
     </physicalElement>
-  </description> -->
+  </description>
 
-  <!-- Average Group Area -->
-<!--  <description>
+  <!-- Average Flash Area Window  5min-->
+  <description>
     <data>
-      <variable name="Average_group_area" />
+      <variable name="average_flash_area_window" />
+      <discreteMask name="DQF" value="0" keep="true">
+      <fillByte>0</fillByte>
+      </discreteMask>
+    </data>
+    <units>
+      <value value="km*km" />
+    </units>
+    <physicalElement>
+      <value value="GLM_Average_Flash_Area_Window" />
+    </physicalElement>
+  </description>
+
+ <!--Total Optical Energy 1min -->
+  <description>
+    <data>
+      <variable name="total_energy" />
+      <discreteMask name="DQF" value="0" keep="true">
+      <fillByte>0</fillByte>
+      </discreteMask>
+    </data>
+    <units>
+      <value value="nJ" />
+    </units>
+    <physicalElement>
+      <value value="GLM_Total_Optical_Energy" />
+    </physicalElement>
+  </description>
+
+ <!--Total Optical Energy Window 5min -->
+  <description>
+    <data>
+      <variable name="total_energy_window" />
+      <discreteMask name="DQF" value="0" keep="true">
+      <fillByte>0</fillByte>
+      </discreteMask>
+    </data>
+    <units>
+      <value value="nJ" />
+    </units>
+    <physicalElement>
+      <value value="GLM_Total_Optical_Energy_Window" />
+    </physicalElement>
+  </description>
+
+  <!-- Group extent density -->
+ <description>
+    <data>
+      <variable name="group_extent_density" />
+      <discreteMask name="DQF" value="0" keep="true">
+      <fillByte>0</fillByte>
+      </discreteMask>
+    </data>
+    <units>
+      <value value="" />
+    </units>
+    <physicalElement>
+      <value value="GLM_Group_Extent_Density" />
+    </physicalElement>
+  </description>
+
+  <!-- Group extent density Window 5min -->
+ <description>
+    <data>
+      <variable name="group_extent_density_window" />
+      <discreteMask name="DQF" value="0" keep="true">
+      <fillByte>0</fillByte>
+      </discreteMask>
+    </data>
+    <units>
+      <value value="" />
+    </units>
+    <physicalElement>
+      <value value="GLM_Group_Extent_Density_Window" />
+    </physicalElement>
+  </description>
+
+  <!-- Group centroid density -->
+ <description>
+    <data>
+      <variable name="group_centroid_density" />
+      <discreteMask name="DQF" value="0" keep="true">
+      <fillByte>0</fillByte>
+      </discreteMask>
+    </data>
+    <units>
+      <value value="" />
+    </units>
+    <physicalElement>
+      <value value="GLM_Group_Centroid_Density" />
+    </physicalElement>
+  </description>
+
+  <!-- Group centroid density Window 5min -->
+ <description>
+    <data>
+      <variable name="group_centroid_density_window" />
+      <discreteMask name="DQF" value="0" keep="true">
+      <fillByte>0</fillByte>
+      </discreteMask>
+    </data>
+    <units>
+      <value value="" />
+    </units>
+    <physicalElement>
+      <value value="GLM_Group_Centroid_Density_Window" />
+    </physicalElement>
+  </description>
+
+ <!-- Average Group Area -->
+  <description>
+    <data>
+      <variable name="average_group_area" />
       <discreteMask name="DQF" value="0" keep="true">
       <fillByte>0</fillByte>
       </discreteMask>
@@ -152,64 +273,54 @@
     <physicalElement>
       <value value="GLM_Average_Group_Area" />
     </physicalElement>
-  </description> -->
+  </description>
 
-  <!--Total Optical Energy Window 5min -->
-<!--  <description>
+ <!-- Average Group Area Window 5min -->
+  <description>
     <data>
-      <variable name="Total_optical_energy_window" />
+      <variable name="average_group_area_window" />
       <discreteMask name="DQF" value="0" keep="true">
       <fillByte>0</fillByte>
       </discreteMask>
     </data>
     <units>
-      <value value="J" />
+      <value value="km*km" />
     </units>
     <physicalElement>
-      <value value="GLM_Total_Optical_Energy_Window" />
+      <value value="GLM_Average_Group_Area_Window" />
     </physicalElement>
-  </description> -->
+  </description>
 
-  <!--Total Optical Energy -->
-<!--  <description>
+  <!-- Minimum Flash Area -->
+ <description>
     <data>
-      <variable name="Total_Optical_energy" />
+      <variable name="minimum_flash_area" />
       <discreteMask name="DQF" value="0" keep="true">
       <fillByte>0</fillByte>
       </discreteMask>
     </data>
     <units>
-      <value value="J" />
+      <value value="km*km" />
     </units>
     <physicalElement>
-      <value value="GLM_Total_Optical_Energy" />
+      <value value="GLM_Minimum_Flash_Area" />
     </physicalElement>
-  </description> -->
+  </description>
 
-  <!-- Flash centroid density -->
-<!--  <description>
+  <!-- Minimum Flash Area Window 5min -->
+ <description>
     <data>
-      <variable name="Flash_centroid_density" />
+      <variable name="minimum_flash_area_window" />
       <discreteMask name="DQF" value="0" keep="true">
       <fillByte>0</fillByte>
       </discreteMask>
     </data>
+    <units>
+      <value value="km*km" />
+    </units>
     <physicalElement>
-      <value value="GLM_Flash_Centroid_Density" />
+      <value value="GLM_Minimum_Flash_Area_Window" />
     </physicalElement>
-  </description> -->
-
-  <!-- Group centroid density -->
-<!--  <description>
-    <data>
-      <variable name="Group_centroid_density" />
-      <discreteMask name="DQF" value="0" keep="true">
-      <fillByte>0</fillByte>
-      </discreteMask>
-    </data>
-    <physicalElement>
-      <value value="GLM_Group_Centroid_Density" />
-    </physicalElement>
-  </description> -->
+  </description>
 
 </goesrProductDescriptions>

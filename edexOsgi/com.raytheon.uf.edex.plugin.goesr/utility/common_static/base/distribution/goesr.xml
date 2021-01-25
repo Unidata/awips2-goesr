@@ -57,6 +57,8 @@
     <regex>^[OI][RT]_ABI-L2-\w{3,5}(C|F|M1|M2)-M[\d]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc$</regex>
     <regex>OR_ABI</regex>
     <regex>.*GOES.*.nc4</regex>
+    <!--  Unidata/TT GLM Gridded Products -->
+    <regex>OR_GLM-L2-GLM</regex>
     <!-- WMO headers for derived products -->
     <regex>^IXT[ABCDEFGHIJKLMNOPQ]</regex>
     <!-- Cloud top pressure, cloud optical depth, cloud particle size -->
