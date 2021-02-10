@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <!-- TOWRdocs Header
+     GCombo_Recipe_RGB_CONUS_5min.xml   
+    -->
+    <!-- TOWRdocs Description
+      Updates legacy baseSatellite menu with items provided by Steve Sigler (MSO). 
+    -->
+    <!-- TOWRdocs Status
+       New bundle follows from Steve Sigler, MSO, for VisIR sandwich. Modified to remove "no data" legend issue.
+      This includes binOffset assignments for the VisIR sandwich.
+    -->
+    <!-- TOWRdocs POC
+      Lee Byerle 10/21/2020
+    -->
+<bundle xmlns:ns2="http://www.example.org/productType" xmlns:ns3="group">
+ <displayList>
+  <displays xsi:type="d2DMapRenderableDisplay"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <descriptor xsi:type="mapDescriptor">
+    <resource>
+     <loadProperties loadWithoutData="true">
+      <capabilities>
+       <capability xsi:type="colorableCapability"
+        colorAsString="white" />
+       <capability xsi:type="timeMatchBasisCapability" />
+      </capabilities>
+     </loadProperties>
+     <resourceData xsi:type="trueColorResourceGroupData">
+      <groupName>${sector0} ${productName}</groupName>
+      <channelResource channelName="${redLabel}">
+       <channel>RED</channel>
+       <resourceData xsi:type="satResourceData">
+       <binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" /> 
+        <metadataMap>
+         <mapping key="creatingEntity">
+          <constraint constraintValue="${entity}" constraintType="LIKE" />
+         </mapping>
+         <mapping key="physicalElement">
+          <constraint constraintValue="${redElement}" constraintType="EQUALS" />
+         </mapping>
+         <mapping key="sectorID">
+          <constraint constraintValue="${sector0}" constraintType="EQUALS" />
+                  </mapping>
+                  <mapping key="pluginName">
+                    <constraint constraintValue="satellite" constraintType="EQUALS" />
+                  </mapping>
+                </metadataMap>
+              </resourceData>
+            </channelResource>
+            <channelResource channelName="${greenLabel}">
+              <channel>GREEN</channel>
+              <resourceData xsi:type="satResourceData">
+              <binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
+                <metadataMap>
+                  <mapping key="creatingEntity">
+                    <constraint constraintValue="${entity}" constraintType="LIKE" />
+                  </mapping>
+                  <mapping key="physicalElement">
+                    <constraint constraintValue="${greenElement}" constraintType="EQUALS" />
+                  </mapping>
+                  <mapping key="sectorID">
+                    <constraint constraintValue="${sector0}" constraintType="EQUALS" />
+                  </mapping>
+                  <mapping key="pluginName">
+                    <constraint constraintValue="satellite" constraintType="EQUALS" />
+                  </mapping>
+                </metadataMap>
+              </resourceData>
+            </channelResource>
+            <channelResource channelName="${blueLabel}">
+              <channel>BLUE</channel>
+              <resourceData xsi:type="satResourceData">
+              <binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
+                <metadataMap>
+                  <mapping key="creatingEntity">
+                    <constraint constraintValue="${entity}" constraintType="LIKE" />
+                  </mapping>
+                  <mapping key="physicalElement">
+                    <constraint constraintValue="${blueElement}" constraintType="EQUALS" />
+                  </mapping>
+                  <mapping key="sectorID">
+                    <constraint constraintValue="${sector0}" constraintType="EQUALS" />
+                  </mapping>
+                  <mapping key="pluginName">
+                    <constraint constraintValue="satellite" constraintType="EQUALS" />
+                  </mapping>
+                </metadataMap>
+              </resourceData>
+            </channelResource>
+          </resourceData>
+        </resource>
+    <resource>
+     <loadProperties loadWithoutData="true">
+      <capabilities>
+       <capability xsi:type="colorableCapability"
+        colorAsString="white" />
+      </capabilities>
+     </loadProperties>
+     <resourceData xsi:type="trueColorResourceGroupData">
+      <groupName>${sector1} ${productName}</groupName>
+      <channelResource channelName="${redLabel}">
+       <channel>RED</channel>
+       <resourceData xsi:type="satResourceData">
+       <binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
+        <metadataMap>
+         <mapping key="creatingEntity">
+          <constraint constraintValue="${entity}" constraintType="LIKE" />
+         </mapping>
+         <mapping key="physicalElement">
+          <constraint constraintValue="${redElement}" constraintType="EQUALS" />
+         </mapping>
+         <mapping key="sectorID">
+          <constraint constraintValue="${sector1}" constraintType="EQUALS" />
+                  </mapping>
+                  <mapping key="pluginName">
+                    <constraint constraintValue="satellite" constraintType="EQUALS" />
+                  </mapping>
+                </metadataMap>
+              </resourceData>
+            </channelResource>
+            <channelResource channelName="${greenLabel}">
+              <channel>GREEN</channel>
+              <resourceData xsi:type="satResourceData">
+              <binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
+                <metadataMap>
+                  <mapping key="creatingEntity">
+                    <constraint constraintValue="${entity}" constraintType="LIKE" />
+                  </mapping>
+                  <mapping key="physicalElement">
+                    <constraint constraintValue="${greenElement}" constraintType="EQUALS" />
+                  </mapping>
+                  <mapping key="sectorID">
+                    <constraint constraintValue="${sector1}" constraintType="EQUALS" />
+                  </mapping>
+                  <mapping key="pluginName">
+                    <constraint constraintValue="satellite" constraintType="EQUALS" />
+                  </mapping>
+                </metadataMap>
+              </resourceData>
+            </channelResource>
+            <channelResource channelName="${blueLabel}">
+              <channel>BLUE</channel>
+              <resourceData xsi:type="satResourceData">
+              <binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
+                <metadataMap>
+                  <mapping key="creatingEntity">
+                    <constraint constraintValue="${entity}" constraintType="LIKE" />
+                  </mapping>
+                  <mapping key="physicalElement">
+                    <constraint constraintValue="${blueElement}" constraintType="EQUALS" />
+                  </mapping>
+                  <mapping key="sectorID">
+                    <constraint constraintValue="${sector1}" constraintType="EQUALS" />
+                  </mapping>
+                  <mapping key="pluginName">
+                    <constraint constraintValue="satellite" constraintType="EQUALS" />
+                  </mapping>
+                </metadataMap>
+              </resourceData>
+            </channelResource>
+          </resourceData>
+        </resource>
+      </descriptor>
+    </displays>
+  </displayList>
+</bundle>

@@ -18,21 +18,63 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
-    <!-- 
-        This is an absolute override file, indicating that a higher priority 
-        version of the file will completely replace a lower priority version
-        of the file. 
+    <!-- TOWRdocs Header
+         goesrRGBComposites menu file.
     -->
-    <!-- 
-        Adds SET/Training Team-approved RGB composites
-        8/7/2018 Lee Byerle
+    <!-- TOWRdocs Description
+ 		 Adds Training Team-approved RGB composites for cloud microphysics,
+	     convective clouds, and natural colors.  The red and green keys for cloud
+	     microphysics are defined by channel differences.  These differences are
+         prepared using the derived parameters methods. The channel differences
+         for red and green are executed by the Difference python method in
+	     ../common_static/site/site_name/derivedParameters/definitions files, 
+	     CH15-12.3um-minus-CH14-11.2um.xml, and CH14-11.2um-minus-CH11-8.4um.xml,
+         respectively. The abbreviations assigned in these config files are
+         substituted in the redElement and greenElement keys. These definitions
+         files are created for this repository and are not a included in the baseline
+         definitions.
+
+		 The RGBs defined for cloud convection and natural color are based upon
+	     single channels (no channel differences are used to define red, green
+         or blue).
+
+	     This file sets up the RGB options which appear under each sector under
+	     GOES-R - RGB Composites menu. 
+    -->
+    <!-- TOWRdocs Status
+         Updates the baseline RGB Composites menu file of the same name to add 
+		 additional Training Team-approved RGBs. The redElement and greenElement
+         keys referenced for cloud microphysics are the result of definitions files
+         added for this repository, and which are not in the baseline definitions.
+         3/29/2017 Added back previous AWIPS baseline RGBs, at bottom.
+         
+        7/15/17 L. Byerle added "Distinction" to Day Cloud Phase RGB menu text per SET
+        Renamed Day Land Cloud Convection to Day Cloud Convection per SET. Removed Simple
+        Nighttime Micro and Day Ocean Cloud Convection per SET. Removed "Icing" RGB under
+        old RGBs section as it matches that of Day Land Cloud (per SET mbr).
+
+        11/3/2017 Adds CIMSS Natural Color RGB
+        11/21/2017 Updates to combine current and new gamma corrected GLSL methods for comparison
+                   Removes "Old RGBs" section
+        11/28/2017 Removes Nighttime Micro (simple) RGB from the simple RGBs section
+
+        2/15/2018 Adds in the "Old RGBs" section that has been in Dec/Jan, Feb 2018 RPMs. Note it is labelled as 
+                  "Derived Parameter Method" in the divider, no GLSL comparisons are included for these
+
+        5/8/2018  Use only GLSL RGB method, comment out derived param methods
+        9/8/2018  Sandwich RGB from OPG
+        
+   -->
+    <!-- TOWRdocs POC
+         Lee Byerle  9/8/2018
     -->
 <menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
+	<!--  			-->
+	<!--  Simple RGBs 	-->
+	<!--  			-->
 
-<!--  Simple RGBs -->
-
-<contribute xsi:type="titleItem" titleText="------ Simple ------" id="goesr-simpleRgbs"/>
+	<contribute xsi:type="titleItem" titleText="------ Simple ------" id="goesr-simpleRgbs"/>
 
     <!-- GLSL Day Cloud Phase Distinction. -->
         <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBRecipeGLSL.xml" 
@@ -154,6 +196,19 @@
         <substitute key="blueUnit" value="%" />
         </contribute>
 
+        <!-- Sandwich RGB from OPG 09/18 -->
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBRecipe.xml"
+                        menuText="VIS/IR Sandwich" id="goesr-sandwich">
+                <substitute key="productName" value="Sandwich RGB" />
+                <substitute key="redElement" value="goesrSandwichRed" />
+                <substitute key="greenElement" value="goesrSandwichGreen" />
+                <substitute key="blueElement" value="goesrSandwichBlue" />
+                <substitute key="redLabel" value="Red" />
+                <substitute key="greenLabel" value="Green" />
+                <substitute key="blueLabel" value="Blue" />
+        </contribute>
+
+
     <!-- GLSL Simple Water Vapor. -->
         <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBRecipeGLSL.xml" 
                     menuText="Simple Water Vapor (10.35 μm, 6.19 μm, 7.34 μm)" id="goesr-simpleWaterVapor2">
@@ -179,9 +234,11 @@
         </contribute>
 
 
-<!--  Advanced RGBs -->
+	<!--  			-->
+	<!--  Advanced RGBs 	-->
+	<!--  			-->
 
-<contribute xsi:type="titleItem" titleText="------ Advanced ------" id="goesr-advancedRgbComposites"/>
+   	<contribute xsi:type="titleItem" titleText="------ Advanced ------" id="goesr-advancedRgbComposites"/>
 
     <!-- GLSL Air Mass. -->
         <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBRecipeGLSL.xml" 
@@ -388,10 +445,20 @@
         <substitute key="blueUnit" value="C" />
         </contribute>
 
-<!--  Older RGBs      -->
+    <!--            -->
+    <!--  Older RGBs previously in baseline     -->
+    <!--            -->
 
     <contribute xsi:type="titleItem" titleText="------ Old RGBs ------" id="goesr-oldRgbComposites"/>
 
+<!-- 7/15/2017 Remove This RGB, matches the Day Land Cloud RGB above -->
+<!--    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBComposite.xml" 
+                menuText="Icing(1.61,0.87,0.64)" id="goesr-icing">
+        <substitute key="productName" value="Icing" />
+        <substitute key="redElement" value="CH-05-1.61um" />
+        <substitute key="greenElement" value="CH-03-0.87um" />
+        <substitute key="blueElement" value="CH-02-0.64um" />
+    </contribute> -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBComposite.xml" 
                 menuText="Daytime Composite #1(0.64,1.61,11.20)" id="goesr-daytime1">
         <substitute key="productName" value="Daytime Composite #1" />
@@ -406,17 +473,4 @@
         <substitute key="greenElement" value="CH-03-0.87um" />
         <substitute key="blueElement" value="CH-02-0.64um" />
     </contribute>
-
-    <!-- Day Ocean Cloud Convection. Points to goesrRGBRecipe.xml/SPoRT package. -->
-        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBRecipe.xml" 
-                    menuText="Day Ocean Cloud Convection (0.87 μm, 0.87 μm, 10.35 μm)" id="goesr-dayOceanCloudConvection">
-            <substitute key="productName" value="Day Ocean Cloud Convection" />
-        <substitute key="redElement" value="goesrDayOceanCloudConvectionRed" />
-        <substitute key="greenElement" value="goesrDayOceanCloudConvectionGreen" />
-        <substitute key="blueElement" value="goesrDayOceanCloudConvectionBlue" />
-        <substitute key="redLabel" value="0.87 μm" />
-        <substitute key="greenLabel" value="0.87 μm" />
-        <substitute key="blueLabel" value="10.35 μm" />
-        </contribute>
-
 </menuTemplate>

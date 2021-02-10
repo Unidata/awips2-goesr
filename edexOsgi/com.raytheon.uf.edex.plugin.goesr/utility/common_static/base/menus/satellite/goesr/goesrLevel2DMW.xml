@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <!--
+        This_software_was_developed_and_/_or_modified_by_Raytheon_Company,
+        pursuant_to_Contract_DG133W-05-CQ-1067_with_the_US_Government.
+        
+        U.S._EXPORT_CONTROLLED_TECHNICAL_DATA
+        This_software_product_contains_export-restricted_data_whose
+        export/transfer/disclosure_is_restricted_by_U.S._law._Dissemination
+        to_non-U.S._persons_whether_in_the_United_States_or_abroad_requires
+        an_export_license_or_other_authorization.
+        
+        Contractor_Name:________Raytheon_Company
+        Contractor_Address:_____6825_Pine_Street,_Suite_340
+        ________________________Mail_Stop_B8
+        ________________________Omaha,_NE_68106
+        ________________________402.291.0100
+        
+        See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
+        further_licensing_information.
+    -->
+   <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
+    -->
+    <!-- TOWRdocs Header
+          DMW sub-menu
+    -->
+    <!-- TOWRdocs Description
+          Combines contents of goesr-dmwMenuByFilter.xml goesr-dmwMenuByFilter2.xml, as well as byScene/byScene2.
+          Add in scene key to all. Add in orbitalslot key to single Sector, as previously referenced in base /goesrLevel2.xml
+          Yields single sub-menu for Conus-Pacus and for Conus only. The Conus-Pacus entries are repeated in goesrLevel2_DMW_EConus.xml
+    -->
+    <!-- TOWRdocs Status
+         Use with updated menu structure to update sector precedence. 
+    -->
+    <!-- TOWRdocs POC
+         Lee Byerle  10/18/2020
+    -->
+<menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+     <contribute xsi:type="titleItem" titleText="------ By Pressure ------" id="goesrBySector2"/>
+ <!-- 200 mb -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
+           menuText="000-250mb" id="goesr-DMW-Pressure-200mb">
+        <substitute key="legend" value="${orbitalSlot} 000-250mb DMW"/>
+        <substitute key="pressureConstraint" value="BETWEEN" />
+        <substitute key="pressure" value="0--250" />
+        <substitute key="color" value="#ff9696" />
+    </contribute>
+    <!-- 300 mb -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
+           menuText="250-350mb" id="goesr-DMW-Pressure-300mb">
+        <substitute key="legend" value="${orbitalSlot} 250-350mb DMW"/>
+        <substitute key="pressureConstraint" value="BETWEEN" />
+        <substitute key="pressure" value="250--350" />
+        <substitute key="color" value="#ff0000" />
+    </contribute>
+    
+    <!-- 400 mb -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
+           menuText="350-450mb" id="goesr-DMW-Pressure-400mb">
+        <substitute key="legend" value="${orbitalSlot} 350-450mb DMW"/>
+        <substitute key="pressureConstraint" value="BETWEEN" />
+        <substitute key="pressure" value="350--450" />
+        <substitute key="color" value="#960000" />
+    </contribute>    
+    <!-- 500 mb -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
+           menuText="450-600mb" id="goesr-DMW-Pressure-500mb">
+        <substitute key="legend" value="${orbitalSlot} 450-600mb DMW"/>
+        <substitute key="pressureConstraint" value="BETWEEN" />
+        <substitute key="pressure" value="450--600" />
+        <substitute key="color" value="#00ff00" />
+    </contribute>
+    <!-- 700 mb -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
+           menuText="600-775mb" id="goesr-DMW-Pressure-700mb">
+        <substitute key="legend" value="${orbitalSlot} 600-775mb DMW"/>
+        <substitute key="pressureConstraint" value="BETWEEN" />
+        <substitute key="pressure" value="600--775" />
+        <substitute key="color" value="#d2d2ff" />
+    </contribute>
+    <!-- 850 mb -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
+           menuText="775-900mb" id="goesr-DMW-Pressure-850mb">
+        <substitute key="legend" value="${orbitalSlot} 775-900mb DMW"/>
+        <substitute key="pressureConstraint" value="BETWEEN" />
+        <substitute key="pressure" value="775--900" />
+        <substitute key="color" value="#9696ff" />
+    </contribute>
+    <!-- 925 mb -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
+           menuText="900mb-SFC" id="goesr-DMW-Pressure-925mb">
+        <substitute key="legend" value="${orbitalSlot} 900mb-SFC DMW"/>
+        <substitute key="pressureConstraint" value="GREATER_THAN" />
+        <substitute key="pressure" value="900" />
+        <substitute key="color" value="#0000ff" />
+    </contribute>
+    <!-- All Pressures -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleAllPressuresColor.xml" 
+           menuText="All Pressures Layer Plot" id="goesr-DMW-AllPressures-layer2">
+        <substitute key="legendp1" value="${orbitalSlot} 900mb-SFC DMW"/>
+        <substitute key="pressureConstraint1" value="GREATER_THAN" />
+        <substitute key="prange1" value="900" />
+        <substitute key="colorp1" value="#0000ff" />
+        <substitute key="pressureConstraint2" value="BETWEEN" />
+        <substitute key="legendp2" value="${orbitalSlot} 775-900mb DMW"/>
+        <substitute key="prange2" value="775--900" />
+        <substitute key="colorp2" value="#9696ff" />
+        <substitute key="legendp3" value="${orbitalSlot} 600-775mb DMW"/>
+        <substitute key="prange3" value="600--775" />
+        <substitute key="colorp3" value="#d2d2ff" />
+        <substitute key="legendp4" value="${orbitalSlot} 450-600mb DMW"/>
+        <substitute key="prange4" value="450--600" />
+        <substitute key="colorp4" value="#00ff00" />
+        <substitute key="legendp5" value="${orbitalSlot} 350-450mb DMW"/>
+        <substitute key="prange5" value="350--450" />
+        <substitute key="colorp5" value="#960000" />
+        <substitute key="legendp6" value="${orbitalSlot} 250-350mb DMW"/>
+        <substitute key="prange6" value="250--350" />
+        <substitute key="colorp6" value="#ff0000" />
+        <substitute key="legendp7" value="${orbitalSlot} 000-250mb DMW"/>
+        <substitute key="prange7" value="0--250" />
+        <substitute key="colorp7" value="#ff9696" />
+   </contribute>
+
+    <contribute xsi:type="separator" id="MySeparatorId"/>
+     <contribute xsi:type="titleItem" titleText="------ By Channel ------" id="goesrBySector2"/>
+    <!-- Ch 02 -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByChannel.xml" menuText="0.64 μm Red Visible (Ch 02 - Daytime - 1000-700mb)"
+        id="goesr-DMW-Channel-03">
+        <substitute key="channel" value="2" />
+        <substitute key="legend" value="${orbitalSlot} DMW 02)" />
+    </contribute>
+    <!-- Ch 07 -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByChannel.xml" menuText="3.90μm Shortwave Window IR (Ch 07 - Nighttime - 1000-700mb)"
+        id="goesr-DMW-Channel-07">
+        <substitute key="channel" value="7" />
+        <substitute key="legend" value="${orbitalSlot} DMW 07)" />
+    </contribute>
+
+    <!-- Ch 08 -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByChannel.xml" menuText="6.19μm Upper-level Water Vapor IR (Ch 08)"
+        id="goesr-DMW-Channel-08">
+        <substitute key="channel" value="8" />
+        <substitute key="legend" value="${orbitalSlot} DMW 08)" />
+    </contribute>
+    <!-- Ch 09 -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByChannel.xml" menuText="6.93μm Mid-level Water Vapor IR (Ch 09)"
+        id="goesr-DMW-Channel-09">
+        <substitute key="channel" value="9" />
+        <substitute key="legend" value="${orbitalSlot} DMW 09)" />
+    </contribute>
+    <!-- Ch 10 -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByChannel.xml" menuText="7.34μm Low-level Water Vapor IR (Ch 10)"
+        id="goesr-DMW-Channel-10">
+        <substitute key="channel" value="10" />
+        <substitute key="legend" value="${orbitalSlot} DMW 10)" />
+    </contribute>
+    <!-- Ch 14 -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByChannel.xml" menuText="11.21μm Legacy Window IR (Ch 14)"
+        id="goesr-DMW-Channel-14">
+        <substitute key="channel" value="14" />
+        <substitute key="legend" value="${orbitalSlot} DMW 14)" />
+    </contribute>
+   <!-- All Channels -->
+<!--Displays all channels set by the ChannelRange. 02-14 sets Chs 2,7,8-10,14. keep channel key as query placeholder, set to 8 
+     No binOffset used in bundle -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleAllChannels.xml" 
+           menuText="All Channels Plot" id="goesr-DMW-AllChannels">
+        <substitute key="legend" value="${orbitalSlot} DMW All Channels" />
+        <substitute key="ChannelRange" value="2--14" />
+        <substitute key="ConstraintType" value="BETWEEN" />
+        <substitute key="channel" value="8" />
+    </contribute>
+
+</menuTemplate>

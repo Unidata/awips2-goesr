@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <!--
+        This_software_was_developed_and_/_or_modified_by_Raytheon_Company,
+        pursuant_to_Contract_DG133W-05-CQ-1067_with_the_US_Government.
+        
+        U.S._EXPORT_CONTROLLED_TECHNICAL_DATA
+        This_software_product_contains_export-restricted_data_whose
+        export/transfer/disclosure_is_restricted_by_U.S._law._Dissemination
+        to_non-U.S._persons_whether_in_the_United_States_or_abroad_requires
+        an_export_license_or_other_authorization.
+        
+        Contractor_Name:________Raytheon_Company
+        Contractor_Address:_____6825_Pine_Street,_Suite_340
+        ________________________Mail_Stop_B8
+        ________________________Omaha,_NE_68106
+        ________________________402.291.0100
+        
+        See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
+        further_licensing_information.
+    -->
+   <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
+    -->
+    <!-- TOWRdocs Header
+         GOES-R Product Description file
+    -->
+    <!-- TOWRdocs Description
+         GOES-R description configuration.  This file accounts for additional dataset_name
+         combinations for GOES-R derived products:
+
+         "OR" = OE Real-Time Data
+         "OT" = OE Test Data
+         "IR" = ITE Real-Time Data
+         "IT" = ITE Test Data"
+     -->
+    <!-- TOWRdocs Status
+         This file is a modification to the baseline file of the same name, which 
+         accounted for products whose dataset_name begins with "OR".
+         4/20/20 based upon Feb 2020 NESDIS files
+    -->
+    <!-- TOWRdocs POC
+         Lee Byerle 4/20/20
+    -->
+    <!-- Unidata updates
+         Tiffany Meyer added 1/25/2021
+    -->
+<goesrProductDescriptions>
+  <default>
+    <matches>
+      <match pattern="ABI-L2-GFLS(C|F)-AWIPS-M\d_v\dr\d_g\d\d_s\d{15}_e\d{15}_c\d{15}.nc">
+        <attribute name="dataset_name" />
+      </match>
+    </matches>
+  </default>
+ <description>
+    <dataTime>
+        <formattedRefTime dateFormat="yyyy-MM-dd'T'HH:mm:ss'Z'">
+            <attribute name="time_coverage_start"/>
+        </formattedRefTime>
+    </dataTime>
+    <source>
+        <attribute name="production_site" />
+    </source>
+    <creatingEntity>
+        <pattern inputPattern="G(1[678])" outputFormat="GOES-%S">
+            <attribute name="platform_ID" />
+        </pattern>
+    </creatingEntity>
+  </description>
+  <description>
+    <data>
+      <variable name="MVFR_Fog_Prob" />
+    </data>
+    <physicalElement>
+      <value value="MVFR_Fog_Prob" />
+    </physicalElement>
+  </description>
+  <description>
+    <data>
+      <variable name="IFR_Fog_Prob" />
+    </data>
+    <physicalElement>
+      <value value="IFR_Fog_Prob" />
+    </physicalElement>
+  </description>
+  <description>
+    <data>
+      <variable name="LIFR_Fog_Prob" />
+    </data>
+    <physicalElement>
+      <value value="LIFR_Fog_Prob" />
+    </physicalElement>
+  </description>
+  <description>
+    <data>
+      <variable name="Fog_Depth" />
+    </data>
+    <physicalElement>
+      <value value="Fog_Depth" />
+    </physicalElement>
+  </description>
+</goesrProductDescriptions>
