@@ -27,7 +27,9 @@
          Account for case when central wavelength is set to 6.185. This is the case for the GRB
          data stream.  The plugin is not rounding to 6.19 during the conversion from float to
          double.  This update assigns both 6.19 and 6.185 central wavelengths to the same
-         physical element (CH-08-6.19um). No change to other channels. 8/7/2018 Lee Byerle
+         physical element (CH-08-6.19um). No change to other channels.
+         Aug 07, 2018        Lee Byerle     Initial creation
+         Feb 10, 2021  20421 mgamazaychikov Add support for centalWaveLength handling
      -->
 <goesrProductDescriptions>
   <default>
@@ -55,6 +57,11 @@
         <satHeight>
             <attribute name="satellite_altitude" />
         </satHeight>
+        <centralWavelength>
+            <formatted format="%.2f">
+                <attribute name="central_wavelength" />
+            </formatted>
+        </centralWavelength>
     </description>
     <description>
         <matches>

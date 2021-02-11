@@ -48,6 +48,7 @@ import com.raytheon.uf.edex.plugin.goesr.description.data.GoesrDataDescription;
  * Date         Ticket#    Engineer    Description
  * ------------ ---------- ----------- --------------------------
  * May 17, 2016 5584       nabowle     Initial creation
+ * Feb 10, 2021 20421   mgamazaychikov Add support for centalWaveLength handling
  *
  * </pre>
  *
@@ -74,6 +75,9 @@ public class GoesrNetcdfProductDescription extends NetcdfProductDescription {
 
     @XmlElement
     private DelegateFieldDescription satHeight;
+
+    @XmlElement
+    private DelegateFieldDescription centralWavelength;
 
     /**
      *
@@ -190,6 +194,14 @@ public class GoesrNetcdfProductDescription extends NetcdfProductDescription {
         this.satHeight = satHeight;
     }
 
+    public DelegateFieldDescription getCentralWavelength() {
+        return centralWavelength;
+    }
+
+    public void setCentralWavelength(DelegateFieldDescription centralWavelength) {
+        this.centralWavelength = centralWavelength;
+    }
+
     @Override
     public void updateFields(NetcdfFile netcdfFile,
             List<NetcdfRecordInfo> records) throws InvalidDescriptionException {
@@ -203,6 +215,7 @@ public class GoesrNetcdfProductDescription extends NetcdfProductDescription {
                 records);
         NetcdfDecoderUtils.updateField(netcdfFile, this.source, "source", records);
         NetcdfDecoderUtils.updateField(netcdfFile, this.units, "units", records);
+        NetcdfDecoderUtils.updateField(netcdfFile, this.centralWavelength, "centralWavelength", records);
     }
 
     @Override
@@ -248,6 +261,12 @@ public class GoesrNetcdfProductDescription extends NetcdfProductDescription {
                 return false;
             }
         }
+        if (this.centralWavelength != null) {
+            if (!this.centralWavelength.isPresent(file)) {
+                logDebugMessage(logger, "centralWavelength");
+                return false;
+            }
+        }
 
         return true;
     }
@@ -273,6 +292,9 @@ public class GoesrNetcdfProductDescription extends NetcdfProductDescription {
         }
         if (this.units != null) {
             this.units.validate();
+        }
+        if (this.centralWavelength != null) {
+            this.centralWavelength.validate();
         }
     }
 }

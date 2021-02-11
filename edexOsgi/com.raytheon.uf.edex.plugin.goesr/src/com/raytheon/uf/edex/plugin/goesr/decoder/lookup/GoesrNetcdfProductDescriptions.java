@@ -44,6 +44,7 @@ import com.raytheon.uf.edex.netcdf.description.product.NetcdfProductDescriptions
  * Date         Ticket#    Engineer    Description
  * ------------ ---------- ----------- --------------------------
  * May 17, 2016 5584       nabowle     Initial creation
+ * Feb 10, 2021 20421   mgamazaychikov Add support for centalWaveLength handling
  * 
  * </pre>
  * 
@@ -103,6 +104,11 @@ public class GoesrNetcdfProductDescriptions extends
                 if (gDesc.getSatHeight() == null
                         && gDefault.getSatHeight() != null) {
                     gDesc.setSatHeight(gDefault.getSatHeight());
+                }
+
+                if (gDesc.getCentralWavelength() == null
+                        && gDefault.getCentralWavelength() != null) {
+                    gDesc.setCentralWavelength(gDefault.getCentralWavelength());
                 }
             }
         }
