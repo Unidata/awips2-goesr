@@ -20,7 +20,7 @@
     <!-- Raw GOES-R Products -->
     <regex>^.*(DMW[A-Z0-9]{1,}-M[0-9]C[0-9]{2}).*\.nc$</regex>
     <!-- WMO Header for GOES-R DMW -->
-    <regex>^IXTU99.*</regex>
+    <regex>^IXTU[8-9]9.*</regex>
     <!-- Raw Himawari Products -->
     <regex>^Himawari_AHI.*AMV_CH[0-9]{2}(_CS)?\.nc$</regex>
 </requestPatterns>
