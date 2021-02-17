@@ -91,6 +91,34 @@
     </contribute>
     
     <contribute xsi:type="separator" id="id"/>
+    <contribute xsi:type="titleItem" titleText="------ Fog and Low Stratus ------" />
+    
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="LIFR" id="goesr-lifr">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="LIFR_Fog_Prob"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/LIFR_PROB"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="IFR" id="goesr-ifr">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="IFR_Fog_Prob"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/IFR_PROB"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="MVFR" id="goer-mvfr">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="MVFR_Fog_Prob"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/MVFR_PROB"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Cloud Thickness" id="goer-fogdepth">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="Fog_Depth"/>
+        <substitute key="colormap" value="Grid/gridded data"/>
+    </contribute>
+    
+    <contribute xsi:type="separator" id="id"/>
     
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Land Surface Temperature" id="goesr-lst">
         <substitute key="entity" value="GOES%" />

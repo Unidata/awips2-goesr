@@ -1069,5 +1069,79 @@
     </imageStyle>
   </styleRule>
   <!-- End of GLM configurations -->
+  
+  <!--  GOES Fog and Low Stratus Products -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>Fog_Depth</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Cloud Thickness (ft)</displayLegend>
+      <displayUnits>ft</displayUnits>
+      <range scale="LINEAR">
+        <minValue>0</minValue>
+        <maxValue>5000</maxValue>
+      </range>
+      <defaultColormap>Grid/gridded data</defaultColormap>
+      <colorbarLabeling>
+        <values>0 650 1300 2000 2600 3300 3900 4600</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+ <styleRule>
+    <paramLevelMatches>
+      <parameter>IFR_Fog_Prob</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} IFR Fog Probability (%)</displayLegend>
+      <displayUnits>%</displayUnits>
+      <range scale="LINEAR">
+        <minValue>0</minValue>
+        <maxValue>99</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/IFR_PROB</defaultColormap>
+      <colorbarLabeling>
+        <values>0 10 20 30 40 50 60 70 80 90 99</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<styleRule>
+    <paramLevelMatches>
+      <parameter>MVFR_Fog_Prob</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} MVFR Fog Probability (%)</displayLegend>
+      <displayUnits>%</displayUnits>
+      <range scale="LINEAR">
+        <minValue>0</minValue>
+        <maxValue>99</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/MVFR_PROB</defaultColormap>
+      <colorbarLabeling>
+        <values>0 10 20 30 40 50 60 70 80 90 99</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<styleRule>
+    <paramLevelMatches>
+      <parameter>LIFR_Fog_Prob</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} LIFR Fog Probability (%)</displayLegend>
+      <displayUnits>%</displayUnits>
+      <range scale="LINEAR">
+        <minValue>0</minValue>
+        <maxValue>99</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/LIFR_PROB</defaultColormap>
+      <colorbarLabeling>
+        <values>0 10 20 30 40 50 60 70 80 90 99</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+  
 
 </styleRuleset>
