@@ -102,4 +102,36 @@
             <value value="HIREGI" />
         </sectorID>
     </description>
+    <!-- Added to support CIRA GeoColor, DebraDust, CloudSnow Products tmeyer 1/12/2021 -->
+    <description>
+        <matches>
+            <match pattern="GWGEOC-\d\d\d-B\d\d-M\dC[01]\d">
+                <attribute name="product_name" />
+            </match>
+        </matches>
+        <sectorID>
+            <value value="WCONUS" />
+        </sectorID>
+    </description>
+    <description>
+        <matches>
+            <match pattern="GWSNCL-\d\d\d-B\d\d-M\dC[01]\d">
+                <attribute name="product_name" />
+            </match>
+        </matches>
+        <sectorID>
+            <value value="WCONUS" />
+        </sectorID>
+    </description>
+    <description>
+        <matches>
+            <match pattern="GWDDST-\d\d\d-B\d\d-M\dC[01]\d">
+                <attribute name="product_name" />
+            </match>
+        </matches>
+        <sectorID>
+            <value value="WCONUS" />
+        </sectorID>
+    </description>
+    <!--  End CIRA tile addition  -->
 </goesrProductDescriptions>

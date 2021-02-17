@@ -92,4 +92,36 @@
             <value value="EMESO-2" />
         </sectorID>
     </description>
+<!-- Added to support CIRA GeoColor, DebraDust, CloudSnow Products tmeyer 1/12/2021 -->
+    <description>
+        <matches>
+            <match pattern="GEGEOC-\d\d\d-B\d\d-M\dC[01]\d">
+                <attribute name="product_name" />
+            </match>
+        </matches>
+        <sectorID>
+            <value value="ECONUS" />
+        </sectorID>
+    </description>
+    <description>
+        <matches>
+            <match pattern="GESNCL-\d\d\d-B\d\d-M\dC[01]\d">
+                <attribute name="product_name" />
+            </match>
+        </matches>
+        <sectorID>
+            <value value="ECONUS" />
+        </sectorID>
+    </description>
+    <description>
+        <matches>
+            <match pattern="GEDDST-\d\d\d-B\d\d-M\dC[01]\d">
+                <attribute name="product_name" />
+            </match>
+        </matches>
+        <sectorID>
+            <value value="ECONUS" />
+        </sectorID>
+    </description>
+<!--  End CIRA tile addition  -->
 </goesrProductDescriptions>
