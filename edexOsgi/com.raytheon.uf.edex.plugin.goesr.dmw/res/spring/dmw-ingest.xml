@@ -53,7 +53,7 @@
 
         <route id="dmwIngestRoute">
             <from uri="jms-durable:queue:Ingest.dmw"/>
-            <setHeader headerName="pluginName">
+            <setHeader name="pluginName">
                 <constant>dmw</constant>
             </setHeader>
             <doTry>
