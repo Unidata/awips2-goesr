@@ -46,7 +46,7 @@
                         windFile="dmw_wind.xml" baseDensity="2.0">
                         <metadataMap>
                             <mapping key="pluginName">
-                                <constraint constraintValue="${plugin}" constraintType="EQUALS" />
+                                <constraint constraintValue="dmw" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="orbitalSlot">
                                 <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
@@ -77,7 +77,7 @@
                         windFile="dmw_wind.xml" baseDensity="2.0">
                         <metadataMap>
                             <mapping key="pluginName">
-                                <constraint constraintValue="${plugin}" constraintType="EQUALS" />
+                                <constraint constraintValue="dmw" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="orbitalSlot">
                                 <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
@@ -108,7 +108,7 @@
                         windFile="dmw_wind.xml" baseDensity="2.0">
                         <metadataMap>
                             <mapping key="pluginName">
-                                <constraint constraintValue="${plugin}" constraintType="EQUALS" />
+                                <constraint constraintValue="dmw" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="orbitalSlot">
                                 <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
@@ -139,7 +139,7 @@
                         windFile="dmw_wind.xml" baseDensity="2.0">
                         <metadataMap>
                             <mapping key="pluginName">
-                                <constraint constraintValue="${plugin}" constraintType="EQUALS" />
+                                <constraint constraintValue="dmw" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="orbitalSlot">
                                 <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
@@ -170,7 +170,7 @@
                         windFile="dmw_wind.xml" baseDensity="2.0">
                         <metadataMap>
                             <mapping key="pluginName">
-                                <constraint constraintValue="${plugin}" constraintType="EQUALS" />
+                                <constraint constraintValue="dmw" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="orbitalSlot">
                                 <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
@@ -202,7 +202,7 @@
                         windFile="dmw_wind.xml" baseDensity="2.0">
                         <metadataMap>
                             <mapping key="pluginName">
-                                <constraint constraintValue="${plugin}" constraintType="EQUALS" />
+                                <constraint constraintValue="dmw" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="orbitalSlot">
                                 <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
@@ -234,7 +234,7 @@
                         windFile="dmw_wind.xml" baseDensity="2.0">
                         <metadataMap>
                             <mapping key="pluginName">
-                                <constraint constraintValue="${plugin}" constraintType="EQUALS" />
+                                <constraint constraintValue="dmw" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="orbitalSlot">
                                 <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
