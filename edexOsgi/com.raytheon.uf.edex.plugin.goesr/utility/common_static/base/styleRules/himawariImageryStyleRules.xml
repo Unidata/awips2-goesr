@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     <!--
-        This_software_was_developed_and_/_or_modified_by_Raytheon_Company,
+                 This_software_was_developed_and_/_or_modified_by_Raytheon_Company,
         pursuant_to_Contract_DG133W-05-CQ-1067_with_the_US_Government.
         
         U.S._EXPORT_CONTROLLED_TECHNICAL_DATA
@@ -19,14 +19,14 @@
         further_licensing_information.
     -->
     <!-- 
-        This is an incremental override file, indicating that the files
+                 This is an incremental override file, indicating that the files
         at different localization levels will be combined. 
     -->
 <styleRuleset>
   <!-- Style rules for the Himawari Satellite when the data is ingested in 
-    goesr format. -->
+           goesr format. -->
   <!-- Where himawari channel/wavelengths match goesr they are commented 
-    out to avoid double definitions for the same thing. -->
+           out to avoid double definitions for the same thing. -->
   <styleRule>
     <paramLevelMatches>
       <parameter>CH-07-3.89um</parameter>
@@ -75,7 +75,7 @@
       <parameter>CH-02-0.51um</parameter>
       <parameter>CH-03-0.64um</parameter>
       <parameter>CH-04-0.86um</parameter>
-      <parameter>CH-05-1.61um</parameter>
+      <!-- <parameter>CH-05-1.61um</parameter> GOESR was using this styleRule for some reason-->
       <parameter>CH-06-2.26um</parameter>
     </paramLevelMatches>
     <imageStyle>

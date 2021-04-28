@@ -34,6 +34,7 @@
       <parameter>CH-16-13.30um</parameter>
     </paramLevelMatches>
     <imageStyle>
+      <displayLegend>GOES-${sectorID} ${physicalElement}</displayLegend>
       <displayUnits>C</displayUnits>
       <range scale="LINEAR">
         <minValue>55</minValue>
@@ -50,6 +51,7 @@
       <parameter>CH-07-3.90um</parameter>
     </paramLevelMatches>
     <imageStyle>
+      <displayLegend>GOES-${sectorID} ${physicalElement}</displayLegend>
       <displayUnits>C</displayUnits>
       <range scale="LINEAR">
         <minValue>127</minValue>
@@ -68,6 +70,7 @@
       <parameter>CH-10-7.34um</parameter>
     </paramLevelMatches>
     <imageStyle>
+      <displayLegend>GOES-${sectorID} ${physicalElement}</displayLegend>
       <displayUnits>C</displayUnits>
       <range scale="LINEAR">
         <minValue>55</minValue>
@@ -85,9 +88,11 @@
       <parameter>CH-02-0.64um</parameter>
       <parameter>CH-03-0.87um</parameter>
       <parameter>CH-05-1.61um</parameter>
+      <parameter>CH-05-1.61um</parameter>
       <parameter>CH-06-2.25um</parameter>
     </paramLevelMatches>
     <imageStyle>
+      <displayLegend>GOES-${sectorID} ${physicalElement}</displayLegend>
       <displayUnits>%</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
@@ -104,6 +109,7 @@
       <parameter>CH-04-1.38um</parameter> 
     </paramLevelMatches>
     <imageStyle>
+      <displayLegend>GOES-${sectorID} ${physicalElement}</displayLegend>
       <displayUnits>%</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>

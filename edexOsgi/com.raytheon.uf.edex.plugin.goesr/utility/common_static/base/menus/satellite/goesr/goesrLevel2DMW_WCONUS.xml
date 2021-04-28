@@ -43,10 +43,12 @@
  <!-- 200 mb -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
            menuText="000-250mb" id="goesr-DMW-Pressure-200mb">
-        <substitute key="legend" value="${orbitalSlot} ${scene} 000-250mb DMW"/>
+        <substitute key="legend" value="${orbitalSlot} ${scene} ${scene} 000-250mb DMW"/>
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="0--250" />
         <substitute key="color" value="#ff9696" />
+        <substitute key="orbitalSlot" value="GOES-West"/>
+        <substitute key="scene" value="CONUS"/>
     </contribute>
     <!-- 300 mb -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
@@ -55,6 +57,8 @@
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="250--350" />
         <substitute key="color" value="#ff0000" />
+        <substitute key="orbitalSlot" value="GOES-West"/>
+        <substitute key="scene" value="CONUS"/>
     </contribute>
     
     <!-- 400 mb -->
@@ -64,6 +68,8 @@
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="350--450" />
         <substitute key="color" value="#960000" />
+        <substitute key="orbitalSlot" value="GOES-West"/>
+        <substitute key="scene" value="CONUS"/>
     </contribute>    
     <!-- 500 mb -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
@@ -72,6 +78,8 @@
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="450--600" />
         <substitute key="color" value="#00ff00" />
+        <substitute key="orbitalSlot" value="GOES-West"/>
+        <substitute key="scene" value="CONUS"/>
     </contribute>
     <!-- 700 mb -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
@@ -80,6 +88,8 @@
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="600--775" />
         <substitute key="color" value="#d2d2ff" />
+        <substitute key="orbitalSlot" value="GOES-West"/>
+        <substitute key="scene" value="CONUS"/>
     </contribute>
     <!-- 850 mb -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
@@ -88,6 +98,8 @@
         <substitute key="pressureConstraint" value="BETWEEN" />
         <substitute key="pressure" value="775--900" />
         <substitute key="color" value="#9696ff" />
+        <substitute key="orbitalSlot" value="GOES-West"/>
+        <substitute key="scene" value="CONUS"/>
     </contribute>
     <!-- 925 mb -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByPressureColor.xml" 
@@ -96,6 +108,8 @@
         <substitute key="pressureConstraint" value="GREATER_THAN" />
         <substitute key="pressure" value="900" />
         <substitute key="color" value="#0000ff" />
+        <substitute key="orbitalSlot" value="GOES-West"/>
+        <substitute key="scene" value="CONUS"/>
     </contribute>
     <!-- All Pressures -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleAllPressuresColor.xml" 
@@ -123,6 +137,8 @@
         <substitute key="legendp7" value="${orbitalSlot} ${scene} 000-250mb DMW"/>
         <substitute key="prange7" value="0--250" />
         <substitute key="colorp7" value="#ff9696" />
+        <substitute key="orbitalSlot" value="GOES-West"/>
+        <substitute key="scene" value="CONUS"/>
    </contribute>
 
     <contribute xsi:type="separator" id="MySeparatorId"/>
@@ -132,12 +148,16 @@
         id="goesr-DMW-Channel-03">
         <substitute key="channel" value="2" />
         <substitute key="legend" value="${orbitalSlot} ${scene} DMW 02)" />
+        <substitute key="orbitalSlot" value="GOES-West"/>
+        <substitute key="scene" value="CONUS"/>
     </contribute>
     <!-- Ch 07 -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByChannel.xml" menuText="3.90μm Shortwave Window IR (Ch 07 - Nighttime - 1000-700mb)"
         id="goesr-DMW-Channel-07">
         <substitute key="channel" value="7" />
         <substitute key="legend" value="${orbitalSlot} ${scene} DMW 07)" />
+        <substitute key="orbitalSlot" value="GOES-West"/>
+        <substitute key="scene" value="CONUS"/>
     </contribute>
 
     <!-- Ch 08 -->
@@ -145,24 +165,32 @@
         id="goesr-DMW-Channel-08">
         <substitute key="channel" value="8" />
         <substitute key="legend" value="${orbitalSlot} ${scene} DMW 08)" />
+        <substitute key="orbitalSlot" value="GOES-West"/>
+        <substitute key="scene" value="CONUS"/>
     </contribute>
     <!-- Ch 09 -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByChannel.xml" menuText="6.93μm Mid-level Water Vapor IR (Ch 09)"
         id="goesr-DMW-Channel-09">
         <substitute key="channel" value="9" />
         <substitute key="legend" value="${orbitalSlot} ${scene} DMW 09)" />
+        <substitute key="orbitalSlot" value="GOES-West"/>
+        <substitute key="scene" value="CONUS"/>
     </contribute>
     <!-- Ch 10 -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByChannel.xml" menuText="7.34μm Low-level Water Vapor IR (Ch 10)"
         id="goesr-DMW-Channel-10">
         <substitute key="channel" value="10" />
         <substitute key="legend" value="${orbitalSlot} ${scene} DMW 10)" />
+        <substitute key="orbitalSlot" value="GOES-West"/>
+        <substitute key="scene" value="CONUS"/>
     </contribute>
     <!-- Ch 14 -->
     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-dmwBundleByChannel.xml" menuText="11.21μm Legacy Window IR (Ch 14)"
         id="goesr-DMW-Channel-14">
         <substitute key="channel" value="14" />
         <substitute key="legend" value="${orbitalSlot} ${scene} DMW 14)" />
+        <substitute key="orbitalSlot" value="GOES-West"/>
+        <substitute key="scene" value="CONUS"/>
     </contribute>
    <!-- All Channels -->
 <!--Displays all channels set by the ChannelRange. 02-14 sets Chs 2,7,8-10,14. keep channel key as query placeholder, set to 8 
@@ -173,6 +201,8 @@
         <substitute key="ChannelRange" value="2--14" />
         <substitute key="ConstraintType" value="BETWEEN" />
         <substitute key="channel" value="8" />
+        <substitute key="orbitalSlot" value="GOES-West"/>
+        <substitute key="scene" value="CONUS"/>
     </contribute>
 
 </menuTemplate>
