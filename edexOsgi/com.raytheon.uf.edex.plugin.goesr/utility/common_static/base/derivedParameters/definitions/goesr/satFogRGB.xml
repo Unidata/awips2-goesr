@@ -27,7 +27,7 @@
     -->
 <DerivedParameter unit="C" name="Fog [10.3-3.9 um]" abbreviation="satFogRGB">
     <Method name="DifferenceTwoAdj">
-        <Field abbreviation="ABI-CH-13-10.35um-Alias" unit="K"/>
-        <Field abbreviation="ABI-CH-07-3.90um-Alias" unit="K"/>
+        <Field abbreviation="CH-13-10.35um" unit="K"/>
+        <Field abbreviation="CH-07-3.90um" unit="K"/>
     </Method>
 </DerivedParameter>
