@@ -24,10 +24,10 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -67,6 +67,7 @@ import com.raytheon.uf.viz.core.rsc.capabilities.EditableCapability;
 import com.raytheon.uf.viz.core.rsc.capabilities.MagnificationCapability;
 import com.raytheon.viz.ui.input.EditableManager;
 import com.vividsolutions.jts.geom.Coordinate;
+//import org.locationtech.jts.geom.Coordinate;
 
 /**
  * GOESR Legacy Moisture/Temperature profiles availability resource. Draws
@@ -77,16 +78,15 @@ import com.vividsolutions.jts.geom.Coordinate;
  * 
  * SOFTWARE HISTORY
  * 
- * Date          Ticket#  Engineer    Description
- * ------------- -------- ----------- --------------------------
- * Apr 30, 2015  4335     bsteffen    Initial creation
+ * Date          Ticket#  Engineer  Description
+ * ------------- -------- --------- -----------------------------------
+ * Apr 30, 2015  4335     bsteffen  Initial creation
+ * Nov 29, 2017  5863     bsteffen  Change dataTimes to a NavigableSet
  * 
  * </pre>
  * 
  * @author bsteffen
- * @version 1.0
  */
-
 public class GoesrProfileMapResource extends
         AbstractVizResource<GoesrProfileMapResourceData, IMapDescriptor> {
 
@@ -106,8 +106,8 @@ public class GoesrProfileMapResource extends
                 if (record == null) {
                     continue;
                 }
-                IDataStore dataStore = DataStoreFactory.getDataStore(HDF5Util
-                        .findHDF5Location(record));
+                IDataStore dataStore = DataStoreFactory
+                        .getDataStore(HDF5Util.findHDF5Location(record));
                 IDataRecord dataRecord = null;
                 try {
                     dataRecord = dataStore.retrieve(record.getDataURI(),
@@ -129,10 +129,6 @@ public class GoesrProfileMapResource extends
 
     };
 
-    /**
-     * @param resourceData
-     * @param loadProperties
-     */
     protected GoesrProfileMapResource(GoesrProfileMapResourceData resourceData,
             LoadProperties loadProperties) {
         super(resourceData, loadProperties, false);
@@ -153,14 +149,14 @@ public class GoesrProfileMapResource extends
     public synchronized void addRecords(PluginDataObject... records) {
         for (PluginDataObject record : records) {
             if (record instanceof SatelliteRecord) {
-                this.records
-                        .put(record.getDataTime(), (SatelliteRecord) record);
+                this.records.put(record.getDataTime(),
+                        (SatelliteRecord) record);
             }
         }
 
-        List<DataTime> dataTimes = new ArrayList<DataTime>(
-                this.records.keySet());
-        Collections.sort(dataTimes);
+        Set<DataTime> dataTimes = this.records.keySet();
+        this.dataTimes.addAll(dataTimes);
+
         loadJob.schedule();
     }
 
@@ -204,12 +200,13 @@ public class GoesrProfileMapResource extends
         }
         GoesrProfileMapDisplay display = displays.get(time);
         if (display != null) {
-            display.setColor(getCapability(ColorableCapability.class)
-                    .getColor());
-            display.setDensity(getCapability(DensityCapability.class)
-                    .getDensity());
-            display.setMagnification(getCapability(
-                    MagnificationCapability.class).getMagnification());
+            display.setColor(
+                    getCapability(ColorableCapability.class).getColor());
+            display.setDensity(
+                    getCapability(DensityCapability.class).getDensity());
+            display.setMagnification(
+                    getCapability(MagnificationCapability.class)
+                            .getMagnification());
             display.paint(target, paintProps);
         } else if (loadJob.getState() == Job.RUNNING) {
             updatePaintStatus(PaintStatus.INCOMPLETE);
@@ -267,8 +264,8 @@ public class GoesrProfileMapResource extends
         }
     }
 
-    private static class GoesrProfileMapDisplay extends
-            AbstractGriddedDisplay<DrawableCircle> {
+    private static class GoesrProfileMapDisplay
+            extends AbstractGriddedDisplay<DrawableCircle> {
 
         private final int nx;
 
@@ -280,7 +277,9 @@ public class GoesrProfileMapResource extends
             super(descriptor, gridGeometryOfGrid, size, 6);
             Object array = dataRecord.getDataObject();
             int fill = dataRecord.getFillValue().intValue();
-            /* Don't waste space, we only need to know which points have data. */
+            /*
+             * Don't waste space, we only need to know which points have data.
+             */
             int length = Array.getLength(array);
             dataMap = new BitSet(length);
             for (int i = 0; i < length; i += 1) {
@@ -319,9 +318,9 @@ public class GoesrProfileMapResource extends
 
         @Override
         protected void paint(PaintProperties paintProps,
-                Collection<GridCellRenderable> renderables) throws VizException {
-            List<DrawableCircle> circles = new ArrayList<DrawableCircle>(
-                    renderables.size());
+                Collection<GridCellRenderable> renderables)
+                throws VizException {
+            List<DrawableCircle> circles = new ArrayList<>(renderables.size());
             for (GridCellRenderable gridCell : renderables) {
                 gridCell.resource.setCoordinates(gridCell.plotLocation.x,
                         gridCell.plotLocation.y);

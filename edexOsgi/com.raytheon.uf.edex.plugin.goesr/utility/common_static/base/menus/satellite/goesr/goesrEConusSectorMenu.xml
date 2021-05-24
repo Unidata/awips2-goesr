@@ -109,10 +109,8 @@
         <contribute xsi:type="subinclude" subMenu="RGB Composites" fileName="menus/satellite/goesr/goesrRGBComposites.xml" />
         <contribute xsi:type="subinclude" subMenu="GLM Products" fileName="menus/satellite/goesr/goesrLevel2GLMgrid.xml" />
         <contribute xsi:type="subinclude" subMenu="Derived Motion Winds" fileName="menus/satellite/goesr/goesrLevel2DMW_ECONUS.xml" />
-<!-- commented out since not currently working correctly
         <contribute xsi:type="bundleItem"
           file="bundles/satellite/GoesrLegacyProfileMap.xml" menuText="Vertical Temp/Moisture Profiles"
           id="LVMP-CONUS2">
         </contribute>
--->
 </menuTemplate>
