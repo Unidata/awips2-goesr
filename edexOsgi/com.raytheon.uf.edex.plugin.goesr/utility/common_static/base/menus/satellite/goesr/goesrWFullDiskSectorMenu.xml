@@ -103,7 +103,8 @@
         <substitute key="colormap" value="GOES-R/IR/IR_Color_Clouds_Winter" />
     </contribute>
         <contribute xsi:type="subinclude" subMenu="Channel Differences" fileName="menus/satellite/goesr/goesrLocallyDerived.xml" />
-        <contribute xsi:type="subinclude" subMenu="RGB Composites" fileName="menus/satellite/goesr/goesrRGBComposites.xml" />
+<!-- Removed because currently mac does not support RGB Composities -->
+        <!-- <contribute xsi:type="subinclude" subMenu="RGB Composites" fileName="menus/satellite/goesr/goesrRGBComposites.xml" /> -->
         <contribute xsi:type="subinclude" subMenu="GLM Products" fileName="menus/satellite/goesr/goesrLevel2GLMgrid.xml" />
 
         <!--
