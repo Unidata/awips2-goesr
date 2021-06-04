@@ -103,7 +103,8 @@
     </contribute>
         <contribute xsi:type="subinclude" subMenu="Derived Products" fileName="menus/satellite/goesr/goesrLevel2Meso.xml" />
         <contribute xsi:type="subinclude" subMenu="Channel Differences" fileName="menus/satellite/goesr/goesrLocallyDerived.xml" />
-        <contribute xsi:type="subinclude" subMenu="RGB Composites" fileName="menus/satellite/goesr/goesrRGBComposites.xml" />
+<!-- Removed because currently mac does not support RGB Composities -->
+        <!-- <contribute xsi:type="subinclude" subMenu="RGB Composites" fileName="menus/satellite/goesr/goesrRGBComposites.xml" /> -->
         <contribute xsi:type="subinclude" subMenu="Derived Motion Winds" fileName="menus/satellite/goesr/goesrLevel2DMW.xml" />
 <!-- Not available for meso scale
         <contribute xsi:type="bundleItem"

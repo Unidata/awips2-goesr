@@ -103,7 +103,8 @@
         <substitute key="entity" value="GOES%" />  
     </contribute>
 
-    <contribute xsi:type="bundleItem" file="bundles/GCombo_Recipe_RGB_CONUS_5min.xml"
+<!-- Removed because currently mac does not support RGB composites -->
+    <!-- <contribute xsi:type="bundleItem" file="bundles/GCombo_Recipe_RGB_CONUS_5min.xml"
                 menuText="VIS/IR Sandwich (0.64 μm,10.33 μm)" id="goesr-sandwich">
         <substitute key="sector0" value="WCONUS"/>
         <substitute key="sector1" value="ECONUS"/>
@@ -118,7 +119,7 @@
         <substitute key="negOffset" value="0"/>
         <substitute key="virtualOffset" value="-60"/>
         <substitute key="entity" value="GOES%" />
-    </contribute>
+    </contribute> -->
 
     <contribute xsi:type="satBundleItem" file="bundles/DefaultCONUSSatellite.xml" 
                 menuText="Split Window (10.3-12.3 μm)" id="goeseastwest-moisture">
