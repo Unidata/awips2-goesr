@@ -444,6 +444,35 @@
         <substitute key="blueGamma" value="1.0" />
         <substitute key="blueUnit" value="C" />
         </contribute>
+     <contribute xsi:type="titleItem" titleText="------ CIRA RGBs (derived at CIRA) ------" id="goesr-oldRgbComposites"/>
+<!--  Added CIRA RGB products -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBComposite.xml" 
+                menuText="GeoColor (0.47,0.64,0.87)" id="goesr-GeoColor">
+        <substitute key="entity" value="GEOCOLR" />
+        <substitute key="productName" value="gegeoc" />
+        <substitute key="redElement" value="CH-02-0.64um" />
+        <substitute key="greenElement" value="CH-03-0.87um" />
+        <substitute key="blueElement" value="CH-01-0.47um" />
+    </contribute>
+
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBComposite.xml" 
+                menuText="Debra Dust RGB (0.47,0.64,0.87)" id="goesr-dbrdust">
+        <substitute key="entity" value="DBRDUST" />
+        <substitute key="productName" value="dbrdust" />
+        <substitute key="redElement" value="CH-02-0.64um" />
+        <substitute key="greenElement" value="CH-03-0.87um" />
+        <substitute key="blueElement" value="CH-01-0.47um" />
+    </contribute>
+
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBComposite.xml" 
+                menuText="Cloud-Snow RGB (0.47,0.64,0.87)" id="goesr-cldsnw">
+        <substitute key="entity" value="CLDSNOW" />
+        <substitute key="productName" value="cldsnw" />
+        <substitute key="redElement" value="CH-02-0.64um" />
+        <substitute key="greenElement" value="CH-03-0.87um" />
+        <substitute key="blueElement" value="CH-01-0.47um" />
+    </contribute>
+<!-- End GeoColor tile support  -->
     <!--            -->
     <!--  Older RGBs previously in baseline     -->
     <!--            -->

@@ -334,7 +334,7 @@
     </paramLevelMatches>
     <imageStyle>
       <displayLegend>GOES-${sectorID} Rain Rate/QPE (in/hr)</displayLegend>
-      <displayUnits>in/hr</displayUnits>
+      <displayUnits>in/h</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
         <maxValue>3</maxValue>
