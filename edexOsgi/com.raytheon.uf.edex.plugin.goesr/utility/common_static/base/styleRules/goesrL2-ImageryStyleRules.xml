@@ -330,6 +330,89 @@
   </styleRule>
   <styleRule>
     <paramLevelMatches>
+      <parameter>Fire_Mask</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} Fire Mask</displayLegend>
+      <defaultColormap>GOES-R/GOESR-L2/fire_mask3</defaultColormap>
+      <range scale="LINEAR">
+        <minValue>-0.5</minValue>
+        <maxValue>67.5</maxValue>
+      </range>
+      <dataMapping>
+        <entry displayValue="0" pixelValue="0" label="" sample="" />
+        <entry displayValue="1" pixelValue="1" label="" sample="" />
+        <entry displayValue="2" pixelValue="2" label="" sample="" />
+        <entry displayValue="3" pixelValue="3" label="" sample="" />
+        <entry displayValue="4" pixelValue="4" label="" sample="" />
+        <entry displayValue="5" pixelValue="5" label="" sample="" />
+        <entry displayValue="6" pixelValue="6" label="" sample="" />
+        <entry displayValue="7" pixelValue="7" label="" sample="" />
+        <entry displayValue="8" pixelValue="8" label="" sample="" />
+        <entry displayValue="9" pixelValue="9" label="" sample="" />
+        <entry displayValue="10" pixelValue="10" label="" sample="Processed Fire" />
+        <entry displayValue="11" pixelValue="11" label="" sample="Saturated Fire" />
+        <entry displayValue="12" pixelValue="12" label="" sample="Cloudy Fire"/>
+        <entry displayValue="13" pixelValue="13" label="" sample="High Probability Fire" />
+        <entry displayValue="14" pixelValue="14" label="" sample="Med Probability Fire" />
+        <entry displayValue="15" pixelValue="15" label="" sample="Low Probability Fire" />
+        <entry displayValue="16" pixelValue="16" label="" sample="" />
+        <entry displayValue="17" pixelValue="17" label="" sample="" />
+        <entry displayValue="18" pixelValue="18" label="" sample="" />
+        <entry displayValue="19" pixelValue="19" label="" sample="" />
+        <entry displayValue="20" pixelValue="20" label="" sample="" />
+        <entry displayValue="21" pixelValue="21" label="" sample="" />
+        <entry displayValue="22" pixelValue="22" label="" sample="" />
+        <entry displayValue="23" pixelValue="23" label="" sample="" />
+        <entry displayValue="24" pixelValue="24" label="" sample="" />
+        <entry displayValue="25" pixelValue="25" label="" sample="" />
+        <entry displayValue="26" pixelValue="26" label="" sample="" />
+        <entry displayValue="27" pixelValue="27" label="" sample="" />
+        <entry displayValue="28" pixelValue="28" label="" sample="" />
+        <entry displayValue="29" pixelValue="29" label="" sample="" />
+        <entry displayValue="30" pixelValue="30" label="" sample="Processed Fire" />
+        <entry displayValue="31" pixelValue="31" label="" sample="Saturated Fire" />
+        <entry displayValue="22" pixelValue="32" label="" sample="Cloudy Fire"/>
+        <entry displayValue="33" pixelValue="33" label="" sample="High Probability Fire" />
+        <entry displayValue="34" pixelValue="34" label="" sample="Med Probability Fire" />
+        <entry displayValue="35" pixelValue="35" label="" sample="Low Probability Fire" />
+        <entry displayValue="36" pixelValue="40" label="" sample="No Data" />
+        <entry displayValue="37" pixelValue="50" label="" sample="No Data" />
+        <entry displayValue="38" pixelValue="60" label="" sample="No Data" />
+        <entry displayValue="39" pixelValue="100" label="" sample="Processed No Fire" />
+        <entry displayValue="40" pixelValue="120" label="" sample="No Data" />
+        <entry displayValue="41" pixelValue="121" label="" sample="No Data" />
+        <entry displayValue="42" pixelValue="123" label="" sample="No Data" />
+        <entry displayValue="43" pixelValue="124" label="" sample="No Data" />
+        <entry displayValue="44" pixelValue="125" label="" sample="No Data" />
+        <entry displayValue="45" pixelValue="126" label="" sample="No Data" />
+        <entry displayValue="46" pixelValue="127" label="" sample="No Data" />
+        <entry displayValue="47" pixelValue="150" label="" sample="No Data" />
+        <entry displayValue="48" pixelValue="151" label="" sample="No Data" />
+        <entry displayValue="49" pixelValue="152" label="" sample="No Data" />
+        <entry displayValue="50" pixelValue="153" label="" sample="No Data" />
+        <entry displayValue="51" pixelValue="170" label="" sample="No Data" />
+        <entry displayValue="52" pixelValue="180" label="" sample="No Data" />
+        <entry displayValue="53" pixelValue="182" label="" sample="No Data" />
+        <entry displayValue="54" pixelValue="185" label="" sample="No Data" />
+        <entry displayValue="55" pixelValue="186" label="" sample="No Data" />
+        <entry displayValue="56" pixelValue="187" label="" sample="No Data" />
+        <entry displayValue="57" pixelValue="188" label="" sample="No Data" />
+        <entry displayValue="58" pixelValue="200" label="" sample="No Data" />
+        <entry displayValue="59" pixelValue="201" label="" sample="No Data" />
+        <entry displayValue="60" pixelValue="205" label="" sample="No Data" />
+        <entry displayValue="61" pixelValue="210" label="" sample="No Data" />
+        <entry displayValue="62" pixelValue="215" label="" sample="No Data" />
+        <entry displayValue="63" pixelValue="220" label="" sample="No Data" />
+        <entry displayValue="64" pixelValue="225" label="" sample="No Data" />
+        <entry displayValue="65" pixelValue="230" label="" sample="No Data" />
+        <entry displayValue="66" pixelValue="240" label="" sample="No Data" />
+        <entry displayValue="67" pixelValue="245" label="" sample="No Data" />
+     </dataMapping>
+    </imageStyle>
+  </styleRule>
+  <styleRule>
+    <paramLevelMatches>
       <parameter>RRQPE</parameter>
     </paramLevelMatches>
     <imageStyle>
