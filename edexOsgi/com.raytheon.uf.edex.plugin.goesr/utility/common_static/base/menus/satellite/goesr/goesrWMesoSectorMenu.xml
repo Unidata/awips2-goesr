@@ -102,6 +102,7 @@
         <substitute key="colormap" value="GOES-R/IR/IR_Color_Clouds_Winter" />
     </contribute>
     <contribute xsi:type="separator" id="MySeparatorId"/>
+        <contribute xsi:type="subinclude" subMenu="Derived Products" fileName="menus/satellite/goesr/goesrLevel2WMeso.xml" />
         <contribute xsi:type="subinclude" subMenu="Channel Differences" fileName="menus/satellite/goesr/goesrLocallyDerived.xml" />
         <contribute xsi:type="subinclude" subMenu="RGB Composites" fileName="menus/satellite/goesr/goesrRGBComposites.xml" />
 </menuTemplate>
