@@ -104,10 +104,10 @@
     </contribute>
     <contribute xsi:type="separator" id="MySeparatorId"/>
 
-        <contribute xsi:type="subinclude" subMenu="Derived Products" fileName="menus/satellite/goesr/goesrLevel2FullDisk.xml" />
+        <contribute xsi:type="subinclude" subMenu="Derived Products" fileName="menus/satellite/goesr/goesrLevel2EFullDisk.xml" />
         <contribute xsi:type="subinclude" subMenu="Channel Differences" fileName="menus/satellite/goesr/goesrLocallyDerived.xml" />
         <contribute xsi:type="subinclude" subMenu="RGB Composites" fileName="menus/satellite/goesr/goesrRGBComposites.xml" />
-        <contribute xsi:type="subinclude" subMenu="GLM Products" fileName="menus/satellite/goesr/goesrLevel2GLMgrid.xml" />
+        <contribute xsi:type="subinclude" subMenu="GLM Products" fileName="menus/satellite/goesr/goesrLevel2GLMgridFullDisk_1min_5min.xml" />
 
         <!--
 <contribute xsi:type="subinclude" subMenu="Ice Products (Eval)" fileName="menus/satellite/goesr/goesrLevel2IceFullDisk.xml" />

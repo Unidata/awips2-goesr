@@ -22,8 +22,11 @@
         This is an incremental override file, indicating that the files
         at different localization levels will be combined. 
     -->
+    <!-- replaced Difference with DifferenceTwoAdj, better handling of diff values close to zero
+         8/5/2018 8/5/2018 Lee Byerle
+    -->
 <DerivedParameter unit="K" name="Satellite Cloud Phase[8.5-11.2 um]" abbreviation="satCloudPhase">
-    <Method name="Difference">
+    <Method name="DifferenceTwoAdj">
         <Field abbreviation="abiCh11Alias" unit="K"/>
         <Field abbreviation="abiCh14Alias" unit="K"/>
     </Method>

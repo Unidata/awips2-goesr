@@ -24,6 +24,121 @@
     -->
 <styleRuleset>
   <!-- GOES-R Level 2 Satellite Rules -->
+  
+    <styleRule>
+    <paramLevelMatches>
+      <parameter>SmokeLow</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Smoke Detection (Low Confidence) (unitless) </displayLegend>
+      <range scale="LINEAR">
+        <minValue>-0.5</minValue>
+        <maxValue>2.5</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/Smoke</defaultColormap> 
+      <dataMapping>
+        <entry displayValue="0" pixelValue="0" label="No Smoke" sample="Masked" />
+        <entry displayValue="1" pixelValue="1" label="Smoke" sample="Smoke (low confidence)" />
+        <entry displayValue="2" pixelValue="255" label="NO DATA" sample="NO DATA" />
+     </dataMapping>
+    </imageStyle>
+  </styleRule>
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>SmokeMed</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Smoke Detection (Medium Confidence) (unitless) </displayLegend>
+      <range scale="LINEAR">
+        <minValue>-0.5</minValue>
+        <maxValue>2.5</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/Smoke</defaultColormap>
+      <dataMapping>
+        <entry displayValue="0" pixelValue="0" label="No Smoke" sample="Masked" />
+        <entry displayValue="1" pixelValue="1" label="Smoke" sample="Smoke (medium confidence)" />
+        <entry displayValue="2" pixelValue="255" label="NO DATA" sample="NO DATA" />
+     </dataMapping>
+    </imageStyle>
+  </styleRule>
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>SmokeHigh</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Smoke Detection (High Confidence) (unitless) </displayLegend>
+      <range scale="LINEAR">
+        <minValue>-0.5</minValue>
+        <maxValue>2.5</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/Smoke</defaultColormap>
+      <dataMapping>
+        <entry displayValue="0" pixelValue="0" label="No Smoke" sample="Masked" />
+        <entry displayValue="1" pixelValue="1" label="Smoke" sample="Smoke (high confidence)" />
+        <entry displayValue="2" pixelValue="255" label="NO DATA" sample="NO DATA" />
+     </dataMapping>
+    </imageStyle>
+  </styleRule>
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>DustLow</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Dust Detection (Low Confidence) (unitless) </displayLegend>
+      <range scale="LINEAR">
+        <minValue>-0.5</minValue>
+        <maxValue>2.5</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/Dust</defaultColormap>
+      <dataMapping>
+        <entry displayValue="0" pixelValue="0" label="No Dust" sample="Masked" />
+        <entry displayValue="1" pixelValue="1" label="Dust" sample="Dust (low confidence)" />
+        <entry displayValue="2" pixelValue="255" label="NO DATA" sample="NO DATA" />
+     </dataMapping>
+    </imageStyle>
+  </styleRule>
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>DustMed</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Dust Detection (Medium Confidence) (unitless) </displayLegend>
+      <range scale="LINEAR">
+        <minValue>-0.5</minValue>
+        <maxValue>2.5</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/Dust</defaultColormap>
+      <dataMapping>
+        <entry displayValue="0" pixelValue="0" label="No Dust" sample="Masked" />
+        <entry displayValue="1" pixelValue="1" label="Dust" sample="Dust (medium confidence)" />
+        <entry displayValue="2" pixelValue="255" label="NO DATA" sample="NO DATA" />
+     </dataMapping>
+    </imageStyle>
+  </styleRule>
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>DustHigh</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Dust Detection (High Confidence) (unitless) </displayLegend>
+      <range scale="LINEAR">
+        <minValue>-0.5</minValue>
+        <maxValue>2.5</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/Dust</defaultColormap>
+      <dataMapping>
+        <entry displayValue="0" pixelValue="0" label="No Dust" sample="Masked" />
+        <entry displayValue="1" pixelValue="1" label="Dust" sample="Dust (high confidence)" />
+        <entry displayValue="2" pixelValue="255" label="NO DATA" sample="NO DATA" />
+     </dataMapping>
+    </imageStyle>
+  </styleRule>
+
   <styleRule>
     <paramLevelMatches>
       <parameter>ADP</parameter>
@@ -917,4 +1032,99 @@
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
+  <!--Flash Extent Density moving window, 5min Full Disk  -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Flash_Extent_Density_w5u1</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} GLM Flash Extent Density (flashes/5min) (5min-1min update)</displayLegend>
+      <range scale="LOG">
+        <minValue>1</minValue>
+        <maxValue>260</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
+      <colorbarLabeling>
+        <values>0 2 4 8 16 32 64 128 256</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<!-- Min Flash Area 1min -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Minimum_Flash_Area</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} GLM Minimum Flash Area (km^2) (1min)</displayLegend>
+      <displayUnits>km*km</displayUnits>
+      <range scale="LOG">
+        <minValue>60</minValue>
+        <maxValue>2000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_flashsize</defaultColormap>
+      <colorbarLabeling>
+        <values>60 120 300 600 1200 2000</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<!-- Min Flash Area 5min moving window Full disk tiles -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Minimum_Flash_Area_w5u1</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} GLM Minimum Flash Area (km^2) (5min-1min update)</displayLegend>
+      <displayUnits>km*km</displayUnits>
+      <range scale="LOG">
+        <minValue>60</minValue> 
+        <maxValue>2000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_flashsize</defaultColormap>
+      <colorbarLabeling>
+        <values>60 120 300 600 1200 2000</values> 
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+  <!-- Total Optical Energy 1min EFD, WFD tiles -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Total_Optical_Energy_tile</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} GLM Total Optical Energy (fJ) (1min)</displayLegend>
+      <displayUnits>nJ*1.0E-06</displayUnits>
+      <range scale="LOG">
+        <minValue>0.003</minValue>
+        <maxValue>150</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_energy</defaultColormap>
+      <colorbarLabeling>
+        <values>1 5 10 25 50 120 150</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule> 
+
+<!-- Full Disk tile 5 min update -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Total_Optical_Energy_w5u1_tile</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} GLM Total Optical Energy (fJ) (5min-1min update)</displayLegend>
+      <displayUnits>nJ*1.0E-06</displayUnits>
+      <range scale="LOG">
+        <minValue>0.003</minValue>
+        <maxValue>3000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_energy</defaultColormap>
+      <colorbarLabeling>
+        <values>1 5 10 25 50 150 500 1500</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule> 
+
+
 </styleRuleset>

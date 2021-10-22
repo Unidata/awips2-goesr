@@ -19,9 +19,8 @@
         further_licensing_information.
     -->
     <!-- 
-        This is an absolute override file, indicating that a higher priority 
-        version of the file will completely replace a lower priority version
-        of the file. 
+        This is an incremental override file, indicating that the files
+        at different localization levels will be combined. 
     -->
     <!-- Added 8/5/2018 Lee Byerle -->
 <DerivedParameter unit="%" name="Split Snow [1.61-0.64 um-um" abbreviation="satSplitSnowRGB">

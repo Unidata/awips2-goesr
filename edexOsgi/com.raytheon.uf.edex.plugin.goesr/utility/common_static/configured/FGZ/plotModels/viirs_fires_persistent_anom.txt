@@ -1,0 +1,15 @@
+# Note:
+# 12/12/19 L. Byerle
+# The row of ranges must be in ascending order.
+# First entry (lowest value range) captures value
+# of zero. Left blank purposely. This is the no-
+# persistent anomaly flag. The last value (captures
+# 5) is unclassified and likely a false detection
+#
+r2s
+-.01 0.3 
+0.8 1.3  Oil_or_Gas_Flare
+1.8 2.3  Volcano
+2.8 3.3  Solar_panel
+3.8 4.3  Urban
+4.8 5.3  Likely_false_detection
