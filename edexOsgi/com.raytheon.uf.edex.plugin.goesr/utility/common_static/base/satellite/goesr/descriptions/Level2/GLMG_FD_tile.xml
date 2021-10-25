@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <!--
+        This_software_was_developed_and_/_or_modified_by_Raytheon_Company,
+        pursuant_to_Contract_DG133W-05-CQ-1067_with_the_US_Government.
+        
+        U.S._EXPORT_CONTROLLED_TECHNICAL_DATA
+        This_software_product_contains_export-restricted_data_whose
+        export/transfer/disclosure_is_restricted_by_U.S._law._Dissemination
+        to_non-U.S._persons_whether_in_the_United_States_or_abroad_requires
+        an_export_license_or_other_authorization.
+        
+        Contractor_Name:________Raytheon_Company
+        Contractor_Address:_____6825_Pine_Street,_Suite_340
+        ________________________Mail_Stop_B8
+        ________________________Omaha,_NE_68106
+        ________________________402.291.0100
+        
+        See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
+        further_licensing_information.
+    -->
+    <!-- TOWRdocs Header
+         GOES-R GLM product description file.
+    -->
+    <!-- TOWRdocs Description
+         Description file for GLM grid imagery.
+    -->
+    <!-- TOWRdocs Status
+                           GLM grids sourced from ISatSS. Note use of time coverage end for dateFormat
+                 4/19/2018 Only include flash extent density field initial release
+                 4/27/2018 Incorporates updates from OPG.  Match pattern for L2 or L3, with L3
+                           products those that include the fields in addition to flash extent density
+                           (now uncommented).
+                 5/11/18   Generalize setting in match pattern to account for modes other than 3,4 (-M\d)
+                 5/11/18   Add Flash extent density window
+                 5/29/18   5-min windows to FED, average flash area, and total optical energy (formerly total energy)
+                 6/8/18    Windows (currently 5min) and 1-min activated FED, average flash area, total optical energy 
+                 3/15/20   Add Minimum Flash Area. attr name includes tile number
+                 3/15/20   dataset_name   -L2- for FED, -L3- for FED, AFA, TOE, MFA 
+                 7/28/20   Update time date format
+                 8/29/20   Tiles Add 5-min ave
+                 9/12/20   Fix TOE units to nJ
+   -->
+    <!-- TOWRdocs POC
+         Lee Byerle 9/12/20
+    -->
+<goesrProductDescriptions>
+
+  <default>
+    <matches>
+     <match pattern="[OI][RT]_GLM-L[23]-GLM(C|F|M1|M2)-M\d_G\d\d_T\d\d_e\d{14}.nc"> 
+        <attribute name="dataset_name" />
+      </match>
+    </matches>
+  </default>
+
+  <description>
+    <dataTime>
+        <formattedRefTime dateFormat="yyyy-MM-dd'T'HH:mm:ss'Z'">
+            <attribute name="time_coverage_end"/>
+        </formattedRefTime>
+    </dataTime>
+
+    <source>
+        <attribute name="production_site" />
+    </source>
+
+    <creatingEntity>
+        <pattern inputPattern="G(1[678])" outputFormat="GOES-%S">
+            <attribute name="platform_ID" />
+        </pattern>
+    </creatingEntity>
+  </description>
+
+  
+  <!-- Flash extent density 1min -->
+  <description>
+    <data>
+      <variable name="Flash_extent_density" />
+      <discreteMask name="DQF" value="0" keep="true">
+      <fillByte>0</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="GLM_Flash_Extent_Density" />
+    </physicalElement>
+  </description>
+
+  <!-- 5/25/2018  Flash extent density moving window 5min -->
+  <description>
+    <data>
+      <variable name="Flash_extent_density_w5u1" />
+      <discreteMask name="DQF" value="0" keep="true">
+      <fillByte>0</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="GLM_Flash_Extent_Density_w5u1" />
+    </physicalElement>
+  </description>
+
+  <!--Total Optical Energy Window  -->
+  <description>
+    <data>
+      <variable name="Total_Optical_energy_w5u1" />
+      <discreteMask name="DQF" value="0" keep="true">
+      <fillByte>0</fillByte>
+      </discreteMask>
+    </data>
+    <units>
+      <value value="nJ" />
+    </units>
+    <physicalElement>
+      <value value="GLM_Total_Optical_Energy_w5u1_tile" />
+    </physicalElement>
+  </description>
+
+  <!--Total Optical Energy 1min -->
+  <description>
+    <data>
+      <variable name="Total_Optical_energy" />
+      <discreteMask name="DQF" value="0" keep="true">
+      <fillByte>0</fillByte>
+      </discreteMask>
+    </data>
+    <units>
+      <value value="nJ" />
+    </units>
+    <physicalElement>
+      <value value="GLM_Total_Optical_Energy_tile" />
+    </physicalElement>
+  </description> 
+
+  <!-- Minimum Flash Area Window  5min-->
+      <description>
+    <data>
+      <variable name="Minimum_flash_area_w5u1" />
+      <discreteMask name="DQF" value="0" keep="true">
+      <fillByte>0</fillByte>
+      </discreteMask>
+    </data>
+    <units>
+      <value value="km*km" />
+    </units>
+    <physicalElement>
+      <value value="GLM_Minimum_Flash_Area_w5u1" />
+    </physicalElement>
+  </description> 
+
+  <!-- Minimum Flash Area 1min   -->
+  <description>
+    <data>
+      <variable name="Minimum_flash_area" />
+      <discreteMask name="DQF" value="0" keep="true">
+      <fillByte>0</fillByte>
+      </discreteMask>
+    </data>
+    <units>
+      <value value="km*km" />
+    </units>
+    <physicalElement>
+      <value value="GLM_Minimum_Flash_Area" />
+    </physicalElement>
+  </description>  
+
+</goesrProductDescriptions>

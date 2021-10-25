@@ -22,8 +22,11 @@
         This is an incremental override file, indicating that the files
         at different localization levels will be combined. 
     -->
+    <!-- replaced Difference with DifferenceTwoAdj, better handling of diff values close to zero
+         8/5/2018 8/5/2018 Lee Byerle
+    -->
 <DerivedParameter unit="K" name="Split Ozone [9.6-10.3 um]" abbreviation="satSplitOzone">
-    <Method name="Difference">
+    <Method name="DifferenceTwoAdj">
         <Field abbreviation="abiCh12Alias" unit="K"/>
         <Field abbreviation="abiCh13Alias" unit="K"/>
     </Method>

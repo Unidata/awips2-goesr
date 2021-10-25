@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <!--
+        This_software_was_developed_and_/_or_modified_by_Raytheon_Company,
+        pursuant_to_Contract_DG133W-05-CQ-1067_with_the_US_Government.
+        
+        U.S._EXPORT_CONTROLLED_TECHNICAL_DATA
+        This_software_product_contains_export-restricted_data_whose
+        export/transfer/disclosure_is_restricted_by_U.S._law._Dissemination
+        to_non-U.S._persons_whether_in_the_United_States_or_abroad_requires
+        an_export_license_or_other_authorization.
+        
+        Contractor_Name:________Raytheon_Company
+        Contractor_Address:_____6825_Pine_Street,_Suite_340
+        ________________________Mail_Stop_B8
+        ________________________Omaha,_NE_68106
+        ________________________402.291.0100
+        
+        See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
+        further_licensing_information.
+    -->
+    <!-- TOWRdocs Header
+         Level 2 product Menu for GLM Flash Grid products
+    -->
+    <!-- TOWRdocs Description
+		 New menu configs for the ISaTSS generated GLM grid products
+		 Uncomment fields as they become available.  Currently the Flash Extent Density is active.
+     -->
+    <!-- TOWRdocs Status
+         10/17/2020 adds 1- and 5-min items to single file, combines contents of goesrLevel2GLMgridFullDisk.xml
+         and 5-MIN goesrLevel2GLMgrid_FullDisk_5MIN.xml for menu precedence updates 
+   
+         Comment out Flash Points section to exclude from menu, 1min only
+         11/11/2020 incl (1min) for Flash Point Legend
+    -->
+    <!-- TOWRdocs POC
+         Lee Byerle 11/11/2020
+    -->
+<!--1min-->
+<menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="1min GLM Flash Extent Density" id="goesr-fdglmfed1min2">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="GLM_Flash_Extent_Density"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_grid"/>
+    </contribute>
+<!--    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                        menuText="1min GLM Average Flash Area" id="goesr-fdglmafa1min">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="GLM_Average_Flash_Area"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_flashsize"/> 
+    </contribute>  -->
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="1min GLM Minimum Flash Area" id="goesr-fdglmmfa1min2">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="GLM_Minimum_Flash_Area"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_flashsize"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="1min GLM Total Optical Energy" id="goesr-fdglmte1min2">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="GLM_Total_Optical_Energy_tile"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_energy"/>
+    </contribute>
+
+<!--GLM Flash point -->
+                   <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/glmFlash-dmwPlugin-bundle.xml"
+                        menuText="1min GLM Flash points" id="glmFlash2">
+                        <substitute key="svg" value="glmFlashSymbolDesign.svg"/>
+                        <substitute key="scene" value="GLM" />
+                        <substitute key="density" value="4"/>
+                        <substitute key="magnify" value="0.8"/>
+                        <substitute key="negOffset" value="0"/>
+                        <substitute key="posOffset" value="0"/>
+                         <substitute key="virtualOffset" value="0"/>
+                         <substitute key="title" value="${orbitalSlot} GLM Flash Point (1min)"/>
+                         <substitute key="color" value="green"/>
+                </contribute>
+
+   <contribute xsi:type="titleItem" titleText="------------------------------------" id="GLMAccumLine2"/>
+
+<!--5 min same contents as /glm_window/goesrLevel2GLMgrid_FullDisk_5MIN.xml -->
+   <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="5min GLM Flash Extent Density" id="goesr-fdglmfed5min2">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="GLM_Flash_Extent_Density_w5u1"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_grid"/>
+    </contribute>
+<!--    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                        menuText="5min GLM Average Flash Area" id="goesr-fdglmafa5min">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="GLM_Average_Flash_Area_Window"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_flashsize"/> 
+    </contribute> -->
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="5min GLM Minimum Flash Area" id="goesr-fdglmmfa5min2">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="GLM_Minimum_Flash_Area_w5u1"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_flashsize"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="5min GLM Total Optical Energy" id="goesr-fdglmte5min2">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="GLM_Total_Optical_Energy_w5u1_tile"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/glm_energy"/>
+    </contribute>
+
+</menuTemplate>

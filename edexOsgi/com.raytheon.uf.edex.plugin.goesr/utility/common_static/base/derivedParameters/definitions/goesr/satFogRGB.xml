@@ -18,16 +18,17 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
-    <!-- 
-        This is an incremental override file, indicating that the files
-        at different localization levels will be combined. 
+   <!--
+        This is an absolute override file, indicating that a higher priority
+        version of the file will completely replace a lower priority version
+        of the file.
     -->
     <!-- Added 8/5/2018 for goesrRGBComposite. Distinct from
          satFog given units C vs K.  Lee Byerle 
     -->
 <DerivedParameter unit="C" name="Fog [10.3-3.9 um]" abbreviation="satFogRGB">
     <Method name="DifferenceTwoAdj">
-        <Field abbreviation="CH-13-10.35um" unit="K"/>
-        <Field abbreviation="CH-07-3.90um" unit="K"/>
+        <Field abbreviation="abiCh13Alias" unit="K"/>
+        <Field abbreviation="abiCh07Alias" unit="K"/>
     </Method>
 </DerivedParameter>

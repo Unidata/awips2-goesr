@@ -22,8 +22,11 @@
         This is an incremental override file, indicating that the files
         at different localization levels will be combined. 
     -->
+    <!-- replaced Difference with DifferenceTwoAdj, better handling of diff values close to zero
+         8/5/2018 8/5/2018 Lee Byerle
+    -->
 <DerivedParameter unit="%" name="Split Snow [1.61-0.64 um]" abbreviation="satSplitSnow">
-    <Method name="Difference">
+    <Method name="DifferenceTwoAdj">
         <Field abbreviation="abiCh05Alias" unit="%"/>
         <Field abbreviation="abiCh02Alias" unit="%"/>
     </Method>

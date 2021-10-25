@@ -38,6 +38,10 @@
         <substitute key="element" value="satFog" />
         <substitute key="colormap" value="GOES-R/IR/fogdiff_blue" />
     </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Night Fog (11.2-3.9 μm)" id="goesr-fog">
+         <substitute key="element" value="satFog2"/>
+         <substitute key="colormap" value="GOES-R/IR/fogdiff_blue"/>
+     </contribute>
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Day Fog (3.9-10.3 μm)" id="goesr-dayfog">
         <substitute key="element" value="satDayFog" />
         <substitute key="colormap" value="Grid/Gridded Data" />
@@ -67,5 +71,13 @@
         id="goesr-upper-level-info">
         <substitute key="element" value="satUpperLevelInfo" />
         <substitute key="colormap" value="Grid/Gridded Data" />
+     </contribute>
+     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/NDVI_CSM_bundle.xml" menuText="Norm Diff Vegetation Index (NDVI)" id="goesr-NDVI">
+         <substitute key="element1" value="satNDVI"/>
+         <substitute key="element2" value="CSM"/>
+         <substitute key="colormap1" value="GOES-R/IR/NDVI"/>
+         <substitute key="colormap2" value="GOES-R/GOESR-L2/CSM"/>
+         <substitute key="entity" value="GOES%"/>
     </contribute>
+
 </menuTemplate>

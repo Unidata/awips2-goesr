@@ -19,9 +19,8 @@
         further_licensing_information.
     -->
     <!-- 
-        This is an absolute override file, indicating that a higher priority 
-        version of the file will completely replace a lower priority version
-        of the file. 
+        This is an incremental override file, indicating that the files
+        at different localization levels will be combined. 
     -->
     <!-- Added 8/5/2018 Lee Byerle  -->
 <DerivedParameter unit="C" name="Split Dust [11.20-8.50 um-um]" abbreviation="satSplitDustRGB">

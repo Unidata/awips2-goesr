@@ -22,9 +22,11 @@
         This is an incremental override file, indicating that the files
         at different localization levels will be combined. 
     -->
-<DerivedParameter unit="K" name="Satellite Fog[3.9-11.2 um]" abbreviation="satFog">
-    <Method name="Difference">
+    <!-- Added 8/5/2018 for goesrLocallyDerived. Distinct from
+         satFogRGB given units K vs C.  Lee Byerle -->
+<DerivedParameter unit="K" name="Night Fog [10.3-3.9 um]" abbreviation="satFog">
+    <Method name="DifferenceTwoAdj">
+        <Field abbreviation="abiCh13Alias" unit="K"/>
         <Field abbreviation="abiCh07Alias" unit="K"/>
-        <Field abbreviation="abiCh14Alias" unit="K"/>
     </Method>
 </DerivedParameter>
