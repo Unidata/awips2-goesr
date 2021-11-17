@@ -5,19 +5,19 @@ Bundle-SymbolicName: com.raytheon.uf.edex.plugin.goesr.dmw
 Bundle-Version: 1.19.0.qualifier
 Bundle-Vendor: RAYTHEON
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Require-Bundle: com.raytheon.uf.common.pointdata;bundle-version="1.14.0",
+Require-Bundle: com.raytheon.uf.common.pointdata,
  com.raytheon.uf.edex.pointdata,
- com.raytheon.uf.common.dataplugin;bundle-version="1.14.0",
- com.raytheon.uf.common.datastorage;bundle-version="1.14.0",
- com.raytheon.uf.common.status;bundle-version="1.14.1",
- net.sf.cglib;bundle-version="2.1.3",
- com.raytheon.uf.edex.database;bundle-version="1.14.1",
- com.raytheon.uf.common.wmo;bundle-version="1.14.0",
- com.raytheon.edex.common;bundle-version="1.14.1",
+ com.raytheon.uf.common.dataplugin,
+ com.raytheon.uf.common.datastorage,
+ com.raytheon.uf.common.status,
+ net.sf.cglib,
+ com.raytheon.uf.edex.database,
+ com.raytheon.uf.common.wmo,
+ com.raytheon.edex.common,
  ucar.nc2,
  com.raytheon.uf.common.dataplugin.goesr.dmw,
  com.raytheon.uf.edex.netcdf,
- com.raytheon.uf.common.localization;bundle-version="1.15.1",
+ com.raytheon.uf.common.localization,
  javax.xml.bind
 Export-Package: com.raytheon.uf.edex.plugin.goesr.dmw.dao,
  com.raytheon.uf.edex.plugin.goesr.dmw.decoder,

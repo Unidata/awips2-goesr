@@ -5,9 +5,9 @@ Bundle-SymbolicName: com.raytheon.uf.common.dataplugin.goesr.dmw
 Bundle-Version: 1.15.0.qualifier
 Bundle-Vendor: RAYTHEON
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Require-Bundle: com.raytheon.uf.common.dataplugin;bundle-version="1.14.0",
- com.raytheon.uf.common.serialization;bundle-version="1.14.2",
- com.raytheon.uf.common.pointdata;bundle-version="1.14.0",
- com.raytheon.uf.common.dataaccess;bundle-version="1.14.0",
- com.raytheon.uf.common.geospatial;bundle-version="1.14.2"
+Require-Bundle: com.raytheon.uf.common.dataplugin,
+ com.raytheon.uf.common.serialization,
+ com.raytheon.uf.common.pointdata,
+ com.raytheon.uf.common.dataaccess,
+ com.raytheon.uf.common.geospatial
 Export-Package: com.raytheon.uf.common.dataplugin.goesr.dmw
