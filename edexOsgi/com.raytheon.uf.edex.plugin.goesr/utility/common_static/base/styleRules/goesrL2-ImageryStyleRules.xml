@@ -649,11 +649,11 @@
 <!-- Flash Extent Density, 1min -->
   <styleRule>
     <paramLevelMatches>
-      <parameter>GLM_Flash_Extent_Density</parameter>
+      <parameter>GLM_Flash_Extent_Density_TT</parameter>
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Flash Extent Density (flashes/min) (1min)</displayLegend>
+      <displayLegend>GOES-${sectorID} GLM Flash Extent Density (flashes/min) (1min)-TT</displayLegend>
       <range scale="LOG">
         <minValue>0.125</minValue>
         <maxValue>50</maxValue>
@@ -668,11 +668,11 @@
 <!--Flash Extent Density moving window, 5min  -->
   <styleRule>
     <paramLevelMatches>
-      <parameter>GLM_Flash_Extent_Density_Window</parameter>
+      <parameter>GLM_Flash_Extent_Density_Window_TT</parameter>
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Flash Extent Density (flashes/5min) (5min-1min update)</displayLegend>
+      <displayLegend>GOES-${sectorID} GLM Flash Extent Density (flashes/5min) (5min-1min update)-TT</displayLegend>
       <range scale="LOG">
         <minValue>1</minValue>
         <maxValue>260</maxValue>
@@ -687,11 +687,11 @@
   <!-- Flash Centroid Density, 1min -->
    <styleRule>
     <paramLevelMatches>
-      <parameter>GLM_Flash_Centroid_Density</parameter>
+      <parameter>GLM_Flash_Centroid_Density_TT</parameter>
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Flash Centroid Density (1min)</displayLegend>
+      <displayLegend>GOES-${sectorID} GLM Flash Centroid Density (1min)-TT</displayLegend>
       <range scale="LINEAR">
         <minValue>0.125</minValue>
         <maxValue>10</maxValue>
@@ -706,11 +706,11 @@
    <!-- Flash Centroid Density moving window, 5min -->
    <styleRule>
     <paramLevelMatches>
-      <parameter>GLM_Flash_Centroid_Density_Window</parameter>
+      <parameter>GLM_Flash_Centroid_Density_Window_TT</parameter>
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Flash Centroid Density (5min-1min update)</displayLegend>
+      <displayLegend>GOES-${sectorID} GLM Flash Centroid Density (5min-1min update)-TT</displayLegend>
       <range scale="LINEAR">
         <minValue>0.125</minValue>
         <maxValue>10</maxValue>
@@ -725,11 +725,11 @@
  <!-- Ave Flash Area 1min -->
   <styleRule>
     <paramLevelMatches>
-      <parameter>GLM_Average_Flash_Area</parameter>
+      <parameter>GLM_Average_Flash_Area_TT</parameter>
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Average Flash Area (km^2) (1min)</displayLegend>
+      <displayLegend>GOES-${sectorID} GLM Average Flash Area (km^2) (1min)-TT</displayLegend>
       <displayUnits>km*km</displayUnits>
       <range scale="LOG">
         <minValue>60</minValue>
@@ -744,11 +744,11 @@
 <!-- Ave Flash Area moving window, 5min -->
   <styleRule>
     <paramLevelMatches>
-      <parameter>GLM_Average_Flash_Area_Window</parameter>
+      <parameter>GLM_Average_Flash_Area_Window_TT</parameter>
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Average Flash Area (km^2) (5min-1min update)</displayLegend>
+      <displayLegend>GOES-${sectorID} GLM Average Flash Area (km^2) (5min-1min update)-TT</displayLegend>
       <displayUnits>km*km</displayUnits>
       <range scale="LOG">
         <minValue>60</minValue>
@@ -764,11 +764,11 @@
   <!-- Total Optical Energy 1min -->
   <styleRule>
     <paramLevelMatches>
-      <parameter>GLM_Total_Optical_Energy</parameter>
+      <parameter>GLM_Total_Optical_Energy_TT</parameter>
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Total Optical Energy (fJ) (1min)</displayLegend>
+      <displayLegend>GOES-${sectorID} GLM Total Optical Energy (fJ) (1min)-TT</displayLegend>
       <displayUnits>J*1.0E-15</displayUnits>
       <range scale="LOG">
         <minValue>0.003</minValue>
@@ -784,11 +784,11 @@
 <!-- Total Optical Energy window 5min update -->
   <styleRule>
     <paramLevelMatches>
-      <parameter>GLM_Total_Optical_Energy_Window</parameter>
+      <parameter>GLM_Total_Optical_Energy_Window_TT</parameter>
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Total Optical Energy (fJ) (5min-1min update)</displayLegend>
+      <displayLegend>GOES-${sectorID} GLM Total Optical Energy (fJ) (5min-1min update)-TT</displayLegend>
       <displayUnits label="1e-15J">J*1.0E-15</displayUnits>
       <range scale="LOG">
         <minValue>0.003</minValue>
@@ -804,11 +804,11 @@
 <!-- Group Extent Density, 1min -->
  <styleRule>
     <paramLevelMatches>
-      <parameter>GLM_Group_Extent_Density</parameter>
+      <parameter>GLM_Group_Extent_Density_TT</parameter>
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Group Extent Density (1min)</displayLegend>
+      <displayLegend>GOES-${sectorID} GLM Group Extent Density (1min)-TT</displayLegend>
       <range scale="LINEAR">
         <minValue>0.125</minValue>
         <maxValue>10</maxValue>
@@ -823,11 +823,11 @@
 <!-- Group Extent Density moving window, 5min -->
  <styleRule>
     <paramLevelMatches>
-      <parameter>GLM_Group_Extent_Density_Window</parameter>
+      <parameter>GLM_Group_Extent_Density_Window_TT</parameter>
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Group Extent Density (5min-1min update)</displayLegend>
+      <displayLegend>GOES-${sectorID} GLM Group Extent Density (5min-1min update)-TT</displayLegend>
       <range scale="LINEAR">
         <minValue>0.125</minValue>
         <maxValue>10</maxValue>
@@ -842,11 +842,11 @@
   <!-- Group Centroid Density, 1min -->
  <styleRule>
     <paramLevelMatches>
-      <parameter>GLM_Group_Centroid_Density</parameter>
+      <parameter>GLM_Group_Centroid_Density_TT</parameter>
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Group Centroid Density (1min)</displayLegend>
+      <displayLegend>GOES-${sectorID} GLM Group Centroid Density (1min)-TT</displayLegend>
       <range scale="LINEAR">
         <minValue>0.125</minValue>
         <maxValue>10</maxValue>
@@ -861,11 +861,11 @@
 <!-- Group Centroid Density moving window, 5min -->
  <styleRule>
     <paramLevelMatches>
-      <parameter>GLM_Group_Centroid_Density_Window</parameter>
+      <parameter>GLM_Group_Centroid_Density_Window_TT</parameter>
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Group Centroid Density (5min-1min update)</displayLegend>
+      <displayLegend>GOES-${sectorID} GLM Group Centroid Density (5min-1min update)-TT</displayLegend>
       <range scale="LINEAR">
         <minValue>0.125</minValue>
         <maxValue>10</maxValue>
@@ -880,11 +880,11 @@
   <!-- Ave Flash Area 1min -->
   <styleRule>
     <paramLevelMatches>
-      <parameter>GLM_Average_Flash_Area</parameter>
+      <parameter>GLM_Average_Flash_Area_TT</parameter>
 	  <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Average Flash Area (km^2) (1min)</displayLegend>
+      <displayLegend>GOES-${sectorID} GLM Average Flash Area (km^2) (1min)-TT</displayLegend>
       <!-- <displayUnits>km*km</displayUnits> -->
       <range scale="LOG">
         <minValue>60</minValue>
@@ -900,11 +900,11 @@
   <!-- Ave Flash Area 5min moving window -->
   <styleRule>
     <paramLevelMatches>
-      <parameter>GLM_Average_Flash_Area_Window</parameter>
+      <parameter>GLM_Average_Flash_Area_Window_TT</parameter>
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Average Flash Area (km^2) (5min-1min update)</displayLegend>
+      <displayLegend>GOES-${sectorID} GLM Average Flash Area (km^2) (5min-1min update)-TT</displayLegend>
       <displayUnits>km*km</displayUnits>
       <range scale="LOG">
         <minValue>60</minValue>
@@ -919,11 +919,11 @@
 <!-- Minimum Flash Area 5min moving window -->
   <styleRule>
     <paramLevelMatches>
-      <parameter>GLM_Minimum_Flash_Area</parameter>
+      <parameter>GLM_Minimum_Flash_Area_TT</parameter>
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Minimum Flash Area (km^2) (1min update)</displayLegend>
+      <displayLegend>GOES-${sectorID} GLM Minimum Flash Area (km^2) (1min update)-TT</displayLegend>
       <displayUnits>km*km</displayUnits>
       <range scale="LOG">
         <minValue>60</minValue>
@@ -940,11 +940,11 @@
 <!-- Minimum Flash Area 5min moving window -->
   <styleRule>
     <paramLevelMatches>
-      <parameter>GLM_Minimum_Flash_Area_Window</parameter>
+      <parameter>GLM_Minimum_Flash_Area_Window_TT</parameter>
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Minimum Flash Area (km^2) (5min-1min update)</displayLegend>
+      <displayLegend>GOES-${sectorID} GLM Minimum Flash Area (km^2) (5min-1min update)-TT</displayLegend>
       <displayUnits>km*km</displayUnits>
       <range scale="LOG">
         <minValue>60</minValue>
@@ -956,8 +956,6 @@
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
-
-
   <!-- End of GLM configurations -->
   
   <!--  GOES Fog and Low Stratus Products -->
@@ -1032,6 +1030,25 @@
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
+<!-- Flash Extent Density, 1min -->
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>GLM_Flash_Extent_Density</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} GLM Flash Extent Density (flashes/min) (1min)</displayLegend>
+      <range scale="LOG">
+        <minValue>0.125</minValue>
+        <maxValue>50</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/glm_grid</defaultColormap>
+      <colorbarLabeling>
+        <values>0 1 2 4 8 16 32</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+
   <!--Flash Extent Density moving window, 5min Full Disk  -->
   <styleRule>
     <paramLevelMatches>
