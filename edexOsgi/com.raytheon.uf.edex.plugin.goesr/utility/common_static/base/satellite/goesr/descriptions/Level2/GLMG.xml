@@ -82,7 +82,7 @@
       <value value=""/>
     </units>
     <physicalElement>
-      <value value="GLM_Flash_Extent_Density" />
+      <value value="GLM_Flash_Extent_Density_TT" />
     </physicalElement>
   </description>
 
@@ -95,7 +95,7 @@
       </discreteMask>
     </data>
     <physicalElement>
-      <value value="GLM_Flash_Extent_Density_Window" />
+      <value value="GLM_Flash_Extent_Density_Window_TT" />
     </physicalElement>
   </description>
 
@@ -111,7 +111,7 @@
       <value value=""/>
     </units>
     <physicalElement>
-      <value value="GLM_Flash_Centroid_Density" />
+      <value value="GLM_Flash_Centroid_Density_TT" />
     </physicalElement>
   </description>
 
@@ -127,7 +127,7 @@
       <value value="" />
     </units>
     <physicalElement>
-      <value value="GLM_Flash_Centroid_Density_Window" />
+      <value value="GLM_Flash_Centroid_Density_Window_TT" />
     </physicalElement>
   </description>
 
@@ -143,7 +143,7 @@
       <value value="km*km" />
     </units>
     <physicalElement>
-      <value value="GLM_Average_Flash_Area" />
+      <value value="GLM_Average_Flash_Area_TT" />
     </physicalElement>
   </description>
 
@@ -159,7 +159,7 @@
       <value value="km*km" />
     </units>
     <physicalElement>
-      <value value="GLM_Average_Flash_Area_Window" />
+      <value value="GLM_Average_Flash_Area_Window_TT" />
     </physicalElement>
   </description>
 
@@ -175,7 +175,7 @@
       <value value="nJ" />
     </units>
     <physicalElement>
-      <value value="GLM_Total_Optical_Energy" />
+      <value value="GLM_Total_Optical_Energy_TT" />
     </physicalElement>
   </description>
 
@@ -191,7 +191,7 @@
       <value value="nJ" />
     </units>
     <physicalElement>
-      <value value="GLM_Total_Optical_Energy_Window" />
+      <value value="GLM_Total_Optical_Energy_Window_TT" />
     </physicalElement>
   </description>
 
@@ -207,7 +207,7 @@
       <value value="" />
     </units>
     <physicalElement>
-      <value value="GLM_Group_Extent_Density" />
+      <value value="GLM_Group_Extent_Density_TT" />
     </physicalElement>
   </description>
 
@@ -223,7 +223,7 @@
       <value value="" />
     </units>
     <physicalElement>
-      <value value="GLM_Group_Extent_Density_Window" />
+      <value value="GLM_Group_Extent_Density_Window_TT" />
     </physicalElement>
   </description>
 
@@ -239,7 +239,7 @@
       <value value="" />
     </units>
     <physicalElement>
-      <value value="GLM_Group_Centroid_Density" />
+      <value value="GLM_Group_Centroid_Density_TT" />
     </physicalElement>
   </description>
 
@@ -255,7 +255,7 @@
       <value value="" />
     </units>
     <physicalElement>
-      <value value="GLM_Group_Centroid_Density_Window" />
+      <value value="GLM_Group_Centroid_Density_Window_TT" />
     </physicalElement>
   </description>
 
@@ -271,7 +271,7 @@
       <value value="km*km" />
     </units>
     <physicalElement>
-      <value value="GLM_Average_Group_Area" />
+      <value value="GLM_Average_Group_Area_TT" />
     </physicalElement>
   </description>
 
@@ -287,7 +287,7 @@
       <value value="km*km" />
     </units>
     <physicalElement>
-      <value value="GLM_Average_Group_Area_Window" />
+      <value value="GLM_Average_Group_Area_Window_TT" />
     </physicalElement>
   </description>
 
@@ -303,7 +303,7 @@
       <value value="km*km" />
     </units>
     <physicalElement>
-      <value value="GLM_Minimum_Flash_Area" />
+      <value value="GLM_Minimum_Flash_Area_TT" />
     </physicalElement>
   </description>
 
@@ -319,7 +319,7 @@
       <value value="km*km" />
     </units>
     <physicalElement>
-      <value value="GLM_Minimum_Flash_Area_Window" />
+      <value value="GLM_Minimum_Flash_Area_Window_TT" />
     </physicalElement>
   </description>
 
