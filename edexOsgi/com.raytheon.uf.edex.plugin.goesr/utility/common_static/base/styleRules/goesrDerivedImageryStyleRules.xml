@@ -181,4 +181,19 @@
             <defaultColormap>Grid/Gridded Data</defaultColormap>
         </imageStyle>
     </styleRule>
+   <styleRule>
+        <paramLevelMatches>
+            <parameter>satNDVI</parameter>
+        </paramLevelMatches>
+        <imageStyle>
+            <range scale="LINEAR">
+                <minValue>-1.0</minValue>
+                <maxValue>1.0</maxValue>
+            </range>
+            <defaultColormap>GOES-R/IR/NDVI</defaultColormap>
+            <colorbarLabeling>
+            <values>-1 -0.5 -0.25 -0.10 0.00 0.25 0.50 0.75 1.00</values>
+            </colorbarLabeling>
+        </imageStyle>
+    </styleRule>
 </styleRuleset>
