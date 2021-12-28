@@ -93,27 +93,6 @@
         <substitute key="element" value="FDC Temp" />
         <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
     </contribute>
-    <contribute xsi:type="titleItem" titleText="------ Fire/Hot Spot ------" />
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Fire Mask" id="goesr-fdc-mask">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="Fire_Mask" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/fire_mask3" />
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Fire Area" id="goesr-fdc-area">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="FDC Area" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Fire Power" id="goesr-fdc-power">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="FDC Power" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Fire Temperature" id="goesr-fdc-temp">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="FDC Temp" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
-    </contribute>
     <contribute xsi:type="separator" id="id"/>
     <contribute xsi:type="titleItem" titleText="------ Fog and Low Stratus ------" />
     
