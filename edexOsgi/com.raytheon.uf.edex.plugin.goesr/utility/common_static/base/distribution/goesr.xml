@@ -52,7 +52,7 @@
         of the file.
     -->
 <requestPatterns xmlns:ns2="group">
-    <regex>^TI[SR]</regex>
+    <regex>^TI[SRU]</regex>
     <!-- This pattern is intended to match standardized Level 2 filenames, it will not be used over LDM -->
     <regex>^[OI][RT]_ABI-L2-\w{3,5}(C|F|M1|M2)-M[\d]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc$</regex>
     <regex>OR_ABI</regex>
