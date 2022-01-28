@@ -168,8 +168,8 @@ public class GoesrProjectionFactory {
                     coverage.setCrsWKT(crs.toWKT());
                     coverage.setDx(envelope.getDx());
                     coverage.setDy(envelope.getDy());
-                    coverage.setMinX(envelope.getMinX());
-                    coverage.setMinY(envelope.getMinY());
+                    coverage.setMinX((float)envelope.getMinX());
+                    coverage.setMinY((float)envelope.getMinY());
                     coverage.setNx(envelope.getNx());
                     coverage.setNy(envelope.getNy());
                     /* Trigger generation of a location. */

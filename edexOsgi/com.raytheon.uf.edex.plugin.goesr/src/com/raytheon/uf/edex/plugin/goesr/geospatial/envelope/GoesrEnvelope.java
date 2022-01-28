@@ -52,16 +52,16 @@ public class GoesrEnvelope {
 
     private double dy;
 
-    public double getMinX() {
-        return minX;
+    public float getMinX() {
+        return (float) minX;
     }
 
     public void setMinX(double minX) {
         this.minX = minX;
     }
 
-    public double getMinY() {
-        return minY;
+    public float getMinY() {
+        return (float) minY;
     }
 
     public void setMinY(double minY) {
