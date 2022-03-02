@@ -63,7 +63,10 @@ import com.raytheon.uf.common.serialization.annotations.DynamicSerializeElement;
 @Table(name = DMWRecord.PLUGIN_NAME, uniqueConstraints = { @UniqueConstraint(columnNames = {
         "orbitalSlot", "scene", "channel", "refTime", "latitude", "longitude", "filter" }) })
 @org.hibernate.annotations.Table(appliesTo = DMWRecord.PLUGIN_NAME, indexes = {
-        @Index(name = "%TABLE%_filterandwspd_index", columnNames = {"filter", "windspd"}) })
+        @Index(name = "%TABLE%_filterandwspd_index", columnNames = { "filter", "windspd" }),
+        @Index(name = "%TABLE%_orbitalslot_scene_reftime_idx", columnNames = {
+                "orbitalslot", "scene", "reftime" }),
+        @Index(name = "%TABLE%_scene_reftime_idx", columnNames = { "scene", "reftime" }) })
 @DynamicSerialize
 public class DMWRecord extends PersistablePluginDataObject implements
         ISpatialEnabled, IPersistable {
