@@ -50,13 +50,23 @@
       </match>
     </matches>
   </default>
-
+<!--
   <description>
     <data>
       <variable name="PRES" />
+    <physicalElement>
+      <value value="CTP" />
+    </physicalElement>
+  </description>
+-->
+  <description>
+    <data>
+      <variable name="PRES" />
+<!--
       <discreteMask name="DQF" value="0" keep="true">
         <fillByte>-1</fillByte>
       </discreteMask>
+-->
     </data>
     <physicalElement>
       <value value="CTP" />

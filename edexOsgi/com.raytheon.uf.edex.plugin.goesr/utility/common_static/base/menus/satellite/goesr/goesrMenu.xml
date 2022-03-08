@@ -144,12 +144,14 @@
      <contribute xsi:type="titleItem" titleText="------ GOES-East ------" id="goesrBySector2"/>
      <contribute xsi:type="subinclude" subMenu="GOES-East Conus" fileName="menus/satellite/goesr/goesrEConusSectorMenu.xml">
         <substitute key="sector" value="ECONUS" />
+        <substitute key="sectorFD" value="EFD" />
         <substitute key="entity" value="GOES%" />
         <substitute key="scene" value="Conus"/>
         <substitute key="orbitalSlot" value="GOES-East"/>
     </contribute>
     <contribute xsi:type="subinclude" subMenu="GOES-East Full Disk" fileName="menus/satellite/goesr/goesrEFullDiskSectorMenu.xml">
         <substitute key="sector" value="EFD" />
+        <substitute key="sectorFD" value="EFD" />
         <substitute key="entity" value="GOES%" />
         <substitute key="orbitalSlot" value="GOES-East"/>
         <substitute key="scene" value="Full Disk"/>
@@ -157,6 +159,7 @@
     </contribute>
     <contribute xsi:type="subinclude" subMenu="GOES-East Mesoscale 1" fileName="menus/satellite/goesr/goesrEMesoSectorMenu.xml">
         <substitute key="sector" value="EMESO-1" />
+        <substitute key="sectorFD" value="EFD" />
         <substitute key="entity" value="GOES%" />
         <substitute key="orbitalSlot" value="GOES-East"/>
         <substitute key="scene" value="Mesoscale1"/>
@@ -164,6 +167,7 @@
     </contribute>
     <contribute xsi:type="subinclude" subMenu="GOES-East Mesoscale 2" fileName="menus/satellite/goesr/goesrEMesoSectorMenu.xml">
         <substitute key="sector" value="EMESO-2" />
+        <substitute key="sectorFD" value="EFD" />
         <substitute key="entity" value="GOES%" />
         <substitute key="orbitalSlot" value="GOES-East"/>
         <substitute key="scene" value="Mesoscale2"/>
@@ -173,12 +177,14 @@
     <contribute xsi:type="titleItem" titleText="------ GOES-West ------" id="goesrBySector2"/>
     <contribute xsi:type="subinclude" subMenu="GOES-West Conus" fileName="menus/satellite/goesr/goesrWConusSectorMenu.xml">
         <substitute key="sector" value="WCONUS" />
+        <substitute key="sectorFD" value="WFD" />
         <substitute key="entity" value="GOES%" />
         <substitute key="scene" value="Conus"/>
         <substitute key="orbitalSlot" value="GOES-West"/>
     </contribute>
     <contribute xsi:type="subinclude" subMenu="GOES-West Full Disk" fileName="menus/satellite/goesr/goesrWFullDiskSectorMenu.xml">
         <substitute key="sector" value="WFD" />
+        <substitute key="sectorFD" value="WFD" />
         <substitute key="entity" value="GOES%" />
         <substitute key="orbitalSlot" value="GOES-West"/>
         <substitute key="scene" value="Full Disk"/>
@@ -186,6 +192,7 @@
     </contribute>
     <contribute xsi:type="subinclude" subMenu="GOES-West Mesoscale 1" fileName="menus/satellite/goesr/goesrWMesoSectorMenu.xml">
         <substitute key="sector" value="WMESO-1" />
+        <substitute key="sectorFD" value="WFD" />
         <substitute key="entity" value="GOES%" />
         <substitute key="orbitalSlot" value="GOES-West"/>
         <substitute key="scene" value="Mesoscale1"/>
@@ -193,6 +200,7 @@
     </contribute>
     <contribute xsi:type="subinclude" subMenu="GOES-West Mesoscale 2" fileName="menus/satellite/goesr/goesrWMesoSectorMenu.xml">
         <substitute key="sector" value="WMESO-2" />
+        <substitute key="sectorFD" value="WFD" />
         <substitute key="entity" value="GOES%" />
         <substitute key="orbitalSlot" value="GOES-West"/>
         <substitute key="scene" value="Mesoscale2"/>

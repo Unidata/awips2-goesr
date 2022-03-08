@@ -57,12 +57,23 @@
     </matches>
   </default>
 
+<!--
   <description>
     <data>
       <variable name="HT" />
+    <physicalElement>
+      <value value="CTH" />
+    </physicalElement>
+  </description>
+-->
+  <description>
+    <data>
+      <variable name="HT" />
+<!--
       <discreteMask name="DQF" value="0" keep="true">
         <fillByte>-1</fillByte>
       </discreteMask>
+-->
     </data>
     <physicalElement>
       <value value="CTH" />

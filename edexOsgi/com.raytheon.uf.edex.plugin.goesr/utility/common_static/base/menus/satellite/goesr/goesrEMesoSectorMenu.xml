@@ -106,6 +106,7 @@
         <contribute xsi:type="subinclude" subMenu="Derived Products" fileName="menus/satellite/goesr/goesrLevel2EMeso.xml" />
         <contribute xsi:type="subinclude" subMenu="Channel Differences" fileName="menus/satellite/goesr/goesrLocallyDerived.xml" />
         <contribute xsi:type="subinclude" subMenu="RGB Composites" fileName="menus/satellite/goesr/goesrRGBComposites.xml" />
+        <contribute xsi:type="subinclude" subMenu="RGB Composites With DP Readouts" fileName="menus/satellite/goesr/RGB-DP.xml" />
         <contribute xsi:type="subinclude" subMenu="Derived Motion Winds" fileName="menus/satellite/goesr/goesrLevel2DMW.xml" />
 <!-- Not available for meso scale
         <contribute xsi:type="bundleItem"

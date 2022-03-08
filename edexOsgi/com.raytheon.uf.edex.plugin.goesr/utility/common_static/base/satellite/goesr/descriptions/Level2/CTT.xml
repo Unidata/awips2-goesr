@@ -54,9 +54,12 @@
   <description>
     <data>
       <variable name="TEMP" />
+  <description>
+<!--
       <discreteMask name="DQF" value="0" keep="true">
         <fillByte>-1</fillByte>
       </discreteMask>
+-->
     </data>
     <physicalElement>
       <value value="CTT" />
