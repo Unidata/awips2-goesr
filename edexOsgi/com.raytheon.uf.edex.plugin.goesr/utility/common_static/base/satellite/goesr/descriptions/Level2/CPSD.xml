@@ -50,13 +50,14 @@
       </match>
     </matches>
   </default>
-
   <description>
     <data>
       <variable name="PSD" />
+<!--
       <discreteMask name="DQF" value="0" keep="true">
         <fillByte>-1</fillByte>
       </discreteMask>
+-->
     </data>
     <physicalElement>
       <value value="CPSD" />

@@ -36,6 +36,8 @@
     -->
     <!-- TOWRdocs POC
          Lee Byerle 12/12/2016
+         3/18/21 include DR_ for Enterprise algo testing
+         3/24/21 Remove DQF mask for Enterprise algo
     -->
     <!-- 
         This is an absolute override file, indicating that a higher priority 
@@ -51,12 +53,21 @@
     </matches>
   </default>
 
-  <description>
+<!--  <description>
     <data>
       <variable name="Phase" />
       <discreteMask name="DQF" value="0" keep="true">
         <fillByte>-1</fillByte>
       </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="ACTP" />
+    </physicalElement>
+  </description> -->
+
+  <description>
+    <data>
+      <variable name="Phase" />
     </data>
     <physicalElement>
       <value value="ACTP" />

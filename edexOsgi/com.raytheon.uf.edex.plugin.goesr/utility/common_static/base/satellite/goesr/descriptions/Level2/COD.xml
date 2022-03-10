@@ -50,13 +50,27 @@
       </match>
     </matches>
   </default>
-
+<!--
   <description>
     <data>
       <variable name="COD" />
+    </data>
+    <physicalElement>
+      <value value="COD" />
+    </physicalElement>
+    <units>
+      <value value="*1" />
+    </units>
+  </description>
+-->
+  <description>
+    <data>
+      <variable name="COD" />
+<!--
       <discreteMask name="DQF" value="0" keep="true">
         <fillByte>-1</fillByte>
       </discreteMask>
+-->
     </data>
     <physicalElement>
       <value value="COD" />

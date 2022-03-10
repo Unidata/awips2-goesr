@@ -18,26 +18,7 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
-    <!-- TOWRdocs Header
-         GOES-R Product Description file
-    -->
-    <!-- TOWRdocs Description
-         GOES-R description configuration.  This file accounts for additional dataset_name
-         combinations for GOES-R derived products:
-
-         "OR" = OE Real-Time Data
-         "OT" = OE Test Data
-         "IR" = ITE Real-Time Data
-         "IT" = ITE Test Data"
-     -->
-    <!-- TOWRdocs Status
-         This file is a modification to the previous baseline file of the same name, which currently
-         accounts for products whose dataset_name begins with "OR".
-    -->
-    <!-- TOWRdocs POC
-         Lee Byerle 12/12/2016
-    -->
-    <!-- 
+   <!-- 
         This is an absolute override file, indicating that a higher priority 
         version of the file will completely replace a lower priority version
         of the file. 
@@ -51,10 +32,84 @@
     </matches>
   </default>
 
-  <description>
+<!--  <description>
     <data bitset="Aerosol Dust Smoke" />
     <physicalElement>
       <value value="ADP" />
+    </physicalElement>
+  </description> -->
+
+<!-- Define good quality low/med/high confidence Dust/Smoke separately  -->
+  <description>
+    <data>
+      <variable name="Dust" />
+      <discreteMask name="DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="DustLow" />
+    </physicalElement>
+  </description>
+
+  <description>
+    <data>
+      <variable name="Dust" />
+      <discreteMask name="DQF" value="16" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="DustMed" />
+    </physicalElement>
+  </description>
+
+  <description>
+    <data>
+      <variable name="Dust" />
+      <discreteMask name="DQF" value="48" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="DustHigh" />
+    </physicalElement>
+  </description>
+
+
+  <description>
+    <data>
+      <variable name="Smoke" />
+      <discreteMask name="DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="SmokeLow" />
+    </physicalElement>
+  </description>
+
+  <description>
+    <data>
+      <variable name="Smoke" />
+      <discreteMask name="DQF" value="4" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="SmokeMed" />
+    </physicalElement>
+  </description>
+
+  <description>
+    <data>
+      <variable name="Smoke" />
+      <discreteMask name="DQF" value="12" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="SmokeHigh" />
     </physicalElement>
   </description>
 

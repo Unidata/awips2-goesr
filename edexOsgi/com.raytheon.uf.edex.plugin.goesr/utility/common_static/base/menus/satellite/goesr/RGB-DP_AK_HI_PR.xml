@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <!--
+        This_software_was_developed_and_/_or_modified_by_Raytheon_Company,
+        pursuant_to_Contract_DG133W-05-CQ-1067_with_the_US_Government.
+        
+        U.S._EXPORT_CONTROLLED_TECHNICAL_DATA
+        This_software_product_contains_export-restricted_data_whose
+        export/transfer/disclosure_is_restricted_by_U.S._law._Dissemination
+        to_non-U.S._persons_whether_in_the_United_States_or_abroad_requires
+        an_export_license_or_other_authorization.
+        
+        Contractor_Name:________Raytheon_Company
+        Contractor_Address:_____6825_Pine_Street,_Suite_340
+        ________________________Mail_Stop_B8
+        ________________________Omaha,_NE_68106
+        ________________________402.291.0100
+        
+        See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
+        further_licensing_information.
+    -->
+    <!-- TOWRdocs Header
+         RGB-DP_AK_HI_PR sub-menu file.
+    -->
+    <!-- TOWRdocs Description
+	 Sub menu for RGB/Level 2 Derived Products, for AK, HI, and PR sectors
+    -->
+    <!-- TOWRdocs Status
+
+     12/9/2021 Update LinearTrans and Sandwich_ir cmaps to point to GOES-R location at site (was USER/awips)
+     12/21/2021 Update Split Window Diff (2 entries) for element3 to be sectorFD for handling TPW
+        
+   -->
+    <!-- TOWRdocs POC
+
+    -->
+<menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<!--  			-->
+	<!--  Simple RGBs 	-->
+	<!--  			-->
+
+	<contribute xsi:type="titleItem" titleText="------ Clouds ------" id="goesr-simpleRgbs"/>
+    <!-- GLSL Day Cloud Phase Distinction. -->
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/RGB-DP-Recipe4_AK_HI_PR.xml" 
+            menuText="Day Cloud Phase Distinction RGB + Cloud Products" id="goesr-dayCloudPhaseDistDP">
+        <substitute key="productName" value="Day Cloud Phase Distinction RGB" />
+        <substitute key="redElement" value="CH-13-10.35um" />
+        <substitute key="greenElement" value="CH-02-0.64um" />
+        <substitute key="blueElement" value="CH-05-1.61um" />
+        <substitute key="redLabel" value="10.35 μm" />
+        <substitute key="greenLabel" value="0.64 μm" />
+        <substitute key="blueLabel" value="1.61 μm" />
+        <substitute key="redMin" value="7.52" />
+        <substitute key="redMax" value="-53.53" />
+        <substitute key="redGamma" value="1.0" />
+        <substitute key="redUnit" value="C" />
+        <substitute key="greenMin" value="0.0" />
+        <substitute key="greenMax" value="78.0" />
+        <substitute key="greenGamma" value="1.0" />
+        <substitute key="greenUnit" value="%" />
+        <substitute key="blueMin" value="1.0" />
+        <substitute key="blueMax" value="59.0" />
+        <substitute key="blueGamma" value="1.0" />
+        <substitute key="blueUnit" value="%" />
+        <substitute key="element" value="ACTP"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/ACTP"/> 
+        <substitute key="alpha" value="0.0"/>  
+        <substitute key="element2" value="CTH"/>
+        <substitute key="colormap2" value="GOES-R/GOESR-L2/VTRSB"/>
+        <substitute key="alpha2" value="0.0"/>            
+        <substitute key="element3" value="COD"/>
+        <substitute key="colormap3" value="GOES-R/GOESR-L2/VTRSB"/>
+        <substitute key="alpha3" value="0.0"/>  
+        <substitute key="element4" value="CPSD"/>
+        <substitute key="colormap4" value="GOES-R/GOESR-L2/VTRSB"/>
+        <substitute key="alpha4" value="0.0"/>                       
+        </contribute>
+     <!-- GLSL Nighttime Microphysics Advanced. -->
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/RGB-DP-Recipe4_AK_HI_PR.xml" 
+                    menuText="Nighttime Microphysics RGB + FLS Products" id="goesr-nighttimeMicrophysicsAdvancedDP">
+            <substitute key="productName" value="Nighttime Microphysics RGB" />
+        <substitute key="redElement" value="satSplitWindowRGB" />
+        <substitute key="greenElement" value="satFogRGB" />
+        <substitute key="blueElement" value="CH-13-10.35um" />
+        <substitute key="redLabel" value="12.30-10.35 μm" />
+        <substitute key="greenLabel" value="10.35-3.90 μm" />
+        <substitute key="blueLabel" value="10.35 μm" />
+        <substitute key="redMin" value="-6.7" />
+        <substitute key="redMax" value="2.6" />
+        <substitute key="redGamma" value="1.0" />
+        <substitute key="redUnit" value="C" />
+        <substitute key="greenMin" value="-3.1" />
+        <substitute key="greenMax" value="5.2" />
+        <substitute key="greenGamma" value="1.0" />
+        <substitute key="greenUnit" value="C" />
+        <substitute key="blueMin" value="-29.55" />
+        <substitute key="blueMax" value="19.45" />
+        <substitute key="blueGamma" value="1.0" />
+        <substitute key="blueUnit" value="C" />
+        <substitute key="element" value="LIFR_Fog_Prob"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/LIFR_PROB"/>
+        <substitute key="alpha" value="0.0"/>
+        <substitute key="element2" value="IFR_Fog_Prob"/>
+        <substitute key="colormap2" value="GOES-R/GOESR-L2/IFR_PROB"/>
+        <substitute key="alpha2" value="0.0"/>
+        <substitute key="element3" value="MVFR_Fog_Prob"/>
+        <substitute key="colormap3" value="GOES-R/GOESR-L2/MVFR_PROB"/>
+        <substitute key="alpha3" value="0.0"/>
+        <substitute key="element4" value="Fog_Depth"/>
+        <substitute key="colormap4" value="Grid/gridded data"/>
+        <substitute key="alpha4" value="0.0"/>        
+        </contribute>          
+    <!-- GLSL Day Convection. -->
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/RGB-DP-Recipe4_AK_HI_PR.xml" 
+                    menuText="Day Convection RGB + Cloud Products" id="goesr-dayConvection2">
+            <substitute key="productName" value="Day Convection RGB" />
+        <substitute key="redElement" value="satSplitWaterVaporRGB" />
+        <substitute key="greenElement" value="satFogRev" />
+        <substitute key="blueElement" value="satSplitSnowRGB" />
+        <substitute key="redLabel" value="6.19-7.34 μm" />
+        <substitute key="greenLabel" value="3.90-10.35 μm" />
+        <substitute key="blueLabel" value="1.61-0.64 μm" />
+        <substitute key="redMin" value="-35.0" />
+        <substitute key="redMax" value="5.0" />
+        <substitute key="redGamma" value="1.0" />
+        <substitute key="redUnit" value="C" />
+        <substitute key="greenMin" value="-5.0" />
+        <substitute key="greenMax" value="60.0" />
+        <substitute key="greenGamma" value="2.0" />
+        <substitute key="greenUnit" value="C" />
+        <substitute key="blueMin" value="-75.0" />
+        <substitute key="blueMax" value="25.0" />
+        <substitute key="blueGamma" value="1.0" />
+        <substitute key="blueUnit" value="%" />
+        <substitute key="element" value="ACTP"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/ACTP"/> 
+        <substitute key="alpha" value="0.0"/>  
+        <substitute key="element2" value="CTH"/>
+        <substitute key="colormap2" value="GOES-R/GOESR-L2/VTRSB"/>
+        <substitute key="alpha2" value="0.0"/>            
+        <substitute key="element3" value="COD"/>
+        <substitute key="colormap3" value="GOES-R/GOESR-L2/VTRSB"/>
+        <substitute key="alpha3" value="0.0"/>  
+        <substitute key="element4" value="CPSD"/>
+        <substitute key="colormap4" value="GOES-R/GOESR-L2/VTRSB"/>
+        <substitute key="alpha4" value="0.0"/>          
+        </contribute>        
+    <!-- Line Sandwich. --> 
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/SW-DP_AK_HI_PR.xml" 
+                    menuText="Sandwich Combo + Cloud/Moisture/RR Products" id="goesr-swDP">
+        <substitute key="element" value="CH-13-10.35um" />
+        <substitute key="colormap" value="GOES-R/IR/IR_Color_Clouds_Summer" />
+        <substitute key="alpha" value="1.0"/>   
+        <substitute key="element2" value="CH-02-0.64um" />
+        <substitute key="colormap2" value="GOES-R/GOESR-L2/LinearTrans" />
+        <substitute key="alpha2" value="1.0"/>
+        <substitute key="element3" value="CH-14-11.20um" />
+        <substitute key="colormap3" value="GOES-R/GOESR-L2/Sandwich_ir" />
+        <substitute key="alpha3" value="0.4"/>  
+        <substitute key="element4" value="TPW"/>
+        <substitute key="colormap4" value="GOES-R/GOESR-L2/color-pw10-10"/>
+        <substitute key="alpha4" value="0.0"/>            
+        <substitute key="element5" value="CTH"/>
+        <substitute key="colormap5" value="GOES-R/GOESR-L2/VTRSB"/>
+        <substitute key="alpha5" value="0.0"/>     
+        <substitute key="element6" value="ACTP"/>
+        <substitute key="colormap6" value="GOES-R/GOESR-L2/ACTP"/>
+        <substitute key="alpha6" value="0.0"/>    
+        <substitute key="element7" value="RRQPE"/>
+        <substitute key="colormap7" value="GOES-R/GOESR-L2/RRQPE1"/>
+        <substitute key="alpha7" value="0.0"/>                     
+    </contribute>    
+    <!-- ISatSS Geocolor from CIRA  -->                                                                                                                                                   
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/RGB-DP-Recipe4_AK_HI_PR.xml" 
+            menuText="CIRA Geocolor + Fire/Land/FLS/Aerosol Products" id="goesr-geocTfireDP">
+            <substitute key="productName" value="Geocolor" />
+        <substitute key="redElement" value="geocRed" />
+        <substitute key="greenElement" value="geocGreen" />
+        <substitute key="blueElement" value="geocBlue" />
+        <substitute key="redLabel" value="Red" />
+        <substitute key="greenLabel" value="Green" />
+        <substitute key="blueLabel" value="Blue" />
+        <substitute key="redMin" value="0.0" />
+        <substitute key="redMax" value="255.0" />
+        <substitute key="redGamma" value="1" />
+        <substitute key="redUnit" value="1" />
+        <substitute key="greenMin" value="0.0" />
+        <substitute key="greenMax" value="255.0" />
+        <substitute key="greenGamma" value="1" />
+        <substitute key="greenUnit" value="1" />
+        <substitute key="blueMin" value="0.0" />
+        <substitute key="blueMax" value="255.0" />
+        <substitute key="blueGamma" value="1" />
+        <substitute key="blueUnit" value="1" />
+        <substitute key="element" value="FDC Temp"/>
+        <substitute key="colormap" value="Sat/GOESR-L2/VTRSB"/>
+        <substitute key="alpha" value="1.0"/>   
+        <substitute key="element2" value="LST"/>
+        <substitute key="colormap2" value="GOES-R/GOESR-L2/VTRSB"/>
+        <substitute key="alpha2" value="0.0"/> 
+        <substitute key="element3" value="MVFR_Fog_Prob"/>
+        <substitute key="colormap3" value="GOES-R/GOESR-L2/MVFR_PROB"/>
+        <substitute key="alpha3" value="0.0"/>  
+        <substitute key="element4" value="AOD"/>
+        <substitute key="colormap4" value="GOES-R/GOESR-L2/VTRSB"/>
+        <substitute key="alpha4" value="0.0"/>                   
+        </contribute> 
+        
+	<contribute xsi:type="titleItem" titleText="------ Airmass ------" id="goesr-simpleRgbs"/>
+	
+    <!-- GLSL Air Mass. -->
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/RGB-DP-Recipe4_AK_HI_PR.xml" 
+                    menuText="Air Mass RGB + Moisture Products" id="goesr-airMassDP">
+            <substitute key="productName" value="Air Mass RGB" />
+        <substitute key="redElement" value="satSplitWaterVaporRGB" />
+        <substitute key="greenElement" value="satSplitOzoneRGB" />
+        <substitute key="blueElement" value="CH-08-6.19um" />
+        <substitute key="redLabel" value="6.19-7.34 μm" />
+        <substitute key="greenLabel" value="9.61-10.35 μm" />
+        <substitute key="blueLabel" value="6.19 μm" />
+        <substitute key="redMin" value="-26.2" />
+        <substitute key="redMax" value="0.6" />
+        <substitute key="redGamma" value="1.0" />
+        <substitute key="redUnit" value="C" />
+        <substitute key="greenMin" value="-43.2" />
+        <substitute key="greenMax" value="6.7" />
+        <substitute key="greenGamma" value="1.0" />
+        <substitute key="greenUnit" value="C" />
+        <substitute key="blueMin" value="-29.25" />
+        <substitute key="blueMax" value="-64.65" />
+        <substitute key="blueGamma" value="1.0" />
+        <substitute key="blueUnit" value="C" />
+        <substitute key="element" value="TPW"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/color-pw10-10"/>
+        <substitute key="alpha" value="0.0"/>  
+        <substitute key="element2" value="CAPE" />
+        <substitute key="colormap2" value="GOES-R/GOESR-L2/color-cape-10" />
+        <substitute key="alpha2" value="0.0"/>    
+        <substitute key="element3" value="LI" />
+        <substitute key="colormap3" value="GOES-R/GOESR-L2/color-li-10" />    
+        <substitute key="alpha3" value="0.0"/>                         
+        <substitute key="element4" value="CSM"/> 
+        <substitute key="colormap4" value="GOES-R/GOESR-L2/CSM"/>
+        <substitute key="alpha4" value="0.0"/>                      
+        </contribute>  
+    <!-- Line SWD. --> 
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/SW-DP_AK_HI_PR_and_element3_sectorFD.xml" 
+                    menuText="Split Window Difference + Aerosol/Moisture Products" id="goesr-swdDP">
+        <substitute key="element" value="satMoisture"/>
+        <substitute key="colormap" value="Sat/VIS/Linear"/>
+        <substitute key="alpha" value="1.0"/>   
+        <substitute key="element2" value="CH-13-10.35um" />
+        <substitute key="colormap2" value="GOES-R/GOESR-L2/Sandwich_ir" />
+        <substitute key="alpha2" value="1.0"/>
+        <substitute key="element3" value="TPW" />
+        <substitute key="colormap3" value="GOES-R/GOESR-L2/color-pw10-10" />
+        <substitute key="alpha3" value="0.0"/>  
+        <substitute key="element4" value="DustHigh"/>
+        <substitute key="colormap4" value="GOES-R/GOESR-L2/Dust"/> 
+        <substitute key="alpha4" value="0.0"/>        
+        <substitute key="element5" value="DustMed"/>
+        <substitute key="colormap5" value="GOES-R/GOESR-L2/Dust"/>
+        <substitute key="alpha5" value="0.0"/>         
+        <substitute key="element6" value="DustLow"/>
+        <substitute key="colormap6" value="GOES-R/GOESR-L2/Dust"/>
+        <substitute key="alpha6" value="0.0"/>    
+        <substitute key="element7" value="RRQPE"/>
+        <substitute key="colormap7" value="GOES-R/GOESR-L2/RRQPE1"/>
+        <substitute key="alpha7" value="0.0"/>                     
+    </contribute>   
+          
+	<contribute xsi:type="titleItem" titleText="------ Land/Fire/Aerosols ------" id="goesr-simpleRgbs"/>
+	
+    <!-- ISatSS Geocolor from CIRA  -->                                                                                                                                                   
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/RGB-DP-Recipe4_AK_HI_PR.xml" 
+            menuText="CIRA Geocolor + Fire/Land/FLS/Aerosol Products" id="goesr-geocTfireDP">
+            <substitute key="productName" value="Geocolor" />
+        <substitute key="redElement" value="geocRed" />
+        <substitute key="greenElement" value="geocGreen" />
+        <substitute key="blueElement" value="geocBlue" />
+        <substitute key="redLabel" value="Red" />
+        <substitute key="greenLabel" value="Green" />
+        <substitute key="blueLabel" value="Blue" />
+        <substitute key="redMin" value="0.0" />
+        <substitute key="redMax" value="255.0" />
+        <substitute key="redGamma" value="1" />
+        <substitute key="redUnit" value="1" />
+        <substitute key="greenMin" value="0.0" />
+        <substitute key="greenMax" value="255.0" />
+        <substitute key="greenGamma" value="1" />
+        <substitute key="greenUnit" value="1" />
+        <substitute key="blueMin" value="0.0" />
+        <substitute key="blueMax" value="255.0" />
+        <substitute key="blueGamma" value="1" />
+        <substitute key="blueUnit" value="1" />
+        <substitute key="element" value="FDC Temp"/>
+        <substitute key="colormap" value="Sat/GOESR-L2/VTRSB"/>
+        <substitute key="alpha" value="1.0"/>   
+        <substitute key="element2" value="LST"/>
+        <substitute key="colormap2" value="GOES-R/GOESR-L2/VTRSB"/>
+        <substitute key="alpha2" value="0.0"/> 
+        <substitute key="element3" value="MVFR_Fog_Prob"/>
+        <substitute key="colormap3" value="GOES-R/GOESR-L2/MVFR_PROB"/>
+        <substitute key="alpha3" value="0.0"/>  
+        <substitute key="element4" value="AOD"/>
+        <substitute key="colormap4" value="GOES-R/GOESR-L2/VTRSB"/>
+        <substitute key="alpha4" value="0.0"/>                   
+        </contribute> 
+    <!-- GLSL Day Land Cloud. -->
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/RGB-DP-Recipe4_AK_HI_PR.xml" 
+                    menuText="Day Land Cloud RGB + Fire/Land/FLS/Aerosol Products" id="goesr-dayLandCloudDP">
+            <substitute key="productName" value="Day Land Cloud RGB" />
+        <substitute key="redElement" value="CH-05-1.61um" />
+        <substitute key="greenElement" value="CH-03-0.87um" />
+        <substitute key="blueElement" value="CH-02-0.64um" />
+        <substitute key="redLabel" value="1.61 μm" />
+        <substitute key="greenLabel" value="0.87 μm" />
+        <substitute key="blueLabel" value="0.64 μm" />
+        <substitute key="redMin" value="0.0" />
+        <substitute key="redMax" value="97.5" />
+        <substitute key="redGamma" value="1.0" />
+        <substitute key="redUnit" value="%" />
+        <substitute key="greenMin" value="0.0" />
+        <substitute key="greenMax" value="108.6" />
+        <substitute key="greenGamma" value="1.0" />
+        <substitute key="greenUnit" value="%" />
+        <substitute key="blueMin" value="0.0" />
+        <substitute key="blueMax" value="100.0" />
+        <substitute key="blueGamma" value="1.0" />
+        <substitute key="blueUnit" value="%" />
+        <substitute key="element" value="FDC Temp"/>
+        <substitute key="colormap" value="Sat/GOESR-L2/VTRSB"/>
+        <substitute key="alpha" value="1.0"/>   
+        <substitute key="element2" value="LST"/>
+        <substitute key="colormap2" value="GOES-R/GOESR-L2/VTRSB"/>
+        <substitute key="alpha2" value="0.0"/> 
+        <substitute key="element3" value="MVFR_Fog_Prob"/>
+        <substitute key="colormap3" value="GOES-R/GOESR-L2/MVFR_PROB"/>
+        <substitute key="alpha3" value="0.0"/>  
+        <substitute key="element4" value="AOD"/>
+        <substitute key="colormap4" value="GOES-R/GOESR-L2/VTRSB"/>
+        <substitute key="alpha4" value="0.0"/>                   
+        </contribute>         
+    <!-- GLSL Natural Fire Color. -->
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/RGB-DP-Recipe4_AK_HI_PR.xml" 
+                    menuText="Natural Fire Color RGB + Fire/Aerosol Products" id="goesr-dayNatFireColorDP">
+        <substitute key="productName" value="Natural Color Fire" />
+        <substitute key="redElement" value="CH-07-3.90um" />
+        <substitute key="greenElement" value="CH-03-0.87um" />
+        <substitute key="blueElement" value="CH-02-0.64um" />
+        <substitute key="redLabel" value="3.90 μm" />
+        <substitute key="greenLabel" value="0.87 μm" />
+        <substitute key="blueLabel" value="0.64 μm" />
+        <substitute key="redMin" value="30.0" />
+        <substitute key="redMax" value="70.0" />
+        <substitute key="redGamma" value="2.5" />
+        <substitute key="redUnit" value="C" />
+        <substitute key="greenMin" value="0.0" />
+        <substitute key="greenMax" value="100.0" />
+        <substitute key="greenGamma" value="0.6" />
+        <substitute key="greenUnit" value="%" />
+        <substitute key="blueMin" value="0.0" />
+        <substitute key="blueMax" value="100.0" />
+        <substitute key="blueGamma" value="0.6" />
+        <substitute key="blueUnit" value="%" />
+        <substitute key="element" value="SmokeHigh"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/Smoke"/> 
+        <substitute key="alpha" value="0.0"/>        
+        <substitute key="element2" value="SmokeMed"/>
+        <substitute key="colormap2" value="GOES-R/GOESR-L2/Smoke"/>
+        <substitute key="alpha2" value="0.0"/>         
+        <substitute key="element3" value="SmokeLow"/>
+        <substitute key="colormap3" value="GOES-R/GOESR-L2/Smoke"/>
+        <substitute key="alpha3" value="0.0"/>          
+        <substitute key="element4" value="FDC Temp"/>
+        <substitute key="colormap4" value="Sat/GOESR-L2/VTRSB"/>
+        <substitute key="alpha4" value="0.0"/>            
+        </contribute>                              
+    <!-- GLSL Fire Temperature. -->
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/RGB-DP-Recipe4_AK_HI_PR.xml" 
+                    menuText="Fire Temperature RGB + Fire Products" id="goesr-fireTemperatureDP">
+            <substitute key="productName" value="Fire Temperature RGB" />
+        <substitute key="redElement" value="CH-07-3.90um" />
+        <substitute key="greenElement" value="CH-06-2.25um" />
+        <substitute key="blueElement" value="CH-05-1.61um" />
+        <substitute key="redLabel" value="3.90 μm" />
+        <substitute key="greenLabel" value="2.25 μm" />
+        <substitute key="blueLabel" value="1.61 μm" />
+        <substitute key="redMin" value="0.0" />
+        <substitute key="redMax" value="60.0" />
+        <substitute key="redGamma" value="2.5" />
+        <substitute key="redUnit" value="C" />
+        <substitute key="greenMin" value="0.0" />
+        <substitute key="greenMax" value="100.0" />
+        <substitute key="greenGamma" value="1.0" />
+        <substitute key="greenUnit" value="%" />
+        <substitute key="blueMin" value="0.0" />
+        <substitute key="blueMax" value="75.0" />
+        <substitute key="blueGamma" value="1.0" />
+        <substitute key="blueUnit" value="%" />
+        <substitute key="element" value="Fire_Mask"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/fire_mask3"/> 
+        <substitute key="alpha" value="0.0"/>
+        <substitute key="element2" value="FDC Area"/>
+        <substitute key="colormap2" value="Sat/GOESR-L2/VTRSB"/>
+        <substitute key="alpha2" value="0.0"/> 
+        <substitute key="element3" value="FDC Power"/>
+        <substitute key="colormap3" value="Sat/GOESR-L2/VTRSB"/> 
+        <substitute key="alpha3" value="0.0"/>   
+        <substitute key="element4" value="FDC Temp"/>
+        <substitute key="colormap4" value="Sat/GOESR-L2/VTRSB"/>
+        <substitute key="alpha4" value="0.0"/>                              
+        </contribute>
+    <!-- GLSL Dust. -->
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/RGB-DP-Recipe4_AK_HI_PR.xml" 
+                    menuText="Dust RGB + Aerosol Products" id="goesr-dustDP">
+            <substitute key="productName" value="Dust RGB" />
+        <substitute key="redElement" value="satSplitWindowRGB" />
+        <substitute key="greenElement" value="satSplitDustRGB" />
+        <substitute key="blueElement" value="CH-13-10.35um" />
+        <substitute key="redLabel" value="12.30-10.35 μm" />
+        <substitute key="greenLabel" value="11.20-8.50 μm" />
+        <substitute key="blueLabel" value="10.35 μm" />
+        <substitute key="redMin" value="-6.7" />
+        <substitute key="redMax" value="2.6" />
+        <substitute key="redGamma" value="1.0" />
+        <substitute key="redUnit" value="C" />
+        <substitute key="greenMin" value="-0.5" />
+        <substitute key="greenMax" value="20.0" />
+        <substitute key="greenGamma" value="0.4" />
+        <substitute key="greenUnit" value="C" />
+        <substitute key="blueMin" value="-11.95" />
+        <substitute key="blueMax" value="15.55" />
+        <substitute key="blueGamma" value="1.0" />
+        <substitute key="blueUnit" value="C" />
+        <substitute key="element" value="DustHigh"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/Dust"/> 
+        <substitute key="alpha" value="0.0"/>        
+        <substitute key="element2" value="DustMed"/>
+        <substitute key="colormap2" value="GOES-R/GOESR-L2/Dust"/>
+        <substitute key="alpha2" value="0.0"/>         
+        <substitute key="element3" value="DustLow"/>
+        <substitute key="colormap3" value="GOES-R/GOESR-L2/Dust"/>
+        <substitute key="alpha3" value="0.0"/>      
+        <substitute key="element4" value="AOD"/>
+        <substitute key="colormap4" value="GOES-R/GOESR-L2/VTRSB"/>
+        <substitute key="alpha4" value="0.0"/>          
+        </contribute>  
+    <!-- Line SWD. --> 
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/SW-DP_AK_HI_PR_and_element3_sectorFD.xml" 
+                    menuText="Split Window Difference + Aerosol/Moisture Products" id="goesr-swdDP">
+        <substitute key="element" value="satMoisture"/>
+        <substitute key="colormap" value="Sat/VIS/Linear"/>
+        <substitute key="alpha" value="1.0"/>   
+        <substitute key="element2" value="CH-13-10.35um" />
+        <substitute key="colormap2" value="GOES-R/GOESR-L2/Sandwich_ir" />
+        <substitute key="alpha2" value="1.0"/>
+        <substitute key="element3" value="TPW" />
+        <substitute key="colormap3" value="GOES-R/GOESR-L2/color-pw10-10" />
+        <substitute key="alpha3" value="0.0"/>  
+        <substitute key="element4" value="DustHigh"/>
+        <substitute key="colormap4" value="GOES-R/GOESR-L2/Dust"/> 
+        <substitute key="alpha4" value="0.0"/>        
+        <substitute key="element5" value="DustMed"/>
+        <substitute key="colormap5" value="GOES-R/GOESR-L2/Dust"/>
+        <substitute key="alpha5" value="0.0"/>         
+        <substitute key="element6" value="DustLow"/>
+        <substitute key="colormap6" value="GOES-R/GOESR-L2/Dust"/>
+        <substitute key="alpha6" value="0.0"/>    
+        <substitute key="element7" value="RRQPE"/>
+        <substitute key="colormap7" value="GOES-R/GOESR-L2/RRQPE1"/>
+        <substitute key="alpha7" value="0.0"/>                     
+    </contribute>         
+</menuTemplate>
+

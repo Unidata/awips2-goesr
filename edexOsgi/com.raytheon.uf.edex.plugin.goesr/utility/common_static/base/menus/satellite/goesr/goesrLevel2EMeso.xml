@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
+<!--
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Aerosol Detection" id="goesr-adp">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="ADP" />
         <substitute key="colormap" value="GOES-R/GOESR-L2/ADP" />
+    </contribute>
+-->
+<!-- 1/22/2018 Dust -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/GOES_Dust_Smoke_Detection_Low_Med_High_bundle.xml" 
+                menuText="Aerosol Detection Dust" id="goesr-dust">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="elementHigh" value="DustHigh"/>
+        <substitute key="elementMed" value="DustMed"/>
+        <substitute key="elementLow" value="DustLow"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/Dust"/>
+        <substitute key="colorvar" value="dodger blue"/>
+    </contribute>
+<!-- 1/22/2018 Smoke -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/GOES_Dust_Smoke_Detection_Low_Med_High_bundle.xml" 
+                menuText="Aerosol Detection Smoke" id="goesr-smoke">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="elementHigh" value="SmokeHigh"/>
+        <substitute key="elementMed" value="SmokeMed"/>
+        <substitute key="elementLow" value="SmokeLow"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/Smoke"/>
+        <substitute key="colorvar" value="orange red"/>
     </contribute>
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Clear Sky Mask" id="goesr-csm">
         <substitute key="entity" value="GOES%" />
@@ -59,6 +80,29 @@
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="TT" />
         <substitute key="colormap" value="GOES-R/GOESR-L2/color-cape-10" />
+    </contribute>
+
+    <contribute xsi:type="separator" id="id"/>
+    <contribute xsi:type="titleItem" titleText="------ Fire/Hot Spot ------" />
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Fire Mask" id="goesr-fdc-mask">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="Fire_Mask" />
+        <substitute key="colormap" value="GOES-R/GOESR-L2/fire_mask3" />
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Fire Area" id="goesr-fdc-area">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="FDC Area" />
+        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Fire Power" id="goesr-fdc-power">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="FDC Power" />
+        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Fire Temperature" id="goesr-fdc-temp">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="FDC Temp" />
+        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
     </contribute>
     
     <contribute xsi:type="separator" id="id"/>

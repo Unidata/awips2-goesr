@@ -54,9 +54,11 @@
   <description>
     <data>
       <variable name="CAPE" />
+<!--
       <discreteMask name="DQF_Overall" value="0" keep="true">
         <fillByte>-1</fillByte>
       </discreteMask>
+-->
     </data>
     <units>
       <value value="J/kg" />
@@ -69,9 +71,11 @@
   <description>
     <data>
       <variable name="KI" />
+<!--
       <discreteMask name="DQF_Overall" value="0" keep="true">
         <fillByte>-1</fillByte>
       </discreteMask>
+-->
     </data>
     <!-- The default units are K, users prefer to use C, since this a
          difference product K and C are the same and should not be converted. -->
@@ -85,9 +89,11 @@
     <description>
         <data>
             <variable name="LI" />
+<!--
             <discreteMask name="DQF_Overall" value="0" keep="true">
                 <fillByte>-1</fillByte>
             </discreteMask>
+-->
         </data>
     <!-- The default units are K, users prefer to use C, since this a
          difference product K and C are the same and should not be converted. -->
@@ -101,9 +107,11 @@
     <description>
         <data>
             <variable name="SI" />
+<!--
             <discreteMask name="DQF_Overall" value="0" keep="true">
                 <fillByte>-1</fillByte>
             </discreteMask>
+-->
         </data>
     <!-- The default units are K, users prefer to use C, since this a
          difference product K and C are the same and should not be converted. -->

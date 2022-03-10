@@ -33,9 +33,10 @@
     <!-- TOWRdocs Status
          This file is a modification to the previous baseline file of the same name, which currently
          accounts for products whose dataset_name begins with "OR".
+         5/4/21 remove DQF masking for Enterprise update
     -->
     <!-- TOWRdocs POC
-         Lee Byerle 12/12/2016
+         Lee Byerle 5/4/2021
     -->
     <!-- 
         This is an absolute override file, indicating that a higher priority 
@@ -54,6 +55,15 @@
   <description>
     <data>
       <variable name="LST" />
+    </data>
+    <physicalElement>
+      <value value="LST" />
+    </physicalElement>
+  </description>
+
+<!--  <description>
+    <data>
+      <variable name="LST" />
       <discreteMask name="DQF" value="0" keep="true">
         <fillByte>-1</fillByte>
       </discreteMask>
@@ -61,5 +71,5 @@
     <physicalElement>
       <value value="LST" />
     </physicalElement>
-  </description>
+  </description> -->
 </goesrProductDescriptions>
