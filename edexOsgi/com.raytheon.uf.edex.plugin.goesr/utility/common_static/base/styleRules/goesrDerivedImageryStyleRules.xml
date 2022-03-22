@@ -59,6 +59,7 @@
 <styleRule>
     <paramLevelMatches>
       <parameter>satFog</parameter>
+      <parameter>satFog2</parameter>
     </paramLevelMatches>
     <imageStyle>
       <displayUnits>K</displayUnits> 
