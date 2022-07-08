@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- 
+    GOES-R CMIP Sector ID Description File
+
+    GOES-R CMIP sector ID description configuration.  This file is used to associate CLASS CMIP 
+    files with the correct viewing sector (full disk, CONUS, or mesoscale).
+
+    Place in /awips2/edex/data/utility/common_static/site/XYZ/satellite/goesr/descriptions/CMIP
+    This file is not included within the baseline.  Therefore, create a directory as stated above.
+
+    Lee Cronce, CIMSS/SSEC/University of Wisconsin 11/21/2019
+-->
+
+<goesrProductDescriptions>
+    <default>
+        <matches>
+            <match pattern="[OI][RT]_ABI-L2-\w{4}(C|F|M1|M2)-M\dC\d\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+                <attribute name="dataset_name"/>
+            </match>
+
+            <match pattern="GOES-West">
+                <attribute name="orbital_slot" />
+            </match>
+        </matches>
+    </default>
+
+    <description>
+        <matches>
+            <match  pattern="CONUS">
+                <attribute name="scene_id" />
+            </match>
+        </matches>
+
+        <sectorID>
+            <value value="WCONUS" />
+        </sectorID>
+    </description>
+  
+    <description>
+        <matches>
+            <match  pattern="Full Disk">
+                <attribute name="scene_id" />
+            </match>
+        </matches>
+
+        <sectorID>
+            <value value="WFD" />
+        </sectorID>
+    </description>
+  
+    <description>
+        <matches>
+            <match pattern="[OI][RT]_ABI-L2-\w{4}M1-M\dC\d\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+                <attribute name="dataset_name" />
+            </match>
+
+            <match pattern="Mesoscale">
+                <attribute name="scene_id" />
+            </match>
+        </matches>
+
+        <sectorID>
+            <value value="WMESO-1" />
+        </sectorID>
+    </description>
+
+    <description>
+        <matches>
+            <match pattern="[OI][RT]_ABI-L2-\w{4}M2-M\dC\d\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+                <attribute name="dataset_name" />
+            </match>
+
+            <match  pattern="Mesoscale">
+                <attribute name="scene_id" />
+            </match>
+        </matches>
+
+        <sectorID>
+            <value value="WMESO-2" />
+        </sectorID>
+    </description>
+</goesrProductDescriptions>
