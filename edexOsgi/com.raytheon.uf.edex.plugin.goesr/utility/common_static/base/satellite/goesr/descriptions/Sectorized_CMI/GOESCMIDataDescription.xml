@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+    GOES-R CMIP Data Description file
+
+    This file is used to visualize CLASS CMIP files.
+
+    Place in /awips2/edex/data/utility/common_static/site/XYZ/satellite/goesr/descriptions/CMIP
+    This file is not included within the baseline.  Therefore, create a directory as stated above.
+
+    Lee Cronce, CIMSS/SSEC/University of Wisconsin 11/21/2019
+
+    Tiffany Meyer, UCAR/Unidata - 9/1/2020 - Changed creatingEntity outputFormat from "GOES-%S CMIP" to "GOES-%S" so that it would load correctly from the menus
+
+-->
+
+<goesrProductDescriptions>
+    <default>
+        <matches>
+            <match pattern="[OI][RT]_ABI-L2-\w{4}(C|F|M1|M2)-M\dC\d\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+                <attribute name="dataset_name"/>
+            </match>
+        </matches>
+    </default>
+
+    <description>
+        <data>
+            <variable name="CMI" />
+            <discreteMask name="DQF" value="0" keep="true">
+                <fillByte>-1</fillByte>
+            </discreteMask>
+        </data>
+
+        <dataTime>
+            <formattedRefTime dateFormat="yyyy-MM-dd'T'HH:mm:ss.S'Z'">
+                <attribute name="time_coverage_start"/> 
+            </formattedRefTime>
+        </dataTime>
+
+        <source>
+            <attribute name="production_site" />
+        </source>
+
+        <creatingEntity>
+            <pattern inputPattern="G(1[678])" outputFormat="GOES-%S">
+                <attribute name="platform_ID" />
+            </pattern>
+        </creatingEntity>
+
+        <physicalElement>
+            <formatted format="CH-%02d-%4.2fum">
+                <variable name="band_id" />
+                <variable name="band_wavelength" />
+            </formatted>            
+        </physicalElement>
+    </description>
+</goesrProductDescriptions>
