@@ -45,7 +45,7 @@
 <goesrProductDescriptions>
   <default>
     <matches>
-      <match pattern="[OI][RT]_ABI-L2-LVMP(C|F|M1|M2)-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+      <match pattern="[OI][RT]_ABI-L2-LVMPR(C|F|M1|M2)-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
         <attribute name="dataset_name" />
       </match>
     </matches>
