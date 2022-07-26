@@ -62,7 +62,7 @@
                     <bean ref="getFileWithoutWmoHeader" />
                     <bean ref="dmwDecoder" method="decode" />
                     <bean ref="dmwSHFilter" method="filter" />
-                    <to uri="direct-vm:persistIndexAlert" />
+                    <to uri="direct-vm:indexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>
