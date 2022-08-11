@@ -45,9 +45,9 @@ import com.raytheon.uf.viz.d2d.nsharp.SoundingLayerBuilder;
 import gov.noaa.nws.ncep.edex.common.sounding.NcSoundingLayer;
 import gov.noaa.nws.ncep.edex.common.sounding.NcSoundingProfile;
 import si.uom.SI;
-import tec.uom.se.AbstractUnit;
-import tec.uom.se.format.SimpleUnitFormat;
-import tec.uom.se.unit.MetricPrefix;
+import tech.units.indriya.AbstractUnit;
+import tech.units.indriya.format.SimpleUnitFormat;
+import javax.measure.MetricPrefix;
 
 /**
  * Common code to build {@link VerticalSounding} or a {@link NcSoundingProfile}

@@ -32,7 +32,7 @@ import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
 import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrSatelliteHeight;
 
 import si.uom.SI;
-import tec.uom.se.format.SimpleUnitFormat;
+import tech.units.indriya.format.SimpleUnitFormat;
 import ucar.nc2.Attribute;
 import ucar.nc2.NetcdfFile;
 import ucar.nc2.Variable;

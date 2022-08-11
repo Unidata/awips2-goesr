@@ -57,7 +57,7 @@ import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrProjectionFactory;
 import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrSatelliteHeight;
 
 import si.uom.SI;
-import tec.uom.se.unit.MetricPrefix;
+import javax.measure.MetricPrefix;
 import ucar.nc2.Attribute;
 import ucar.nc2.NetcdfFile;
 import ucar.nc2.Variable;
