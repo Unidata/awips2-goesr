@@ -19,19 +19,18 @@
  **/
 package com.raytheon.uf.common.dataplugin.goesr.dmw;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import org.hibernate.annotations.Index;
-
 import com.raytheon.uf.common.dataplugin.PluginDataObject;
 import com.raytheon.uf.common.dataplugin.annotations.DataURI;
-import com.raytheon.uf.common.dataplugin.persist.IPersistable;
-import com.raytheon.uf.common.dataplugin.persist.PersistablePluginDataObject;
 import com.raytheon.uf.common.geospatial.ISpatialEnabled;
 import com.raytheon.uf.common.geospatial.ISpatialObject;
 import com.raytheon.uf.common.pointdata.PointDataView;
@@ -52,6 +51,8 @@ import com.raytheon.uf.common.serialization.annotations.DynamicSerializeElement;
  * Apr 06, 2015  4334     nabowle     Initial creation
  * Jul 14, 2016  19051    mcomerford  Added "filter" field (DCS 19051)
  * May 10, 2019  7845     tjensen     Added indexes
+ * Aug 03, 2022  8906     mapeters    Don't implement IPersistable
+ * Aug 08, 2022  8892     tjensen     Update indexes for Hibernate 5
  *
  * </pre>
  *
@@ -62,17 +63,13 @@ import com.raytheon.uf.common.serialization.annotations.DynamicSerializeElement;
 @SequenceGenerator(initialValue = 1, name = PluginDataObject.ID_GEN, sequenceName = "dmwseq")
 @Table(name = DMWRecord.PLUGIN_NAME, uniqueConstraints = {
         @UniqueConstraint(columnNames = { "orbitalSlot", "scene", "channel",
-                "refTime", "latitude", "longitude", "filter" }) })
-@org.hibernate.annotations.Table(appliesTo = DMWRecord.PLUGIN_NAME, indexes = {
-        @Index(name = "%TABLE%_filterandwspd_index", columnNames = { "filter",
-                "windspd" }),
-        @Index(name = "%TABLE%_orbitalslot_scene_reftime_idx", columnNames = {
-                "orbitalslot", "scene", "reftime" }),
-        @Index(name = "%TABLE%_scene_reftime_idx", columnNames = { "scene",
-                "reftime" }) })
+                "refTime", "latitude", "longitude", "filter" }) }, indexes = {
+                        @Index(name = "%TABLE%_filterandwspd_index", columnList = "filter, windspd"),
+                        @Index(name = "%TABLE%_orbitalslot_scene_reftime_idx", columnList = "orbitalslot, scene, reftime"),
+                        @Index(name = "%TABLE%_scene_reftime_idx", columnList = "scene, reftime"),
+                        @Index(name = "%TABLE%_stationIndex", columnList = "stationId") })
 @DynamicSerialize
-public class DMWRecord extends PersistablePluginDataObject
-        implements ISpatialEnabled, IPersistable {
+public class DMWRecord extends PluginDataObject implements ISpatialEnabled {
 
     /** Serializable id */
     private static final long serialVersionUID = 1L;
@@ -315,32 +312,16 @@ public class DMWRecord extends PersistablePluginDataObject
 
         DMWRecord record = (DMWRecord) obj;
 
-        if (pointDataView == null) {
-            if (record.pointDataView != null) {
-                return false;
-            }
-        } else if (!pointDataView.equals(record.pointDataView)) {
+        if (!Objects.equals(pointDataView, record.pointDataView)) {
             return false;
         }
-        if (location == null) {
-            if (record.location != null) {
-                return false;
-            }
-        } else if (!location.equals(record.location)) {
+        if (!Objects.equals(location, record.location)) {
             return false;
         }
-        if (orbitalSlot == null) {
-            if (record.orbitalSlot != null) {
-                return false;
-            }
-        } else if (!orbitalSlot.equals(record.orbitalSlot)) {
+        if (!Objects.equals(orbitalSlot, record.orbitalSlot)) {
             return false;
         }
-        if (scene == null) {
-            if (record.scene != null) {
-                return false;
-            }
-        } else if (!scene.equals(record.scene)) {
+        if (!Objects.equals(scene, record.scene)) {
             return false;
         }
         if (channel != record.channel) {
