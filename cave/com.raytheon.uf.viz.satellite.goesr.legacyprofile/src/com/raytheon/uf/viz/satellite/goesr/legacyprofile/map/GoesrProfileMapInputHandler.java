@@ -1,26 +1,23 @@
 /**
  * This software was developed and / or modified by Raytheon Company,
  * pursuant to Contract DG133W-05-CQ-1067 with the US Government.
- * 
+ *
  * U.S. EXPORT CONTROLLED TECHNICAL DATA
  * This software product contains export-restricted data whose
  * export/transfer/disclosure is restricted by U.S. law. Dissemination
  * to non-U.S. persons whether in the United States or abroad requires
  * an export license or other authorization.
- * 
+ *
  * Contractor Name:        Raytheon Company
  * Contractor Address:     6825 Pine Street, Suite 340
  *                         Mail Stop B8
  *                         Omaha, NE 68106
  *                         402.291.0100
- * 
+ *
  * See the AWIPS II Master Rights File ("Master Rights File.pdf") for
  * further licensing information.
  **/
 package com.raytheon.uf.viz.satellite.goesr.legacyprofile.map;
-
-import gov.noaa.nws.ncep.ui.nsharp.display.NsharpSkewTPaneDescriptor;
-import gov.noaa.nws.ncep.ui.nsharp.display.NsharpSkewTPaneDisplay;
 
 import java.util.HashMap;
 
@@ -31,6 +28,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPart;
+import org.locationtech.jts.geom.Coordinate;
 
 import com.raytheon.uf.common.dataquery.requests.RequestConstraint;
 import com.raytheon.uf.common.dataquery.requests.RequestConstraint.ConstraintType;
@@ -42,34 +40,37 @@ import com.raytheon.uf.viz.core.procedures.Bundle;
 import com.raytheon.uf.viz.core.rsc.LoadProperties;
 import com.raytheon.uf.viz.satellite.goesr.legacyprofile.GoesrLegacyProfileResourceData;
 import com.raytheon.viz.ui.BundleProductLoader;
+import com.raytheon.viz.ui.EditorTypeInfo;
 import com.raytheon.viz.ui.UiUtil;
 import com.raytheon.viz.ui.VizWorkbenchManager;
 import com.raytheon.viz.ui.editor.AbstractEditor;
 import com.raytheon.viz.ui.input.InputAdapter;
-import org.locationtech.jts.geom.Coordinate;
+
+import gov.noaa.nws.ncep.ui.nsharp.display.NsharpSkewTPaneDescriptor;
+import gov.noaa.nws.ncep.ui.nsharp.display.NsharpSkewTPaneDisplay;
 
 /**
  * Input handler for GOESR Legacy Moisture/Temperature profiles availability
  * resource
- * 
+ *
  * <pre>
- * 
+ *
  * SOFTWARE HISTORY
- * 
+ *
  * Date          Ticket#  Engineer    Description
  * ------------- -------- ----------- --------------------------
  * Apr 30, 2015  4335     bsteffen    Initial creation
- * 
+ * Apr 25, 2022  8791     mapeters    Update determination of editor type to load to
+ *
  * </pre>
- * 
+ *
  * @author bsteffen
- * @version 1.0
  */
 public class GoesrProfileMapInputHandler extends InputAdapter {
 
-    private GoesrProfileMapResource resource;
+    private final GoesrProfileMapResource resource;
 
-    private Cursor handCursor;
+    private final Cursor handCursor;
 
     private boolean overDataPoint = false;
 
@@ -124,22 +125,22 @@ public class GoesrProfileMapInputHandler extends InputAdapter {
         if (overDataPoint && mouseButton == 1 && downX == x && downY == y) {
             HashMap<String, RequestConstraint> metadataMap = new HashMap<>(
                     resource.getResourceData().getMetadataMap());
-            metadataMap.put("physicalElement", new RequestConstraint(
-                    "V%P-%hPa", ConstraintType.LIKE));
+            metadataMap.put("physicalElement",
+                    new RequestConstraint("V%P-%hPa", ConstraintType.LIKE));
             GoesrLegacyProfileResourceData resourceData = new GoesrLegacyProfileResourceData();
             resourceData.setMetadataMap(metadataMap);
             resourceData.setSoundingType("GOES");
-            resourceData.setCoordinate(resource.getResourceContainer()
-                    .translateClick(x, y));
+            resourceData.setCoordinate(
+                    resource.getResourceContainer().translateClick(x, y));
             ResourcePair pair = new ResourcePair();
             pair.setResourceData(resourceData);
             pair.setLoadProperties(new LoadProperties());
             NsharpSkewTPaneDisplay display = new NsharpSkewTPaneDisplay();
             display.setDescriptor(new NsharpSkewTPaneDescriptor());
             display.getDescriptor().getResourceList().add(pair);
-            String editorId = DescriptorMap.getEditorId(display.getDescriptor()
-                    .getClass().getName());
-            AbstractEditor editor = UiUtil.createOrOpenEditor(editorId,
+            String editorId = DescriptorMap.getEditorId(display);
+            EditorTypeInfo editorTypeInfo = new EditorTypeInfo(editorId, false);
+            AbstractEditor editor = UiUtil.createOrOpenEditor(editorTypeInfo,
                     display.cloneDisplay());
             Bundle b = new Bundle();
             b.setDisplays(new AbstractRenderableDisplay[] { display });
