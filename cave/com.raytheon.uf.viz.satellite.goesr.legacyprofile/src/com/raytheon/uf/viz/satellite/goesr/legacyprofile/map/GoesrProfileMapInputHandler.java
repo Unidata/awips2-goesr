@@ -61,6 +61,8 @@ import gov.noaa.nws.ncep.ui.nsharp.display.NsharpSkewTPaneDisplay;
  * ------------- -------- ----------- --------------------------
  * Apr 30, 2015  4335     bsteffen    Initial creation
  * Apr 25, 2022  8791     mapeters    Update determination of editor type to load to
+ * Oct 19, 2022  8956     mapeters    Handle UiUtil.createOrOpenEditor signature
+ *                                    change
  *
  * </pre>
  *
@@ -141,7 +143,7 @@ public class GoesrProfileMapInputHandler extends InputAdapter {
             String editorId = DescriptorMap.getEditorId(display);
             EditorTypeInfo editorTypeInfo = new EditorTypeInfo(editorId, false);
             AbstractEditor editor = UiUtil.createOrOpenEditor(editorTypeInfo,
-                    display.cloneDisplay());
+                    true, display.cloneDisplay());
             Bundle b = new Bundle();
             b.setDisplays(new AbstractRenderableDisplay[] { display });
             Job j = new BundleProductLoader(editor, b);
