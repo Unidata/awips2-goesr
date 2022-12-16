@@ -48,7 +48,7 @@
 
         <route id="dmwIngestRoute">
             <from uri="jms-durable:queue:Ingest.dmw"/>
-            <setHeader headerName="pluginName">
+            <setHeader name="pluginName">
                 <constant>dmw</constant>
             </setHeader>
             <doTry>
@@ -56,7 +56,7 @@
                     <bean ref="stringToFile" />
                     <bean ref="getFileWithoutWmoHeader" />
                     <bean ref="dmwDecoder" method="decode" />
-                    <to uri="direct-vm:persistIndexAlert" />
+                    <to uri="direct-vm:indexAlert" />
                 </pipeline>
                 <doCatch>
                     <exception>java.lang.Throwable</exception>

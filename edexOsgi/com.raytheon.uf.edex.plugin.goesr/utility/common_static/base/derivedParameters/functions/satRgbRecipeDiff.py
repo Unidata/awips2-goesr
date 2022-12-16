@@ -1,13 +1,22 @@
 '''
-   <!-- 
-        This is an absolute override file, indicating that a higher priority 
-        version of the file will completely replace a lower priority version
-        of the file. 
-    -->
-<!-- TOWRdocs Header
-  Derived Parameter Python file for implementing channel difference RGB recipes.
--->
-<!-- TOWRdocs Description
+        This_software_was_developed_and_/_or_modified_by_Raytheon_Company,
+        pursuant_to_Contract_DG133W-05-CQ-1067_with_the_US_Government.
+        
+        U.S._EXPORT_CONTROLLED_TECHNICAL_DATA
+        This_software_product_contains_export-restricted_data_whose
+        export/transfer/disclosure_is_restricted_by_U.S._law._Dissemination
+        to_non-U.S._persons_whether_in_the_United_States_or_abroad_requires
+        an_export_license_or_other_authorization.
+        
+        Contractor_Name:________Raytheon_Company
+        Contractor_Address:_____6825_Pine_Street,_Suite_340
+        ________________________Mail_Stop_B8
+        ________________________Omaha,_NE_68106
+        ________________________402.291.0100
+        
+        See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
+        further_licensing_information.
+
   This method implements channel difference RGB recipes outlined in EUMETSAT's "Best
   Practices for RGB Displays of Multispectral Imagery" document 
   (http://oiswww.eumetsat.int/~idds/html/doc/best_practices.pdf). Two arrays
@@ -15,18 +24,9 @@
   outlined below. The channel difference is calculated as physicalElement1 - 
   physicalElement2. An array of display values is returned that corresponds to a 
   single color component of an RGB product.
--->
-<!-- TOWRdocs Status
-  This is a new derived parameters file.
-  It is used to implement channel difference RGB recipes.
--->
-<!-- TOWRdocs POC
-  Kevin M. McGrath
--->
+  Kevin M. McGrath, NASA SpORT
 
-CONTACTS: 
-
-	This code was co-developed via the AWIPS II Experimental Products Development 
+        This code was co-developed via the AWIPS II Experimental Products Development 
 	Team (EPDT) by personnel from NASA SPoRT, CIRA, and the NWS:
 
 		Jason Burks/CIRA/MDL (jason.burks@noaa.gov)

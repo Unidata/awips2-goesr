@@ -61,68 +61,65 @@ INPUT PARAMETERS:
 
 RETURNS:
 
- 	@return: Display values
- 	@rtype: numpy array (int12)
+        @return: Display values
+        @rtype: numpy array (int12)
 
 DEPENDENCIES:
 
-	* Numpy
+        * Numpy
 
 
 MODIFICATIONS:
 
 '''
-	
+
 import numpy as np
 
 def execute(physicalElement1, physicalElement2, physicalElement3, bnum, minValue, maxValue, gamma):
-    
-	#########################
-	# Make Green band on the fly is makeGreen=1.
-	if (int(bnum) == 1):
-		aband	= 2.5*physicalElement1
-	if (int(bnum) == 2):
-		aband	= 2.5*physicalElement2  
-        if (int(bnum) == 3):
-		#Make Green band on the fly.
-		aband	= 2.5*(0.45*physicalElement1 + 0.45*physicalElement2 + 0.10*physicalElement3) 
+
+    #########################
+    # Make Green band on the fly is makeGreen=1.
+    if (int(bnum) == 1):
+        aband   = 2.5*physicalElement1
+    if (int(bnum) == 2):
+        aband   = 2.5*physicalElement2
+    if (int(bnum) == 3):
+        #Make Green band on the fly.
+        aband   = 2.5*(0.45*physicalElement1 + 0.45*physicalElement2 + 0.10*physicalElement3)
 
 
-	#########################
-	# Convert data to 0.0 t0 1.0 for use in generating a SQRT enhancement.
-	aband0 =(aband/255.0) 
+    #########################
+    # Convert data to 0.0 t0 1.0 for use in generating a SQRT enhancement.
+    aband0 =(aband/255.0)
 
-	#########################
+    #########################
 
-	# Apply a simple sqrt following UW-CIMSS True color RGB (for Natural color).
-	aband = (np.sqrt(aband0)*255.0)
-      
-        ####################################
-        #### Apply a simple contrast adjustment enhancement
-        #acont=maxValue/10.0
-        #amax=maxValue+4 
-        #amid=maxValue/2.0
-        acont=255.0/10.0
-        amax=255.0+4 
-        amid=255.0/2.0
-        afact=(amax*(acont+maxValue)/(maxValue*(amax-acont)))
-        aband = (afact*(aband-amid)+amid)
-        aband[aband <= 10] = 0
-        aband[aband >=255] = 255
+    # Apply a simple sqrt following UW-CIMSS True color RGB (for Natural color).
+    aband = (np.sqrt(aband0)*255.0)
 
-	#########################
-	# Convert from float to in8.
-	dispByte = np.array(aband, dtype=np.int8)
+    ####################################
+    #### Apply a simple contrast adjustment enhancement
+    #acont=maxValue/10.0
+    #amax=maxValue+4
+    #amid=maxValue/2.0
+    acont=255.0/10.0
+    amax=255.0+4
+    amid=255.0/2.0
+    afact=(amax*(acont+maxValue)/(maxValue*(amax-acont)))
+    aband = (afact*(aband-amid)+amid)
+    aband[aband <= 10] = 0
+    aband[aband >=255] = 255
 
-	#########################
-	# Convert values of 0 to 1.
-	dispByte[dispByte == 0] = 255
+    #########################
+    # Convert from float to in8.
+    dispByte = np.array(aband, dtype=np.int8)
 
-	#########################
-	#mask out of range values
-	dispByte[(aband == 0)] = 0
+    #########################
+    # Convert values of 0 to 1.
+    dispByte[dispByte == 0] = 255
 
-	return dispByte
+    #########################
+    #mask out of range values
+    dispByte[(aband == 0)] = 0
 
-
-
+    return dispByte

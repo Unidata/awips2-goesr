@@ -75,6 +75,22 @@
   </styleRule>
 <styleRule>
     <paramLevelMatches>
+      <parameter>satFog2</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayUnits>K</displayUnits> 
+      <range scale="LINEAR">
+        <minValue>-15</minValue>
+        <maxValue>15</maxValue>
+      </range>
+      <defaultColormap>GOES-R/IR/fogdiff_blue</defaultColormap>
+      <colorbarLabeling>
+        <values>-12 -8 -4 0 4 8 12 </values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+<styleRule>
+    <paramLevelMatches>
       <parameter>satDayFog</parameter>
     </paramLevelMatches>
     <imageStyle>
@@ -180,6 +196,21 @@
                 <maxValue>300.0</maxValue>
             </range>
             <defaultColormap>Grid/Gridded Data</defaultColormap>
+        </imageStyle>
+    </styleRule>
+   <styleRule>
+        <paramLevelMatches>
+            <parameter>satNDVI</parameter>
+        </paramLevelMatches>
+        <imageStyle>
+            <range scale="LINEAR">
+                <minValue>-1.0</minValue>
+                <maxValue>1.0</maxValue>
+            </range>
+            <defaultColormap>GOES-R/IR/NDVI</defaultColormap>
+            <colorbarLabeling>
+            <values>-1 -0.5 -0.25 -0.10 0.00 0.25 0.50 0.75 1.00</values>
+            </colorbarLabeling>
         </imageStyle>
     </styleRule>
    <styleRule>

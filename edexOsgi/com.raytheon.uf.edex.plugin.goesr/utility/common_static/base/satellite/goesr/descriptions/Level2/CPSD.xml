@@ -63,7 +63,7 @@
       <value value="CPSD" />
     </physicalElement>
     <units>
-      <value value="microm" />
+      <value value="µm" />
     </units>
   </description>
 </goesrProductDescriptions>

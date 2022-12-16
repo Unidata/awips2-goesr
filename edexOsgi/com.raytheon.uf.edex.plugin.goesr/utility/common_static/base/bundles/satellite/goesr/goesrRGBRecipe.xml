@@ -49,7 +49,7 @@ in the baseline prior to 18.2.1.
       </capabilities>
      </loadProperties>
      <resourceData xsi:type="trueColorResourceGroupData">
-      <groupName>${productName}</groupName>
+      <groupName>${sector} ${productName}</groupName>
       <channelResource channelName="${redLabel}">
        <channel>RED</channel>
        <resourceData xsi:type="satResourceData">

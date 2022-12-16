@@ -1,28 +1,28 @@
 '''
-   <!-- 
-        This is an absolute override file, indicating that a higher priority 
-        version of the file will completely replace a lower priority version
-        of the file. 
+        This_software_was_developed_and_/_or_modified_by_Raytheon_Company,
+        pursuant_to_Contract_DG133W-05-CQ-1067_with_the_US_Government.
+        
+        U.S._EXPORT_CONTROLLED_TECHNICAL_DATA
+        This_software_product_contains_export-restricted_data_whose
+        export/transfer/disclosure_is_restricted_by_U.S._law._Dissemination
+        to_non-U.S._persons_whether_in_the_United_States_or_abroad_requires
+        an_export_license_or_other_authorization.
+        
+        Contractor_Name:________Raytheon_Company
+        Contractor_Address:_____6825_Pine_Street,_Suite_340
+        ________________________Mail_Stop_B8
+        ________________________Omaha,_NE_68106
+        ________________________402.291.0100
+        
+        See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
+        further_licensing_information.
     -->
-<!-- TOWRdocs Header
-  Derived Parameter Python file for converting raw satellite data values into calibrated values.
--->
-<!-- TOWRdocs Description
-  Various methods for converting raw satellite data values into calibrated values. These support
-  the RGB generatation methods found in satRgbRecipeDiff.py and satRgbRecipeSingleChannel.py.
--->
-<!-- TOWRdocs Status
-  This is a new derived parameters file.
-  It is used to convert raw satellite data values into calibrated values.
--->
-<!-- TOWRdocs POC
-  Kevin M. McGrath
--->
+  For converting raw satellite data values into calibrated values.
+  For the RGB generation methods found in satRgbRecipeDiff.py and satRgbRecipeSingleChannel.py.
+  Kevin M. McGrath, NASA SpORT
 
-CONTACTS: 
-
-	This code was co-developed via the AWIPS II Experimental Products Development 
-	Team (EPDT) by personnel from NASA SPoRT, CIRA, and the NWS:
+  This code was co-developed via the AWIPS II Experimental Products Development 
+  Team (EPDT) by personnel from NASA SPoRT, CIRA, and the NWS:
 
 		Jason Burks/CIRA/MDL (jason.burks@noaa.gov)
 		Nancy Eustice/NWS (nancy.eustice@noaa.gov)

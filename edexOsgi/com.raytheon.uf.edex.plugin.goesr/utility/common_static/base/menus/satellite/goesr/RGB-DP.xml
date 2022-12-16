@@ -105,7 +105,7 @@
         <substitute key="colormap3" value="GOES-R/GOESR-L2/MVFR_PROB"/>
         <substitute key="alpha3" value="0.0"/>
         <substitute key="element4" value="Fog_Depth"/>
-        <substitute key="colormap4" value="Grid/Gridded Data"/>
+        <substitute key="colormap4" value="Grid/gridded data"/>
         <substitute key="alpha4" value="0.0"/>        
         </contribute>          
     <!-- GLSL Day Convection. -->

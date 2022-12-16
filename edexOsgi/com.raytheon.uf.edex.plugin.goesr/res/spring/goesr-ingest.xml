@@ -35,11 +35,11 @@
     <endpoint id="goesrJmsEndpoint" uri="jms-durable:queue:Ingest.GOESR?concurrentConsumers=${goesr-decode.threads}" />
 
     <route id="goesrIngestRoute">
-      <from ref="goesrJmsEndpoint" />
-      <setHeader headerName="pluginName">
+      <from uri="goesrJmsEndpoint" />
+      <setHeader name="pluginName">
         <constant>satellite</constant>
       </setHeader>
-      <setHeader headerName="dataType">
+      <setHeader name="dataType">
         <constant>goes-r</constant>
       </setHeader>
       <doTry>
@@ -47,7 +47,7 @@
           <bean ref="stringToFile" />
           <bean ref="getFileWithoutWmoHeader" />
           <split streaming="true">
-              <method bean="goesrDecoder" method="split"/>
+              <method ref="goesrDecoder" method="split"/>
               <doTry>
                   <pipeline>
                       <bean ref="goesrDecoder" method="decode" />

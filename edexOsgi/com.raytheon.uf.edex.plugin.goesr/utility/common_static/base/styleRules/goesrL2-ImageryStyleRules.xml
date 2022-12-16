@@ -141,10 +141,125 @@
 
   <styleRule>
     <paramLevelMatches>
+      <parameter>SmokeLow</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Smoke Detection (Low Confidence) (unitless) </displayLegend>
+      <range scale="LINEAR">
+        <minValue>-0.5</minValue>
+        <maxValue>2.5</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/Smoke</defaultColormap> 
+      <dataMapping>
+        <entry displayValue="0" pixelValue="0" label="No Smoke" sample="Masked" />
+        <entry displayValue="1" pixelValue="1" label="Smoke" sample="Smoke (low confidence)" />
+        <entry displayValue="2" pixelValue="255" label="NO DATA" sample="NO DATA" />
+     </dataMapping>
+    </imageStyle>
+  </styleRule>
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>SmokeMed</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Smoke Detection (Medium Confidence) (unitless) </displayLegend>
+      <range scale="LINEAR">
+        <minValue>-0.5</minValue>
+        <maxValue>2.5</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/Smoke</defaultColormap>
+      <dataMapping>
+        <entry displayValue="0" pixelValue="0" label="No Smoke" sample="Masked" />
+        <entry displayValue="1" pixelValue="1" label="Smoke" sample="Smoke (medium confidence)" />
+        <entry displayValue="2" pixelValue="255" label="NO DATA" sample="NO DATA" />
+     </dataMapping>
+    </imageStyle>
+  </styleRule>
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>SmokeHigh</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Smoke Detection (High Confidence) (unitless) </displayLegend>
+      <range scale="LINEAR">
+        <minValue>-0.5</minValue>
+        <maxValue>2.5</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/Smoke</defaultColormap>
+      <dataMapping>
+        <entry displayValue="0" pixelValue="0" label="No Smoke" sample="Masked" />
+        <entry displayValue="1" pixelValue="1" label="Smoke" sample="Smoke (high confidence)" />
+        <entry displayValue="2" pixelValue="255" label="NO DATA" sample="NO DATA" />
+     </dataMapping>
+    </imageStyle>
+  </styleRule>
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>DustLow</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Dust Detection (Low Confidence) (unitless) </displayLegend>
+      <range scale="LINEAR">
+        <minValue>-0.5</minValue>
+        <maxValue>2.5</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/Dust</defaultColormap>
+      <dataMapping>
+        <entry displayValue="0" pixelValue="0" label="No Dust" sample="Masked" />
+        <entry displayValue="1" pixelValue="1" label="Dust" sample="Dust (low confidence)" />
+        <entry displayValue="2" pixelValue="255" label="NO DATA" sample="NO DATA" />
+     </dataMapping>
+    </imageStyle>
+  </styleRule>
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>DustMed</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Dust Detection (Medium Confidence) (unitless) </displayLegend>
+      <range scale="LINEAR">
+        <minValue>-0.5</minValue>
+        <maxValue>2.5</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/Dust</defaultColormap>
+      <dataMapping>
+        <entry displayValue="0" pixelValue="0" label="No Dust" sample="Masked" />
+        <entry displayValue="1" pixelValue="1" label="Dust" sample="Dust (medium confidence)" />
+        <entry displayValue="2" pixelValue="255" label="NO DATA" sample="NO DATA" />
+     </dataMapping>
+    </imageStyle>
+  </styleRule>
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>DustHigh</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Dust Detection (High Confidence) (unitless) </displayLegend>
+      <range scale="LINEAR">
+        <minValue>-0.5</minValue>
+        <maxValue>2.5</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/Dust</defaultColormap>
+      <dataMapping>
+        <entry displayValue="0" pixelValue="0" label="No Dust" sample="Masked" />
+        <entry displayValue="1" pixelValue="1" label="Dust" sample="Dust (high confidence)" />
+        <entry displayValue="2" pixelValue="255" label="NO DATA" sample="NO DATA" />
+     </dataMapping>
+    </imageStyle>
+  </styleRule>
+
+<!--Uncomment below to retain bitset option ADP -->
+<!--  <styleRule>
+    <paramLevelMatches>
       <parameter>ADP</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Aerosol Detection</displayLegend>
+      <displayLegend>${creatingEntity} Aerosol Detection</displayLegend>
       <defaultColormap>GOES-R/GOESR-L2/ADP</defaultColormap>
       <range scale="LINEAR">
         <minValue>-0.5</minValue>
@@ -152,23 +267,25 @@
       </range>
       <dataMapping>
         <entry displayValue="0" pixelValue="0" label="Clear" sample="Clear" />
-        <entry displayValue="1" pixelValue="1" label="Aerosol" sample="Aerosol" />
+        <entry displayValue="1" pixelValue="1" label="" sample="" />
         <entry displayValue="2" pixelValue="2" label="Dust" sample="Dust" />
-        <entry displayValue="3" pixelValue="3" label="A+D" sample="Aerosol+Dust" />
+        <entry displayValue="3" pixelValue="3" label="" sample="Dust" />
         <entry displayValue="4" pixelValue="4" label="Smoke" sample="Smoke" />
-        <entry displayValue="5" pixelValue="5" label="A+S" sample="Aerosol+Smoke" />
-        <entry displayValue="6" pixelValue="6" label="A+D" sample="Dust+Smoke" />
-        <entry displayValue="7" pixelValue="7" label="A+D+S" sample="Aerosol+Dust+Smoke" />
+        <entry displayValue="5" pixelValue="5" label="" sample="Smoke" />
+        <entry displayValue="6" pixelValue="6" label="Dust+Smoke" sample="Dust+Smoke" />
+        <entry displayValue="7" pixelValue="7" label="" sample="Dust+Smoke" />
         <entry displayValue="8" pixelValue="255" label="NO DATA" sample="NO DATA" />
      </dataMapping>
     </imageStyle>
-  </styleRule>
+  </styleRule> -->
+
+
   <styleRule>
     <paramLevelMatches>
       <parameter>AOD</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Aerosol Optical Depth (unitless)</displayLegend>
+      <displayLegend>${creatingEntity} Aerosol Optical Depth (unitless) </displayLegend>
       <range scale="LINEAR">
         <minValue>0</minValue>
         <maxValue>1</maxValue>
@@ -184,7 +301,7 @@
       <parameter>CSM</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Clear Sky Mask</displayLegend>
+      <displayLegend>${creatingEntity} Clear Sky Mask </displayLegend>
       <defaultColormap>GOES-R/GOESR-L2/CSM</defaultColormap>
       <range scale="LINEAR">
         <minValue>-0.5</minValue>
@@ -202,14 +319,16 @@
       <parameter>COD</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Cloud Optical Depth</displayLegend>
+      <displayLegend>${creatingEntity} Cloud Optical Depth (unitless)</displayLegend>
       <range scale="LINEAR">
         <minValue>0</minValue>
         <maxValue>100</maxValue>
+        <!-- <maxValue>160</maxValue> -->
       </range>
       <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
       <colorbarLabeling>
         <values>0 20 40 60 80 100</values>
+        <!-- <values>0 40 80 120 160</values> -->
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
@@ -218,8 +337,8 @@
       <parameter>CPSD</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Cloud Particle Size Distribution (μm)</displayLegend>
-      <displayUnits>microm</displayUnits>
+      <displayLegend>${creatingEntity} Cloud Particle Size Distribution (μm)</displayLegend>
+      <displayUnits>µm</displayUnits> 
       <range scale="LINEAR">
         <minValue>0</minValue>
         <maxValue>100</maxValue>
@@ -235,7 +354,7 @@
       <parameter>CTH</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Cloud Top Height (ft)</displayLegend>
+      <displayLegend>${creatingEntity} Cloud Top Height (ft)</displayLegend>
       <displayUnits>ft</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
@@ -243,7 +362,7 @@
       </range>
       <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
       <colorbarLabeling>
-        <values>0 5000 10000 20000 30000 40000 50000 60000 65000</values>
+        <values>0 5000 10000 20000 30000 40000 50000 60000 65000 </values>
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
@@ -252,7 +371,7 @@
       <parameter>ACTP</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Cloud Top Phase</displayLegend>
+      <displayLegend>${creatingEntity} Cloud Top Phase</displayLegend>
       <defaultColormap>GOES-R/GOESR-L2/ACTP</defaultColormap>
       <range scale="LINEAR">
         <minValue>-0.5</minValue>
@@ -274,7 +393,7 @@
       <parameter>CTP</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Cloud Top Pressure (mb)</displayLegend>
+      <displayLegend>${creatingEntity} Cloud Top Pressure (mb)</displayLegend>
       <displayUnits>mb</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
@@ -291,7 +410,7 @@
       <parameter>CTT</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Cloud Top Temperature (C)</displayLegend>
+      <displayLegend>${creatingEntity} Cloud Top Temperature (C)</displayLegend>
       <displayUnits>C</displayUnits>
       <range scale="LINEAR">
         <minValue>55</minValue>
@@ -308,12 +427,14 @@
       <parameter>CAPE</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} CAPE (J/kg)</displayLegend>
+      <displayLegend>${creatingEntity} CAPE (J/kg)</displayLegend> 
       <displayUnits>J/kg</displayUnits>
       <range scale="LINEAR">
+      <!-- Valid measurement range for CAP algorithm is 0 to 5000 -->
         <minValue>0</minValue>
         <maxValue>5000</maxValue>
       </range>
+      <!-- <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap> -->
       <defaultColormap>GOES-R/GOESR-L2/color-cape-10</defaultColormap>
       <colorbarLabeling>
         <values>0 1000 2000 3000 4000 5000</values>
@@ -323,13 +444,9 @@
   <styleRule>
     <paramLevelMatches>
       <parameter>KI</parameter>
-      <!-- These are specified to prevent it from conflicting with grid rules for the same parameter. -->
-      <creatingEntity>GOES-16</creatingEntity>
-      <creatingEntity>GOES-17</creatingEntity>
-      <creatingEntity>GOES-18</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} K-Index (C)</displayLegend>
+      <displayLegend>${creatingEntity} K-Index (C)</displayLegend>
       <displayUnits>C</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
@@ -346,9 +463,10 @@
       <parameter>LI</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Lifted Index (C)</displayLegend>
+      <displayLegend>${creatingEntity} Lifted Index (C)</displayLegend>
       <displayUnits>C</displayUnits>
       <range scale="LINEAR">
+      <!-- Valid measurement range for LI algorithm is -10 to 40 -->
         <minValue>-10</minValue>
         <maxValue>20</maxValue>
       </range>
@@ -363,9 +481,10 @@
       <parameter>SI</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Showalter Index (C)</displayLegend>
+      <displayLegend>${creatingEntity} Showalter Index (C)</displayLegend>
       <displayUnits>C</displayUnits>
       <range scale="LINEAR">
+      <!-- Valid measurement range for SI algorithm is -10 to 25 -->
         <minValue>-30</minValue>
         <maxValue>30</maxValue>
       </range>
@@ -380,9 +499,10 @@
       <parameter>TT</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Total Totals Index (C)</displayLegend>
+      <displayLegend>${creatingEntity} Total Totals Index (C)</displayLegend>
       <displayUnits>C</displayUnits>
       <range scale="LINEAR">
+      <!-- Valid measurement range for TT algorithm is -43 to 60 -->
         <minValue>-60</minValue>
         <maxValue>60</maxValue>
       </range>
@@ -392,12 +512,13 @@
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
+<!-- Updated Fire area to m*m per SET team recommendation -->
   <styleRule>
     <paramLevelMatches>
       <parameter>FDC Area</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Fire Area (m*m)</displayLegend>
+      <displayLegend>${creatingEntity} Fire Area (m*m)</displayLegend>
       <displayUnits>m*m</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
@@ -414,7 +535,7 @@
       <parameter>FDC Power</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Fire Power (MW)</displayLegend>
+      <displayLegend>${creatingEntity} Fire Power (MW)</displayLegend>
       <displayUnits>MW</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
@@ -431,7 +552,7 @@
       <parameter>FDC Temp</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Fire Temperature (K)</displayLegend>
+      <displayLegend>${creatingEntity} Fire Temperature (K)</displayLegend>
       <displayUnits>K</displayUnits>
       <range scale="LINEAR">
         <minValue>400</minValue>
@@ -443,6 +564,7 @@
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
+  
   <styleRule>
     <paramLevelMatches>
       <parameter>Fire_Mask</parameter>
@@ -531,7 +653,7 @@
       <parameter>RRQPE</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Rain Rate/QPE (in/hr)</displayLegend>
+      <displayLegend>${creatingEntity} Rain Rate/QPE (in/hr)</displayLegend>
       <displayUnits>in/h</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
@@ -548,9 +670,10 @@
       <parameter>SST</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Sea Surface Temperature (C)</displayLegend>
+      <displayLegend>${creatingEntity} Sea Surface Temperature (C)</displayLegend>
       <displayUnits>C</displayUnits>
       <range scale="LINEAR">
+ <!-- Valid measurement range for SST algorithm is 180 to 340K -->
         <minValue>-5</minValue>
         <maxValue>35</maxValue>
       </range>
@@ -560,12 +683,49 @@
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>SSTF</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Sea Surface Temperature (F)</displayLegend>
+      <displayUnits>F</displayUnits>
+      <range scale="LINEAR">
+        <minValue>23</minValue>
+        <maxValue>95</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/GOES-SST-35</defaultColormap>
+      <colorbarLabeling>
+        <values>23 32 50 59 68 77 86 95</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>LST</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Land Surface (Skin) Temperature (F)</displayLegend>
+      <displayUnits>F</displayUnits>
+      <range scale="LINEAR">
+<!-- Valid measurement range for LST algorithm is 213 to 330K -->
+        <minValue>-10</minValue>
+        <maxValue>110</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
+      <colorbarLabeling>
+        <values>-10 0 10 20 30 40 50 60 70 80 90 100 110</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
   <styleRule>
     <paramLevelMatches>
       <parameter>FSC</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Fractional Snow Cover (%)</displayLegend>
+      <displayLegend>${creatingEntity} Fractional Snow Cover (%)</displayLegend>
       <displayUnits>%</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
@@ -582,15 +742,15 @@
       <parameter>TPW</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Total Precipitable Water (in)</displayLegend>
+      <displayLegend>${creatingEntity} Total Precipitable Water (in)</displayLegend>
       <displayUnits>in</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
-        <maxValue>3</maxValue>
+        <maxValue>2.5</maxValue>
       </range>
       <defaultColormap>GOES-R/GOESR-L2/color-pw10-10</defaultColormap>
       <colorbarLabeling>
-        <values>0 .7 1.3 2 2.2 2.5 3</values>
+        <values>0 .7 1.3 2 2.2 2.5</values>
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
@@ -599,11 +759,12 @@
       <parameter>VAH</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Volcanic Ash Cloud Height (ft)</displayLegend>
+      <displayLegend>${creatingEntity} Volcanic Ash Cloud Height (ft)</displayLegend>
+      <displayLegend>${creatingEntity} Volcanic Ash Cloud Height (High Confidence) (ft)</displayLegend>
       <displayUnits>ft</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
-        <maxValue>70000</maxValue>
+        <maxValue>70000</maxValue> 
       </range>
       <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
       <colorbarLabeling>
@@ -616,7 +777,7 @@
       <parameter>VAML</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Volcanic Ash Mass Loading (ton/(km*km))</displayLegend>
+      <displayLegend>${creatingEntity} Volcanic Ash Mass Loading (High Confidence) (ton/(km*km))</displayLegend>
       <displayUnits>ton_us/(km*km)</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
@@ -624,16 +785,35 @@
       </range>
       <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
       <colorbarLabeling>
-        <values>0 10 20 30 40 50</values>
+        <values>0 10 20 30 40 50 </values>
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
-  <styleRule>
+
+ <styleRule>
     <paramLevelMatches>
-      <parameter>LST</parameter>
+      <parameter>VAH2</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Land Surface (Skin) Temperature (F)</displayLegend>
+      <displayLegend>${creatingEntity} Volcanic Ash Cloud Height (Medium Confidence) (ft)</displayLegend>
+      <displayUnits>ft</displayUnits>
+      <range scale="LINEAR">
+        <minValue>0</minValue>
+        <maxValue>70000</maxValue>
+      </range>
+      <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
+      <colorbarLabeling>
+        <values>0 20000 40000 60000</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>VAML2</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} Land Surface (Skin) Temperature (F)</displayLegend>
       <displayUnits>F</displayUnits>
       <range scale="LINEAR">
         <minValue>-50</minValue>
@@ -653,7 +833,7 @@
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Flash Extent Density (flashes/min) (1min)-TT</displayLegend>
+      <displayLegend>${creatingEntity} GLM Flash Extent Density (flashes/min) (1min)-TT</displayLegend>
       <range scale="LOG">
         <minValue>0.125</minValue>
         <maxValue>50</maxValue>
@@ -672,7 +852,7 @@
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Flash Extent Density (flashes/5min) (5min-1min update)-TT</displayLegend>
+      <displayLegend>${creatingEntity} GLM Flash Extent Density (flashes/5min) (5min-1min update)-TT</displayLegend>
       <range scale="LOG">
         <minValue>1</minValue>
         <maxValue>260</maxValue>
@@ -691,7 +871,7 @@
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Flash Centroid Density (1min)-TT</displayLegend>
+      <displayLegend>${creatingEntity} GLM Flash Centroid Density (1min)-TT</displayLegend>
       <range scale="LINEAR">
         <minValue>0.125</minValue>
         <maxValue>10</maxValue>
@@ -710,7 +890,7 @@
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Flash Centroid Density (5min-1min update)-TT</displayLegend>
+      <displayLegend>${creatingEntity} GLM Flash Centroid Density (5min-1min update)-TT</displayLegend>
       <range scale="LINEAR">
         <minValue>0.125</minValue>
         <maxValue>10</maxValue>
@@ -729,7 +909,7 @@
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Average Flash Area (km^2) (1min)-TT</displayLegend>
+      <displayLegend>${creatingEntity} GLM Average Flash Area (km^2) (1min)-TT</displayLegend>
       <displayUnits>km*km</displayUnits>
       <range scale="LOG">
         <minValue>60</minValue>
@@ -748,7 +928,7 @@
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Average Flash Area (km^2) (5min-1min update)-TT</displayLegend>
+      <displayLegend>${creatingEntity} GLM Average Flash Area (km^2) (5min-1min update)-TT</displayLegend>
       <displayUnits>km*km</displayUnits>
       <range scale="LOG">
         <minValue>60</minValue>
@@ -768,7 +948,7 @@
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Total Optical Energy (fJ) (1min)-TT</displayLegend>
+      <displayLegend>${creatingEntity} GLM Total Optical Energy (fJ) (1min)-TT</displayLegend>
       <displayUnits>J*1.0E-15</displayUnits>
       <range scale="LOG">
         <minValue>0.003</minValue>
@@ -788,7 +968,7 @@
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Total Optical Energy (fJ) (5min-1min update)-TT</displayLegend>
+      <displayLegend>${creatingEntity} GLM Total Optical Energy (fJ) (5min-1min update)-TT</displayLegend>
       <displayUnits label="1e-15J">J*1.0E-15</displayUnits>
       <range scale="LOG">
         <minValue>0.003</minValue>
@@ -808,7 +988,7 @@
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Group Extent Density (1min)-TT</displayLegend>
+      <displayLegend>${creatingEntity} GLM Group Extent Density (1min)-TT</displayLegend>
       <range scale="LINEAR">
         <minValue>0.125</minValue>
         <maxValue>10</maxValue>
@@ -827,7 +1007,7 @@
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Group Extent Density (5min-1min update)-TT</displayLegend>
+      <displayLegend>${creatingEntity} GLM Group Extent Density (5min-1min update)-TT</displayLegend>
       <range scale="LINEAR">
         <minValue>0.125</minValue>
         <maxValue>10</maxValue>
@@ -846,7 +1026,7 @@
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Group Centroid Density (1min)-TT</displayLegend>
+      <displayLegend>${creatingEntity} GLM Group Centroid Density (1min)-TT</displayLegend>
       <range scale="LINEAR">
         <minValue>0.125</minValue>
         <maxValue>10</maxValue>
@@ -865,7 +1045,7 @@
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Group Centroid Density (5min-1min update)-TT</displayLegend>
+      <displayLegend>${creatingEntity} GLM Group Centroid Density (5min-1min update)-TT</displayLegend>
       <range scale="LINEAR">
         <minValue>0.125</minValue>
         <maxValue>10</maxValue>
@@ -884,7 +1064,7 @@
 	  <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Average Flash Area (km^2) (1min)-TT</displayLegend>
+      <displayLegend>${creatingEntity} GLM Average Flash Area (km^2) (1min)-TT</displayLegend>
       <!-- <displayUnits>km*km</displayUnits> -->
       <range scale="LOG">
         <minValue>60</minValue>
@@ -904,7 +1084,7 @@
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Average Flash Area (km^2) (5min-1min update)-TT</displayLegend>
+      <displayLegend>${creatingEntity} GLM Average Flash Area (km^2) (5min-1min update)-TT</displayLegend>
       <displayUnits>km*km</displayUnits>
       <range scale="LOG">
         <minValue>60</minValue>
@@ -923,7 +1103,7 @@
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Minimum Flash Area (km^2) (1min update)-TT</displayLegend>
+      <displayLegend>${creatingEntity} GLM Minimum Flash Area (km^2) (1min update)-TT</displayLegend>
       <displayUnits>km*km</displayUnits>
       <range scale="LOG">
         <minValue>60</minValue>
@@ -944,7 +1124,7 @@
       <creatingEntity>GOES-16</creatingEntity>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} GLM Minimum Flash Area (km^2) (5min-1min update)-TT</displayLegend>
+      <displayLegend>${creatingEntity} GLM Minimum Flash Area (km^2) (5min-1min update)-TT</displayLegend>
       <displayUnits>km*km</displayUnits>
       <range scale="LOG">
         <minValue>60</minValue>
@@ -964,7 +1144,7 @@
       <parameter>Fog_Depth</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} Cloud Thickness (ft)</displayLegend>
+      <displayLegend>${creatingEntity} Cloud Thickness (ft)</displayLegend>
       <displayUnits>ft</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
@@ -982,7 +1162,7 @@
       <parameter>IFR_Fog_Prob</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} IFR Fog Probability (%)</displayLegend>
+      <displayLegend>${creatingEntity} IFR Fog Probability (%)</displayLegend>
       <displayUnits>%</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
@@ -1000,7 +1180,7 @@
       <parameter>MVFR_Fog_Prob</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} MVFR Fog Probability (%)</displayLegend>
+      <displayLegend>${creatingEntity} MVFR Fog Probability (%)</displayLegend>
       <displayUnits>%</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
@@ -1018,7 +1198,7 @@
       <parameter>LIFR_Fog_Prob</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} LIFR Fog Probability (%)</displayLegend>
+      <displayLegend>${creatingEntity} LIFR Fog Probability (%)</displayLegend>
       <displayUnits>%</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>

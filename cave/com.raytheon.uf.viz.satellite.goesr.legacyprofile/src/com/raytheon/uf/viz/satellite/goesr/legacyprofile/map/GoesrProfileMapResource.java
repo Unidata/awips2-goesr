@@ -66,8 +66,7 @@ import com.raytheon.uf.viz.core.rsc.capabilities.DensityCapability;
 import com.raytheon.uf.viz.core.rsc.capabilities.EditableCapability;
 import com.raytheon.uf.viz.core.rsc.capabilities.MagnificationCapability;
 import com.raytheon.viz.ui.input.EditableManager;
-import com.vividsolutions.jts.geom.Coordinate;
-//import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.Coordinate;
 
 /**
  * GOESR Legacy Moisture/Temperature profiles availability resource. Draws

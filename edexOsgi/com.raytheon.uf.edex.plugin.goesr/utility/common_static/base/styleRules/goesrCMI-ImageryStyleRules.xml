@@ -63,6 +63,7 @@
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
+
   <styleRule>
     <paramLevelMatches>
       <parameter>CH-08-6.19um</parameter>
@@ -82,6 +83,7 @@
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
+
   <styleRule>
     <paramLevelMatches>
       <parameter>CH-01-0.47um</parameter>
@@ -104,6 +106,7 @@
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
+
   <styleRule>
     <paramLevelMatches>
       <parameter>CH-04-1.38um</parameter> 
@@ -121,4 +124,5 @@
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
+
 </styleRuleset>

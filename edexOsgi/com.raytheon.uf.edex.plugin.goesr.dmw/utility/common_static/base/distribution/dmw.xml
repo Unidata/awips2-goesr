@@ -15,9 +15,8 @@
     <!-- TOWRdocs POC
         Matt Comerford
     -->
-
 <requestPatterns xmlns:ns2="group">
-    <!-- Raw GOES-R Products -->
+    <!-- GOES-R Products -->
     <regex>^.*(DMW[A-Z0-9]{1,}-M[0-9]C[0-9]{2}).*\.nc$</regex>
     <!-- WMO Header for GOES-R DMW -->
     <regex>^IXTU[8-9]9.*</regex>

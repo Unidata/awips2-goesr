@@ -30,6 +30,8 @@
         version of the file will completely replace a lower priority version
         of the file. 
     -->
+    <!-- Adds second desc for option to specify SST degF, degC in a bundle, per NWS SET. 
+         Updated 8/7/2018 Lee Byerle  -->
 <goesrProductDescriptions>
 
   <default>
@@ -45,12 +47,25 @@
       <variable name="SST" />
 <!--
       <discreteMask name="DQF" value="0" keep="true">
-        <fillByte>-1</fillByte>
+      <fillByte>-1</fillByte>
       </discreteMask>
 -->
     </data>
     <physicalElement>
       <value value="SST" />
+    </physicalElement>
+  </description>
+
+<!-- TOWR-S 1/31/2018 Add addl SST that can be used to display degF in bundle-->
+  <description>
+    <data>
+      <variable name="SST" />
+      <discreteMask name="DQF" value="0" keep="true">
+      <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="SSTF" />
     </physicalElement>
   </description>
  

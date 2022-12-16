@@ -19,14 +19,14 @@
  **/
 package com.raytheon.uf.edex.plugin.goesr.geospatial.envelope;
 
-import javax.measure.unit.SI;
-
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
+import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrSatelliteHeight;
+
+import si.uom.SI;
+import tec.uom.se.unit.MetricPrefix;
 import ucar.nc2.Attribute;
 import ucar.nc2.NetcdfFile;
-
-import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrSatelliteHeight;
 
 /**
  * 
@@ -128,7 +128,7 @@ public abstract class AbstractCenterEnvelopeFactory implements
         envelope.setNy(tileNy);
 
         double orbitalHeight = GoesrSatelliteHeight.getOrbitalHeight(crs,
-                SI.KILOMETER);
+                MetricPrefix.KILO(SI.METRE));
         if (!Double.isNaN(orbitalHeight)) {
             // Geostationary dx/dy hack;
             double dx = envelope.getDx();
