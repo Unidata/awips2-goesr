@@ -103,10 +103,12 @@
         <substitute key="entity" value="GOES%" />  
     </contribute>
 
-    <contribute xsi:type="bundleItem" file="bundles/GCombo_Recipe_RGB_CONUS_5min.xml"
-                menuText="VIS/IR Sandwich (0.64 μm,10.33 μm)" id="goesr-sandwich">
+    <!-- Sandwich RGB from OPG 09/18 -->
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBRecipeCombo.xml"
+                        menuText="VIS/IR Sandwich (0.64 μm,10.33 μm)" id="goesr-sandwich">
         <substitute key="sector0" value="WCONUS"/>
         <substitute key="sector1" value="ECONUS"/>
+        <substitute key="entity" value="GOES%" />
         <substitute key="productName" value="Sandwich RGB" />
         <substitute key="redElement" value="goesrSandwichRed" />
         <substitute key="greenElement" value="goesrSandwichGreen" />
@@ -114,10 +116,6 @@
         <substitute key="redLabel" value="Red" />
         <substitute key="greenLabel" value="Green" />
         <substitute key="blueLabel" value="Blue" />
-        <substitute key="posOffset" value="300"/>
-        <substitute key="negOffset" value="0"/>
-        <substitute key="virtualOffset" value="-60"/>
-        <substitute key="entity" value="GOES%" />
     </contribute>
 
     <contribute xsi:type="satBundleItem" file="bundles/DefaultCONUSSatellite.xml" 

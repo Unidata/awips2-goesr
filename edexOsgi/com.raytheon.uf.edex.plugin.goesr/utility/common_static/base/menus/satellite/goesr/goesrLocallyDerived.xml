@@ -32,7 +32,7 @@
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Split Cloud Top Phase (11.2-8.4 μm)"
         id="goesr-splitcloudtopphase">
         <substitute key="element" value="satSplitCloudTopPhase" />
-        <substitute key="colormap" value="Grid/gridded Data" />
+        <substitute key="colormap" value="Grid/gridded data" />
     </contribute>
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Night Fog (10.3-3.9 μm)" id="goesr-fog">
         <substitute key="element" value="satFog" />
