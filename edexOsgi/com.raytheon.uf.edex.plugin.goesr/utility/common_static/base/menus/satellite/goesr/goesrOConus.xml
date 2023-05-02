@@ -33,11 +33,6 @@
         <substitute key="sectorFD" value="WFD" />
         <substitute key="entity" value="GOES%" />
     </contribute>
-    <contribute xsi:type="subinclude" subMenu="Hawaii" fileName="menus/satellite/goesr/goesrLocalSectorMenu.xml">
-        <substitute key="sector" value="HIREGI" />
-        <substitute key="sectorFD" value="WFD" />
-        <substitute key="entity" value="GOES%" />
-    </contribute>
     <contribute xsi:type="subinclude" subMenu="Puerto Rico" fileName="menus/satellite/goesr/goesrLocalSectorMenu.xml">
         <substitute key="sector" value="PRREGI" />
         <substitute key="sectorFD" value="EFD" />
