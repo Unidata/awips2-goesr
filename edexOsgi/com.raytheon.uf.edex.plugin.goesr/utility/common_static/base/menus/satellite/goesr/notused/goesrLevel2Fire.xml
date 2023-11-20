@@ -23,7 +23,13 @@
         version of the file will completely replace a lower priority version
         of the file. 
     -->
+    <!-- L. Byerle 3/25/2021 Add Fire Mask -->
 <menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Fire Mask" id="goesr-fdc-mask">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="Fire_Mask" />
+        <substitute key="colormap" value="GOES-R/GOESR-L2/fire_mask3" />
+    </contribute>
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Fire Area" id="goesr-fdc-area">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="FDC Area" />

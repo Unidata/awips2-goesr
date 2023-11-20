@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <!--
+        This_software_was_developed_and_/_or_modified_by_Raytheon_Company,
+        pursuant_to_Contract_DG133W-05-CQ-1067_with_the_US_Government.
+        
+        U.S._EXPORT_CONTROLLED_TECHNICAL_DATA
+        This_software_product_contains_export-restricted_data_whose
+        export/transfer/disclosure_is_restricted_by_U.S._law._Dissemination
+        to_non-U.S._persons_whether_in_the_United_States_or_abroad_requires
+        an_export_license_or_other_authorization.
+        
+        Contractor_Name:________Raytheon_Company
+        Contractor_Address:_____6825_Pine_Street,_Suite_340
+        ________________________Mail_Stop_B8
+        ________________________Omaha,_NE_68106
+        ________________________402.291.0100
+        
+        See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
+        further_licensing_information.
+    -->
+    <!-- TOWRdocs Header
+         GOES-R Level2 Full Disk xml menu file.
+    -->
+    <!-- TOWRdocs Description
+         Sub-menus for Cryosphere products
+    -->
+    <!-- TOWRdocs Status
+         9/20/2020 Initial creation
+         11/4/2020 Add virtualOffset for Ice Motion, for pot future use, currently 0.
+         12/4/2022 comments ice motion
+         5/3/2023 activates ice motion menu
+    -->
+    <!-- TOWRdocs POC
+         Lee Byerle 5/3/2023 
+    -->
+<menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Ice Concentration" id="goesr-IceConc">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="IceConc"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Ice Surface Temp" id="goesr-IceTemp">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="IceTemp"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Ice Mask (Day/Night)" id="goesr-IceMask">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="IceMask"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/IceMask_DayNight"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Ice Thickness" id="goesr-IceThick">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="IceThickness"/> 
+        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Ice Age Category 3" id="goesr-Iceage3">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="IceAge3"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/IceAge3"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Ice Age Category 8" id="goesr-Iceage8">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="IceAge8"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/IceAge8"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/goesr-icemotionBundleArrow.xml"
+               menuText="Ice Motion" id="goesIceMotionArrowI">
+        <substitute key="svg" value="IcePlotDesign_arrow.svg"/>
+        <substitute key="plugin" value="dmw" />
+        <substitute key="posOffset" value="0"/>
+        <substitute key="negOffset" value="0"/>
+        <substitute key="virtualOffset" value="0"/>
+        <substitute key="scene" value="Ice_Motion" />
+        <substitute key="density" value="1.25"/>
+        <substitute key="magnify" value="1.25"/>
+    </contribute>  
+
+</menuTemplate>

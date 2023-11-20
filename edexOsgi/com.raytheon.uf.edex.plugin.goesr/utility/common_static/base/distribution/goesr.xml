@@ -56,7 +56,7 @@
     <regex>OR_GLM-L2-GLM</regex>
     <regex>OR_GLM-L3-GLM</regex>
     <!-- WMO headers for derived products -->
-    <regex>^IXT[ABCDEFGHIJKLMNOPQR]</regex>
+    <regex>^IXT..</regex>
     <!-- Cloud top pressure, cloud optical depth, cloud particle size -->
     <regex>^IXT[XYW]01</regex>
     <!-- Himawari Imagery -->

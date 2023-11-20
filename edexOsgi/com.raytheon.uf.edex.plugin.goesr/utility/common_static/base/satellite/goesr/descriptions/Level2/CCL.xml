@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <!--
+        This_software_was_developed_and_/_or_modified_by_Raytheon_Company,
+        pursuant_to_Contract_DG133W-05-CQ-1067_with_the_US_Government.
+        
+        U.S._EXPORT_CONTROLLED_TECHNICAL_DATA
+        This_software_product_contains_export-restricted_data_whose
+        export/transfer/disclosure_is_restricted_by_U.S._law._Dissemination
+        to_non-U.S._persons_whether_in_the_United_States_or_abroad_requires
+        an_export_license_or_other_authorization.
+        
+        Contractor_Name:________Raytheon_Company
+        Contractor_Address:_____6825_Pine_Street,_Suite_340
+        ________________________Mail_Stop_B8
+        ________________________Omaha,_NE_68106
+        ________________________402.291.0100
+        
+        See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
+        further_licensing_information.
+    -->
+    <!-- TOWRdocs Header
+         GOES-R Product Description file
+    -->
+    <!-- TOWRdocs Description
+         GOES-R description configuration.  This file accounts for additional dataset_name
+         combinations for GOES-R derived products:
+
+         "OR" = OE Real-Time Data
+         "OT" = OE Test Data
+         "IR" = ITE Real-Time Data
+         "IT" = ITE Test Data"
+     -->
+    <!-- TOWRdocs Status
+         This file is a modification to the previous baseline file of the same name, which currently
+         accounts for products whose dataset_name begins with "OR".
+         7/25/2023 Total cloud fraction (TCF), commented out currently, Cloud Layer Flag (CL)
+         8/11/2023 add 5 layers
+         8/24/2023 include total cloud fraction (TCF)
+    -->
+    <!-- TOWRdocs POC
+         Lee Byerle 8/24/2023
+    -->
+    <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
+    -->
+<goesrProductDescriptions>
+  <!-- The following acronyms are helpful in understanding this file.
+       CTH  : Cloud Top Height
+       HT   : Height
+       ACHA : AWG Cloud Height Algorithm
+       AWG  : Algorithm Working Group
+       -->
+  <default>
+    <matches>
+      <match pattern="[OD][RT]_ABI-L2-CCL(C|F|M1|M2)-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+        <attribute name="dataset_name" />
+      </match>
+    </matches>
+  </default>
+
+  <description>
+    <data>
+      <variable name="TCF" />
+      <discreteMask name="DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="TCF" />
+    </physicalElement>
+  </description> 
+
+  <description>
+    <data>
+      <variable name="CL" />
+      <discreteMask name="DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="CL" />
+    </physicalElement>
+  </description>
+
+  <description>
+    <data>
+      <variable name="CF1" />
+      <discreteMask name="DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+   <units>
+      <value value="%*1" />
+    </units>
+    <physicalElement>
+      <value value="CF1" />
+    </physicalElement>
+  </description>
+
+  <description>
+    <data>
+      <variable name="CF2" />
+      <discreteMask name="DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+   <units>
+      <value value="%*1" />
+    </units>
+    <physicalElement>
+      <value value="CF2" />
+    </physicalElement>
+  </description>
+
+  <description>
+    <data>
+      <variable name="CF3" />
+      <discreteMask name="DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+   <units>
+      <value value="%*1" />
+    </units>
+    <physicalElement>
+      <value value="CF3" />
+    </physicalElement>
+  </description>
+
+  <description>
+    <data>
+      <variable name="CF4" />
+      <discreteMask name="DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+   <units>
+      <value value="%*1" />
+    </units>
+    <physicalElement>
+      <value value="CF4" />
+    </physicalElement>
+  </description>
+
+  <description>
+    <data>
+      <variable name="CF5" />
+      <discreteMask name="DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+   <units>
+      <value value="%*1" />
+    </units>
+    <physicalElement>
+      <value value="CF5" />
+    </physicalElement>
+  </description>
+
+</goesrProductDescriptions>

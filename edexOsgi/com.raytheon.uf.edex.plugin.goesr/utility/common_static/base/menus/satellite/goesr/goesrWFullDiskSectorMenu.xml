@@ -104,7 +104,7 @@
     </contribute>
     <contribute xsi:type="separator" id="MySeparatorId"/>
 
-        <contribute xsi:type="subinclude" subMenu="Derived Products" fileName="menus/satellite/goesr/goesrLevel2WConus.xml" />
+        <contribute xsi:type="subinclude" subMenu="Derived Products" fileName="menus/satellite/goesr/goesrLevel2WFullDisk.xml" />
         <contribute xsi:type="subinclude" subMenu="Channel Differences" fileName="menus/satellite/goesr/goesrLocallyDerived.xml" />
         <contribute xsi:type="subinclude" subMenu="RGB Composites" fileName="menus/satellite/goesr/goesrRGBComposites.xml" />
         <contribute xsi:type="subinclude" subMenu="RGB Composites With DP Readouts" fileName="menus/satellite/goesr/RGB-DP.xml" />
