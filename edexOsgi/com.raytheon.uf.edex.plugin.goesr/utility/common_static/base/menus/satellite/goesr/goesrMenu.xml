@@ -207,6 +207,7 @@
     <contribute xsi:type="separator" id="MySeparatorId"/>
     <contribute xsi:type="titleItem" titleText="------ GOES-OCONUS ------" id="goesrOconus"/>
     <contribute xsi:type="subinclude" subMenu="GOES OCONUS" fileName="menus/satellite/goesr/goesrOConus.xml"/>    
+    <contribute xsi:type="separator" id="MySeparatorId"/>
 <!--   <contribute xsi:type="titleItem" titleText="-" id="SepOldNewGOESRMenuLine"/> -->
 <!-- Uncomment section below to revert to original goesrMenu precedence -->
 <!--        <contribute xsi:type="subinclude" subMenu="Imagery Channels" fileName="menus/satellite/goesr/goesrBySectorByChannel.xml" />

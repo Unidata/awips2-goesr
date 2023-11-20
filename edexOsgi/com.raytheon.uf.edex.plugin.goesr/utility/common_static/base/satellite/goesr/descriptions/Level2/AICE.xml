@@ -18,6 +18,11 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
+   <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
+    -->
     <!-- TOWRdocs Header
          GOES-R Product Description file
     -->
@@ -31,41 +36,81 @@
          "IT" = ITE Test Data"
      -->
     <!-- TOWRdocs Status
-         This file is a modification to the previous baseline file of the same name, which currently
-         accounts for products whose dataset_name begins with "OR".
+         New L2 desc not in current baseline for GOES Ice products.
     -->
     <!-- TOWRdocs POC
-         Lee Byerle 12/12/2016
-    -->
-    <!-- 
-        This is an absolute override file, indicating that a higher priority 
-        version of the file will completely replace a lower priority version
-        of the file. 
+         Lee Byerle 11/5/2020
     -->
 <goesrProductDescriptions>
   <default>
     <matches>
-      <match pattern="[OI][RT]_ABI-L2-FSC(C|F|M1|M2)-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+      <match pattern="[OD]R_ABI-L2-AICEF-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
         <attribute name="dataset_name" />
       </match>
     </matches>
   </default>
 
+ <description>
+    <dataTime>
+        <formattedRefTime dateFormat="yyyy-MM-dd'T'HH:mm:ss.S'Z'">
+            <attribute name="time_coverage_start"/>
+        </formattedRefTime>
+    </dataTime>
+
+    <source>
+        <attribute name="production_site" />
+    </source>
+
+
+    <creatingEntity>
+        <pattern inputPattern="G(1[678])" outputFormat="GOES-%S">
+            <attribute name="platform_ID" />
+        </pattern>
+    </creatingEntity>
+  </description>
+
+
+
   <description>
     <data>
-      <variable name="FSC" />
+      <variable name="IceConc" />
       <discreteMask name="DQF" value="0" keep="true">
-        <fillByte>125</fillByte>
+        <fillByte>-1</fillByte>
       </discreteMask>
     </data>
-    <!-- The units are percent in the netcdf file, which means values from 0 to 1. The 
-      javax units framework used by awips thinks percent is 0 to 100. So using 
-      %*100 gets the javax units framework to interpret things correctly. -->
-    <units>
-      <value value="%*1" />
-    </units>
+        <units>
+            <value value="%" />
+        </units>
     <physicalElement>
-      <value value="FSC" />
+      <value value="IceConc" />
     </physicalElement>
   </description>
+
+  <description>
+    <data>
+      <variable name="Temp" />
+      <discreteMask name="DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+        <units>
+            <value value="K" />
+        </units>
+    <physicalElement>
+      <value value="IceTemp" />
+    </physicalElement>
+  </description>
+
+  <description>
+    <data>
+      <variable name="Mask" />
+      <discreteMask name="DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask> 
+    </data> 
+    <physicalElement>
+      <value value="IceMask" />
+    </physicalElement>
+  </description>
+
 </goesrProductDescriptions>

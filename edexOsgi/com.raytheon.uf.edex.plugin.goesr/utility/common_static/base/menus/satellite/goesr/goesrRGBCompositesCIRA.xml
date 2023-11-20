@@ -220,6 +220,28 @@
         <substitute key="blueGamma" value="1.0" />
         <substitute key="blueUnit" value="%" />
         </contribute>
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBRecipeGLSL.xml" 
+                    menuText="Day Fire (3.90 μm, 0.87 μm, 0.64 μm)" id="goesr-dayFire">
+        <substitute key="productName" value="Day Fire" />
+        <substitute key="redElement" value="CH-07-3.90um" />
+        <substitute key="greenElement" value="CH-03-0.87um" />
+        <substitute key="blueElement" value="CH-02-0.64um" />
+        <substitute key="redLabel" value="3.90 μm" />
+        <substitute key="greenLabel" value="0.87 μm" />
+        <substitute key="blueLabel" value="0.64 μm" />
+        <substitute key="redMin" value="0.0" />
+        <substitute key="redMax" value="70.0" />
+        <substitute key="redGamma" value="2.5" />
+        <substitute key="redUnit" value="C" />
+        <substitute key="greenMin" value="0.0" />
+        <substitute key="greenMax" value="100.0" />
+        <substitute key="greenGamma" value="1.0" />
+        <substitute key="greenUnit" value="%" />
+        <substitute key="blueMin" value="0.0" />
+        <substitute key="blueMax" value="100.0" />
+        <substitute key="blueGamma" value="1.0" />
+        <substitute key="blueUnit" value="%" />
+        </contribute>
 
         <!-- Sandwich RGB from OPG 09/18 -->
         <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBRecipe.xml"

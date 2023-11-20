@@ -39,6 +39,50 @@
         <substitute key="element" value="CSM" />
         <substitute key="colormap" value="GOES-R/GOESR-L2/CSM" />
     </contribute>
+        <contribute xsi:type="subMenu" menuText="Cloud Layers">
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="All Cloud Layers" id="goesr-cclc">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="CL"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/ccl"/>
+    </contribute>
+      <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Cloud Layer Fraction (Sfc-050)" id="goesr-cf1">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="CF1"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
+      </contribute>
+      <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Cloud Layer Fraction (050-100)" id="goesr-cf2">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="CF2"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
+      </contribute>
+      <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Cloud Layer Fraction (100-180)" id="goesr-cf3">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="CF3"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
+      </contribute>
+      <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Cloud Layer Fraction (180-240)" id="goesr-cf4">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="CF4"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
+      </contribute>
+      <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Cloud Layer Fraction (>= 240)" id="goesr-cf5">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="CF5"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
+      </contribute>
+      <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Total Cloud Fraction" id="goesr-tcf">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="TCF"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
+      </contribute>
+    </contribute>
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Cloud Optical Depth" id="goesr-cod">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="COD" />

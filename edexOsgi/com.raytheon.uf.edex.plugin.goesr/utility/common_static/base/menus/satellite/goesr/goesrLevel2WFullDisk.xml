@@ -39,6 +39,36 @@
         <substitute key="element" value="CSM" />
         <substitute key="colormap" value="GOES-R/GOESR-L2/CSM" />
     </contribute>
+          <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Cloud Layer Fraction (Sfc-5)" id="goesr-cf1">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="CF1"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
+      </contribute>
+      <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Cloud Layer Fraction (5-10)" id="goesr-cf2">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="CF2"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
+      </contribute>
+      <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Cloud Layer Fraction (10-18)" id="goesr-cf3">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="CF3"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
+      </contribute>
+      <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Cloud Layer Fraction (18-24)" id="goesr-cf4">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="CF4"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
+      </contribute>
+      <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Cloud Layer Fraction (>= 24)" id="goesr-cf5">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="CF5"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
+      </contribute>
 <!--
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Cloud Optical Depth" id="goesr-cod">
         <substitute key="entity" value="GOES%" />
@@ -75,8 +105,61 @@
     </contribute>
 
     <contribute xsi:type="separator" id="id"/>
-    <contribute xsi:type="titleItem" titleText="------ Derived Stability Indicies ------" />
+      <contribute xsi:type="separator" id="id"/>
     
+    <contribute xsi:type="subMenu" menuText="Cryosphere (Ice)">
+        <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Ice Concentration" id="goesr-IceConc">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="IceConc"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Ice Surface Temp" id="goesr-IceTemp">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="IceTemp"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Ice Mask (Day/Night)" id="goesr-IceMask">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="IceMask"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/IceMask_DayNight"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Ice Thickness" id="goesr-IceThick">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="IceThickness"/> 
+        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Ice Age Category 3" id="goesr-Iceage3">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="IceAge3"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/IceAge3"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Ice Age Category 8" id="goesr-Iceage8">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="IceAge8"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/IceAge8"/>
+    </contribute>
+<!--  11/15/2023 Tiffany commented out because this data doesn't display
+    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesr-icemotionBundleArrow.xml"
+               menuText="Ice Motion" id="goesIceMotionArrowI">
+        <substitute key="svg" value="IcePlotDesign_arrow.svg"/>
+        <substitute key="plugin" value="dmw" />
+        <substitute key="posOffset" value="0"/>
+        <substitute key="negOffset" value="0"/>
+        <substitute key="virtualOffset" value="0"/>
+        <substitute key="scene" value="Ice_Motion" />
+        <substitute key="density" value="1.25"/>
+        <substitute key="magnify" value="1.25"/>
+    </contribute>  
+     -->
+    </contribute>
+    
+    <contribute xsi:type="subMenu" menuText="Derived Stability Indicies">      
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Derived CAPE" id="goesr-cape">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="CAPE" />
@@ -102,9 +185,8 @@
         <substitute key="element" value="TT" />
         <substitute key="colormap" value="GOES-R/GOESR-L2/color-cape-10" />
     </contribute>
-    
-    <contribute xsi:type="separator" id="id"/>
-    <contribute xsi:type="titleItem" titleText="------ Fire/Hot Spot ------" />
+    </contribute>
+     <contribute xsi:type="subMenu" menuText="Fire/Hot Spot">
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Fire Mask" id="goesr-fdc-mask">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="Fire_Mask" />
@@ -124,6 +206,7 @@
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="FDC Temp" />
         <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
+    </contribute>
     </contribute>
     
     <!-- contribute xsi:type="separator" id="id"/ -->
@@ -171,6 +254,12 @@
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="RRQPE" />
         <substitute key="colormap" value="GOES-R/GOESR-L2/RRQPE1" />
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Snow Cover" id="goesr-fsc">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="FSC"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/FSC"/>
     </contribute>
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Total Precip Water" id="goesr-tpw">
         <substitute key="entity" value="GOES%" />

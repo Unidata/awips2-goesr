@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <!--
+        This_software_was_developed_and_/_or_modified_by_Raytheon_Company,
+        pursuant_to_Contract_DG133W-05-CQ-1067_with_the_US_Government.
+        
+        U.S._EXPORT_CONTROLLED_TECHNICAL_DATA
+        This_software_product_contains_export-restricted_data_whose
+        export/transfer/disclosure_is_restricted_by_U.S._law._Dissemination
+        to_non-U.S._persons_whether_in_the_United_States_or_abroad_requires
+        an_export_license_or_other_authorization.
+        
+        Contractor_Name:________Raytheon_Company
+        Contractor_Address:_____6825_Pine_Street,_Suite_340
+        ________________________Mail_Stop_B8
+        ________________________Omaha,_NE_68106
+        ________________________402.291.0100
+        
+        See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
+        further_licensing_information.
+    -->
+    <!-- TOWRdocs Header
+                  ASCAT winds bundle for svg drawing arrows
+        -->
+    <!-- TOWRdocs Description
+         Scatterometer bundle file for use with svg files.
+    -->
+    <!-- TOWRdocs Status
+         Variant of prev baseline Scatterometer.xml which now employs modified svg to draw arrows,
+         The Ice Motion data are in km/day. Use value in WindSpd column of dmw table for display ranges
+         11/4/2020  Added virtualOffset. Update corresponding menu items for Ice_Motion w/virtualOffset val
+         11/6/2020  Update lowest threshold from 0.0 to 1.0 to match legend
+    -->
+    <!-- TOWRdocs POC
+         Lee Byerle 11/6/2020
+   -->
+<bundle>
+	<displayList>
+		<displays xsi:type="d2DMapRenderableDisplay"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<descriptor xsi:type="mapDescriptor">
+				<resource>
+                    <!-- Beaufort Scale 1 and 2 light air/breeze -->
+                    <loadProperties>
+						<capabilities>
+							<capability xsi:type="colorableCapability" colorAsString="#FFFFFF"/>
+                                                        <capability xsi:type="densityCapability" density="${density}" />
+                                                        <capability xsi:type="magnificationCapability" magnification="${magnify}" />
+						</capabilities>
+					</loadProperties>
+					<properties isSystemResource="false" isBlinking="false"
+						isMapLayer="false" isHoverOn="false"
+						isVisible="true" />
+					<resourceData xsi:type="plotResourceData" plotSource="${orbitalSlot} Ice Motion  1 to  6 km/day"
+						plotModelFile="${svg}" 
+						retrieveData="false" isUpdatingOnMetadataOnly="false"
+						isRequeryNecessaryOnTimeMatch="true">
+						<binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
+						<metadataMap>
+							<mapping key="pluginName">
+								<constraint constraintValue="${plugin}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="scene">
+								<constraint constraintValue="${scene}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="orbitalSlot">
+								<constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="windSpd">
+								<!-- 0.0 to 6.9 converted from knots to m/s 0.0-3.59 -->
+								<constraint constraintValue="1.0--6.97" constraintType="BETWEEN" />
+							</mapping>
+						</metadataMap>
+					</resourceData>
+				</resource>
+				<resource>
+                    <!-- Beaufort Scale 3 gentle breeze -->
+                    <loadProperties>
+						<capabilities>
+							<capability xsi:type="colorableCapability" colorAsString="#808080"/>
+                                                        <capability xsi:type="densityCapability" density="${density}" />
+                                                        <capability xsi:type="magnificationCapability" magnification="${magnify}" />
+						</capabilities>
+					</loadProperties>
+					<properties isSystemResource="false" isBlinking="false"
+						isMapLayer="false" isHoverOn="false"
+						isVisible="true" />
+					<resourceData xsi:type="plotResourceData" plotSource="${orbitalSlot} Ice Motion  7 to 10 km/day"
+						plotModelFile="${svg}" 
+						retrieveData="false" isUpdatingOnMetadataOnly="false"
+						isRequeryNecessaryOnTimeMatch="true">
+						<binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
+						<metadataMap>
+							<mapping key="pluginName">
+								<constraint constraintValue="${plugin}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="scene">
+								<constraint constraintValue="${scene}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="orbitalSlot">
+								<constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="windSpd">
+								<!-- 7 to 10 converted from knots to m/s  3.60-5.65-->
+								<constraint constraintValue="6.99--10.98" constraintType="BETWEEN" />
+							</mapping>
+						</metadataMap>
+					</resourceData>
+				</resource>
+				<resource>
+                    <!-- Beaufort Scale 4 moderate breeze  -->
+                    <loadProperties>
+						<capabilities>
+							<capability xsi:type="colorableCapability" colorAsString="#00CED1"/>
+                                                        <capability xsi:type="densityCapability" density="${density}" />
+                                                        <capability xsi:type="magnificationCapability" magnification="${magnify}" />
+						</capabilities>
+					</loadProperties>
+					<properties isSystemResource="false" isBlinking="false"
+						isMapLayer="false" isHoverOn="false"
+						isVisible="true" />
+					<resourceData xsi:type="plotResourceData" plotSource="${orbitalSlot} Ice Motion 11 to 16 km/day"
+						plotModelFile="${svg}" 
+						retrieveData="false" isUpdatingOnMetadataOnly="false"
+						isRequeryNecessaryOnTimeMatch="true">
+						<binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
+						<metadataMap>
+							<mapping key="pluginName">
+								<constraint constraintValue="${plugin}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="scene">
+								<constraint constraintValue="${scene}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="orbitalSlot">
+								<constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="windSpd">
+								<!-- 11 to 16 converted from knots to m/s  5.66-8.74-->
+								<constraint constraintValue="11.00--16.99" constraintType="BETWEEN" />
+							</mapping>
+						</metadataMap>
+					</resourceData>
+				</resource>
+				<resource>
+                    <!-- Beaufort Scale  5 fresh breeze  -->
+                    <loadProperties>
+						<capabilities>
+							<capability xsi:type="colorableCapability" colorAsString="#4169E1"/>
+                                                        <capability xsi:type="densityCapability" density="${density}" />
+                                                        <capability xsi:type="magnificationCapability" magnification="${magnify}" />
+						</capabilities>
+					</loadProperties>
+					<properties isSystemResource="false" isBlinking="false"
+						isMapLayer="false" isHoverOn="false"
+						isVisible="true" />
+					<resourceData xsi:type="plotResourceData" plotSource="${orbitalSlot} Ice Motion 17 to 21 km/day"
+						plotModelFile="${svg}" 
+						retrieveData="false" isUpdatingOnMetadataOnly="false"
+						isRequeryNecessaryOnTimeMatch="true">
+						<binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
+						<metadataMap>
+							<mapping key="pluginName">
+								<constraint constraintValue="${plugin}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="scene">
+								<constraint constraintValue="${scene}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="orbitalSlot">
+								<constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="windSpd">
+								<!-- 17 to 21 converted from knots to m/s 8.75-11.31 -->
+								<constraint constraintValue="17.00--21.98" constraintType="BETWEEN" />
+							</mapping>
+						</metadataMap>
+					</resourceData>
+				</resource>
+				<resource>
+                    <!-- Beaufort Scale 6 strong breeze  -->
+                    <loadProperties>
+						<capabilities>
+							<capability xsi:type="colorableCapability" colorAsString="#32CD32"/>
+                                                        <capability xsi:type="densityCapability" density="${density}" />
+                                                        <capability xsi:type="magnificationCapability" magnification="${magnify}" />
+						</capabilities>
+					</loadProperties>
+					<properties isSystemResource="false" isBlinking="false"
+						isMapLayer="false" isHoverOn="false"
+						isVisible="true" />
+					<resourceData xsi:type="plotResourceData" plotSource="${orbitalSlot} Ice Motion 22 to 27 km/day"
+						plotModelFile="${svg}" 
+						retrieveData="false" isUpdatingOnMetadataOnly="false"
+						isRequeryNecessaryOnTimeMatch="true">
+						<binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
+						<metadataMap>
+							<mapping key="pluginName">
+								<constraint constraintValue="${plugin}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="scene">
+								<constraint constraintValue="${scene}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="orbitalSlot">
+								<constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="windSpd">
+								<!-- 22 to 27 converted from knots to m/si 11.32-14.39 -->
+								<constraint constraintValue="22.00--27.97" constraintType="BETWEEN" />
+							</mapping>
+						</metadataMap>
+					</resourceData>
+				</resource>
+				<resource>
+                    <!-- Beaufort Scale 7 high wind/gale  -->
+                    <loadProperties>
+						<capabilities>
+							<capability xsi:type="colorableCapability" colorAsString="#00800"/>
+                                                        <capability xsi:type="densityCapability" density="${density}" />
+                                                        <capability xsi:type="magnificationCapability" magnification="${magnify}" />
+						</capabilities>
+					</loadProperties>
+					<properties isSystemResource="false" isBlinking="false"
+						isMapLayer="false" isHoverOn="false"
+						isVisible="true" />
+					<resourceData xsi:type="plotResourceData" plotSource="${orbitalSlot} Ice Motion 28 to 33 km/day"
+						plotModelFile="${svg}" 
+						retrieveData="false" isUpdatingOnMetadataOnly="false"
+						isRequeryNecessaryOnTimeMatch="true">
+						<binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
+						<metadataMap>
+							<mapping key="pluginName">
+								<constraint constraintValue="${plugin}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="scene">
+								<constraint constraintValue="${scene}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="orbitalSlot">
+								<constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="windSpd">
+								<!-- 28 to 33 converted from knots to m/s 14.40-17.48 -->
+								<constraint constraintValue="27.99--33.98" constraintType="BETWEEN" />
+							</mapping>
+						</metadataMap>
+					</resourceData>
+				</resource>
+				<resource>
+                    <!-- Beaufort Scale 8 gale  -->
+                    <loadProperties>
+						<capabilities>
+							<capability xsi:type="colorableCapability" colorAsString="#FFFF00"/>
+                                                        <capability xsi:type="densityCapability" density="${density}" />
+                                                        <capability xsi:type="magnificationCapability" magnification="${magnify}" />
+						</capabilities>
+					</loadProperties>
+					<properties isSystemResource="false" isBlinking="false"
+						isMapLayer="false" isHoverOn="false"
+						isVisible="true" />
+					<resourceData xsi:type="plotResourceData" plotSource="${orbitalSlot} Ice Motion 34 to 40 km/day"
+						plotModelFile="${svg}" 
+						retrieveData="false" isUpdatingOnMetadataOnly="false"
+						isRequeryNecessaryOnTimeMatch="true">
+						<binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
+						<metadataMap>
+							<mapping key="pluginName">
+								<constraint constraintValue="${plugin}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="scene">
+								<constraint constraintValue="${scene}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="orbitalSlot">
+								<constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="windSpd">
+								<!-- 34 to 40 converted from knots to m/s 17.49-21.08 -->
+								<constraint constraintValue="33.99--40.97" constraintType="BETWEEN" />
+							</mapping>
+						</metadataMap>
+					</resourceData>
+				</resource>
+				<resource>
+                    <!-- Beaufort Scale 9 strong gale  -->
+                    <loadProperties>
+						<capabilities>
+							<capability xsi:type="colorableCapability" colorAsString="#FFA500"/>
+                                                        <capability xsi:type="densityCapability" density="${density}" />
+                                                        <capability xsi:type="magnificationCapability" magnification="${magnify}" />
+						</capabilities>
+					</loadProperties>
+					<properties isSystemResource="false" isBlinking="false"
+						isMapLayer="false" isHoverOn="false"
+						isVisible="true" />
+					<resourceData xsi:type="plotResourceData" plotSource="${orbitalSlot} Ice Motion 41 to 47 km/day"
+						plotModelFile="${svg}" 
+						retrieveData="false" isUpdatingOnMetadataOnly="false"
+						isRequeryNecessaryOnTimeMatch="true">
+						<binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
+						<metadataMap>
+							<mapping key="pluginName">
+								<constraint constraintValue="${plugin}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="scene">
+								<constraint constraintValue="${scene}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="orbitalSlot">
+								<constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="windSpd">
+								<!-- 41 to 47 converted from knots to m/s 21.09-24.69-->
+								<constraint constraintValue="40.99--47.99" constraintType="BETWEEN" />
+							</mapping>
+						</metadataMap>
+					</resourceData>
+				</resource>
+				<resource>
+                    <!-- Beaufort Scale 10 storm  -->
+                    <loadProperties>
+						<capabilities>
+							<capability xsi:type="colorableCapability" colorAsString="#8B4513"/>
+                                                        <capability xsi:type="densityCapability" density="${density}" />
+                                                        <capability xsi:type="magnificationCapability" magnification="${magnify}" />
+						</capabilities>
+					</loadProperties>
+					<properties isSystemResource="false" isBlinking="false"
+						isMapLayer="false" isHoverOn="false"
+						isVisible="true" />
+					<resourceData xsi:type="plotResourceData" plotSource="${orbitalSlot} Ice Motion 48 to 55 km/day"
+						plotModelFile="${svg}" 
+						retrieveData="false" isUpdatingOnMetadataOnly="false"
+						isRequeryNecessaryOnTimeMatch="true">
+						<binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
+						<metadataMap>
+							<mapping key="pluginName">
+								<constraint constraintValue="${plugin}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="scene">
+								<constraint constraintValue="${scene}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="orbitalSlot">
+								<constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="windSpd">
+								<!-- 48 to 55 converted from knots to m/s 24.70-28.80 -->
+								<constraint constraintValue="48.08--55.98" constraintType="BETWEEN" />
+							</mapping>
+						</metadataMap>
+					</resourceData>
+				</resource>
+				<resource>
+                    <!-- Beaufort Scale 11 violent storm  -->
+                    <loadProperties>
+						<capabilities>
+							<capability xsi:type="colorableCapability" colorAsString="#800000"/>
+                                                        <capability xsi:type="densityCapability" density="${density}" />
+                                                        <capability xsi:type="magnificationCapability" magnification="${magnify}" />
+						</capabilities>
+					</loadProperties>
+					<properties isSystemResource="false" isBlinking="false"
+						isMapLayer="false" isHoverOn="false"
+						isVisible="true" />
+					<resourceData xsi:type="plotResourceData" plotSource="${orbitalSlot} Ice Motion 56 to 63 km/day"
+						plotModelFile="${svg}" 
+						retrieveData="false" isUpdatingOnMetadataOnly="false"
+						isRequeryNecessaryOnTimeMatch="true">
+						<binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
+						<metadataMap>
+							<mapping key="pluginName">
+								<constraint constraintValue="${plugin}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="scene">
+								<constraint constraintValue="${scene}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="orbitalSlot">
+								<constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="windSpd">
+								<!-- 56 to 63 converted from knots to m/s 28.81-32.91 -->
+								<constraint constraintValue="56.00--63.97" constraintType="BETWEEN" />
+							</mapping>
+						</metadataMap>
+					</resourceData>
+				</resource>
+				<resource>
+                    <!-- Beaufort Scale 12 hurricane force  -->
+                    <loadProperties>
+						<capabilities>
+							<capability xsi:type="colorableCapability" colorAsString="#FF0000"/>
+                                                        <capability xsi:type="densityCapability" density="${density}" />
+                                                        <capability xsi:type="magnificationCapability" magnification="${magnify}" />
+						</capabilities>
+					</loadProperties>
+					<properties isSystemResource="false" isBlinking="false"
+						isMapLayer="false" isHoverOn="false"
+						isVisible="true" />
+					<resourceData xsi:type="plotResourceData" plotSource="${orbitalSlot} Ice Motion    >= 64 km/day"
+						plotModelFile="${svg}" 
+						retrieveData="false" isUpdatingOnMetadataOnly="false"
+						isRequeryNecessaryOnTimeMatch="true">
+						<binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
+						<metadataMap>
+							<mapping key="pluginName">
+								<constraint constraintValue="${plugin}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="scene">
+								<constraint constraintValue="${scene}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="orbitalSlot">
+								<constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
+							</mapping>
+							<mapping key="windSpd">
+								<!-- 64+ converted from knots to m/s 32.92-999.00 -->
+								<constraint constraintValue="63.99--999.00" constraintType="BETWEEN" />
+							</mapping>
+						</metadataMap>
+					</resourceData>
+				</resource>
+			</descriptor>
+		</displays>
+	</displayList>
+</bundle>
