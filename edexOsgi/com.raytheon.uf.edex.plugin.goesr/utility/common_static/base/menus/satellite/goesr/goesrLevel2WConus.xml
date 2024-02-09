@@ -164,10 +164,9 @@
         <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
     </contribute>
     
-    <!-- contribute xsi:type="separator" id="id"/ -->
-    <!-- contribute xsi:type="titleItem" titleText=" Fog and Low Stratus " / -->
+    <contribute xsi:type="separator" id="id"/>
+    <contribute xsi:type="titleItem" titleText=" Fog and Low Stratus " />
     
-<!--
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
                 menuText="LIFR" id="goesr-lifr">
         <substitute key="entity" value="GOES%" />
@@ -192,7 +191,6 @@
         <substitute key="element" value="Fog_Depth"/>
         <substitute key="colormap" value="Grid/gridded data"/>
     </contribute>
--->
     <contribute xsi:type="separator" id="id"/>
     
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Land Surface Temperature" id="goesr-lst">

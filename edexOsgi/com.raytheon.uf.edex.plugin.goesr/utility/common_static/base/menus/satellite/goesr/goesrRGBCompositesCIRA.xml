@@ -282,7 +282,7 @@
 
 <!-- Day Plume RGB -->
        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBRecipeGLSL.xml" 
-            menuText="Day Plume (3.90 μm, 6.19 μm, 0.64 μm)" id="goesr-DayPlume">
+            menuText="Day Rocket Plume (3.90 μm, 6.19 μm, 0.64 μm)" id="goesr-DayPlume">
             <substitute key="productName" value="Day Plume" />
         <substitute key="redElement" value="CH-07-3.90um" />
         <substitute key="greenElement" value="CH-08-6.19um" />
@@ -306,7 +306,7 @@
 
     <!-- Night Plume RGB -->
        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBRecipeGLSL.xml" 
-            menuText="Night Plume (3.90 μm, 6.19 μm, 7.34 μm)" id="goesr-NightPlume">
+            menuText="Night Rocket Plume (3.90 μm, 6.19 μm, 7.34 μm)" id="goesr-NightPlume">
             <substitute key="productName" value="Night Plume" />
         <substitute key="redElement" value="CH-07-3.90um" />
         <substitute key="greenElement" value="CH-08-6.19um" />
