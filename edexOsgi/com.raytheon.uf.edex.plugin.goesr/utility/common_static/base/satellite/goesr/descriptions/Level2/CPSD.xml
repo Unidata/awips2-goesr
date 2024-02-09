@@ -33,9 +33,11 @@
     <!-- TOWRdocs Status
          This file is a modification to the previous baseline file of the same name, which currently
          accounts for products whose dataset_name begins with "OR".
+         9/25/2023 the Variable name will change from PSD to CPS.  Add CPS to account for the switch-over.
+         This change assumes a distinct cut-over (no overlap)
     -->
     <!-- TOWRdocs POC
-         Lee Byerle 12/12/2016
+         Lee Byerle 9/25/2023
     -->
     <!-- 
         This is an absolute override file, indicating that a higher priority 
@@ -50,14 +52,13 @@
       </match>
     </matches>
   </default>
+
   <description>
     <data>
       <variable name="PSD" />
-<!--
       <discreteMask name="DQF" value="0" keep="true">
         <fillByte>-1</fillByte>
       </discreteMask>
--->
     </data>
     <physicalElement>
       <value value="CPSD" />
@@ -66,4 +67,20 @@
       <value value="µm" />
     </units>
   </description>
+
+  <description>
+    <data>
+      <variable name="CPS" />
+      <discreteMask name="DQF" value="0" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="CPSD" />
+    </physicalElement>
+    <units>
+      <value value="µm" />
+    </units>
+  </description>
+
 </goesrProductDescriptions>
