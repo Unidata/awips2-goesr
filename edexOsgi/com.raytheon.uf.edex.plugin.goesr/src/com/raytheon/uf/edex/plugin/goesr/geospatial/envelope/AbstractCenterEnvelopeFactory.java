@@ -24,7 +24,7 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrSatelliteHeight;
 
 import si.uom.SI;
-import tec.uom.se.unit.MetricPrefix;
+import javax.measure.MetricPrefix;
 import ucar.nc2.Attribute;
 import ucar.nc2.NetcdfFile;
 

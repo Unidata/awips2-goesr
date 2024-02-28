@@ -24,11 +24,10 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-
-import org.hibernate.annotations.Index;
 
 import com.raytheon.uf.common.dataplugin.PluginDataObject;
 import com.raytheon.uf.common.dataplugin.annotations.DataURI;
@@ -53,6 +52,7 @@ import com.raytheon.uf.common.serialization.annotations.DynamicSerializeElement;
  * Jul 14, 2016  19051    mcomerford  Added "filter" field (DCS 19051)
  * May 10, 2019  7845     tjensen     Added indexes
  * Aug 03, 2022  8906     mapeters    Don't implement IPersistable
+ * Aug 08, 2022  8892     tjensen     Update indexes for Hibernate 5
  *
  * </pre>
  *
@@ -63,12 +63,11 @@ import com.raytheon.uf.common.serialization.annotations.DynamicSerializeElement;
 @SequenceGenerator(initialValue = 1, name = PluginDataObject.ID_GEN, sequenceName = "dmwseq")
 @Table(name = DMWRecord.PLUGIN_NAME, uniqueConstraints = {
         @UniqueConstraint(columnNames = { "orbitalSlot", "scene", "channel",
-                "refTime", "latitude", "longitude", "filter" }) })
-@org.hibernate.annotations.Table(appliesTo = DMWRecord.PLUGIN_NAME, indexes = {
-        @Index(name = "%TABLE%_filterandwspd_index", columnNames = { "filter", "windspd" }),
-        @Index(name = "%TABLE%_orbitalslot_scene_reftime_idx", columnNames = {
-                "orbitalslot", "scene", "reftime" }),
-        @Index(name = "%TABLE%_scene_reftime_idx", columnNames = { "scene", "reftime" }) })
+                "refTime", "latitude", "longitude", "filter" }) }, indexes = {
+                        @Index(name = "%TABLE%_filterandwspd_index", columnList = "filter, windspd"),
+                        @Index(name = "%TABLE%_orbitalslot_scene_reftime_idx", columnList = "orbitalslot, scene, reftime"),
+                        @Index(name = "%TABLE%_scene_reftime_idx", columnList = "scene, reftime"),
+                        @Index(name = "%TABLE%_stationIndex", columnList = "stationId") })
 @DynamicSerialize
 public class DMWRecord extends PluginDataObject implements ISpatialEnabled {
 
