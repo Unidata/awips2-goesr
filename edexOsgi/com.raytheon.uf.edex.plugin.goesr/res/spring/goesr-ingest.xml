@@ -59,7 +59,7 @@
          <pipeline>
             <bean ref="stringToFile" />
             <bean ref="getFileWithoutWmoHeader" />
-            <split streaming="true" strategyRef="notificationCountStrategy">
+            <split streaming="true" aggregationStrategy="notificationCountStrategy">
               <method ref="goesrDecoder" method="split"/>
               <doTry>
                   <pipeline>
