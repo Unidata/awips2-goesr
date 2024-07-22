@@ -133,39 +133,32 @@
                     through the logs even though valid DMWRecords are being created and ingested properly. 
     -->
     <!-- TOWRdocs Status
-        L. Byerle 11/4/2020. This is a new configuration file for GOES Ice Motion. A channel name required for the plugin. In isatss processing the band_id
-        is specified as 99 for GOES-16 and 89 for GOES-17.
+         oscat winds
     -->
     <!-- TOWRdocs POC
-         Lee Byerle 11/4/220
+         Lee Byerle 1/25/2024
     -->
 <dmwProductDescriptions>
-    <!-- GOES-R Ice Motion-->
-    <description name="Ice_Motion_GOES-R">
-        <lat name="StartLat" />
-        <!--<lat name="EndLat" /> -->
-        <lon name="StartLon" />
-        <!--<lon name="EndLon" /> -->
-        <wspd name="SpeedFinal" />
-        <wdir name="DirFinal" />
-        <dqf name="DQF" /> 
-        <filter name="SpeedFinal" /> 
-        <channel name="band_id" />  
-<!-- store the following float val (e.g. 0) for channel, no band_id avail in ice files -->
-<!--        <channel name="nominal_satellite_subpoint_lat" />   -->
-        <validDQF>0</validDQF>
+    <description name="OSCAT_Winds">
+        <lat name="lat" />
+        <lon name="lon" />
+        <wspd name="wind_speed_sol" />
+        <wdir name="wind_dir_sol" />
+        <dqf name="awips_quality" />
+        <filter name="rain_rate" />
+        <channel name="band_id" />
+        <validDQF>0</validDQF> 
+<!-- Oceansat-3 -->
         <orbitalSlot>
             <attribute name="orbital_slot" />
-        </orbitalSlot> 
+        </orbitalSlot>
+<!-- OSCAT for Wind, AMBIG for Ambiguity -->
         <scene>
-            <value value="Ice_Motion" />
-        </scene>
-<!--        <scene>
             <attribute name="scene_id" />
-        </scene> -->
-        <dataTime epoch="2000-01-01 12:00:00" units="SECONDS">
-            <variable name="Time" />
-        </dataTime> 
+        </scene>
+        <dataTime epoch="2000-01-01 00:00:00" units="SECONDS">
+            <variable name="time" />
+        </dataTime>
         <debug>false</debug>
     </description>
 </dmwProductDescriptions>

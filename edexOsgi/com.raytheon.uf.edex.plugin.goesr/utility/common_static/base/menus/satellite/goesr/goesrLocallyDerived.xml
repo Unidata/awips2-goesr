@@ -29,6 +29,11 @@
         <substitute key="element" value="satMoisture" />
         <substitute key="colormap" value="GOES-R/IR/dust_and_moisture_split_window" />
     </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Split Window Moisture (10.3-12.3 μm)"
+    	id="goesr-graymoisture">
+        <substitute key="element" value="satMoistureGray"/>
+        <substitute key="colormap" value="GOES-R/IR/SWD_Gray"/>
+    </contribute>
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Split Cloud Top Phase (11.2-8.4 μm)"
         id="goesr-splitcloudtopphase">
         <substitute key="element" value="satSplitCloudTopPhase" />

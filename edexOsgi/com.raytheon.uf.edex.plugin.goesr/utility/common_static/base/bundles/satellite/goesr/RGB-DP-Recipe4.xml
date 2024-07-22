@@ -25,7 +25,7 @@ This bundle supports the generation of RGB/L2 derived product combos for E/W FD,
      </loadProperties>
      <resourceData xsi:type="trueColorResourceGroupData">
       <groupName>${sector} ${productName}</groupName>
-      <channelResource channelName="${redElement}">
+      <channelResource channelName="${redLabel}">
        <channel>RED</channel>
        <resourceData xsi:type="satResourceData">
         <metadataMap>
@@ -44,7 +44,7 @@ This bundle supports the generation of RGB/L2 derived product combos for E/W FD,
         </metadataMap>
        </resourceData>
       </channelResource>
-      <channelResource channelName="${greenElement}">
+      <channelResource channelName="${greenLabel}">
        <channel>GREEN</channel>
        <resourceData xsi:type="satResourceData">
         <metadataMap>
@@ -63,7 +63,7 @@ This bundle supports the generation of RGB/L2 derived product combos for E/W FD,
         </metadataMap>
        </resourceData>
       </channelResource>
-      <channelResource channelName="${blueElement}">
+      <channelResource channelName="${blueLabel}">
        <channel>BLUE</channel>
        <resourceData xsi:type="satResourceData">
         <metadataMap>

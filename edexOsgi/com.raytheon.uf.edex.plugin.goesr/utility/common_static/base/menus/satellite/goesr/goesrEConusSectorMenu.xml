@@ -101,6 +101,14 @@
         <substitute key="element" value="CH-16-13.30um" />
         <substitute key="colormap" value="GOES-R/IR/IR_Color_Clouds_Winter" />
     </contribute>
+    <!--G-13 as Fahrenheight-->
+    <contribute xsi:type="titleItem" titleText="------------" id="goesr-Ch13DegF"/>
+
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="10.33 μm Clean Window IR Band (Ch 13) DegF" id="goesr-ch13degf">
+        <substitute key="element" value="abiCh13Alias" />
+        <substitute key="colormap" value="GOES-R/IR/GOES_Band13_IR_DegF" />
+    </contribute>
+    
 
     <contribute xsi:type="separator" id="MySeparatorId"/>
 

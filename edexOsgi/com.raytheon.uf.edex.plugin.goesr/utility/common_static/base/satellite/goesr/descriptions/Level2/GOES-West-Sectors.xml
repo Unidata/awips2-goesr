@@ -33,9 +33,13 @@
     <!-- TOWRdocs Status
          This file is a modification to the previous baseline file of the same name, which currently
          accounts for products whose dataset_name begins with "OR".
+         5/4/21 Meso, AKREGI  matches for isatss geocolor. FullDisk or Full Disk
+         7/5/2022 Update all for G17 or G18. Incl option for PRVIS or GEOC for Meso
+         8/13/2023 enable DR_ for Meso dataset_names, for testing GOES egress data
+         1/4/2024 removed extraneous parens, instead used _G1[78]_
     -->
     <!-- TOWRdocs POC
-         Lee Byerle 12/12/2016
+         Lee Byerle 1/4/2024
     -->
     <!-- 
         This is an absolute override file, indicating that a higher priority 
@@ -62,7 +66,7 @@
         </sectorID>
     </description>
 
-    <description>
+<!--    <description>
         <matches>
             <match pattern="Full Disk">
                 <attribute name="scene_id" />
@@ -71,33 +75,87 @@
         <sectorID>
             <value value="WFD" />
         </sectorID>
-    </description>
+    </description>   -->
+
+<!-- Use below for Geocolor scene_id FullDisk vs Full Disk -->
+  <description>
+    <matches type="OR">
+      <match pattern="Full Disk">
+        <attribute name="scene_id" />
+      </match>
+      <matches>
+        <match pattern="OR_ABI-L3-GEOCF-M\d_G1[78]_T\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+           <attribute name="dataset_name" />
+        </match>
+      </matches>
+    </matches>
+    <sectorID>
+        <value value="WFD" />
+    </sectorID>
+  </description> 
 
     <description>
-        <matches>
-            <match pattern="[OI][RT]_ABI-L2-\w{3,5}M1-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
-                <attribute name="dataset_name" />
-            </match>
-            <match pattern="Mesoscale">
-                <attribute name="scene_id" />
-            </match>
-        </matches>
-        <sectorID>
-            <value value="WMESO-1" />
-        </sectorID>
+    <matches type="OR">
+      <match pattern="OR_ABI-L3-(GEOC|PRVIS)M1-M\d_G1[78]_T\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+        <attribute name="dataset_name" />
+      </match>
+      <matches>
+        <match pattern="[OD][RT]_ABI-L2-\w{3,5}M1-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+           <attribute name="dataset_name" />
+        </match>
+        <match pattern="Mesoscale">
+          <attribute name="scene_id" />
+        </match>
+      </matches>
+    </matches>
+    <sectorID>
+        <value value="WMESO-1" />
+    </sectorID>
     </description>
 
   <description>
-    <matches>
-      <match pattern="[OI][RT]_ABI-L2-\w{3,5}M2-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+    <matches type="OR">
+      <match pattern="OR_ABI-L3-(GEOC|PRVIS)M2-M\d_G1[78]_T\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
         <attribute name="dataset_name" />
       </match>
-      <match  pattern="Mesoscale">
+      <matches>
+        <match pattern="[OD][RT]_ABI-L2-\w{3,5}M2-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+           <attribute name="dataset_name" />
+        </match>
+        <match pattern="Mesoscale">
           <attribute name="scene_id" />
-      </match>
+        </match>
+      </matches>
     </matches>
     <sectorID>
         <value value="WMESO-2" />
     </sectorID>
   </description>
+
+<!--    <description>
+        <matches>
+            <match pattern="OR_ABI-L3-GEOCA-M\d_G1[78]_T\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+                <attribute name="dataset_name" />
+            </match>
+        </matches>
+        <sectorID>
+            <value value="AKREGI" />
+        </sectorID>
+    </description> -->
+
+  <description>
+    <matches>
+      <match pattern="OR_ABI-L3-GEOCA-M\d_G1[78]_T\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+        <attribute name="dataset_name" />
+      </match>
+      <match  pattern="FullDisk">
+          <attribute name="scene_id" />
+      </match>
+    </matches>
+    <sectorID>
+        <value value="AKREGI" />
+    </sectorID>
+  </description>  
+
+
 </goesrProductDescriptions>

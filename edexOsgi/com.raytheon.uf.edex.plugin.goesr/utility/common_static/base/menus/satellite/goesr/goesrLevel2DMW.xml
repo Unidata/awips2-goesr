@@ -123,6 +123,7 @@
         <substitute key="legendp7" value="${orbitalSlot} ${scene} 000-250mb DMW"/>
         <substitute key="prange7" value="0--250" />
         <substitute key="colorp7" value="#ff9696" />
+        <substitute key="plugin" value="dmw"/>
    </contribute>
 
     <contribute xsi:type="separator" id="MySeparatorId"/>
@@ -173,6 +174,7 @@
         <substitute key="ChannelRange" value="2--14" />
         <substitute key="ConstraintType" value="BETWEEN" />
         <substitute key="channel" value="8" />
+        <substitute key="plugin" value="dmw"/>
     </contribute>
 
 </menuTemplate>

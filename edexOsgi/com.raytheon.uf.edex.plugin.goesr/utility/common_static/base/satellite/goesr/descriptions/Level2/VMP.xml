@@ -33,9 +33,10 @@
     <!-- TOWRdocs Status
          This file is a modification to the previous baseline file of the same name, which currently
          accounts for products whose dataset_name begins with "OR".
+         10/20/2021 Update match for reduced level soundings, or full level soundings. Reduced include R
     -->
     <!-- TOWRdocs POC
-         Lee Byerle 12/12/2016
+         Lee Byerle 10/20/2021
     -->
     <!-- 
         This is an absolute override file, indicating that a higher priority 
@@ -45,7 +46,8 @@
 <goesrProductDescriptions>
   <default>
     <matches>
-      <match pattern="[OI][RT]_ABI-L2-LVMPR(C|F|M1|M2)-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+      <match pattern="[OD][RT]_ABI-L2-LVMPR?(C|F|M1|M2)-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+      <!--<match pattern="[OI][RT]_ABI-L2-LVMP(C|F|M1|M2)-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc"> -->
         <attribute name="dataset_name" />
       </match>
     </matches>

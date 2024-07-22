@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<DerivedParameter name="ABI Channel 13 Alias" abbreviation="abiCh13Alias" xmlns:ns2="group" unit="K">
+    <!-- TOWRdocs Header
+        GOES-R Imagery configuration file.
+    -->
+    <!-- TOWRdocs Description
+        ABI Ch13 Alias file
+    -->
+    <!-- TOWRdocs Status
+         Modification of current baseline file to add a parameter name update for use with a DegF display of Ch13.
+         This name is used in the legend of the CH-13 DegF menu button added in goesrByChannel.xml
+         This update is per SET team interaction with DLH to assist with detecting cold (cloud free) ground temps in winter.
+    -->
+    <!-- TOWRdocs POC
+         Lee Byerle 11/13/2019
+   -->
+<DerivedParameter name="CH-13-10.35um DegF" abbreviation="abiCh13Alias" xmlns:ns2="group" unit="K">
     <Method name="Alias">
         <Field abbreviation="CH-13-10.35um" />
     </Method>

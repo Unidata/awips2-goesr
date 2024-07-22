@@ -229,6 +229,12 @@
         <substitute key="element" value="SST" />
         <substitute key="colormap" value="GOES-R/GOESR-L2/GOES-SST-35" />
     </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Snow Cover" id="goesr-fsc">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="FSC"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/FSC"/>
+    </contribute> 
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="RR/QPE" id="goesr-rrqpe">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="RRQPE" />

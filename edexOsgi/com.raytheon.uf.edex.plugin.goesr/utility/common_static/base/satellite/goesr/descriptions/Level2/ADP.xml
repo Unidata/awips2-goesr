@@ -23,24 +23,41 @@
         version of the file will completely replace a lower priority version
         of the file. 
     -->
+<!-- L. Byerle 4/11/2024
+     Updated for Enterprise algorithm implementation. No use of DQF. Allow for test string files, ^DR_ .
+-->
 <goesrProductDescriptions>
   <default>
     <matches>
-      <match pattern="[OI][RT]_ABI-L2-ADP(C|F|M1|M2)-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+      <match pattern="[OD][RT]_ABI-L2-ADP(C|F|M1|M2)-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
         <attribute name="dataset_name" />
       </match>
     </matches>
   </default>
 
-<!--  <description>
-    <data bitset="Aerosol Dust Smoke" />
+
+  <description>
+    <data>
+        <variable name="Dust"/>
+    </data>
     <physicalElement>
-      <value value="ADP" />
+      <value value="Dust" />
     </physicalElement>
-  </description> -->
+  </description>
+
+  <description>
+    <data>
+        <variable name="Smoke"/>
+    </data>
+    <physicalElement>
+      <value value="Smoke" />
+    </physicalElement>
+  </description>
+
 
 <!-- Define good quality low/med/high confidence Dust/Smoke separately  -->
-  <description>
+<!-- pre-Enterprise implementation base. Not valid w/Enterprise ADP -->
+<!--  <description>
     <data>
       <variable name="Dust" />
       <discreteMask name="DQF" value="0" keep="true">
@@ -111,32 +128,80 @@
     <physicalElement>
       <value value="SmokeHigh" />
     </physicalElement>
+  </description> -->
+
+<!-- Enterprise Implementation to Define Low-Med-High,
+     needs further verification  -->
+<!--  <description>
+    <data>
+      <variable name="Dust" />
+      <discreteMask name="DQF" value="223" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="DustLow" />
+    </physicalElement>
   </description>
 
-  <!-- Enable these descriptions to decode individual fields separately. -->
-  <!--<description>
-    <data>
-        <variable name="Aerosol"/>
-    </data>
-    <physicalElement>
-      <value value="Aerosol" />
-    </physicalElement>
-  </description>
   <description>
     <data>
-        <variable name="Dust"/>
+      <variable name="Dust" />
+      <discreteMask name="DQF" value="239" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
     </data>
     <physicalElement>
-      <value value="Dust" />
+      <value value="DustMed" />
     </physicalElement>
   </description>
+
   <description>
     <data>
-        <variable name="Smoke"/>
+      <variable name="Dust" />
+      <discreteMask name="DQF" value="207" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
     </data>
     <physicalElement>
-      <value value="Smoke" />
+      <value value="DustHigh" />
     </physicalElement>
   </description>
-  -->
+
+  <description>
+    <data>
+      <variable name="Smoke" />
+      <discreteMask name="DQF" value="247" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="SmokeLow" />
+    </physicalElement>
+  </description>
+
+  <description>
+    <data>
+      <variable name="Smoke" />
+      <discreteMask name="DQF" value="251" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="SmokeMed" />
+    </physicalElement>
+  </description>
+
+  <description>
+    <data>
+      <variable name="Smoke" />
+      <discreteMask name="DQF" value="243" keep="true">
+        <fillByte>-1</fillByte>
+      </discreteMask>
+    </data>
+    <physicalElement>
+      <value value="SmokeHigh" />
+    </physicalElement>
+  </description>    -->
+
 </goesrProductDescriptions>

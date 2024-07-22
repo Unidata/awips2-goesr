@@ -18,42 +18,23 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
-   <!-- 
-        This is an absolute override file, indicating that a higher priority 
-        version of the file will completely replace a lower priority version
-        of the file. 
-    -->
-    <!-- TOWRdocs Header
-         GOES-R Product Description file
-    -->
-    <!-- TOWRdocs Description
-         GOES-R description configuration.  This file accounts for additional dataset_name
-         combinations for GOES-R derived products:
-
-         "OR" = OE Real-Time Data
-         "OT" = OE Test Data
-         "IR" = ITE Real-Time Data
-         "IT" = ITE Test Data"
-     -->
-    <!-- TOWRdocs Status
-         This file is a modification to the baseline file of the same name, which 
-         accounted for products whose dataset_name begins with "OR".
-         4/20/20 based upon Feb 2020 NESDIS files
-         12/7/2023 Update platform for G19
-    -->
-    <!-- TOWRdocs POC
-         Lee Byerle 12/7/2023
+    <!-- 
+      3/25/2020   Initial Creation 
+      4/4/2020    Update dataset_name
+      11/5/2020   L. Byerle for geographical tailoring by isatss.
+      12/7/2023   Update platform for G19
     -->
 <goesrProductDescriptions>
+
   <default>
     <matches>
-      <match pattern="ABI-L2-GFLS(C|F)-AWIPS-M\d_v\dr\d_g\d\d_s\d{15}_e\d{15}_c\d{15}.nc">
+     <match pattern="uwssec_isatss_L3-TURB(C|F|M1|M2)-M\d_G\d\d_T\d\d_s\d{14}_e\d{14}_c\d{14}.nc"> 
         <attribute name="dataset_name" />
       </match>
     </matches>
   </default>
 
- <description>
+  <description>
     <dataTime>
         <formattedRefTime dateFormat="yyyy-MM-dd'T'HH:mm:ss'Z'">
             <attribute name="time_coverage_start"/>
@@ -64,7 +45,6 @@
         <attribute name="production_site" />
     </source>
 
-
     <creatingEntity>
         <pattern inputPattern="G(1[6789])" outputFormat="GOES-%S">
             <attribute name="platform_ID" />
@@ -72,42 +52,16 @@
     </creatingEntity>
   </description>
 
-
-
+  
   <description>
     <data>
-      <variable name="MVFR_Fog_Prob" />
+      <variable name="probability" />
     </data>
     <physicalElement>
-      <value value="MVFR_Fog_Prob" />
+      <value value="isatss_Turbulence_Probability" />
+      <!--<value value="Turbulence_Probability" /> -->
     </physicalElement>
   </description>
 
-  <description>
-    <data>
-      <variable name="IFR_Fog_Prob" />
-    </data>
-    <physicalElement>
-      <value value="IFR_Fog_Prob" />
-    </physicalElement>
-  </description>
-
-  <description>
-    <data>
-      <variable name="LIFR_Fog_Prob" />
-    </data>
-    <physicalElement>
-      <value value="LIFR_Fog_Prob" />
-    </physicalElement>
-  </description>
-
-  <description>
-    <data>
-      <variable name="Fog_Depth" />
-    </data>
-    <physicalElement>
-      <value value="Fog_Depth" />
-    </physicalElement>
-  </description>
 
 </goesrProductDescriptions>

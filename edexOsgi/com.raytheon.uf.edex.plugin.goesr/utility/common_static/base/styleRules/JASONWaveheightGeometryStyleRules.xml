@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-   <!-- 
-        This is an absolute override file, indicating that a higher priority 
-        version of the file will completely replace a lower priority version
-        of the file. 
+    <!-- 
+        This is an incremental override file, indicating that the files
+        at different localization levels will be combined. 
     -->
     <!-- TOWRdocs Header
         The various Styling Rules defined for Geometries.
@@ -111,13 +110,15 @@
 
     -->
     <!-- TOWRdocs Status
-        This file is new to the 16.4.1 baseline.
-    1/5/2018 L. Byerle, Updated the max wave height to 90ft per previous inputs w/OPC developers.
-    7/17/2018 L. Byerle, Updated path to the default colormap (VTRSB) for consistency w/GOES-R products map location, same name,
-                         instead of Sat/GOESR-L2/VTRSB
+        11/5/2020
+        Updates for new file names in Jason-3 files for GDF-F format
+        Changes are source is no longer radar altimeter, but becomes Jason-3 (the global attr of source in the new files).
+        Product does not change. The attributes change to match that of the description file (see /dbgeo/descriptions/JASON_Waveheight.xml).
+        The menu item must also be updated to reflect new source of Jason-3.
+         
     -->
     <!-- TOWRdocs POC
-        Matt Comerford
+        Lee Byerle 11/5/2020
     -->
 
 <styleRuleset>
@@ -127,10 +128,15 @@
 
         <!-- MatchCriteria (paramLevelMatches extends MatchCriteria) -->
         <geoDataMatches>
-            <source>radar altimeter</source>
+            <source>Jason-3</source>
+            <!--<source>Processing Baseline F v1.0</source> -->
+            <product>JASON Altimetry</product>
+            <attribute>data_01/ku/swh_ocean</attribute>
+            <attribute>data_01/ku/ssha</attribute>
+            <!--<source>radar altimeter</source>
             <product>JASON Altimetry</product>
             <attribute>swh_ku</attribute>
-            <attribute>ssha</attribute>
+            <attribute>ssha</attribute> -->
         </geoDataMatches>
 
         <!-- ImagePreferences -->
@@ -138,27 +144,27 @@
 
             <!-- GeometryPreferences -->
             <lineWidthFloatAtt>
-                <name>swh_ku</name>
+                <name>data_01/ku/swh_ocean</name>
             </lineWidthFloatAtt>
             <sampleCutoffFloatAtt>
-                <name>swh_ku</name>
+                <name>data_01/ku/swh_ocean</name>
             </sampleCutoffFloatAtt>
             <lineColorFloatAtt>
-                <name>swh_ku</name>
+                <name>data_01/ku/swh_ocean</name>
             </lineColorFloatAtt>
             <minPointMag>1.0</minPointMag>
             <maxPointMag>2.5</maxPointMag>
             <pointDisplay>DISC</pointDisplay>
 
             <attributeConvert>
-                <dataName>swh_ku</dataName>
+                <dataName>data_01/ku/swh_ocean</dataName>
                 <dataUnits>m</dataUnits>
                 <displayName>KU Band Significant Waveheight
                 </displayName>
                 <displayUnits>ft</displayUnits>
             </attributeConvert>
             <attributeConvert>
-                <dataName>ssha</dataName>
+                <dataName>data_01/ku/ssha</dataName>
                 <dataUnits>m</dataUnits>
                 <displayName>Sea Surface Height Anomaly</displayName>
                 <displayUnits>ft</displayUnits>
@@ -167,19 +173,17 @@
             <!-- GeometryPreferences -->
 
             <!-- The Colormap to load for the resource -->
-            <defaultColormap>GOES-R/GOESR-L2/VTRSB</defaultColormap>
+            <defaultColormap>Sat/GOESR-L2/VTRSB</defaultColormap>
 
             <!-- Range Scale of the Colormap -->
             <range scale="LINEAR">
                 <minValue>-5</minValue>
                 <maxValue>90</maxValue>
-<!--                <maxValue>40</maxValue> -->
             </range>
 
             <!-- Labels to apply to the Colormap -->
             <colorbarLabeling>
                 <values>-5 10 20 30 40 50 60 70 80</values>
-<!--                <values>-5 5 15 25 35</values> -->
             </colorbarLabeling>
 
             <!-- SamplePreferences -->

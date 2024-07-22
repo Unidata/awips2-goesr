@@ -18,10 +18,81 @@
         See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
         further_licensing_information.
     -->
-   <!--
-        This is an incremental override file, indicating that the files
-        at different localization levels will be combined.
+   <!-- 
+        This is an absolute override file, indicating that a higher priority 
+        version of the file will completely replace a lower priority version
+        of the file. 
     -->
+   <!-- TOWRdocs Header
+        GOES-R cloud and moisture imagery (CMI) style rules.
+   -->
+   <!-- TOWRdocs Description
+        This file sets GOES-R CMI style rules, including display parameters, legends, and units. It
+        is an update to the baseline file of the same name.  This file has the following changes/additions:
+
+        Instructions are included below to remove IRPixel piecewise linear scaling for the IR channels, used
+        traditionally with the GOES satellites.  Through removing/commenting out the
+        colorMapUnits of "IRPixel", no units will be set and linear mapping will take place. This is currently
+        commented out in this file for the IR channels 7, 11, 12, 13, 14, 15, and 16.
+
+        Additional colormaps may be chosen instead of the ones pointed to, below. This can be done by
+        right-clicking the title of the product at the bottom of the CAVE screen.  Select "Change Color Map." 
+        Under "Set Color Table Range" press the entry that appears and there will be a pull-down of options. 
+        Select "site" and then your site 3-letter identifier, then "Sat", then "IR" (or "VIS"), and select
+        the desired color map. Additional color map options are commented out below, and can be implemented
+        through edits to this file.
+        
+        The VIS and Near IR channels are updated to display reflectance percentages rather than counts
+        by adding in a displayUnits specifier not set in the baseline.  This value is now set to percent,
+        and the the min/max range is modified from 0-4096 (counts) to 0-100%. 
+
+        Channels 1-6 use the VIS_gray_sq-root-12.cmap
+        Channel 7    uses the enhanced rainbow warmer yellow cmap
+        Channels 8-10 instead of the baseline  WV/CIMSS_WV,
+            uses ramsdis_WV_12bit (IRPixel settings are off/commented out)
+            The path to to this color map is in the Sat/IR dir (1/10/2017)
+        Channels 11-16 uses IR_Color_Clouds_Winter  (IRPixel
+            settings are off/commented out)
+            The path to IR_Color_Clouds_Winter is in the Sat/IR dir
+   
+        For more information on the colormaps, see the descriptions provided in the
+        .cmap files, in the /common_static/site/your_site_name/colormaps directory.
+
+        This file can be edited from the localization perspective in CAVE.
+        CAVE needs to be restarted in order for changes in this file to take affect.
+        Contributors: Satellite Enhancement Team.
+   -->
+   <!-- TOWRdocs Status
+        This file is a modification a previous baseline CMI style rule file of the same name. 
+    Updated 1/10/17 for Ch8-10 as ramsdis WV 12bit colormap
+    3/27/2017 Default Ch 07 Color table to enhanced-rainbow-11
+    3/27/2017 adds GOES-R sub dir, and removes Sat subdir
+        4/27/2017 adds style rules for the split window channel difference
+                  entitled satMoisture, defined in derived parameters
+                  points to new dust_and_moisture_split_window colormap 
+    4/28/2017 increases upper limit for CH-07 to 127C for use w/new color map
+              entitled enhanced-rainbow-warmer_yellow
+        5/31/2017 Adds style rule for the Sat Fog Channel Difference.  The baseline
+              sat fog derived parameters uses  default grid colormap and there is
+          no defined style rule for it.  This entry adds a new colormap, fogdiff_blue
+          and a range from -12C to 12C
+        7/21/2017 Increased reflectance from 100 to 118 for VIS Channels per SET
+        9/8/2017  Adds Split WV band difference style rules approved by SET
+        10/25/2017  Reflectance values are increased to max at 130 percent to match new implementation
+        10/25/2017  Reflectance max value for band 4 is modified (lowered) to better highlight detected features
+        10/25/2017  Update max for Bands 1,2,3,5,6 from 118 to 130 percent, and band 4 from 118 to 50 percent
+        10/30/2017  Adds new Channel differences per SET.
+        11/1/2017  Adds new Channel differences per SET. 
+        1/5/2018   Adds colorbar labeling to CH 1-3,5-6, and Ch 4.
+        7/5/2019   Remove 8 locally derived that are instead in goesrDerivedImageryStyleRules.xml, avoid duplicates
+        11/13/2019 Add DegF for CH13
+        12/17/2019 Add DegF colorbar labels
+        12/17/2021 Add displayLegend to provide Sector
+        2/5/2022 Fix Band 13 degF Legend
+   -->
+   <!-- TOWRdocs POC
+        Lee Byerle 2/5/2022
+   -->
 <styleRuleset>
   <!-- GOES-R CMI Satellite Rules -->
   <styleRule>
@@ -34,7 +105,7 @@
       <parameter>CH-16-13.30um</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} ${physicalElement}</displayLegend>
+      <displayLegend>${creatingEntity} ${sectorID} ${physicalElement}</displayLegend>
       <displayUnits>C</displayUnits>
       <range scale="LINEAR">
         <minValue>55</minValue>
@@ -51,7 +122,7 @@
       <parameter>CH-07-3.90um</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} ${physicalElement}</displayLegend>
+      <displayLegend>${creatingEntity} ${sectorID} ${physicalElement}</displayLegend>
       <displayUnits>C</displayUnits>
       <range scale="LINEAR">
         <minValue>127</minValue>
@@ -71,7 +142,7 @@
       <parameter>CH-10-7.34um</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} ${physicalElement}</displayLegend>
+      <displayLegend>${creatingEntity} ${sectorID} ${physicalElement}</displayLegend>
       <displayUnits>C</displayUnits>
       <range scale="LINEAR">
         <minValue>55</minValue>
@@ -90,11 +161,10 @@
       <parameter>CH-02-0.64um</parameter>
       <parameter>CH-03-0.87um</parameter>
       <parameter>CH-05-1.61um</parameter>
-      <parameter>CH-05-1.61um</parameter>
       <parameter>CH-06-2.25um</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} ${physicalElement}</displayLegend>
+      <displayLegend>${creatingEntity} ${sectorID} ${physicalElement}</displayLegend>
       <displayUnits>%</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
@@ -112,7 +182,7 @@
       <parameter>CH-04-1.38um</parameter> 
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>GOES-${sectorID} ${physicalElement}</displayLegend>
+      <displayLegend>${creatingEntity} ${sectorID} ${physicalElement}</displayLegend>
       <displayUnits>%</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
@@ -121,6 +191,25 @@
       <defaultColormap>GOES-R/VIS/VIS_gray_sq-root-12</defaultColormap>
       <colorbarLabeling>
         <values>10 20 30 40 50</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
+<!--GOES Band 13 in DegF-->
+<styleRule>
+    <paramLevelMatches>
+      <parameter>abiCh13Alias</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} CH-13-10.35um DegF</displayLegend>
+      <displayUnits>F</displayUnits>
+      <range scale="LINEAR">
+        <minValue>131</minValue>
+        <maxValue>-164</maxValue>
+      </range>
+      <defaultColormap>GOES-R/IR/GOES_Band13_IR_DegF</defaultColormap>
+      <colorbarLabeling>
+        <values>100 50 32 0 -20 -50 -100 -150</values>
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
