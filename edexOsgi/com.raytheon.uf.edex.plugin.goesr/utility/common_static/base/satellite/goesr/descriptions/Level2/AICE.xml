@@ -37,9 +37,10 @@
      -->
     <!-- TOWRdocs Status
          New L2 desc not in current baseline for GOES Ice products.
+         12/7/2023 Update platform for G19
     -->
     <!-- TOWRdocs POC
-         Lee Byerle 11/5/2020
+         Lee Byerle 12/7/2023
     -->
 <goesrProductDescriptions>
   <default>
@@ -63,7 +64,7 @@
 
 
     <creatingEntity>
-        <pattern inputPattern="G(1[678])" outputFormat="GOES-%S">
+        <pattern inputPattern="G(1[6789])" outputFormat="GOES-%S">
             <attribute name="platform_ID" />
         </pattern>
     </creatingEntity>

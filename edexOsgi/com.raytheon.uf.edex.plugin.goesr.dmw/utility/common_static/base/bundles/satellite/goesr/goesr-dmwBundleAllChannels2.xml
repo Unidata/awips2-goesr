@@ -45,10 +45,12 @@
     -->
     <!-- TOWRdocs Status
         This file was modeled after the baseline 16.2.2 file /bundles/satellite/goesr/DerivedMotionWinds.xml, with slight modifications made to the queries and query constraints.
-        10/18/20 Display channel range, no binOffset, used for distinct Sector 
+        5/6/2020 Removed un-needed channel reference as string in the legend. Adds binOffset
+        10/18/20 Display channel range 
+        10/22/20 Add virtualOffset to get proper legend display/CONUS/PACUS only
     -->
     <!-- TOWRdocs POC
-        Lee Byerle 10/18/20
+        Lee Byerle 10/22/20
     -->
 
 <bundle>
@@ -65,12 +67,10 @@
                     </loadProperties>
                     <resourceData xsi:type="windPlotResourceData" legend="${legend} wspd &lt; 30 kts"
                         windFile="dmw_wind.xml" baseDensity="2.0">
+                        <binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
                         <metadataMap>
                             <mapping key="pluginName">
                                 <constraint constraintValue="${plugin}" constraintType="EQUALS" />
-                            </mapping>
-                           <mapping key="orbitalSlot">
-                                <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="scene">
                                 <constraint constraintValue="${scene}" constraintType="EQUALS" />
@@ -96,12 +96,10 @@
                     </loadProperties>
                     <resourceData xsi:type="windPlotResourceData" legend="${legend} 30 &lt;= wspd &lt; 50 kts"
                         windFile="dmw_wind.xml" baseDensity="2.0">
+                        <binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
                         <metadataMap>
                             <mapping key="pluginName">
                                 <constraint constraintValue="${plugin}" constraintType="EQUALS" />
-                            </mapping>
-                           <mapping key="orbitalSlot">
-                                <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="scene">
                                 <constraint constraintValue="${scene}" constraintType="EQUALS" />
@@ -127,12 +125,10 @@
                     </loadProperties>
                     <resourceData xsi:type="windPlotResourceData" legend="${legend} wspd &gt; 50 kts"
                         windFile="dmw_wind.xml" baseDensity="2.0">
+                        <binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
                         <metadataMap>
                             <mapping key="pluginName">
                                 <constraint constraintValue="${plugin}" constraintType="EQUALS" />
-                            </mapping>
-                           <mapping key="orbitalSlot">
-                                <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="scene">
                                 <constraint constraintValue="${scene}" constraintType="EQUALS" />

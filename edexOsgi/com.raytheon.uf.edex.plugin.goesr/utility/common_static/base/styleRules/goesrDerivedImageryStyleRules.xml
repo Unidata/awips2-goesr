@@ -22,6 +22,12 @@
         This is an incremental override file, indicating that the files
         at different localization levels will be combined.
     -->
+    <!-- L. Byerle 12/29/2021 add displayLegend. Over-writes the default legend which uses
+         the DerviedParameter name. Note that satCloudPhase and satSnow are active in menu.
+         These parameters are used in the GOES locally derived menus (not avail via product browser).
+         This file updates the base styleRule file of the same name.
+         L. Byerle 4/14/2024 adds SWD_Gray and Split Window Moisture
+-->
 <styleRuleset>
   <!-- GOES-R Derived Satellite Rules -->
 <styleRule>
@@ -29,6 +35,7 @@
       <parameter>satMoisture</parameter>
     </paramLevelMatches>
     <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} Split Window [10.3-12.3 um]</displayLegend>
       <displayUnits>K</displayUnits>
       <range scale="LINEAR">
         <minValue>-15</minValue>
@@ -40,17 +47,37 @@
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
+
+<styleRule>
+    <paramLevelMatches>
+      <parameter>satMoistureGray</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} Split Window Moisture [10.3-12.3 um]</displayLegend>
+      <displayUnits>K</displayUnits>
+      <range scale="LINEAR">
+        <minValue>-3</minValue>
+        <maxValue>10</maxValue>
+      </range>
+      <defaultColormap>GOES-R/IR/SWD_Gray</defaultColormap>
+      <colorbarLabeling>
+        <values>-3 -2 -1 0 1 2 3 4 5 6 7 8 9 10</values>
+      </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
     <styleRule>
         <paramLevelMatches>
             <parameter>satCloudPhase</parameter>
         </paramLevelMatches>
         <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} Satellite Cloud Phase [8.5-11.2 um]</displayLegend>
             <displayUnits label="C">K</displayUnits>
             <range scale="LINEAR">
                 <minValue>-8.0</minValue>
                 <maxValue>24.0</maxValue>
             </range>
-            <defaultColormap>Grid/Gridded Data</defaultColormap>
+            <defaultColormap>Grid/gridded data</defaultColormap>
             <colorbarLabeling>
                 <values>-5 0 5 10 15 20</values>
             </colorbarLabeling>
@@ -59,9 +86,9 @@
 <styleRule>
     <paramLevelMatches>
       <parameter>satFog</parameter>
-      <parameter>satFog2</parameter>
     </paramLevelMatches>
     <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} Night Fog [10.3-3.9 um]</displayLegend>
       <displayUnits>K</displayUnits> 
       <range scale="LINEAR">
         <minValue>-15</minValue>
@@ -78,6 +105,7 @@
       <parameter>satFog2</parameter>
     </paramLevelMatches>
     <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} Night Fog [11.2-3.9 um]</displayLegend>
       <displayUnits>K</displayUnits> 
       <range scale="LINEAR">
         <minValue>-15</minValue>
@@ -94,12 +122,13 @@
       <parameter>satDayFog</parameter>
     </paramLevelMatches>
     <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} Day Fog [3.9-10.3 um]</displayLegend>
       <displayUnits>K</displayUnits> 
       <range scale="LINEAR">
         <minValue>-5</minValue>
         <maxValue>60</maxValue>
       </range>
-      <defaultColormap>Grid/Gridded Data</defaultColormap>
+      <defaultColormap>Grid/gridded data</defaultColormap>
       <colorbarLabeling>
         <values>-5 0 5 10 20 30 40 50 </values>
       </colorbarLabeling>
@@ -110,12 +139,13 @@
       <parameter>SplitWV</parameter>
     </paramLevelMatches>
     <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} Split Water Vapor [6.19-7.34 um]</displayLegend>
       <displayUnits>K</displayUnits>
       <range scale="LINEAR">
         <minValue>-35</minValue>
         <maxValue>5</maxValue>
       </range>
-      <defaultColormap>Grid/Gridded Data</defaultColormap>
+      <defaultColormap>Grid/gridded data</defaultColormap>
       <colorbarLabeling>
         <values>-35 -25 -15 -5 0 5 </values>
       </colorbarLabeling>
@@ -126,12 +156,13 @@
       <parameter>satSplitOzone</parameter>
     </paramLevelMatches>
     <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} Split Ozone [9.6-10.3 um]</displayLegend>
       <displayUnits>K</displayUnits>
       <range scale="LINEAR">
         <minValue>-45</minValue>
         <maxValue>5</maxValue>
       </range>
-      <defaultColormap>Grid/Gridded Data</defaultColormap>
+      <defaultColormap>Grid/gridded data</defaultColormap>
       <colorbarLabeling>
         <values>-45 -35 -25 -15 -5 0 5 </values>
       </colorbarLabeling>
@@ -142,12 +173,13 @@
       <parameter>satSplitCloudTopPhase</parameter>
     </paramLevelMatches>
     <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} Split Cloud Top Phase [11.2-8.4 um]</displayLegend>
       <displayUnits>K</displayUnits>
       <range scale="LINEAR">
         <minValue>-10</minValue>
         <maxValue>25</maxValue>
       </range>
-      <defaultColormap>Grid/Gridded Data</defaultColormap>
+      <defaultColormap>Grid/gridded data</defaultColormap>
       <colorbarLabeling>
         <values>-5 0 5 10 15 20</values>
       </colorbarLabeling>
@@ -158,12 +190,13 @@
       <parameter>satSplitSnow</parameter>
     </paramLevelMatches>
     <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} Split Snow [1.61-0.64 um]</displayLegend>
       <displayUnits>%</displayUnits> 
       <range scale="LINEAR">
         <minValue>-75</minValue>
         <maxValue>25</maxValue>
       </range>
-      <defaultColormap>Grid/Gridded Data</defaultColormap>
+      <defaultColormap>Grid/gridded data</defaultColormap>
       <colorbarLabeling>
         <values>-70 -60 -50 -40 -30 -20 -10 0 10 20 </values>
       </colorbarLabeling>
@@ -174,6 +207,7 @@
       <parameter>satSplitFire</parameter>
     </paramLevelMatches>
     <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} Split Fire [2.24-1.61 um]</displayLegend>
       <displayUnits>%</displayUnits> 
       <range scale="LINEAR">
         <minValue>50</minValue>
@@ -187,30 +221,28 @@
   </styleRule>
     <styleRule>
         <paramLevelMatches>
-            <parameter>satSnow</parameter>
             <parameter>satVegetation</parameter>
         </paramLevelMatches>
         <imageStyle>
+            <displayLegend>${creatingEntity} ${sectorID} Vegetation [0.64-0.87 um]</displayLegend>
             <range scale="LINEAR">
                 <minValue>-1300.0</minValue>
                 <maxValue>300.0</maxValue>
             </range>
-            <defaultColormap>Grid/Gridded Data</defaultColormap>
+            <defaultColormap>Grid/gridded data</defaultColormap>
         </imageStyle>
     </styleRule>
-   <styleRule>
+    <styleRule>
         <paramLevelMatches>
-            <parameter>satNDVI</parameter>
+            <parameter>satSnow</parameter> 
         </paramLevelMatches>
         <imageStyle>
+            <displayLegend>${creatingEntity} ${sectorID} Satellite Snow [0.64-1.61 um]</displayLegend>
             <range scale="LINEAR">
-                <minValue>-1.0</minValue>
-                <maxValue>1.0</maxValue>
+                <minValue>-1300.0</minValue>
+                <maxValue>300.0</maxValue>
             </range>
-            <defaultColormap>GOES-R/IR/NDVI</defaultColormap>
-            <colorbarLabeling>
-            <values>-1 -0.5 -0.25 -0.10 0.00 0.25 0.50 0.75 1.00</values>
-            </colorbarLabeling>
+            <defaultColormap>Grid/gridded data</defaultColormap>
         </imageStyle>
     </styleRule>
    <styleRule>
@@ -218,6 +250,7 @@
             <parameter>satNDVI</parameter>
         </paramLevelMatches>
         <imageStyle>
+            <displayLegend>${creatingEntity} ${sectorID} Normalized Difference Vegetation Index</displayLegend>
             <range scale="LINEAR">
                 <minValue>-1.0</minValue>
                 <maxValue>1.0</maxValue>

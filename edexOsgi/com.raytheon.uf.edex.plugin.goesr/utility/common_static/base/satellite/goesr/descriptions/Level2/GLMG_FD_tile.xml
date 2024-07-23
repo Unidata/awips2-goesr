@@ -39,17 +39,34 @@
                  7/28/20   Update time date format
                  8/29/20   Tiles Add 5-min ave
                  9/12/20   Fix TOE units to nJ
+                 9/16/22   Account for 1-min prod GLMFD, and other dev-ops path _GLM-L[23]
+                           Updates the default matches only.
+                 12/7/2023 Update platform for G19
    -->
     <!-- TOWRdocs POC
-         Lee Byerle 9/12/20
+         Lee Byerle 12/7/2023
     -->
 <goesrProductDescriptions>
 
-  <default>
+<!--  <default>
     <matches>
      <match pattern="[OI][RT]_GLM-L[23]-GLM(C|F|M1|M2)-M\d_G\d\d_T\d\d_e\d{14}.nc"> 
         <attribute name="dataset_name" />
       </match>
+    </matches>
+  </default> -->
+
+
+  <default>
+    <matches type="OR">
+       <match pattern="[OD][RT]_GLMFD-\d\d\d-B\d\d-M\dC\d\d-T\d\d\d_G\d\d_s\d{13}_c\d{13}.nc"> 
+          <attribute name="dataset_name" />
+       </match>
+     <matches>
+       <match pattern="[OI][RT]_GLM-L[23]-GLM(C|F|M1|M2)-M\d_G\d\d_T\d\d_e\d{14}.nc">  
+          <attribute name="dataset_name" />
+       </match>
+     </matches>
     </matches>
   </default>
 
@@ -65,7 +82,7 @@
     </source>
 
     <creatingEntity>
-        <pattern inputPattern="G(1[678])" outputFormat="GOES-%S">
+        <pattern inputPattern="G(1[6789])" outputFormat="GOES-%S">
             <attribute name="platform_ID" />
         </pattern>
     </creatingEntity>

@@ -29,6 +29,7 @@
          of assigned to colorAsString refers to the distinct color for this pressure level display.
          This file is contributed by Bill Line of WFO Pueblo.
          L. Byerle 6/5/20 used for selecting multiple pressures at once
+         L. Byerle 10/22/20 add a virtualOffset/binOffset tag.  virtualOffset to -60, neg 0, pos 900 spec to CONUS-PACUS
     -->
 <bundle>
     <displayList>
@@ -44,12 +45,10 @@
                     </loadProperties>
                     <resourceData xsi:type="windPlotResourceData" legend="${legendp1}"
                         windFile="dmw_wind.xml" baseDensity="2.0">
+                        <binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
                         <metadataMap>
                             <mapping key="pluginName">
                                 <constraint constraintValue="${plugin}" constraintType="EQUALS" />
-                            </mapping>
-                            <mapping key="orbitalSlot">
-                                <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="scene">
                                 <constraint constraintValue="${scene}" constraintType="EQUALS" />
@@ -75,12 +74,10 @@
                     </loadProperties>
                     <resourceData xsi:type="windPlotResourceData" legend="${legendp2}"
                         windFile="dmw_wind.xml" baseDensity="2.0">
+                       <binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
                         <metadataMap>
                             <mapping key="pluginName">
                                 <constraint constraintValue="${plugin}" constraintType="EQUALS" />
-                            </mapping>
-                            <mapping key="orbitalSlot">
-                                <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="scene">
                                 <constraint constraintValue="${scene}" constraintType="EQUALS" />
@@ -106,12 +103,10 @@
                     </loadProperties>
                     <resourceData xsi:type="windPlotResourceData" legend="${legendp3}"
                         windFile="dmw_wind.xml" baseDensity="2.0">
+                       <binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
                         <metadataMap>
                             <mapping key="pluginName">
                                 <constraint constraintValue="${plugin}" constraintType="EQUALS" />
-                            </mapping>
-                            <mapping key="orbitalSlot">
-                                <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="scene">
                                 <constraint constraintValue="${scene}" constraintType="EQUALS" />
@@ -137,12 +132,10 @@
                     </loadProperties>
                     <resourceData xsi:type="windPlotResourceData" legend="${legendp4}"
                         windFile="dmw_wind.xml" baseDensity="2.0">
+                       <binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
                         <metadataMap>
                             <mapping key="pluginName">
                                 <constraint constraintValue="${plugin}" constraintType="EQUALS" />
-                            </mapping>
-                            <mapping key="orbitalSlot">
-                                <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="scene">
                                 <constraint constraintValue="${scene}" constraintType="EQUALS" />
@@ -168,12 +161,10 @@
                     </loadProperties>
                     <resourceData xsi:type="windPlotResourceData" legend="${legendp5}"
                         windFile="dmw_wind.xml" baseDensity="2.0">
+                       <binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
                         <metadataMap>
                             <mapping key="pluginName">
                                 <constraint constraintValue="${plugin}" constraintType="EQUALS" />
-                            </mapping>
-                            <mapping key="orbitalSlot">
-                                <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="scene">
                                 <constraint constraintValue="${scene}" constraintType="EQUALS" />
@@ -200,12 +191,10 @@
                     </loadProperties>
                     <resourceData xsi:type="windPlotResourceData" legend="${legendp6}"
                         windFile="dmw_wind.xml" baseDensity="2.0">
+                       <binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
                         <metadataMap>
                             <mapping key="pluginName">
                                 <constraint constraintValue="${plugin}" constraintType="EQUALS" />
-                            </mapping>
-                            <mapping key="orbitalSlot">
-                                <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="scene">
                                 <constraint constraintValue="${scene}" constraintType="EQUALS" />
@@ -232,12 +221,10 @@
                     </loadProperties>
                     <resourceData xsi:type="windPlotResourceData" legend="${legendp7}"
                         windFile="dmw_wind.xml" baseDensity="2.0">
+                       <binOffset virtualOffset="${virtualOffset}" posOffset="${posOffset}" negOffset="${negOffset}" />
                         <metadataMap>
                             <mapping key="pluginName">
                                 <constraint constraintValue="${plugin}" constraintType="EQUALS" />
-                            </mapping>
-                            <mapping key="orbitalSlot">
-                                <constraint constraintValue="${orbitalSlot}" constraintType="EQUALS" />
                             </mapping>
                             <mapping key="scene">
                                 <constraint constraintValue="${scene}" constraintType="EQUALS" />

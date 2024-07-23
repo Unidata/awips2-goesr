@@ -5,9 +5,9 @@
 
          IXTA - Aerosol Detection (ADP)
          IXTB - Aerosol Optical Depth  (AOD)
-         IXTC - Volcanic Ash Detection/Height (VAH)
+         IXTC - Cloud Cover Layers (CCL)
          IXTD - Cloud Top Phase (ACTP)
-         IXTE - Hurricane Intensity
+         IXTE - Fog and Low Stratus
          IXTF - Rainfall/QPE  (RRQPE)
          IXTG - Cloud Top Height (CTH)
          IXTH - Clear Sky Mask (CSM)
@@ -20,17 +20,16 @@
          IXTO - Total Precipitable Water (TPW)
          IXTP - Legacy Vertical Moisture Profile (LVM)
          IXTQ - Legacy Vertical Temperature Profile (LVT)
-         IXTX01 - Cloud Top Pressure
-         IXTY01 - Cloud Optical Depth
-         IXTW01 - Cloud Particle Size
-         IXTX - Cloud Top Pressure
-         IXTY - Cloud Optical Depth
-         IXTW - Cloud Particle Size
-         IXTR - GLM products
+         IXTR - Ice Concentration and Extent
+         IXTT - Ice Age and Thickness
+         IXTV - Ice Motion (see dmw.xml), not used here
+         IXTX - Cloud Top Pressure, GOES-East IXTX01, GOES-West IXTX81
+         IXTY - Cloud Optical Depth, GOES-East IXTY01, GOES-West IXTY81
+         IXTW - Cloud Particle Size, GOES-East IXTW01, GOES-West IXTW81
+         IXTU - See dmw.xml. IXTU99 GOES-East on GRE channel, IXTU89 GOES-West is on GRW channel. 
 
          The WMO header for derived motion winds (DMW,IXTU) is
          not included here, see dmw.xml 
-         An entry for Himawari imagery is also included, here, used in testing.
 
           12/12/2016 Updates ABI match pattern to account for:
 
@@ -39,7 +38,21 @@
          "IR" = ITE Real-Time Data
          "IT" = ITE Test Data"
 
-       8/5/2018 add TIU for G-17 Meso, Add IXTR for GLM products Lee Byerle.
+       8/5/2018  L. Byerle add TIU for G-17 Meso
+       7/28/2020 L. Byerle add GLM full disk tiles. This pattern also appears in dmw.xml for GLM flash points
+       11/5/2020 L. Byerle add CIMSS turbulence product tailored in isatss.
+       11/6/2020 L. Byerle OR or DR as pattern start for ice conc and ice thickness
+       1/18/2021 L. Byerle Updated to merge DAM with TOWR-S. Adds CLASS/CMIP Imagery pattern.
+       4/19/2021 L. Byerle add Meso Fire Hotspot (FDC) for mesos via LDM
+       5/5/2021  L. Byerle add ISatSS Geocolor, update CIRA entry to match DAM
+       9/30/2021 L. Byerle update Cloud top pressure, cloud optical depth, cloud particle size
+                 entry so that the 5th digit can be any digit to account for GOES-East (zero), and 
+                 GOES-West (number 8)
+       12/19/2021 L. Byerle remove Ice conc and thickness
+       1/16/2023  L. Byerle add IXTT for Ice Age and Thickness. Update Comments.
+       6/7/2023   L. Byerle added comment above regarding IXTV
+       8/18/2023  L. Byerle IXTC description updated in comments above
+       5/10/2024  L. Byerle SAR Winds
     -->
     <!--
         This is an absolute override file, indicating that a higher priority
@@ -47,6 +60,10 @@
         of the file.
     -->
 <requestPatterns xmlns:ns2="group">
+    <!-- SSEC/CIMSS GOES-R Product REGEX Entries -->
+    <regex>^SSEC_AII_.*_T\w{3}_\d{8}_\d{4,6}.nc$</regex>
+    <regex>^SSEC_AII.*_viirs_sst.*_\d{8}_\d{4,6}.nc$</regex>
+    <regex>^LDAD-GOESR-</regex>    
     <regex>^TI[SRU]</regex>
     <!-- This pattern is intended to match standardized Level 2 filenames, it will not be used over LDM -->
     <regex>^[OI][RT]_ABI-L2-\w{3,5}(C|F|M1|M2)-M[\d]_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc$</regex>
@@ -56,10 +73,18 @@
     <regex>OR_GLM-L2-GLM</regex>
     <regex>OR_GLM-L3-GLM</regex>
     <!-- WMO headers for derived products -->
-    <regex>^IXT..</regex>
+    <regex>^IXT[ABCDEFGHIJKLMNOPQRT]</regex>
     <!-- Cloud top pressure, cloud optical depth, cloud particle size -->
-    <regex>^IXT[XYW]01</regex>
+    <regex>^IXT[XYW]\d{2}.*</regex>
     <!-- Himawari Imagery -->
     <regex>^OR_HFD</regex>
     <regex>^H8FD.B</regex>
+    <!--GOES turbulence from CIMSS isatss tailored for CONUS/PACUS -->
+    <regex>^uwssec_isatss_L3-TURBC.*</regex>
+    <!-- For CIRA GeoColor and DEBRA Dust Tiles -->
+    <regex>^RAMMB</regex>
+    <!-- ISatSS Geocolor -->
+    <regex>^OR_ABI-L3-GEOC(A|C|F|M1|M2|P)-M\d.*</regex>
+    <!-- SAR Winds -->
+    <regex>^isatssSARWIND_.*</regex>  
 </requestPatterns>

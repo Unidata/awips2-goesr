@@ -39,9 +39,10 @@
          New L2 desc not in current baseline for GOES Ice products.
          12/22/2022 Update DQF mask value
          12/29/2022 No DQFs option (not active)
+         12/7/2023 Update platform for G19
     -->
     <!-- TOWRdocs POC
-         Lee Byerle 12/29/2022
+         Lee Byerle 12/7/2023
     -->
 <goesrProductDescriptions>
   <default>
@@ -64,7 +65,7 @@
     </source>
 
     <creatingEntity>
-        <pattern inputPattern="G(1[678])" outputFormat="GOES-%S">
+        <pattern inputPattern="G(1[6789])" outputFormat="GOES-%S">
             <attribute name="platform_ID" />
         </pattern>
     </creatingEntity>

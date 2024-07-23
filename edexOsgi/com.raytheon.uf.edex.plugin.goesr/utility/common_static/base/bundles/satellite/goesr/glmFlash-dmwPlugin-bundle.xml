@@ -17,9 +17,11 @@
                       -->
     <!-- TOWRdocs Status
          New file for rendering the flash points as circles (ref svg).
+         11/30/2021 changed mapping key from filter (flash duration), to windSpd (flash_DQF). Currently the
+         latter are set to zero. Given the range of -0.5 to 1., this ensures all flash centroid records will plot.
     -->
     <!-- TOWRdocs POC
-     Lee Byerle 11/2/2020
+     Lee Byerle 11/30/2021
     -->
      
 <bundle>
@@ -52,7 +54,7 @@
                                                         <mapping key="scene">
                                                                   <constraint constraintValue="${scene}" constraintType="EQUALS" />
                                                          </mapping>
-                                                         <mapping key="filter">
+                                                         <mapping key="windDir">
                                                                   <constraint constraintValue="-0.5--1." constraintType="BETWEEN" />
                                                          </mapping>
                                                          <mapping key="orbitalSlot">

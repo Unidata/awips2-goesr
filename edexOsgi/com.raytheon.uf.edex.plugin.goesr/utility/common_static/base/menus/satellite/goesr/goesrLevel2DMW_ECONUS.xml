@@ -139,6 +139,7 @@
         <substitute key="colorp7" value="#ff9696" />
         <substitute key="orbitalSlot" value="GOES-East"/>
         <substitute key="scene" value="CONUS"/>
+        <substitute key="plugin" value="dmw"/>
    </contribute>
 
     <contribute xsi:type="separator" id="MySeparatorId"/>
@@ -203,6 +204,7 @@
         <substitute key="channel" value="8" />
         <substitute key="orbitalSlot" value="GOES-East"/>
         <substitute key="scene" value="CONUS"/>
+        <substitute key="plugin" value="dmw"/>        
     </contribute>
 
 </menuTemplate>

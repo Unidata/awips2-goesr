@@ -9,7 +9,7 @@
     </contribute>
 -->
 <!-- 1/22/2018 Dust -->
-    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/GOES_Dust_Smoke_Detection_Low_Med_High_bundle.xml" 
+<!--    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/GOES_Dust_Smoke_Detection_Low_Med_High_bundle.xml" 
                 menuText="Aerosol Detection Dust" id="goesr-dust">
         <substitute key="entity" value="GOES%" />
         <substitute key="elementHigh" value="DustHigh"/>
@@ -17,9 +17,9 @@
         <substitute key="elementLow" value="DustLow"/>
         <substitute key="colormap" value="GOES-R/GOESR-L2/Dust"/>
         <substitute key="colorvar" value="dodger blue"/>
-    </contribute>
+    </contribute> -->
 <!-- 1/22/2018 Smoke -->
-    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/GOES_Dust_Smoke_Detection_Low_Med_High_bundle.xml" 
+<!--     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/GOES_Dust_Smoke_Detection_Low_Med_High_bundle.xml" 
                 menuText="Aerosol Detection Smoke" id="goesr-smoke">
         <substitute key="entity" value="GOES%" />
         <substitute key="elementHigh" value="SmokeHigh"/>
@@ -27,6 +27,20 @@
         <substitute key="elementLow" value="SmokeLow"/>
         <substitute key="colormap" value="GOES-R/GOESR-L2/Smoke"/>
         <substitute key="colorvar" value="orange red"/>
+    </contribute> -->
+    <!-- 4/11/2024 Update Dust, Smoke for Ent Algo -->
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Aerosol Detection Dust" id="goesr-dust2">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="Dust"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/Dust"/>
+    </contribute>
+
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Aerosol Detection Smoke" id="goesr-smoke2">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="Smoke"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/Smoke"/>
     </contribute>
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Aerosol Optical Depth"
         id="goesr-aod">
@@ -250,6 +264,12 @@
         <substitute key="element" value="SST" />
         <substitute key="colormap" value="GOES-R/GOESR-L2/GOES-SST-35" />
     </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+                menuText="Snow Cover" id="goesr-fsc">
+        <substitute key="entity" value="GOES%" />
+        <substitute key="element" value="FSC"/>
+        <substitute key="colormap" value="GOES-R/GOESR-L2/FSC"/>
+    </contribute> 
     <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="RR/QPE" id="goesr-rrqpe">
         <substitute key="entity" value="GOES%" />
         <substitute key="element" value="RRQPE" />

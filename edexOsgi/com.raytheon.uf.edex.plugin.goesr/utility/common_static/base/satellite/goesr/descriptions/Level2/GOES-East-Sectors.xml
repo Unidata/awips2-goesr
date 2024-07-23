@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <!--
+        This_software_was_developed_and_/_or_modified_by_Raytheon_Company,
+        pursuant_to_Contract_DG133W-05-CQ-1067_with_the_US_Government.
+        
+        U.S._EXPORT_CONTROLLED_TECHNICAL_DATA
+        This_software_product_contains_export-restricted_data_whose
+        export/transfer/disclosure_is_restricted_by_U.S._law._Dissemination
+        to_non-U.S._persons_whether_in_the_United_States_or_abroad_requires
+        an_export_license_or_other_authorization.
+        
+        Contractor_Name:________Raytheon_Company
+        Contractor_Address:_____6825_Pine_Street,_Suite_340
+        ________________________Mail_Stop_B8
+        ________________________Omaha,_NE_68106
+        ________________________402.291.0100
+        
+        See_the_AWIPS_II_Master_Rights_File_("Master_Rights_File.pdf")_for
+        further_licensing_information.
+    -->
     <!-- TOWRdocs Header
          GOES-R Product Description file
     -->
@@ -14,9 +33,14 @@
     <!-- TOWRdocs Status
          This file is a modification to the previous baseline file of the same name, which currently
          accounts for products whose dataset_name begins with "OR".
+         5/4/21 Meso and PRREGI matches for isatss geocolor, FullDisk or Full Disk
+         7/5/2022 Incl option GEOC or PRVIS for Meso
+         8/13/2023 enable DR_ for Meso dataset_names, for testing GOES egress data
+         1/4/2024 GOES-19 readiness
+         
     -->
     <!-- TOWRdocs POC
-         Lee Byerle 12/12/2016
+         Lee Byerle 1/4/2024
     -->
     <!-- 
         This is an absolute override file, indicating that a higher priority 
@@ -43,7 +67,7 @@
     </sectorID>
   </description>
   
-  <description>
+<!--  <description>
     <matches>
         <match  pattern="Full Disk">
             <attribute name="scene_id" />
@@ -52,16 +76,38 @@
     <sectorID>
         <value value="EFD" />
     </sectorID>
-  </description>
-  
+  </description>  -->
+
+<!-- Use below for EFD GEOCF scene_id is FullDisk vs Full Disk -->
   <description>
-    <matches>
-      <match pattern="[OI][RT]_ABI-L2-\w{3,5}M1-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
-        <attribute name="dataset_name" />
-      </match>
-      <match pattern="Mesoscale">
+    <matches type="OR">
+      <match pattern="Full Disk">
         <attribute name="scene_id" />
       </match>
+      <matches>
+        <match pattern="OR_ABI-L3-GEOCF-M\d_G1[69]_T\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+           <attribute name="dataset_name" />
+        </match>
+      </matches>
+    </matches>
+    <sectorID>
+        <value value="EFD" />
+    </sectorID>
+  </description> 
+  
+  <description>
+    <matches type="OR">
+      <match pattern="OR_ABI-L3-(GEOC|PRVIS)M1-M\d_G1[69]_T\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+        <attribute name="dataset_name" />
+      </match>
+      <matches>
+        <match pattern="[OD][RT]_ABI-L2-\w{3,5}M1-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+           <attribute name="dataset_name" />
+        </match>
+        <match pattern="Mesoscale">
+          <attribute name="scene_id" />
+        </match>
+      </matches>
     </matches>
     <sectorID>
         <value value="EMESO-1" />
@@ -69,17 +115,38 @@
   </description>
 
   <description>
-    <matches>
-      <match pattern="[OI][RT]_ABI-L2-\w{3,5}M2-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+    <matches type="OR">
+      <match pattern="OR_ABI-L3-(GEOC|PRVIS)M2-M\d_G1[69]_T\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
         <attribute name="dataset_name" />
       </match>
-      <match  pattern="Mesoscale">
+      <matches>
+        <match pattern="[OD][RT]_ABI-L2-\w{3,5}M2-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+           <attribute name="dataset_name" />
+        </match>
+        <match pattern="Mesoscale">
           <attribute name="scene_id" />
-      </match>
+        </match>
+      </matches>
     </matches>
     <sectorID>
         <value value="EMESO-2" />
     </sectorID>
   </description>
+
+
+  <description>
+    <matches>
+      <match pattern="OR_ABI-L3-GEOCP-M\d_G1[69]_T\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+        <attribute name="dataset_name" />
+      </match>
+      <match  pattern="FullDisk">
+          <attribute name="scene_id" />
+      </match>
+    </matches>
+    <sectorID>
+        <value value="PRREGI" />
+    </sectorID>
+  </description>
+
 </goesrProductDescriptions>
 
