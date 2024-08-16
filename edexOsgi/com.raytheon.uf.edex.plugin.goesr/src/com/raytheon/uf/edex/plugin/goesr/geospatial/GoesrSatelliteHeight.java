@@ -24,9 +24,9 @@ import javax.measure.quantity.Length;
 
 import org.geotools.referencing.CRS;
 import org.geotools.referencing.operation.projection.MapProjection;
-import org.opengis.parameter.ParameterValue;
-import org.opengis.parameter.ParameterValueGroup;
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.geotools.api.parameter.ParameterValue;
+import org.geotools.api.parameter.ParameterValueGroup;
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
 
 import com.raytheon.uf.common.geospatial.projection.Geostationary;
 

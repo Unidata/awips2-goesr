@@ -19,7 +19,7 @@
  **/
 package com.raytheon.uf.edex.plugin.goesr.geospatial.crs;
 
-import org.opengis.parameter.ParameterValueGroup;
+import org.geotools.api.parameter.ParameterValueGroup;
 
 import ucar.nc2.Variable;
 

@@ -33,14 +33,15 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.geotools.api.referencing.FactoryException;
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
+import org.geotools.api.referencing.operation.MathTransform;
+import org.geotools.api.referencing.operation.TransformException;
 import org.geotools.coverage.grid.GeneralGridGeometry;
-import org.geotools.geometry.DirectPosition2D;
+import org.geotools.geometry.Position2D;
 import org.geotools.referencing.CRS;
 import org.geotools.referencing.crs.DefaultGeographicCRS;
-import org.opengis.referencing.FactoryException;
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
-import org.opengis.referencing.operation.MathTransform;
-import org.opengis.referencing.operation.TransformException;
+import org.locationtech.jts.geom.Coordinate;
 
 import com.raytheon.uf.common.dataplugin.HDF5Util;
 import com.raytheon.uf.common.dataplugin.PluginDataObject;
@@ -66,7 +67,6 @@ import com.raytheon.uf.viz.core.rsc.capabilities.DensityCapability;
 import com.raytheon.uf.viz.core.rsc.capabilities.EditableCapability;
 import com.raytheon.uf.viz.core.rsc.capabilities.MagnificationCapability;
 import com.raytheon.viz.ui.input.EditableManager;
-import org.locationtech.jts.geom.Coordinate;
 
 /**
  * GOESR Legacy Moisture/Temperature profiles availability resource. Draws
@@ -81,6 +81,7 @@ import org.locationtech.jts.geom.Coordinate;
  * ------------- -------- --------- -----------------------------------
  * Apr 30, 2015  4335     bsteffen  Initial creation
  * Nov 29, 2017  5863     bsteffen  Change dataTimes to a NavigableSet
+ * Aug 16, 2024  2037231  aford     Upgrade GeoTools to 31
  * 
  * </pre>
  * 
@@ -239,8 +240,7 @@ public class GoesrProfileMapResource extends
             return false;
         }
         GeneralGridGeometry dataGeometry = display.getGridGeometryOfData();
-        DirectPosition2D point = new DirectPosition2D(sampleCoord.x,
-                sampleCoord.y);
+        Position2D point = new Position2D(sampleCoord.x, sampleCoord.y);
         try {
             MathTransform ll2crs = CRS.findMathTransform(
                     DefaultGeographicCRS.WGS84,

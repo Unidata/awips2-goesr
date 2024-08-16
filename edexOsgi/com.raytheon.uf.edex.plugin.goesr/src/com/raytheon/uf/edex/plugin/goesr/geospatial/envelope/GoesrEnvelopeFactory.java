@@ -19,7 +19,7 @@
  **/
 package com.raytheon.uf.edex.plugin.goesr.geospatial.envelope;
 
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
 
 import ucar.nc2.NetcdfFile;
 

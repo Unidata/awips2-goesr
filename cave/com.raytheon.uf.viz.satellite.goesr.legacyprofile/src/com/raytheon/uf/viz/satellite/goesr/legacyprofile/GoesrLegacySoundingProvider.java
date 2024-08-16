@@ -23,12 +23,13 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.geotools.geometry.DirectPosition2D;
+import org.geotools.api.referencing.FactoryException;
+import org.geotools.api.referencing.operation.MathTransform;
+import org.geotools.api.referencing.operation.TransformException;
+import org.geotools.geometry.Position2D;
 import org.geotools.referencing.CRS;
 import org.geotools.referencing.crs.DefaultGeographicCRS;
-import org.opengis.referencing.FactoryException;
-import org.opengis.referencing.operation.MathTransform;
-import org.opengis.referencing.operation.TransformException;
+import org.locationtech.jts.geom.Coordinate;
 
 import com.raytheon.uf.common.dataplugin.HDF5Util;
 import com.raytheon.uf.common.dataplugin.PluginDataObject;
@@ -48,7 +49,6 @@ import com.raytheon.uf.common.status.IUFStatusHandler;
 import com.raytheon.uf.common.status.UFStatus;
 import com.raytheon.uf.common.time.DataTime;
 import com.raytheon.uf.viz.sounding.providers.AbstractVerticalSoundingProvider;
-import org.locationtech.jts.geom.Coordinate;
 
 /**
  * Provider which allows GOESR Legacy Moisture/Temperature profiles to be used
@@ -61,6 +61,7 @@ import org.locationtech.jts.geom.Coordinate;
  * Date          Ticket#  Engineer    Description
  * ------------- -------- ----------- --------------------------
  * Apr 30, 2015  4335     bsteffen    Initial creation
+ * Aug 16, 2024  2037231  aford       Upgrade GeoTools to 31
  * 
  * </pre>
  * 
@@ -153,8 +154,7 @@ public class GoesrLegacySoundingProvider extends
         MathTransform ll2crs = CRS.findMathTransform(
                 DefaultGeographicCRS.WGS84, coverage.getCrs(), true);
         MathTransform crs2grid = coverage.getGridGeometry().getCRSToGrid2D();
-        DirectPosition2D point = new DirectPosition2D(coordinate.x,
-                coordinate.y);
+        Position2D point = new Position2D(coordinate.x, coordinate.y);
         ll2crs.transform(point, point);
         crs2grid.transform(point, point);
         int nx = coverage.getNx();
