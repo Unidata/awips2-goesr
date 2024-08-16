@@ -20,6 +20,6 @@ Require-Bundle: javax.measure,
  com.raytheon.uf.edex.netcdf,
  com.raytheon.uf.common.serialization,
  org.apache.commons.beanutils,
- javax.xml.bind
+ jakarta.xml.bind
 Export-Package: com.raytheon.uf.edex.plugin.goesr
 Import-Package: com.raytheon.uf.common.units

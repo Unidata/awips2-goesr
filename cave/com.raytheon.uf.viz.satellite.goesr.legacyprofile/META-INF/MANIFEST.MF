@@ -22,5 +22,5 @@ Require-Bundle: com.raytheon.uf.viz.d2d.nsharp,
  com.raytheon.uf.common.geospatial,
  com.raytheon.uf.viz.core.grid,
  com.raytheon.uf.viz.d2d.core,
- javax.xml.bind
+ jakarta.xml.bind
 

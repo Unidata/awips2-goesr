@@ -1,9 +1,9 @@
 package com.raytheon.uf.edex.plugin.goesr.dmw.description;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
 
 import com.raytheon.uf.edex.netcdf.description.field.date.EpochOffsetDateValue;
 import com.raytheon.uf.edex.netcdf.description.field.direct.VariableDescription;
