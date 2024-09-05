@@ -18,7 +18,8 @@ Require-Bundle: com.raytheon.uf.common.pointdata,
  com.raytheon.uf.edex.netcdf,
  com.raytheon.uf.common.localization,
  jakarta.xml.bind,
- com.raytheon.uf.edex.esb.camel
+ com.raytheon.uf.edex.esb.camel,
+ com.raytheon.uf.edex.routes
 Export-Package: com.raytheon.uf.edex.plugin.goesr.dmw.dao,
  com.raytheon.uf.edex.plugin.goesr.dmw.decoder,
  com.raytheon.uf.edex.plugin.goesr.dmw.description
