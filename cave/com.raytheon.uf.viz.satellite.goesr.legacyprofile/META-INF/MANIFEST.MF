@@ -4,7 +4,7 @@ Bundle-Name: GOES-R Legacy Profile Displays
 Bundle-SymbolicName: com.raytheon.uf.viz.satellite.goesr.legacyprofile;singleton:=true
 Bundle-Version: 1.19.0.qualifier
 Bundle-Vendor: Raytheon
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: com.raytheon.uf.viz.d2d.nsharp,
  com.raytheon.uf.viz.core,
  gov.noaa.nws.ncep.edex.common,
