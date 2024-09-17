@@ -286,5 +286,26 @@
         <substitute key="element" value="TPW" />
         <substitute key="colormap" value="GOES-R/GOESR-L2/color-pw10-10" />
     </contribute>
+    
+        <contribute xsi:type="separator" id="id"/>
+    
+    <contribute xsi:type="bundleItem" file="bundles/GriddedTurbulence.xml" 
+                menuText="Turbulence Probability at 30-33kft (UWSSEC/CIMSS)" id="goesr-turbf">
+        <substitute key="entity" value="GOES-West_Gridded_Turbulence" />
+        <substitute key="parameter" value="GridTurbGOESWest"/>
+        <substitute key="level" value="30-33kft"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/GriddedTurbulence.xml" 
+                menuText="Turbulence Probability at 34-37kft (UWSSEC/CIMSS)" id="goesr-turbf">
+        <substitute key="entity" value="GOES-West_Gridded_Turbulence" />
+        <substitute key="parameter" value="GridTurbGOESWest"/>
+        <substitute key="level" value="34-37kft"/>
+    </contribute>
+    <contribute xsi:type="bundleItem" file="bundles/GriddedTurbulence.xml" 
+                menuText="Turbulence Probability at 38-41kft (UWSSEC/CIMSS)" id="goesr-turbf">
+        <substitute key="entity" value="GOES-West_Gridded_Turbulence" />
+        <substitute key="parameter" value="GridTurbGOESWest"/>
+        <substitute key="level" value="38-41kft"/>
+    </contribute>
 </menuTemplate>
 
