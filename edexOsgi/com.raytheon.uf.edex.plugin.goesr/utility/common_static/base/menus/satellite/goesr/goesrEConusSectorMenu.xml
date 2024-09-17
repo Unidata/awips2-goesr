@@ -119,6 +119,14 @@
         <contribute xsi:type="subinclude" subMenu="Derived Motion Winds" fileName="menus/satellite/goesr/goesrLevel2DMW_ECONUS.xml" />
 
     <contribute xsi:type="separator" id="MySeparatorId"/>
+        <contribute xsi:type="bundleItem" file="bundles/LightningCast.xml" menuText="LightningCast (NOAA/CIMSS)" id="econus">
+            <substitute key="parameter" value="LCastE"/>
+        </contribute>
+        <contribute xsi:type="bundleItem" file="bundles/LightningCast.xml" menuText="LightningCast parallax-corrected (NOAA/CIMSS)" id="econusp">
+            <substitute key="parameter" value="LCastEPlax"/>
+        </contribute>
+
+    <contribute xsi:type="separator" id="MySeparatorId"/>
 
         <contribute xsi:type="bundleItem"
           file="bundles/satellite/GoesrLegacyProfileMap.xml" menuText="Vertical Temp/Moisture Profiles"
