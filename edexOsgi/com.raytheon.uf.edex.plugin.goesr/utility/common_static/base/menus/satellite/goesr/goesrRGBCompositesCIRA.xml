@@ -382,6 +382,30 @@
         <substitute key="blueUnit" value="C" />
         </contribute>
 
+		<!-- Blowing Snow RGB (Bill Line, NESDIS) -->
+        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBRecipeGLSL.xml" 
+                    menuText="Blowing Snow (0.64 μm, 1.61 μm, 3.90-10.35 μm)" id="goesr-BlowingSnow">
+        <substitute key="productName" value="Blowing Snow" />
+        <substitute key="redElement" value="CH-02-0.64um" />
+        <substitute key="greenElement" value="CH-05-1.61um" />
+        <substitute key="blueElement" value="satFogRev" />
+        <substitute key="redLabel" value="0.64 μm" />
+        <substitute key="greenLabel" value="1.61 μm" />
+        <substitute key="blueLabel" value="3.90-10.35 μm" />
+        <substitute key="redMin" value="0.0" />
+        <substitute key="redMax" value="50.0" />
+        <substitute key="redGamma" value="0.7" />
+        <substitute key="redUnit" value="%" />
+        <substitute key="greenMin" value="0.0" />
+        <substitute key="greenMax" value="20.0" />
+        <substitute key="greenGamma" value="1.0" />
+        <substitute key="greenUnit" value="%" />
+        <substitute key="blueMin" value="0.0" />
+        <substitute key="blueMax" value="30.0" />
+        <substitute key="blueGamma" value="0.7" />
+        <substitute key="blueUnit" value="C" />
+        </contribute>
+          
     <!-- GLSL Day Convection. -->
         <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/goesrRGBRecipeGLSL.xml" 
                     menuText="Day Convection (6.19-7.34 μm, 3.90-10.35 μm, 1.61-0.64 μm)" id="goesr-dayConvection2">

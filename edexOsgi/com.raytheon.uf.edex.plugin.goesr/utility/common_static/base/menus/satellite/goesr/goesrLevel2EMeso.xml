@@ -175,7 +175,48 @@
         <substitute key="element" value="TPW" />
         <substitute key="colormap" value="GOES-R/GOESR-L2/color-pw10-10" />
     </contribute>
-    
+    	<!-- Add ALPW -->
+	<contribute menuText="Advected Layered Precip Water (ALPW)"
+		xsi:type="subMenu" id="Sat_BlendedHydroALPW">
+
+		<contribute xsi:type="bundleItem"
+			file="bundles/blendedHydro/blended_hydro_bundle_alpw.xml"
+			menuText="ALPW SFC to 850 hPa" id="menuALPW1">
+			<substitute key="dataset" value="BHP-ALPW" />
+			<substitute key="parameter" value="ALPW_SFC_850_layers" />
+			<substitute key="levelone" value="850.0" />
+			<substitute key="colormap" value="Sat/test_ALPW" />
+			<substitute key="mlevel" value="LYRMB" />
+		</contribute>
+		<contribute xsi:type="bundleItem"
+			file="bundles/blendedHydro/blended_hydro_bundle_alpw.xml"
+			menuText="ALPW 850 to 700 hPa" id="menuALPW2">
+			<substitute key="dataset" value="BHP-ALPW" />
+			<substitute key="parameter" value="ALPW_850_700" />
+			<substitute key="levelone" value="850.0" />
+			<substitute key="colormap" value="Sat/test_ALPW" />
+			<substitute key="mlevel" value="LYRMB" />
+		</contribute>
+		<contribute xsi:type="bundleItem"
+			file="bundles/blendedHydro/blended_hydro_bundle_alpw.xml"
+			menuText="ALPW 700 to 500 hPa" id="menuALPW3">
+			<substitute key="dataset" value="BHP-ALPW" />
+			<substitute key="parameter" value="ALPW_700_500" />
+			<substitute key="levelone" value="700.0" />
+			<substitute key="colormap" value="Sat/test_ALPW" />
+			<substitute key="mlevel" value="LYRMB" />
+		</contribute>
+		<contribute xsi:type="bundleItem"
+			file="bundles/blendedHydro/blended_hydro_bundle_alpw.xml"
+			menuText="ALPW 500 to 300 hPa" id="menuALPW4">
+			<substitute key="dataset" value="BHP-ALPW" />
+			<substitute key="parameter" value="ALPW_500_300" />
+			<substitute key="levelone" value="500.0" />
+			<substitute key="colormap" value="Sat/test_ALPW" />
+			<substitute key="mlevel" value="LYRMB" />
+		</contribute>
+	</contribute>
+	<!--End add ALPW -->
     
 </menuTemplate>
 
