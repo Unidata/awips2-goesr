@@ -109,9 +109,11 @@
      8/16/2023  Cloud layers updates, including new colormap clf3
      8/23/2023	Add CCL total cloud fraction
      4/12/2024  SAR Winds and icemask. ADP Enterprise Smoke and Dust
+     7/31/2024  Enterprise rain rate
+     12/6/2024	Update SAR displayLegend 
      -->
     <!-- TOWRdocs POC
-     Lee Byerle 4/12/2024
+     Lee Byerle 12/6/2024
     -->
 <styleRuleset>
   <!-- GOES-R Level 2 Satellite Rules -->
@@ -588,6 +590,26 @@
       </colorbarLabeling>
     </imageStyle>
   </styleRule>
+
+
+  <styleRule>
+    <paramLevelMatches>
+      <parameter>goes_rrqpe</parameter>
+    </paramLevelMatches>
+    <imageStyle>
+      <displayLegend>${creatingEntity} ${sectorID} Ent. Rain Rate/QPE (in/hr)</displayLegend>
+      <displayUnits>in/h</displayUnits>
+      <range scale="LINEAR">
+        <minValue>0</minValue>
+        <maxValue>3</maxValue>
+      </range>
+      <defaultColormap>Sat/MW/nrlmicrorain_swaths</defaultColormap>
+           <colorbarLabeling>
+        <values>0 0.25 0.5 0.75 1.0 1.25 1.50 1.75 2.0 2.25 2.50 2.75 3.0</values>
+            </colorbarLabeling>
+    </imageStyle>
+  </styleRule>
+
   <styleRule>
     <paramLevelMatches>
       <parameter>SST</parameter>
@@ -1381,7 +1403,7 @@
       <parameter>sar_wind</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>${creatingEntity} ${sectorID} Wind Speed (kts) </displayLegend>
+      <displayLegend>SAR ${creatingEntity} Wind Speed (kts) </displayLegend>
       <displayUnits>kn</displayUnits>
       <range scale="LINEAR">
         <minValue>0</minValue>
@@ -1399,7 +1421,7 @@
       <parameter>sar_icemask</parameter>
     </paramLevelMatches>
     <imageStyle>
-      <displayLegend>${creatingEntity} ${sectorID} Ice mask</displayLegend>
+      <displayLegend>SAR ${creatingEntity} Ice mask</displayLegend>
       <defaultColormap>GOES-R/GOESR-L2/sar_icemask</defaultColormap>
      <range scale="LINEAR">
         <minValue>-0.5</minValue>

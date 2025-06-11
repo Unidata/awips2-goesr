@@ -1,217 +1,309 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<menuTemplate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<menuTemplate
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
+		menuText="Aerosol Detection" id="goesr-adp"> <substitute key="entity" value="GOES%" 
+		/> <substitute key="element" value="ADP" /> <substitute key="colormap" value="GOES-R/GOESR-L2/ADP" 
+		/> </contribute> -->
+	<!-- 1/22/2018 Dust -->
+	<!-- <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/GOES_Dust_Smoke_Detection_Low_Med_High_bundle.xml" 
+		menuText="Aerosol Detection Dust" id="goesr-dust"> <substitute key="entity" 
+		value="GOES%" /> <substitute key="elementHigh" value="DustHigh"/> <substitute 
+		key="elementMed" value="DustMed"/> <substitute key="elementLow" value="DustLow"/> 
+		<substitute key="colormap" value="GOES-R/GOESR-L2/Dust"/> <substitute key="colorvar" 
+		value="dodger blue"/> </contribute> -->
+	<!-- 1/22/2018 Smoke -->
+	<!-- <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/GOES_Dust_Smoke_Detection_Low_Med_High_bundle.xml" 
+		menuText="Aerosol Detection Smoke" id="goesr-smoke"> <substitute key="entity" 
+		value="GOES%" /> <substitute key="elementHigh" value="SmokeHigh"/> <substitute 
+		key="elementMed" value="SmokeMed"/> <substitute key="elementLow" value="SmokeLow"/> 
+		<substitute key="colormap" value="GOES-R/GOESR-L2/Smoke"/> <substitute key="colorvar" 
+		value="orange red"/> </contribute> -->
+	<!-- 4/11/2024 Update Dust, Smoke for Ent Algo -->
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Aerosol Detection Dust"
+		id="goesr-dust2">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="Dust" />
+		<substitute key="colormap" value="GOES-R/GOESR-L2/Dust" />
+	</contribute>
 
-<!--
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Aerosol Detection" id="goesr-adp">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="ADP" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/ADP" />
-    </contribute>
--->
-<!-- 1/22/2018 Dust -->
-<!--    <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/GOES_Dust_Smoke_Detection_Low_Med_High_bundle.xml" 
-                menuText="Aerosol Detection Dust" id="goesr-dust">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="elementHigh" value="DustHigh"/>
-        <substitute key="elementMed" value="DustMed"/>
-        <substitute key="elementLow" value="DustLow"/>
-        <substitute key="colormap" value="GOES-R/GOESR-L2/Dust"/>
-        <substitute key="colorvar" value="dodger blue"/>
-    </contribute> -->
-<!-- 1/22/2018 Smoke -->
-<!--     <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/GOES_Dust_Smoke_Detection_Low_Med_High_bundle.xml" 
-                menuText="Aerosol Detection Smoke" id="goesr-smoke">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="elementHigh" value="SmokeHigh"/>
-        <substitute key="elementMed" value="SmokeMed"/>
-        <substitute key="elementLow" value="SmokeLow"/>
-        <substitute key="colormap" value="GOES-R/GOESR-L2/Smoke"/>
-        <substitute key="colorvar" value="orange red"/>
-    </contribute> -->
-    <!-- 4/11/2024 Update Dust, Smoke for Ent Algo -->
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
-                menuText="Aerosol Detection Dust" id="goesr-dust2">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="Dust"/>
-        <substitute key="colormap" value="GOES-R/GOESR-L2/Dust"/>
-    </contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Aerosol Detection Smoke"
+		id="goesr-smoke2">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="Smoke" />
+		<substitute key="colormap" value="GOES-R/GOESR-L2/Smoke" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Aerosol Optical Depth"
+		id="goesr-aod">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="AOD" />
+		<substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Clear Sky Mask"
+		id="goesr-csm">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="CSM" />
+		<substitute key="colormap" value="GOES-R/GOESR-L2/CSM" />
+	</contribute>
+	<contribute xsi:type="subMenu" menuText="Cloud Layers">
+		<contribute xsi:type="bundleItem"
+			file="bundles/DefaultSatellite.xml" menuText="All Cloud Layers"
+			id="goesr-cclc">
+			<substitute key="entity" value="GOES%" />
+			<substitute key="element" value="CL" />
+			<substitute key="colormap" value="GOES-R/GOESR-L2/ccl" />
+		</contribute>
+		<contribute xsi:type="bundleItem"
+			file="bundles/DefaultSatellite.xml"
+			menuText="Cloud Layer Fraction (Sfc-050)" id="goesr-cf1">
+			<substitute key="entity" value="GOES%" />
+			<substitute key="element" value="CF1" />
+			<substitute key="colormap" value="GOES-R/GOESR-L2/clf3" />
+		</contribute>
+		<contribute xsi:type="bundleItem"
+			file="bundles/DefaultSatellite.xml"
+			menuText="Cloud Layer Fraction (050-100)" id="goesr-cf2">
+			<substitute key="entity" value="GOES%" />
+			<substitute key="element" value="CF2" />
+			<substitute key="colormap" value="GOES-R/GOESR-L2/clf3" />
+		</contribute>
+		<contribute xsi:type="bundleItem"
+			file="bundles/DefaultSatellite.xml"
+			menuText="Cloud Layer Fraction (100-180)" id="goesr-cf3">
+			<substitute key="entity" value="GOES%" />
+			<substitute key="element" value="CF3" />
+			<substitute key="colormap" value="GOES-R/GOESR-L2/clf3" />
+		</contribute>
+		<contribute xsi:type="bundleItem"
+			file="bundles/DefaultSatellite.xml"
+			menuText="Cloud Layer Fraction (180-240)" id="goesr-cf4">
+			<substitute key="entity" value="GOES%" />
+			<substitute key="element" value="CF4" />
+			<substitute key="colormap" value="GOES-R/GOESR-L2/clf3" />
+		</contribute>
+		<contribute xsi:type="bundleItem"
+			file="bundles/DefaultSatellite.xml"
+			menuText="Cloud Layer Fraction (&gt;= 240)" id="goesr-cf5">
+			<substitute key="entity" value="GOES%" />
+			<substitute key="element" value="CF5" />
+			<substitute key="colormap" value="GOES-R/GOESR-L2/clf3" />
+		</contribute>
+		<contribute xsi:type="bundleItem"
+			file="bundles/DefaultSatellite.xml" menuText="Total Cloud Fraction"
+			id="goesr-tcf">
+			<substitute key="entity" value="GOES%" />
+			<substitute key="element" value="TCF" />
+			<substitute key="colormap" value="GOES-R/GOESR-L2/clf3" />
+		</contribute>
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Cloud Optical Depth"
+		id="goesr-cod">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="COD" />
+		<substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Cloud Particle Size"
+		id="goesr-cth">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="CPSD" />
+		<substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Cloud Top Height"
+		id="goesr-cth">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="CTH" />
+		<substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Cloud Top Phase"
+		id="goesr-actp">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="ACTP" />
+		<substitute key="colormap" value="GOES-R/GOESR-L2/ACTP" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Cloud Top Pressure"
+		id="goesr-ctp">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="CTP" />
+		<substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
+	</contribute>
+	<contribute xsi:type="separator" id="id" />
+	<contribute xsi:type="titleItem"
+		titleText="------ Derived Stability Indicies ------" />
 
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
-                menuText="Aerosol Detection Smoke" id="goesr-smoke2">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="Smoke"/>
-        <substitute key="colormap" value="GOES-R/GOESR-L2/Smoke"/>
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Aerosol Optical Depth"
-        id="goesr-aod">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="AOD" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Clear Sky Mask" id="goesr-csm">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="CSM" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/CSM" />
-    </contribute>
-        <contribute xsi:type="subMenu" menuText="Cloud Layers">
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
-                menuText="All Cloud Layers" id="goesr-cclc">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="CL"/>
-        <substitute key="colormap" value="GOES-R/GOESR-L2/ccl"/>
-    </contribute>
-      <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
-                menuText="Cloud Layer Fraction (Sfc-050)" id="goesr-cf1">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="CF1"/>
-        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
-      </contribute>
-      <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
-                menuText="Cloud Layer Fraction (050-100)" id="goesr-cf2">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="CF2"/>
-        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
-      </contribute>
-      <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
-                menuText="Cloud Layer Fraction (100-180)" id="goesr-cf3">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="CF3"/>
-        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
-      </contribute>
-      <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
-                menuText="Cloud Layer Fraction (180-240)" id="goesr-cf4">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="CF4"/>
-        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
-      </contribute>
-      <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
-                menuText="Cloud Layer Fraction (>= 240)" id="goesr-cf5">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="CF5"/>
-        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
-      </contribute>
-      <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
-                menuText="Total Cloud Fraction" id="goesr-tcf">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="TCF"/>
-        <substitute key="colormap" value="GOES-R/GOESR-L2/clf3"/>
-      </contribute>
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Cloud Optical Depth" id="goesr-cod">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="COD" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Cloud Particle Size" id="goesr-cth">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="CPSD" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Cloud Top Height" id="goesr-cth">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="CTH" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Cloud Top Phase" id="goesr-actp">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="ACTP" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/ACTP" />
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Cloud Top Pressure" id="goesr-ctp">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="CTP" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
-    </contribute>
-    <contribute xsi:type="separator" id="id"/>
-    <contribute xsi:type="titleItem" titleText="------ Derived Stability Indicies ------" />
-    
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Derived CAPE" id="goesr-cape">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="CAPE" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/color-cape-10" />
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Derived K-Index" id="goesr-ki">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="KI" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/color-cape-10" />
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Derived Lifted Index" id="goer-li">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="LI" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/color-li-10" />
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Derived Showalter Index" id="goer-si">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="SI" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/color-cape-10" />
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Derived Total Totals" id="goer-tt">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="TT" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/color-cape-10" />
-    </contribute>
-    
-    <contribute xsi:type="separator" id="id"/>
-    <contribute xsi:type="titleItem" titleText="------ Fire/Hot Spot ------" />
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Fire Mask" id="goesr-fdc-mask">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="Fire_Mask" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/fire_mask3" />
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Fire Area" id="goesr-fdc-area">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="FDC Area" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Fire Power" id="goesr-fdc-power">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="FDC Power" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Fire Temperature" id="goesr-fdc-temp">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="FDC Temp" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
-    </contribute>
-    <contribute xsi:type="separator" id="id"/>
-    <contribute xsi:type="titleItem" titleText="------ Fog and Low Stratus ------" />
-    
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
-                menuText="LIFR" id="goesr-lifr">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="LIFR_Fog_Prob"/>
-        <substitute key="colormap" value="GOES-R/GOESR-L2/LIFR_PROB"/>
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
-                menuText="IFR" id="goesr-ifr">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="IFR_Fog_Prob"/>
-        <substitute key="colormap" value="GOES-R/GOESR-L2/IFR_PROB"/>
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
-                menuText="MVFR" id="goer-mvfr">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="MVFR_Fog_Prob"/>
-        <substitute key="colormap" value="GOES-R/GOESR-L2/MVFR_PROB"/>
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" 
-                menuText="Cloud Thickness" id="goer-fogdepth">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="Fog_Depth"/>
-        <substitute key="colormap" value="Grid/gridded data"/>
-    </contribute>
-    
-    <contribute xsi:type="separator" id="id"/>
-    
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Land Surface Temperature" id="goesr-lst">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="LST" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
-    </contribute>
-    <contribute xsi:type="bundleItem" file="bundles/DefaultSatellite.xml" menuText="Total Precip Water" id="goesr-tpw">
-        <substitute key="entity" value="GOES%" />
-        <substitute key="element" value="TPW" />
-        <substitute key="colormap" value="GOES-R/GOESR-L2/color-pw10-10" />
-    </contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Derived CAPE"
+		id="goesr-cape">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="CAPE" />
+		<substitute key="colormap"
+			value="GOES-R/GOESR-L2/color-cape-10" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Derived K-Index"
+		id="goesr-ki">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="KI" />
+		<substitute key="colormap"
+			value="GOES-R/GOESR-L2/color-cape-10" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Derived Lifted Index"
+		id="goer-li">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="LI" />
+		<substitute key="colormap"
+			value="GOES-R/GOESR-L2/color-li-10" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Derived Showalter Index"
+		id="goer-si">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="SI" />
+		<substitute key="colormap"
+			value="GOES-R/GOESR-L2/color-cape-10" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Derived Total Totals"
+		id="goer-tt">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="TT" />
+		<substitute key="colormap"
+			value="GOES-R/GOESR-L2/color-cape-10" />
+	</contribute>
+
+	<contribute xsi:type="separator" id="id" />
+	<contribute xsi:type="titleItem"
+		titleText="------ Fire/Hot Spot ------" />
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Fire Mask"
+		id="goesr-fdc-mask">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="Fire_Mask" />
+		<substitute key="colormap"
+			value="GOES-R/GOESR-L2/fire_mask3" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Fire Area"
+		id="goesr-fdc-area">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="FDC Area" />
+		<substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Fire Power"
+		id="goesr-fdc-power">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="FDC Power" />
+		<substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Fire Temperature"
+		id="goesr-fdc-temp">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="FDC Temp" />
+		<substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
+	</contribute>
+	<contribute xsi:type="separator" id="id" />
+	<contribute xsi:type="titleItem"
+		titleText="------ Fog and Low Stratus ------" />
+
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="LIFR" id="goesr-lifr">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="LIFR_Fog_Prob" />
+		<substitute key="colormap"
+			value="GOES-R/GOESR-L2/LIFR_PROB" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="IFR" id="goesr-ifr">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="IFR_Fog_Prob" />
+		<substitute key="colormap" value="GOES-R/GOESR-L2/IFR_PROB" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="MVFR" id="goer-mvfr">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="MVFR_Fog_Prob" />
+		<substitute key="colormap"
+			value="GOES-R/GOESR-L2/MVFR_PROB" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Cloud Thickness"
+		id="goer-fogdepth">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="Fog_Depth" />
+		<substitute key="colormap" value="Grid/gridded data" />
+	</contribute>
+
+	<contribute xsi:type="separator" id="id" />
+
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml"
+		menuText="Land Surface Temperature" id="goesr-lst">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="LST" />
+		<substitute key="colormap" value="GOES-R/GOESR-L2/VTRSB" />
+	</contribute>
+	<contribute xsi:type="bundleItem"
+		file="bundles/DefaultSatellite.xml" menuText="Total Precip Water"
+		id="goesr-tpw">
+		<substitute key="entity" value="GOES%" />
+		<substitute key="element" value="TPW" />
+		<substitute key="colormap"
+			value="GOES-R/GOESR-L2/color-pw10-10" />
+	</contribute>
+	<!-- Add ALPW -->
+	<contribute menuText="Advected Layered Precip Water (ALPW)"
+		xsi:type="subMenu" id="Sat_BlendedHydroALPW">
+
+		<contribute xsi:type="bundleItem"
+			file="bundles/blendedHydro/blended_hydro_bundle_alpw.xml"
+			menuText="ALPW SFC to 850 hPa" id="menuALPW1">
+			<substitute key="dataset" value="BHP-ALPW" />
+			<substitute key="parameter" value="ALPW_SFC_850_layers" />
+			<substitute key="levelone" value="850.0" />
+			<substitute key="colormap" value="Sat/test_ALPW" />
+			<substitute key="mlevel" value="LYRMB" />
+		</contribute>
+		<contribute xsi:type="bundleItem"
+			file="bundles/blendedHydro/blended_hydro_bundle_alpw.xml"
+			menuText="ALPW 850 to 700 hPa" id="menuALPW2">
+			<substitute key="dataset" value="BHP-ALPW" />
+			<substitute key="parameter" value="ALPW_850_700" />
+			<substitute key="levelone" value="850.0" />
+			<substitute key="colormap" value="Sat/test_ALPW" />
+			<substitute key="mlevel" value="LYRMB" />
+		</contribute>
+		<contribute xsi:type="bundleItem"
+			file="bundles/blendedHydro/blended_hydro_bundle_alpw.xml"
+			menuText="ALPW 700 to 500 hPa" id="menuALPW3">
+			<substitute key="dataset" value="BHP-ALPW" />
+			<substitute key="parameter" value="ALPW_700_500" />
+			<substitute key="levelone" value="700.0" />
+			<substitute key="colormap" value="Sat/test_ALPW" />
+			<substitute key="mlevel" value="LYRMB" />
+		</contribute>
+		<contribute xsi:type="bundleItem"
+			file="bundles/blendedHydro/blended_hydro_bundle_alpw.xml"
+			menuText="ALPW 500 to 300 hPa" id="menuALPW4">
+			<substitute key="dataset" value="BHP-ALPW" />
+			<substitute key="parameter" value="ALPW_500_300" />
+			<substitute key="levelone" value="500.0" />
+			<substitute key="colormap" value="Sat/test_ALPW" />
+			<substitute key="mlevel" value="LYRMB" />
+		</contribute>
+	</contribute>
+	<!--End add ALPW -->
+
 </menuTemplate>
+
 

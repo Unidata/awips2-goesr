@@ -19,55 +19,57 @@
         further_licensing_information.
     -->
     <!-- TOWRdocs Header
-         GOES-R Product Description file
+         GOES-R product description file.
     -->
     <!-- TOWRdocs Description
-         GOES-R description configuration.  This file accounts for additional dataset_name
-         combinations for GOES-R derived products:
-
-         "OR" = OE Real-Time Data
-         "OT" = OE Test Data
-         "IR" = ITE Real-Time Data
-         "IT" = ITE Test Data"
-     -->
+         Description file for RRQPE. New Enterprise algorithm
+    -->
     <!-- TOWRdocs Status
-         This file is a modification to the previous baseline file of the same name, which currently
-         accounts for products whose dataset_name begins with "OR".
-    -->
+   -->
     <!-- TOWRdocs POC
-         Lee Byerle 12/12/2016
-    -->
-    <!-- 
-          Tiffany Meyer (Unidata) 6/6/2025
-          This file is now deprecated as a new rrqpe.xml should be used per this SCN
-          https://www.weather.gov/media/notification/pdf_2025/scn25-13_upgrade_goes_enterprise_rain_rate_algorithm.pdf
-     -->
-    <!-- 
-        This is an absolute override file, indicating that a higher priority 
-        version of the file will completely replace a lower priority version
-        of the file. 
+	 Lee Byerle 7/31/2024
     -->
 <goesrProductDescriptions>
+
   <default>
     <matches>
-      <match pattern="[OI][RT]_ABI-L2-RRQPE(C|F|M1|M2)-M\d_G\d\d_s\d{14}_e\d{14}_c\d{14}.nc">
+     <match pattern="RRQPEF_v\dr\d_g\d\d_s\d{15}_e\d{15}_c\d{15}.nc"> 
         <attribute name="dataset_name" />
       </match>
     </matches>
   </default>
 
   <description>
+    <dataTime>
+        <formattedRefTime dateFormat="yyyy-MM-dd'T'HH:mm:ss'Z'">
+            <attribute name="time_coverage_start"/>
+        </formattedRefTime>
+    </dataTime>
+
+    <source>
+        <attribute name="production_site" />
+    </source>
+
+    <creatingEntity>
+        <pattern inputPattern="GOES (1[6789])" outputFormat="GOES-%S">
+            <attribute name="platform" />
+        </pattern>
+    </creatingEntity>
+  </description>
+
+  <description>
     <data>
       <variable name="RRQPE" />
       <discreteMask name="DQF" value="0" keep="true">
-        <fillByte>-1</fillByte>
+      <fillByte>0</fillByte>
       </discreteMask>
     </data>
     <units>
       <value value="mm/h" />
     </units>
     <physicalElement>
-      <value value="RRQPE" />
+      <value value="goes_rrqpe" />
     </physicalElement>
   </description>
+
 </goesrProductDescriptions>
