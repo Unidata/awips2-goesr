@@ -24,7 +24,7 @@
     <bean id="goesrProjectionFactory"
         class="com.raytheon.uf.edex.plugin.goesr.geospatial.GoesrProjectionFactory" />
 
-    <bean id="goesrDecoder" class="com.raytheon.uf.edex.plugin.goesr.GoesrNetcdfDecoder">
+    <bean id="goesrDecoder" class="com.raytheon.uf.edex.plugin.goesr.GoesrNetcdfDecoder" depends-on="levelFactoryInitialized">
         <constructor-arg ref="goesrProjectionFactory" />
         <constructor-arg ref="goesrPathManager" />
     </bean>
