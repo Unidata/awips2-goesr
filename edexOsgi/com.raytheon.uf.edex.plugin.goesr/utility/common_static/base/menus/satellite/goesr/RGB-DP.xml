@@ -169,13 +169,8 @@
         <substitute key="alpha7" value="0.0"/>                     
     </contribute>    
     <!-- ISatSS Geocolor from CIRA  -->                                                                                                                                                   
-        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/RGB-DP-Recipe4-CIRA.xml" 
+<!--        <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/RGB-DP-Recipe4-CIRA.xml" 
             menuText="CIRA Geocolor + Fire/Land/FLS/Aerosol Products" id="goesr-geocTfireDP">
-<!--        <substitute key="productName" value="Geocolor" />
-        <substitute key="redElement" value="geocRed" />
-        <substitute key="greenElement" value="geocGreen" />
-        <substitute key="blueElement" value="geocBlue" />
--->
         <substitute key="CIRAentity" value="GEOCOLR" />
         <substitute key="productName" value="gegeoc" />
         <substitute key="redElement" value="CH-02-0.64um" />
@@ -210,7 +205,7 @@
         <substitute key="colormap4" value="GOES-R/GOESR-L2/VTRSB"/>
         <substitute key="alpha4" value="0.0"/>                   
         </contribute> 
-        
+-->        
 	<contribute xsi:type="titleItem" titleText="------ Airmass ------" id="goesr-simpleRgbs"/>
 	
     <!-- GLSL Air Mass. -->
@@ -277,35 +272,15 @@
 	<contribute xsi:type="titleItem" titleText="------ Land/Fire/Aerosols ------" id="goesr-simpleRgbs"/>
 	
     <!-- ISatSS Geocolor from CIRA  -->                                                                                                                                                   
+<!-- Unidata specific CIRA display --> 
+<!--
         <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/RGB-DP-Recipe4-CIRA.xml" 
             menuText="CIRA Geocolor + Fire/Land/FLS/Aerosol Products" id="goesr-geocTfireDP">
-<!-- Unidata specific CIRA display --> 
         <substitute key="CIRAentity" value="GEOCOLR" />
         <substitute key="productName" value="gegeoc" />
         <substitute key="redElement" value="CH-02-0.64um" />
         <substitute key="greenElement" value="CH-03-0.87um" />
         <substitute key="blueElement" value="CH-01-0.47um" />
-<!--
-            <substitute key="productName" value="Geocolor" />
-        <substitute key="redElement" value="geocRed" />
-        <substitute key="greenElement" value="geocGreen" />
-        <substitute key="blueElement" value="geocBlue" />
-        <substitute key="redLabel" value="Red" />
-        <substitute key="greenLabel" value="Green" />
-        <substitute key="blueLabel" value="Blue" />
-        <substitute key="redMin" value="0.0" />
-        <substitute key="redMax" value="255.0" />
-        <substitute key="redGamma" value="1" />
-        <substitute key="redUnit" value="1" />
-        <substitute key="greenMin" value="0.0" />
-        <substitute key="greenMax" value="255.0" />
-        <substitute key="greenGamma" value="1" />
-        <substitute key="greenUnit" value="1" />
-        <substitute key="blueMin" value="0.0" />
-        <substitute key="blueMax" value="255.0" />
-        <substitute key="blueGamma" value="1" />
-        <substitute key="blueUnit" value="1" />
--->
         <substitute key="element" value="FDC Temp"/>
         <substitute key="colormap" value="Sat/GOESR-L2/VTRSB"/>
         <substitute key="alpha" value="1.0"/>   
@@ -319,6 +294,7 @@
         <substitute key="colormap4" value="GOES-R/GOESR-L2/VTRSB"/>
         <substitute key="alpha4" value="0.0"/>                   
         </contribute> 
+-->
     <!-- GLSL Day Land Cloud. -->
         <contribute xsi:type="bundleItem" file="bundles/satellite/goesr/RGB-DP-Recipe4.xml" 
                     menuText="Day Land Cloud RGB + Fire/Land/FLS/Aerosol Products" id="goesr-dayLandCloudDP">
