@@ -4,7 +4,7 @@ Bundle-Name: GOESR Decoder
 Bundle-SymbolicName: com.raytheon.uf.edex.plugin.goesr
 Bundle-Version: 1.19.0.qualifier
 Bundle-Vendor: RAYTHEON
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: javax.measure,
  ucar.nc2,
  com.raytheon.uf.common.status,
@@ -20,6 +20,8 @@ Require-Bundle: javax.measure,
  com.raytheon.uf.edex.netcdf,
  com.raytheon.uf.common.serialization,
  org.apache.commons.beanutils,
- javax.xml.bind
+ jakarta.xml.bind,
+ com.raytheon.uf.edex.esb.camel,
+ com.raytheon.uf.edex.routes
 Export-Package: com.raytheon.uf.edex.plugin.goesr
 Import-Package: com.raytheon.uf.common.units

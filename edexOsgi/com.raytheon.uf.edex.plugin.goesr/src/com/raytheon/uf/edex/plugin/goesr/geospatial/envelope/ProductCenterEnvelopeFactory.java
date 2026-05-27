@@ -19,17 +19,17 @@
  **/
 package com.raytheon.uf.edex.plugin.goesr.geospatial.envelope;
 
-import org.geotools.geometry.DirectPosition2D;
+import org.geotools.api.referencing.FactoryException;
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
+import org.geotools.api.referencing.operation.TransformException;
+import org.geotools.geometry.Position2D;
 import org.geotools.referencing.CRS;
 import org.geotools.referencing.crs.DefaultGeographicCRS;
-import org.opengis.referencing.FactoryException;
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
-import org.opengis.referencing.operation.TransformException;
+
+import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
 
 import ucar.nc2.Attribute;
 import ucar.nc2.NetcdfFile;
-
-import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
 
 /**
  * 
@@ -44,6 +44,7 @@ import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
  * Date          Ticket#  Engineer    Description
  * ------------- -------- ----------- --------------------------
  * Apr 17, 2015  4336     bsteffen    Initial creation
+ * Aug 16, 2024  2037231  aford       Upgrade GeoTools to 31
  * 
  * </pre>
  * 
@@ -59,7 +60,7 @@ public class ProductCenterEnvelopeFactory extends AbstractCenterEnvelopeFactory 
         if (envelope == null) {
             return null;
         }
-        DirectPosition2D center = new DirectPosition2D();
+        Position2D center = new Position2D();
         int productNx;
         int productNy;
         int offsetx;

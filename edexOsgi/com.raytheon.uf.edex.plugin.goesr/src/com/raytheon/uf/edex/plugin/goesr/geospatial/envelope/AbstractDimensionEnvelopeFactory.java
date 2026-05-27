@@ -23,9 +23,8 @@ import java.text.ParsePosition;
 
 import javax.measure.UnconvertibleException;
 import javax.measure.Unit;
-import javax.measure.format.ParserException;
 
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
 
 import com.raytheon.uf.common.units.UnitConv;
 import com.raytheon.uf.edex.plugin.goesr.exception.GoesrProjectionException;
@@ -50,6 +49,7 @@ import ucar.nc2.Variable;
  * ------------- -------- ----------- --------------------------
  * Apr 17, 2015  4336     bsteffen    Initial creation
  * May  8, 2019  7596     tgurney     Fixes for units upgrade
+ * Aug 16, 2024  2037231  aford       Upgrade GeoTools to 31
  *
  * </pre>
  *
@@ -113,7 +113,7 @@ public abstract class AbstractDimensionEnvelopeFactory
                     throw new GoesrProjectionException(
                             "Incompatible units: " + units);
                 }
-            } catch (UnconvertibleException | ParserException e) {
+            } catch (UnconvertibleException e) {
                 throw new GoesrProjectionException(
                         "Incompatible units: " + units, e);
             }

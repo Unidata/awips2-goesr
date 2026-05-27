@@ -4,7 +4,7 @@ Bundle-Name: GOES-R Derived Motion Winds
 Bundle-SymbolicName: com.raytheon.uf.edex.plugin.goesr.dmw
 Bundle-Version: 1.19.0.qualifier
 Bundle-Vendor: RAYTHEON
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: com.raytheon.uf.common.pointdata,
  com.raytheon.uf.edex.pointdata,
  com.raytheon.uf.common.dataplugin,
@@ -17,7 +17,9 @@ Require-Bundle: com.raytheon.uf.common.pointdata,
  com.raytheon.uf.common.dataplugin.goesr.dmw,
  com.raytheon.uf.edex.netcdf,
  com.raytheon.uf.common.localization,
- javax.xml.bind
+ jakarta.xml.bind,
+ com.raytheon.uf.edex.esb.camel,
+ com.raytheon.uf.edex.routes
 Export-Package: com.raytheon.uf.edex.plugin.goesr.dmw.dao,
  com.raytheon.uf.edex.plugin.goesr.dmw.decoder,
  com.raytheon.uf.edex.plugin.goesr.dmw.description

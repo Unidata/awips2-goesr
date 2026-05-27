@@ -24,13 +24,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import ucar.nc2.Attribute;
-import ucar.nc2.NetcdfFile;
-import ucar.nc2.Variable;
 
 import com.raytheon.edex.plugin.satellite.dao.SatMapCoverageDao;
 import com.raytheon.uf.common.dataplugin.satellite.SatMapCoverage;
@@ -46,6 +42,10 @@ import com.raytheon.uf.edex.plugin.goesr.geospatial.envelope.GoesrEnvelopeFactor
 import com.raytheon.uf.edex.plugin.goesr.geospatial.envelope.ImageBoundsEnvelopeFactory;
 import com.raytheon.uf.edex.plugin.goesr.geospatial.envelope.ProductCenterEnvelopeFactory;
 import com.raytheon.uf.edex.plugin.goesr.geospatial.envelope.TileCenterEnvelopeFactory;
+
+import ucar.nc2.Attribute;
+import ucar.nc2.NetcdfFile;
+import ucar.nc2.Variable;
 
 /**
  * 
@@ -68,6 +68,7 @@ import com.raytheon.uf.edex.plugin.goesr.geospatial.envelope.TileCenterEnvelopeF
  * Oct 29, 2014  3770     bsteffen    Pass more attributes to the projection.
  * Apr 17, 2015  4336     bsteffen    Split out crs and envelope creation into distinct factories.
  * Mar 15, 2016  5456     bsteffen    Change Priority of envelope factories
+ * Jul 29, 2025  2039260  njensen     Throw an exception if coverage location is empty
  * 
  * </pre>
  * 
@@ -172,8 +173,18 @@ public class GoesrProjectionFactory {
                     coverage.setMinY(envelope.getMinY());
                     coverage.setNx(envelope.getNx());
                     coverage.setNy(envelope.getNy());
-                    /* Trigger generation of a location. */
-                    coverage.getLocation();
+                    /*
+                     * coverage.getLocation() will trigger generation of a
+                     * location which we need populated before calling
+                     * satDao.getOrCreateCoverage(coverage). Also verify it's
+                     * not an empty coverage (DR 2039260).
+                     */
+                    if (coverage.getLocation().isEmpty()) {
+                        throw new GoesrProjectionException(
+                                "SatMapCoverage's location is "
+                                        + coverage.getLocation().toString()
+                                        + " which is not valid");
+                    }
                     try {
                         return satDao.getOrCreateCoverage(coverage);
                     } catch (Exception e) {

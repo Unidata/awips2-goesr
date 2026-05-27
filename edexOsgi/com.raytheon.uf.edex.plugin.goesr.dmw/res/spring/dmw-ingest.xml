@@ -17,9 +17,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans.xsd
-    http://camel.apache.org/schema/spring
-    http://camel.apache.org/schema/spring/camel-spring.xsd">
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean class="com.raytheon.uf.common.logback.appender.ThreadBasedAppender"
         factory-method="registerThreadPattern">
@@ -41,30 +39,11 @@
         <constructor-arg value="dmw" />
         <constructor-arg value="jms-durable:queue:Ingest.dmw" />
     </bean>
-
-    <!-- Defining the Camel Context and ingest route of DMW Products through EDEX -->
-    <camelContext id="dmw-camel"
-        xmlns="http://camel.apache.org/schema/spring" errorHandlerRef="errorHandler">
-
-        <route id="dmwIngestRoute">
-            <from uri="jms-durable:queue:Ingest.dmw"/>
-            <setHeader name="pluginName">
-                <constant>dmw</constant>
-            </setHeader>
-            <doTry>
-                <pipeline>
-                    <bean ref="stringToFile" />
-                    <bean ref="getFileWithoutWmoHeader" />
-                    <bean ref="dmwDecoder" method="decode" />
-                    <to uri="direct-vm:indexAlert" />
-                </pipeline>
-                <doCatch>
-                    <exception>java.lang.Throwable</exception>
-                    <to uri="log:dmw?level=ERROR"/>
-                </doCatch>
-            </doTry>
-        </route>
-
-    </camelContext>
+    
+    <bean id="dmw-camel" factory-bean="routeContextFactory" factory-method="create">
+        <constructor-arg>
+            <bean class="com.raytheon.uf.edex.plugin.goesr.dmw.DmwCamelRoutes" />
+        </constructor-arg>
+    </bean>
 
 </beans>

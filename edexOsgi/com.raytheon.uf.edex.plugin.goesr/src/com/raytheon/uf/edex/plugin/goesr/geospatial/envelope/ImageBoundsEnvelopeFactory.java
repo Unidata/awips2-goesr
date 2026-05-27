@@ -21,7 +21,7 @@ package com.raytheon.uf.edex.plugin.goesr.geospatial.envelope;
 
 import java.io.IOException;
 
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.geotools.api.referencing.crs.CoordinateReferenceSystem;
 
 import ucar.ma2.Array;
 import ucar.nc2.NetcdfFile;
