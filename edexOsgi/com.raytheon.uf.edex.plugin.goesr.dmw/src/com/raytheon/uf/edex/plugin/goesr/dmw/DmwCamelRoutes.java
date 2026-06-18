@@ -52,7 +52,6 @@ import com.raytheon.uf.edex.routes.EDEXRouteBuilder;
                     <bean ref="stringToFile" />
                     <bean ref="getFileWithoutWmoHeader" />
                     <bean ref="dmwDecoder" method="decode" />
-                    <bean ref="dmwSHFilter" method="filter" />
                     <to uri="direct-vm:indexAlert" />
                 </pipeline>
                 <doCatch>
