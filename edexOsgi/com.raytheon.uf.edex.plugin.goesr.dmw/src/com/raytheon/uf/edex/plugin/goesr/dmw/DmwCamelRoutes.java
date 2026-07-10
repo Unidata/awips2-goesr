@@ -79,7 +79,6 @@ public class DmwCamelRoutes extends EDEXRouteBuilder {
                     .bean("stringToFile")
                     .bean("getFileWithoutWmoHeader")
                     .bean("dmwDecoder", "decode")
-                    .bean("dmwSHFilter", "filter")
                     .to("direct:indexAlert")
             .endDoTry()
             .doCatch(Throwable.class)
