@@ -53,6 +53,7 @@ import jakarta.persistence.UniqueConstraint;
  * May 10, 2019  7845     tjensen     Added indexes
  * Aug 03, 2022  8906     mapeters    Don't implement IPersistable
  * Aug 08, 2022  8892     tjensen     Update indexes for Hibernate 5
+ * May 18, 2026  2041753  zalberts    Add reftime, forecasttime index
  *
  * </pre>
  *
@@ -67,7 +68,8 @@ import jakarta.persistence.UniqueConstraint;
                         @Index(name = "%TABLE%_filterandwspd_index", columnList = "filter, windspd"),
                         @Index(name = "%TABLE%_orbitalslot_scene_reftime_idx", columnList = "orbitalslot, scene, reftime"),
                         @Index(name = "%TABLE%_scene_reftime_idx", columnList = "scene, reftime"),
-                        @Index(name = "%TABLE%_stationIndex", columnList = "stationId") })
+                        @Index(name = "%TABLE%_stationIndex", columnList = "stationId"),
+                        @Index(name = "%TABLE%_reftime_fcsttime_index", columnList ="reftime, forecasttime") })
 @DynamicSerialize
 public class DMWRecord extends PluginDataObject implements ISpatialEnabled {
 
